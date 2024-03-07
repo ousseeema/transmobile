@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:transmobile/view/information.dart';
+import 'package:transmobile/view/splashscreens/information.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class SplachScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _SplachScreenState extends State<SplachScreen> {
     });
 
     Future.delayed(const Duration(milliseconds: 3000), () {
-      Get.to(()=> const informations() );
+      Get.off(()=> const informations() ,transition: Transition.fade);
     });
   
   }
@@ -51,27 +51,27 @@ class _SplachScreenState extends State<SplachScreen> {
             ),
         duration: const Duration(milliseconds: 800),
         curve: Curves.easeInOut,
-        height: _isExpanded ? MediaQuery.of(context).size.height: 150,
-        width: _isExpanded ? MediaQuery.of(context).size.width : 150,
+        height: _isExpanded ?Dimenssions.height: 150,
+        width: _isExpanded ? Dimenssions.width : 150,
      
-        child:const Center(
+        child: Center(
           child:  Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Welcome to",style: TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: Dimenssions.font20,
                 fontWeight: FontWeight.bold
               ),),
-              SizedBox(height: 22,),
+              SizedBox(height: Dimenssions.height20,),
 
 
 
               Text(
                 "TransMobile",
                 style: TextStyle(
-                    color: Color.fromRGBO(255, 222, 89, 2),
-                  fontSize: 28,
+                    color:const  Color.fromRGBO(255, 222, 89, 2),
+                  fontSize: Dimenssions.font30,
                       fontWeight: FontWeight.bold),
               ),
             ],
