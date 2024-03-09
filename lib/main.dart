@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/helpers/dependencies.dart';
 import 'package:transmobile/view/login%20screens/forgotpassword.dart';
+import 'package:transmobile/view/login%20screens/resetpassword.dart';
 import 'package:transmobile/view/login%20screens/verificationCode.dart';
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 

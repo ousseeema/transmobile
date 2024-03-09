@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/authController/resetpassController.dart';
+import 'package:transmobile/view/login%20screens/resetpassword.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -39,7 +40,7 @@ class _forgotpasswordState extends State<forgotpassword> {
           ),
           Center(
             child: Text(
-              "Forgot your passwodr?",
+              "Forgot your password?",
               style: TextStyle(
                   fontSize: Dimenssions.font20, fontWeight: FontWeight.bold),
             ),
@@ -113,6 +114,7 @@ class _forgotpasswordState extends State<forgotpassword> {
                    // ! verification input and sending the code to the email for the reset password
                    
                    controller.SendVerificationCodeForReset();
+                   Get.to(()=> const resetpassword());
                 },
                 child: Container(
                   height: Dimenssions.height10 * 5,
