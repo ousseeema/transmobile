@@ -143,7 +143,7 @@ class _signupPageState extends State<signupPage> {
                           style: TextStyle(
                               decoration: TextDecoration.underline,
                               decorationColor: Colors.black,
-                              decorationStyle: TextDecorationStyle.dashed,
+                              decorationStyle: TextDecorationStyle.solid,
                               color: AppColors.hintTextColor,
                               fontSize: Dimenssions.font20 - 5),
                         ),

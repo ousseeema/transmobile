@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/authController/signinController.dart';
+import 'package:transmobile/view/login%20screens/forgotpassword.dart';
 import 'package:transmobile/view/login%20screens/signup.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -47,7 +48,7 @@ class _SigninState extends State<Signin> {
                 height: Dimenssions.height20,
               ),
               SizedBox(
-                  height: Dimenssions.height20 * 9.7,
+                  height: Dimenssions.height20 * 9,
                   width: Dimenssions.width - Dimenssions.width20,
                   child: Form(
                      key: _formKey,
@@ -121,20 +122,21 @@ class _SigninState extends State<Signin> {
                       ],
                     ),
                   )),
-                  SizedBox(height: Dimenssions.height10+5,),
+                  
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   GestureDetector(
                     onTap: () {
                       // going to send  code verification via email
+                      Get.to(()=> const forgotpassword());
                     },
                     child: Text(
                       'Forgot Password?',
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           decorationColor: Colors.black,
-                          decorationStyle: TextDecorationStyle.dashed,
+                          decorationStyle: TextDecorationStyle.solid,
                           color: AppColors.hintTextColor,
                           fontSize: Dimenssions.font20 - 5),
                     ),
@@ -145,7 +147,7 @@ class _SigninState extends State<Signin> {
                 ],
               ),
               SizedBox(
-                height: Dimenssions.height20,
+                height: Dimenssions.height20*1.5,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -172,9 +174,9 @@ class _SigninState extends State<Signin> {
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           decorationColor: Colors.black,
-                          decorationStyle: TextDecorationStyle.dashed,
+                          decorationStyle: TextDecorationStyle.solid,
                           color: AppColors.hintTextColor,
-                          fontSize: Dimenssions.font20 - 5),
+                          fontSize: Dimenssions.font20 - 4),
                     ),
                   )
                 ],
