@@ -39,7 +39,7 @@ class _informationsState extends State<informations> {
           height: Dimenssions.height20,
         ),
          Text(smalltext, style: const TextStyle(
-          color: AppColors.mainTextColor,
+          color: AppColors.hintTextColor,
 
         ),),
         SizedBox(

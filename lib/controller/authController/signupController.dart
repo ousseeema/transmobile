@@ -55,5 +55,10 @@ class signupController extends GetxController {
   //! this function is the responsble for sending the verification code
   //! to complete the processs of the signup
   
+
+    if(verificationCode.isEmpty){
+       Get.snackbar("Error", "Please enter your code ",
+          colorText: Colors.white, backgroundColor: Colors.red);
+    }
  }
 }

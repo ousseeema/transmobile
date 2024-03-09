@@ -158,7 +158,7 @@ class _resetpasswordState extends State<resetpassword> {
                   GestureDetector(
                     onTap: () {
                       // resent the code (same api with the send reset code )
-                      controller.resendVerificationCodeForReset();
+                      controller.resendresetcode();
                     },
                     child: Text(
                       "Re-sent",
@@ -178,6 +178,7 @@ class _resetpasswordState extends State<resetpassword> {
               GestureDetector(
                 onTap: () {
                   // ! verification input
+                  //! changing the password 
                   controller.resetpassword();
                 },
                 child: Container(

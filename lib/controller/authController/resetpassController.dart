@@ -10,7 +10,7 @@ class resetpassController extends GetxController {
  String verification_code ="";
 
  //! send veification code for the first time 
-  void SendVerificationCodeForReset() {
+  void SendresetCode() {
     if (email.isEmpty || !email.isEmail) {
       Get.snackbar("Error", "Email invalid ",
           colorText: Colors.white, backgroundColor: Colors.red);
@@ -24,7 +24,7 @@ class resetpassController extends GetxController {
 
 
  //! resend verification code to the useremail 
-  void resendVerificationCodeForReset(){
+  void resendresetcode(){
    // resend verification code to the useremail 
     
 

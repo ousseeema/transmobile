@@ -113,7 +113,7 @@ class _forgotpasswordState extends State<forgotpassword> {
                 onTap: () {
                    // ! verification input and sending the code to the email for the reset password
                    
-                   controller.SendVerificationCodeForReset();
+                   controller.SendresetCode();
                    Get.to(()=> const resetpassword());
                 },
                 child: Container(
