@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 
 class InformationController extends GetxController{
-   bool isClient= false ;
-   bool isTransporter = false;
+   
  List listAnimation =[
   "assets/animations/animation1.json",
   "assets/animations/animation2.json",

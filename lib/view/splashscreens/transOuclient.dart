@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:transmobile/controller/infoController/informationcontroller.dart';
-import 'package:transmobile/view/login%20screens/signup.dart';
-import 'package:transmobile/view/splashscreens/information.dart';
+import 'package:transmobile/controller/authController/signinController.dart';
+import 'package:transmobile/view/login%20screens/login.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class TransOuClient extends StatelessWidget {
   const TransOuClient({super.key});
 
-         Widget button(text){
-          return GestureDetector(
+         Widget button(String text){
+          return GetBuilder<signinController>(builder: (controller){
+            return GestureDetector(
             onTap: () {
-              text == "Client"? Get.find<InformationController>().isClient =true : Get.find<InformationController>().isTransporter =true;
-
-              Get.to(()=>  const signupPage());
+               if(text == "Client"){
+                controller.isClient=true;
+                controller.isTrans =false;
+               }
+               else{
+                controller.isTrans=true;
+                controller.isClient = false;
+               }
+                
+                print(controller.isTrans);
+                print(controller.isClient);
+              Get.to(()=>  const Signin());
             },
             child: Container(
               height: Dimenssions.height10*5,
@@ -31,6 +40,7 @@ class TransOuClient extends StatelessWidget {
               ),
             ),
           );
+          });
          }  
   @override
   Widget build(BuildContext context) {
