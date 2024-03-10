@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../view/login screens/verificationCode.dart';
 
 class signupController extends GetxController {
   String name="";

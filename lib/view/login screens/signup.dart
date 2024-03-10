@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:transmobile/view/login%20screens/login.dart';
 import 'package:transmobile/view/login%20screens/verificationCode.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -346,11 +345,13 @@ class _signupPageState extends State<signupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView.builder(
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            return _Signup(index);
-          }),
+      body: SafeArea(
+        child: PageView.builder(
+            itemCount: 2,
+            itemBuilder: (context, index) {
+              return _Signup(index);
+            }),
+      ),
     );
   }
 }

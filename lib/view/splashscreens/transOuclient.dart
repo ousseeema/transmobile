@@ -22,8 +22,7 @@ class TransOuClient extends StatelessWidget {
                 controller.isClient = false;
                }
                 
-                print(controller.isTrans);
-                print(controller.isClient);
+               
               Get.to(()=>  const Signin());
             },
             child: Container(
@@ -45,22 +44,24 @@ class TransOuClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: Dimenssions.height20*30,
-            width: Dimenssions.width,
-            child: LottieBuilder.asset("assets/animations/animation4.json")),
-           SizedBox(height: Dimenssions.height10*6,),
- 
-          button("Client"),
-          SizedBox(height: Dimenssions.height20,),
-          button("Transporter"),
-  
+      body: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(
+              height: Dimenssions.height20*30,
+              width: Dimenssions.width,
+              child: LottieBuilder.asset("assets/animations/animation4.json")),
+             SizedBox(height: Dimenssions.height10*6,),
+         
+            button("Client"),
+            SizedBox(height: Dimenssions.height20,),
+            button("Transporter"),
+          
+          
         
-
-        
-        ],
+          
+          ],
+        ),
       ),
     );
   }
