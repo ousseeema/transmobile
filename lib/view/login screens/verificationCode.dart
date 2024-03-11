@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:transmobile/controller/authController/signinController.dart';
 import 'package:transmobile/controller/authController/signupController.dart';
+import 'package:transmobile/view/More%20details%20C/T/ClientDetails.dart';
+import 'package:transmobile/view/More%20details%20C/T/transDetails.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -16,9 +19,9 @@ class verificationCode extends StatefulWidget {
 class _verificationCodeState extends State<verificationCode> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: GetBuilder<signupController>(builder: (controller) {
+    return Scaffold(body: SafeArea(
+      child: GetBuilder<signupController>(
+        builder: (controller) {
           return SingleChildScrollView(
             child: Column(children: [
               Row(
@@ -26,107 +29,104 @@ class _verificationCodeState extends State<verificationCode> {
                   Padding(
                     padding: const EdgeInsets.only(left: 14, top: 5),
                     child: GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: Icon(Icons.arrow_back, size: Dimenssions.icon16*2,)),
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Icon(
+                          Icons.arrow_back,
+                          size: Dimenssions.icon16 * 2,
+                        )),
                   )
                 ],
-        
               ),
-            SizedBox(
-              height: Dimenssions.height20 * 15,
-              width: Dimenssions.width,
-              child: LottieBuilder.asset(
-                  "assets/animations/verificationcode.json"),
-            ),
-            SizedBox(
-              height: Dimenssions.height20,
-            ),
-            
-            Text(
+              SizedBox(
+                height: Dimenssions.height20 * 15,
+                width: Dimenssions.width,
+                child: LottieBuilder.asset(
+                    "assets/animations/verificationcode.json"),
+              ),
+              SizedBox(
+                height: Dimenssions.height20,
+              ),
+              Text(
                 "Please type the verification code \n    have been sent to your email",
-                 style: TextStyle(
-                  color: AppColors.bigTextColor,
-                  fontSize: Dimenssions.font20
-            
-                 ),
-                ),
-                SizedBox(height: Dimenssions.height20*3,),
-            
-                VerificationCode(
+                style: TextStyle(
+                    color: AppColors.bigTextColor,
+                    fontSize: Dimenssions.font20),
+              ),
+              SizedBox(
+                height: Dimenssions.height20 * 3,
+              ),
+              VerificationCode(
                   length: 4,
                   fullBorder: true,
                   padding: EdgeInsets.all(Dimenssions.LRpadmarg10),
                   margin: EdgeInsets.only(right: Dimenssions.LRpadmarg10),
-            
-            
-                   
-                  
-                  onCompleted: (String value){
+                  onCompleted: (String value) {
                     controller.verificationCode = value;
-            
-            
                   },
-                   onEditing:(bool value){
-                      controller.onediting_verification_code =value;
-                      if (!controller.onediting_verification_code) FocusScope.of(context).unfocus();
-                          
-                   } ),
-                   SizedBox(height: Dimenssions.height20,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                     const Text(
-                        "Didn't recieve the verification code?",
-                        style: TextStyle(
-                          color: AppColors.hintTextColor
-                        ),
-                      ),
-                      SizedBox(width: Dimenssions.width10-5,),
-                      const  Text(
-                        "Re-Send code",
-                        style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              decorationColor: Colors.black,
-                              decorationStyle: TextDecorationStyle.solid,
-                              color: AppColors.bigTextColor,
-                              )
-                       
-                      )
-                    ],
-                   ),
-            
-                   SizedBox(height: Dimenssions.height20*4,),
-                    GestureDetector(
-                    onTap: () {
-                       // ! verification code    
-                                     
-                    },
-                    child: Container(
-                      height: Dimenssions.height10 * 5,
-                      width: Dimenssions.width30 * 9,
-                      decoration: BoxDecoration(
-                          color: AppColors.buttonColor,
-                          borderRadius:
-                              BorderRadius.circular(Dimenssions.radius10)),
-                      child: const Center(
-                        child: Text(
-                          "Verify",
-                          style: TextStyle(color: AppColors.insidetextcolor),
-                        ),
+                  onEditing: (bool value) {
+                    controller.onediting_verification_code = value;
+                    if (!controller.onediting_verification_code)
+                      FocusScope.of(context).unfocus();
+                  }),
+              SizedBox(
+                height: Dimenssions.height20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Didn't recieve the verification code?",
+                    style: TextStyle(color: AppColors.hintTextColor),
+                  ),
+                  SizedBox(
+                    width: Dimenssions.width10 - 5,
+                  ),
+                  const Text("Re-Send code",
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.black,
+                        decorationStyle: TextDecorationStyle.solid,
+                        color: AppColors.bigTextColor,
+                      ))
+                ],
+              ),
+              SizedBox(
+                height: Dimenssions.height20 * 4,
+              ),
+              GetBuilder<signinController>(builder: (signincontroller) {
+                return GestureDetector(
+                  onTap: () {
+                    // ! verification code
+                    //! after the verification code is recieved and entred
+                    //* we test if its a client or transporter for the direction after
+                    if (signincontroller.isClient) {
+                      Get.to(() => const ClientMoreDetails());
+                    } else if (signincontroller.isTrans) {
+                      Get.to(() => const TransDetails());
+                    }
+                  },
+                  child: Container(
+                    height: Dimenssions.height10 * 5,
+                    width: Dimenssions.width30 * 9,
+                    decoration: BoxDecoration(
+                        color: AppColors.buttonColor,
+                        borderRadius:
+                            BorderRadius.circular(Dimenssions.radius10)),
+                    child: const Center(
+                      child: Text(
+                        "Verify",
+                        style: TextStyle(color: AppColors.insidetextcolor),
                       ),
                     ),
                   ),
-            
-            
-            
-            
-            
-                  ]),
+                );
+              })
+            ]),
           );
-        },),
-      )
-    );
+        },
+      ),
+    ));
   }
 }

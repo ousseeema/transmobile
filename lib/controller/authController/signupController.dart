@@ -34,7 +34,7 @@ class signupController extends GetxController {
           colorText: Colors.white, backgroundColor: Colors.red);
     }
    else if ( !( repassword == password)) {
-      Get.snackbar("Error", "Password must the same",
+      Get.snackbar("Error", "Password's must the same",
           colorText: Colors.white, backgroundColor: Colors.red);
     }
 
