@@ -7,7 +7,7 @@ class signinController extends GetxController {
   bool  isClient = false;
   bool isTrans =false;
 
-void _signin(){
+void signin(){
 
 // ! sending request to serveur  to signin thje user 
 
@@ -28,7 +28,7 @@ void _signin(){
           colorText: Colors.white, backgroundColor: Colors.red);
     }
     else{
-           _signin();
+           signin();
 
             Get.snackbar(
             "Success", "Sign in successfully",

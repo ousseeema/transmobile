@@ -1,10 +1,11 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, unused_local_variable
 
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:transmobile/controller/authController/signupController.dart';
 
 class ClientDetailsController extends GetxController{
 
@@ -13,7 +14,20 @@ class ClientDetailsController extends GetxController{
   String phone_Numeber1 ="";
   String phone_Numeber2="" ;
   String address = "";
+  String currentCountry="";
  bool response_success = true;
+
+ void signupClient(){
+    String email = Get.find<signupController>().email;
+    String fullname = Get.find<signupController>().name;
+    String password = Get.find<signupController>().password;
+
+    
+    // sending request to the serveur to sign up the current user 
+     //! if the response is SUCCESS then move to the  verification code page 
+
+  
+ }
 
 Future PickimageFromGallery()async{
    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -82,7 +96,7 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
     "portugal",
     "lunisie",
     "libya",
-    "algérie",
+    "algeria",
     "marocoo"
   ];
 
@@ -123,6 +137,11 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
     }
     else if( !verification_full_address()){
        Get.snackbar("Error", "Ops! Your address is bad formatted \n or your countrie is not listed ", colorText: Colors.white, backgroundColor: Colors.red);
+
+    }
+
+    else if(currentCountry.isEmpty){
+     Get.snackbar("Error", "Ops! select your current country Please ", colorText: Colors.white, backgroundColor: Colors.red);
 
     }
     else {

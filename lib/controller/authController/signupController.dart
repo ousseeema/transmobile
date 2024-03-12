@@ -8,23 +8,20 @@ class signupController extends GetxController {
   String password="";
   String repassword="";
   String verificationCode="";
+  bool verificationstatus = false;
   bool onediting_verification_code =true ;
- void _signup(){
-    // sending request to the serveur to sign up the current user 
-     //! if the response is SUCCESS then move to the  verification code page 
-
-  
- }
-
-  void inputVerification() {
+ 
+ void inputVerification() {
     if (  name.isEmpty || name.length < 3 || name.contains(RegExp(r'[0-9]'))) {
       Get.snackbar("Error", "Please enter your name",
           colorText: Colors.white, backgroundColor: Colors.red);
+       verificationstatus = false ;
     }
 
    else if ( email.isEmpty || !email.isEmail) {
       Get.snackbar("Error", "Please enter a valid email address",
           colorText: Colors.white, backgroundColor: Colors.red);
+          verificationstatus = false ;
     }
    else if (password.isEmpty ||
         password.length < 8 ||
@@ -32,16 +29,19 @@ class signupController extends GetxController {
       Get.snackbar("Error",
           "Password must be at least 8 characters long",
           colorText: Colors.white, backgroundColor: Colors.red);
+          verificationstatus = false ;
     }
    else if ( !( repassword == password)) {
       Get.snackbar("Error", "Password's must the same",
           colorText: Colors.white, backgroundColor: Colors.red);
+          verificationstatus = false ;
     }
 
     else {
-        _signup();
+        verificationstatus = true ;
       Get.snackbar("Success", "logged successfuly",
        colorText: Colors.white, backgroundColor: Colors.green );
+       
     }
     
      

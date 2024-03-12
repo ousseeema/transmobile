@@ -1,7 +1,7 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:transmobile/controller/authController/signinController.dart';
 import 'package:transmobile/controller/client%20trans%20details/clientmoreDetails.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -198,6 +198,56 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
               SizedBox(
                 height: Dimenssions.height20,
               ),
+              Row(
+                children: [
+                  SizedBox(
+                              width: Dimenssions.width10 ,
+                            ),
+                            Icon(
+                              Icons.home_outlined,
+                              size: Dimenssions.icon16 * 2,
+                              color: AppColors.iconColor,
+                            ),
+                            SizedBox(
+                              width: Dimenssions.width10 * 2,
+                            ),
+                            const Text(
+                              "Current Country :",
+                              style: TextStyle(
+                                color: AppColors.mainTextColor,
+                              ),
+                            ),
+                            SizedBox(
+                              width: Dimenssions.width20 * 2.3,
+                            ),
+
+                  CountryCodePicker(
+                                  showOnlyCountryWhenClosed: true,
+                                  showCountryOnly: true,
+                                  initialSelection: 'TN',
+                                  countryFilter: const [
+                                    "TN",
+                                    "DZ",
+                                    "MA",
+                                    "LY",
+                                     "GB",
+                                    "FR",
+                                    "IE",
+                                    "AT",
+                                    "DE",
+                                    "IT",
+                                    "CH",
+                                    "ES",
+                                    "NL",
+                                    "PT",
+                                  ],
+                                  onChanged: (country) {
+                                    controller.currentCountry = country.name!;
+                                  },
+                                ),
+                ],
+              ),
+              SizedBox(height: Dimenssions.height20,),
               SizedBox(
                 height: Dimenssions.height20 * 4,
                 width: Dimenssions.width - Dimenssions.width20,
@@ -263,7 +313,9 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                     ),
                   ),
                 ),
-              )
+              ),
+              
+        
 
 
 

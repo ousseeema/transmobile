@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:transmobile/view/login%20screens/verificationCode.dart';
+import 'package:transmobile/view/More%20details%20C/T/transDetails.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -313,7 +313,7 @@ class _signupPageState extends State<signupPage> {
                      // verification input 
                       controller.inputVerification();
 
-                      Get.to(()=> const  verificationCode());
+                      Get.to(()=> const  TransDetails());
                              
                       
                      
@@ -327,7 +327,7 @@ class _signupPageState extends State<signupPage> {
                               BorderRadius.circular(Dimenssions.radius10)),
                       child: const Center(
                         child: Text(
-                          "Sign up",
+                          "Continue",
                           style: TextStyle(color: AppColors.insidetextcolor),
                         ),
                       ),

@@ -15,8 +15,8 @@ class dependency {
     Get.lazyPut(() => signupController(),fenix: true);
     Get.lazyPut(() => signinController(), fenix: true);
     Get.lazyPut(() => resetpassController(), fenix: true);
-    Get.lazyPut(() => transDetaislController());
-    Get.lazyPut(() => ClientDetailsController());
+    Get.lazyPut(() => transDetaislController(), fenix: true);
+    Get.lazyPut(() => ClientDetailsController(), fenix: true);
 
 
 
