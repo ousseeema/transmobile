@@ -14,8 +14,10 @@ class transDetaislController extends GetxController{
  File? selectedImage ;
   String phone_Numeber1 ="";
   String phone_Numeber2="" ;
-  String Localaddress = "France";
-  String destination = "Tunisie";
+  String Localaddress = "";
+  String destination = "";
+  String LocalCountry ="France";
+  String destinationCountry = "Tunisie";
   String coastkg ="";
   String carPlate ="";
   String carModel ="";
@@ -52,8 +54,30 @@ class transDetaislController extends GetxController{
     String password = Get.find<signupController>().password;
     // sending request to the serveur to sign up the current user 
      //! if the response is SUCCESS then move to the  verification code page 
+   Map<String, dynamic> data={
+      "fullname": fullname,
+      "email": email,
+      "password": password  ,
+      "PhoneNumber_A":phone_Numeber1,
+      "PhoneNumber_B":phone_Numeber2,
+      "DestinationAddress":destination,
+      "localAddress":Localaddress,
+      "Car_Brand":carModel,
+      "Car_SerieNumber":carPlate,
+      "ListCountry_1":LocalCountry,
+      "ListCountry_2":destinationCountry,
+      "HomePickUps":home_pickups,
+      "HomeDelivery":home_delivery,
+      "price_kg":coastkg,
+      "Parsols":parcels,
+      "Parsols_Site":parcelsSite,
+      "Adresse_Parsols":parcelsAddress,
+      
 
+
+   };
   
+
  }
 
 Future PickimageFromGallery()async{

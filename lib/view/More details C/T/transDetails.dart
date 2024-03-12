@@ -342,7 +342,7 @@ class _TransDetailsState extends State<TransDetails> {
                               "PT",
                             ],
                             onChanged: (country) {
-                              controller.Localaddress = country.name!;
+                              controller.LocalCountry = country.name!;
                             },
                           ),
                         ],
@@ -378,7 +378,7 @@ class _TransDetailsState extends State<TransDetails> {
                               "LY",
                             ],
                             onChanged: (country) {
-                              controller.destination = country.name!;
+                              controller.destinationCountry = country.name!;
                             },
                           ),
                         ],

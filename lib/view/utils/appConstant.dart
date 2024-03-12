@@ -1,0 +1,46 @@
+// ignore_for_file: non_constant_identifier_names
+
+class AppConstant {
+  static String token = "";
+  static String baseurl = "http://localhost:3000/api/v0";
+  // client auth endpoints
+  static String loginUser = "/authClient/signin";
+  static String signup1Client = "/authTransporteur/signup1";
+  static String signup2Client = "/authTransporteur/signup2";
+  static String forgotpasswordClient = "/authTransporteur/forgotpassword";
+  static String resetpasswordClient = "/authTransporteur/resetpassword";
+  static String resendverificationcodeClient ="/authTransporteur/resendverificationcode";
+
+  // transporteur auth endpoints
+  static String loginTrans = "/authTransporteur/signin";
+  static String signup1Trans = "/authTransporteur/signup1";
+  static String signup2Trans = "/authTransporteur/signup2";
+  static String forgotpasswordTrans = "/authTransporteur/forgotpassword";
+  static String resetpasswordTrans = "/authTransporteur/resetpassword";
+  static String resendverificationcodeTrans = "/authTransporteur/resendverificationcode";
+
+  // client other endpoints
+  static String updatesuser = "/clinets/updateUserDetails";
+  static String updatePicUser = "/clients/uploadProfilePicture";
+  static String usergetAllTransporter = "/clients/getAllTransporteur";
+  static String usersearchTrip = "/clients/searchtrip";
+  static String usersendrequest = "/clients/sendrequest";
+  static String usergetverified = "/clients/getverified";
+  static String getAllDemande = "/clients//getalldemande/:id";
+  static String userAddReview = "/clients//addreview/:id";
+
+  // transporteur other endpoints
+
+  static String updateTrans = "/transporteur/updateTransporteurDetails";
+  static String updatepicTrans = "/transporteur/uploadProfilePicture";
+  static String Transgetallpackage = "/transporteur/getAllPackage";
+  static String transacceptDemande = "/transporteur/acceptDemande/:id";
+  static String TransrefuseDemande = "/transporteur/refuseDemande/:id";
+  static String Transgetalldemande = "/transporteur/getAllDemande";
+  static String TransaddTrip = "/transporteur/addtrip";
+  static String TransupdateTrip = "/transporteur/updateTrip/:id";
+  static String TransDeleteTrip = "/transporteur/deleteTrip/:id";
+  static String TransAddsinglePackage = "/transporteur/addSinglepackage/:id";
+  static String TransgetAllTrip = "/transporteur/getAlltrips";
+  static String TransaddTriptohistory = "/transporteur/addtriptohistory/:id";
+}
