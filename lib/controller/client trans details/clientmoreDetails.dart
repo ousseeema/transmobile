@@ -11,6 +11,10 @@ class ClientDetailsController extends GetxController{
 
 
  File? selectedImage ;
+  String  fullname="" ;
+  String email = "";
+  String password = "";
+  String repassword = "";
   String phone_Numeber1 ="";
   String phone_Numeber2="" ;
   String address = "";
@@ -18,9 +22,7 @@ class ClientDetailsController extends GetxController{
  bool response_success = true;
 
  void signupClient(){
-    String email = Get.find<signupController>().email;
-    String fullname = Get.find<signupController>().name;
-    String password = Get.find<signupController>().password;
+    
 
     
     // sending request to the serveur to sign up the current user 

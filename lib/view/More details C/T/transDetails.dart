@@ -23,7 +23,11 @@ class _TransDetailsState extends State<TransDetails> {
     return Scaffold(
       body: GetBuilder<transDetaislController>(
       builder: (controller) {
-        return SafeArea(
+        return  controller.is_Loading? const Center(
+          child: CircularProgressIndicator(
+            
+          ),
+        ) :SafeArea(
             child: SingleChildScrollView(
           child: Column(
             children: [
@@ -323,7 +327,7 @@ class _TransDetailsState extends State<TransDetails> {
                             ),
                           ),
                           SizedBox(
-                            width: Dimenssions.width20 * 2.3,
+                            width:Dimenssions.width20 * 1.6,
                           ),
                           CountryCodePicker(
                             showOnlyCountryWhenClosed: true,
@@ -340,9 +344,15 @@ class _TransDetailsState extends State<TransDetails> {
                               "ES",
                               "NL",
                               "PT",
+                              "DK",
+                              "NO",
+                              "SE",
+                              "BE"
+
                             ],
                             onChanged: (country) {
                               controller.LocalCountry = country.name!;
+                              print(country.name);
                             },
                           ),
                         ],
@@ -378,7 +388,19 @@ class _TransDetailsState extends State<TransDetails> {
                               "LY",
                             ],
                             onChanged: (country) {
-                              controller.destinationCountry = country.name!;
+                              if(country.code=="TN"){
+                               controller.destinationCountry = 'Tunisie';
+                              }
+                              else if(country.code=="DZ"){
+                               controller.destinationCountry = 'Algeria';
+                              }
+                              else if(country.code=="MA"){
+                               controller.destinationCountry = 'Morocco';
+                              }
+                              else if(country.code=="LY"){
+                               controller.destinationCountry = 'Libya';
+                              }
+                            
                             },
                           ),
                         ],
@@ -632,8 +654,8 @@ class _TransDetailsState extends State<TransDetails> {
                                     MultiSelectCard(
                                         value: 'Amazon', label: 'Amazon'),
                                     MultiSelectCard(
-                                        value: 'AliExpress',
-                                        label: 'AliExpress'),
+                                        value: 'Ali Express',
+                                        label: 'Ali Express'),
                                     MultiSelectCard(
                                         value: 'Shein', label: 'Shein'),
                                     MultiSelectCard(
@@ -705,7 +727,8 @@ class _TransDetailsState extends State<TransDetails> {
                   controller.check_before_send();
     
                   // if the response from the server is sucess and the input verification if good then o to the home page
-                  if (controller.response_success) {
+                 
+                  if (controller.success_signup1) {
                     Get.offAll(()=> const verificationCode());
                   }
                 },
@@ -726,7 +749,7 @@ class _TransDetailsState extends State<TransDetails> {
               )
             ],
           ),
-        ));
+        )) ;
       },
     ));
   }

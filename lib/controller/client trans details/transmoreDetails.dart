@@ -2,16 +2,23 @@
 
 // ignore_for_file: non_constant_identifier_names, camel_case_types, unused_local_variable
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:transmobile/api/api.dart';
 import 'package:transmobile/controller/authController/signupController.dart';
+import 'package:transmobile/repository/transporter/authTransRepo.dart';
 
 class transDetaislController extends GetxController{
  
  File? selectedImage ;
+  String fullname="";
+  String email="";
+  String password="";
+   String repassword="";
   String phone_Numeber1 ="";
   String phone_Numeber2="" ;
   String Localaddress = "";
@@ -44,20 +51,19 @@ class transDetaislController extends GetxController{
     "libya",
     
   ];
+  bool is_Loading = false;
+  bool success_signup1 =false;
 
 
 
-
-  void signupTrans(){
-    String email = Get.find<signupController>().email;
-    String fullname = Get.find<signupController>().name;
-    String password = Get.find<signupController>().password;
+  void signupTrans()async{
+   
     // sending request to the serveur to sign up the current user 
      //! if the response is SUCCESS then move to the  verification code page 
-   Map<String, dynamic> data={
-      "fullname": fullname,
+   Map<String, dynamic> userdata={
+      "fullName": fullname,
       "email": email,
-      "password": password  ,
+      "password": password,
       "PhoneNumber_A":phone_Numeber1,
       "PhoneNumber_B":phone_Numeber2,
       "DestinationAddress":destination,
@@ -71,12 +77,29 @@ class transDetaislController extends GetxController{
       "price_kg":coastkg,
       "Parsols":parcels,
       "Parsols_Site":parcelsSite,
-      "Adresse_Parsols":parcelsAddress,
-      
-
-
+      "Adresse_Parsols":parcelsAddress
    };
+   String dataencoded = json.encode(userdata);
+     FormData datatosend = FormData(
+    {
+   "data" :dataencoded,
+   "file" : MultipartFile(selectedImage!.readAsBytesSync(), filename: 'image.jpg')
+    } 
+   );
+      is_Loading= true;
+      update();
+   Response response = await authTrasnRepo().signup1Trans(datatosend);
   
+     if(response.statusCode == 200 ){
+       is_Loading=false;
+       success_signup1 = true;
+       update();
+     }else{
+      is_Loading=false;
+      success_signup1 = false;
+       Get.snackbar("Error", response.body.message);
+     }
+
 
  }
 
@@ -181,6 +204,8 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
     }
     return true;
   }
+
+
    
   // ! this the function that will be called from the trans detaisl ui 
    void check_before_send(){
@@ -214,11 +239,10 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
     else {
       // send the detaisln to serveur to update the details 
       //  ! and if the respons status is sccess update response_success and go to the next page
-      Get.snackbar("title", "qdfs");
-      response_success = true;
-
+        signupTrans();
   
     }
+    
     
     
       

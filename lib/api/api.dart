@@ -13,16 +13,17 @@ class UserApi extends GetConnect implements GetxService {
     token = AppConstant.token;
     baseurl = AppConstant.baseurl;
     headers = {
-      'content-type': 'application/json; charset=utf-8',
-      'authorization': 'bearer   $token',
+      'Content-Type': 'application/json',
+      'Authorization': 'bearer   $token',
     };
   }
 
-   Future<Response> postRequest(String uri, data )async{  
+   Future<Response> postRequest(FormData data, String uri )async{ 
+   //String final_uri = '${baseurl}${uri}';
     try{
-      Response response = await post(uri,
-       jsonEncode(data) ,
-       headers:headers, 
+      Response response = await post("$baseurl${uri}",
+         data ,
+       contentType: "application/json", 
         );
         return response;
 

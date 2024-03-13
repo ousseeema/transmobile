@@ -2,7 +2,7 @@
 
 class AppConstant {
   static String token = "";
-  static String baseurl = "http://localhost:3000/api/v0";
+  static String baseurl = "http://192.168.100.20:3000/api/v0";
   // client auth endpoints
   static String loginUser = "/authClient/signin";
   static String signup1Client = "/authTransporteur/signup1";
