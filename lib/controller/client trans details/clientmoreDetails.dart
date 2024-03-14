@@ -1,12 +1,11 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:transmobile/controller/authController/signupController.dart';
-
 class ClientDetailsController extends GetxController{
 
 
@@ -19,10 +18,40 @@ class ClientDetailsController extends GetxController{
   String phone_Numeber2="" ;
   String address = "";
   String currentCountry="";
- bool response_success = true;
+  bool is_Loading = false;
+  bool success_signup1 =false;
 
- void signupClient(){
-    
+ void signupClient()async {
+     
+      
+      Map<String,dynamic> userdetails ={
+      "fullName": fullname,
+      "email": email,
+      "password": password,
+      "Phone_Number":phone_Numeber1,
+      "Phone_Number2":phone_Numeber2,
+      "country":currentCountry,
+      "fulladdress":address,
+      };
+
+      String userdetailsdecoded = json.encode(userdetails);
+      FormData(
+        {
+          "file":MultipartFile( selectedImage!.readAsBytesSync() , filename: "image"),
+          "data":userdetailsdecoded,
+        }
+      );
+      is_Loading= true;
+      update();
+     // Response response = await update yuser ()
+
+
+
+
+
+
+
+
 
     
     // sending request to the serveur to sign up the current user 
@@ -96,10 +125,10 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
     "spain",
     "netherlands",
     "portugal",
-    "lunisie",
+    "tunisie",
     "libya",
     "algeria",
-    "marocoo"
+    "morocoo"
   ];
 
   bool estFormatCorrect = verifierFormat(address);
@@ -149,7 +178,7 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
     else {
       // send the detaisln to serveur to update the details 
       //  ! and if the respons status is sccess update response_success and go to the next page
-      response_success = true;
+      
 
   
     }

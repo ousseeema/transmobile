@@ -18,6 +18,15 @@ class TransDetails extends StatefulWidget {
 }
 
 class _TransDetailsState extends State<TransDetails> {
+  final TextEditingController Laddress = TextEditingController();
+  final TextEditingController Daddress = TextEditingController();
+ final TextEditingController parseladress = TextEditingController();
+ final TextEditingController carmodelcontroller =TextEditingController();
+ final TextEditingController carplate =TextEditingController();
+ final TextEditingController pricekg =TextEditingController();
+ final TextEditingController number1 =TextEditingController();
+ final TextEditingController number2 =TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,11 +118,12 @@ class _TransDetailsState extends State<TransDetails> {
                             child: controller.selectedImage == null
                                 ? ClipOval(
                                     child: Image(
+                                      color: Colors.black,
                                         width: Dimenssions.width30 * 4,
                                         height: Dimenssions.height20 * 6.2,
                                         fit: BoxFit.cover,
                                         image: const AssetImage(
-                                            "assets/images/oussema.JPG")),
+                                            "assets/images/default.png")),
                                   )
                                 : ClipOval(
                                     child: Image.file(
@@ -179,6 +189,7 @@ class _TransDetailsState extends State<TransDetails> {
                         ),
                         width: Dimenssions.width - Dimenssions.width20 * 2,
                         child: InternationalPhoneNumberInput(
+                          textFieldController: number1,
                           countries: const [
                             "GB",
                             "FR",
@@ -215,6 +226,7 @@ class _TransDetailsState extends State<TransDetails> {
                         ),
                         width: Dimenssions.width - Dimenssions.width20 * 2,
                         child: InternationalPhoneNumberInput(
+                         textFieldController: number2,
                           countries: const [
                             "TN",
                             "DZ",
@@ -242,6 +254,7 @@ class _TransDetailsState extends State<TransDetails> {
                         height: Dimenssions.height20 * 4,
                         width: Dimenssions.width - Dimenssions.width20,
                         child: TextField(
+                          controller: Laddress,
                           decoration: InputDecoration(
                               hintText:
                                   "23 Rue de Grenell,75700 PARIS CEDEX,FRANCE ",
@@ -278,6 +291,7 @@ class _TransDetailsState extends State<TransDetails> {
                         height: Dimenssions.height20 * 4,
                         width: Dimenssions.width - Dimenssions.width20,
                         child: TextField(
+                          controller:Daddress ,
                           decoration: InputDecoration(
                               hintText:
                                   "23 Rue de Grenell,75700 PARIS CEDEX,FRANCE ",
@@ -496,6 +510,7 @@ class _TransDetailsState extends State<TransDetails> {
                             height: Dimenssions.height20 * 4,
                             width: Dimenssions.width30 * 5,
                             child: TextFormField(
+                              controller: pricekg,
                              keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                   hintText: "100 Euro ",
@@ -538,6 +553,8 @@ class _TransDetailsState extends State<TransDetails> {
                             height: Dimenssions.height20 * 4,
                             width: Dimenssions.width30 * 5,
                             child: TextField(
+                              controller: carplate,
+ 
                               decoration: InputDecoration(
                                   hintText: "HX 67 AES",
                                   hintStyle:
@@ -569,6 +586,7 @@ class _TransDetailsState extends State<TransDetails> {
                             height: Dimenssions.height20 * 4,
                             width: Dimenssions.width30 * 5,
                             child: TextField(
+                              controller: carmodelcontroller,
                               decoration: InputDecoration(
                                   hintText: "HX 67 AES",
                                   hintStyle:
@@ -619,6 +637,7 @@ class _TransDetailsState extends State<TransDetails> {
                             width: Dimenssions.width30 * 1.7,
                           ),
                           Switch(
+                            
                               activeColor: AppColors.buttonColor,
                               value: controller.parcels,
                               onChanged: (value) {
@@ -635,6 +654,7 @@ class _TransDetailsState extends State<TransDetails> {
                                   left: Dimenssions.LRpadmarg20,
                                   right: Dimenssions.LRpadmarg20),
                               child: MultiSelectContainer(
+                                controller: MultiSelectController(),
                                   itemsDecoration: MultiSelectDecorations(
                                       selectedDecoration: BoxDecoration(
                                           color: AppColors.bigTextColor,
@@ -680,7 +700,9 @@ class _TransDetailsState extends State<TransDetails> {
                               height: Dimenssions.height20 * 4,
                               width: Dimenssions.width - 100,
                               child: TextField(
+                                controller: parseladress ,
                                 decoration: InputDecoration(
+                                     
                                     hintText:
                                         "23 Rue de Grenell,75700 PARIS CEDEX,FRANCE ",
                                     hintStyle:

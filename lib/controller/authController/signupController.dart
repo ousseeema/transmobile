@@ -12,10 +12,18 @@ class signupController extends GetxController {
   String verificationCode = "";
   bool verificationstatus = false;
   bool onediting_verification_code = true;
-
+// !called from the signup page for both the user and the client to test the input fileds
   void inputVerification() {
-       name =Get.find<signinController>().isClient?Get.find<ClientDetailsController>().fullname :Get.find<transDetaislController>().fullname ;
-       email = Get.find<signinController>().isClient?Get.find<ClientDetailsController>().email :Get.find<transDetaislController>().email ;
+    // if its client : njib donnes mn clientdetails 
+    //controller sinon mn transporteur detaisl controller
+    // khater nafes el function ll client and for the transporterbesh tetnada 
+    // aamltha b facon hedhy khater el input fikeds mesh gaadin yaamlo fi enregister les input eli ndkhael fihom
+    // kol mera tetfaskh wahda  walit hatithiom fi detaisl controllers mtaa transporteur wele el client
+    // selon chkon yestaaml fi app 
+    // ! gaaed naamlhom fi enregistremment fi on change mta kol input
+    //! fi page signup 
+      name =Get.find<signinController>().isClient?Get.find<ClientDetailsController>().fullname :Get.find<transDetaislController>().fullname ;
+      email = Get.find<signinController>().isClient?Get.find<ClientDetailsController>().email :Get.find<transDetaislController>().email ;
       password = Get.find<signinController>().isClient?Get.find<ClientDetailsController>().password :Get.find<transDetaislController>().password ;
       repassword =Get.find<signinController>().isClient?Get.find<ClientDetailsController>().repassword :Get.find<transDetaislController>().repassword ;
     if (name.isEmpty || name.length < 3 || name.contains(RegExp(r'[0-9]'))) {

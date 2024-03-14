@@ -83,12 +83,16 @@ class _signupPageState extends State<signupPage> {
                                       borderRadius: BorderRadius.circular(
                                           Dimenssions.radius20))),
                               onChanged: (value) {
+                                // kol mera ntasti ken how client nsajel el donnees fi client details controller
+                                // snn nsajlhom fi transporter details controller 
+                                // khaterhom ken nkhalihom fi signup controller besh yogaado
+                                //dima yetafskho awel ma netaada ll details 
                                 Get.find<signinController>().isClient
                                     ? Get.find<ClientDetailsController>()
                                         .fullname = namecontroller.text.trim()
                                     : Get.find<transDetaislController>()
                                             .fullname =
-                                        repasswordcontroller.text.trim();
+                                        namecontroller.text.trim();
                               },
                             ),
                             SizedBox(
@@ -117,6 +121,10 @@ class _signupPageState extends State<signupPage> {
                                       borderRadius: BorderRadius.circular(
                                           Dimenssions.radius20))),
                               onChanged: (value) {
+                                // kol mera ntasti ken how client nsajel el donnees fi client details controller
+                                // snn nsajlhom fi transporter details controller 
+                                // khaterhom ken nkhalihom fi signup controller besh yogaado
+                                //dima yetafskho awel ma netaada ll details 
                                 Get.find<signinController>().isClient
                                     ? Get.find<ClientDetailsController>()
                                         .email = emailcontroller.text.trim()
@@ -237,6 +245,10 @@ class _signupPageState extends State<signupPage> {
                                       borderRadius: BorderRadius.circular(
                                           Dimenssions.radius20))),
                               onChanged: (value) {
+                                // kol mera ntasti ken how client nsajel el donnees fi client details controller
+                                // snn nsajlhom fi transporter details controller 
+                                // khaterhom ken nkhalihom fi signup controller besh yogaado
+                                //dima yetafskho awel ma netaada ll details 
                                 Get.find<signinController>().isClient
                                     ? Get.find<ClientDetailsController>()
                                             .password =
@@ -278,6 +290,10 @@ class _signupPageState extends State<signupPage> {
                                       borderRadius: BorderRadius.circular(
                                           Dimenssions.radius20))),
                               onChanged: (value) {
+                                // kol mera ntasti ken how client nsajel el donnees fi client details controller
+                                // snn nsajlhom fi transporter details controller 
+                                // khaterhom ken nkhalihom fi signup controller besh yogaado
+                                //dima yetafskho awel ma netaada ll details 
                                 Get.find<signinController>().isClient
                                     ? Get.find<ClientDetailsController>()
                                             .repassword =
@@ -331,6 +347,7 @@ class _signupPageState extends State<signupPage> {
                         controller.inputVerification();
                         if(Get.find<signinController>().isClient && controller.verificationstatus ){
                                Get.to(()=> const ClientMoreDetails());
+                               
                         }
 
                         else if(controller.verificationstatus && Get.find<signinController>().isTrans ) {

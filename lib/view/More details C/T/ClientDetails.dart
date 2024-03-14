@@ -289,10 +289,10 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
 
                     // if the response from the server is sucess and the input verification if good then o to the home page 
                        
-                   if(controller.response_success  ){
+                  // if(  ){
                    // Get.offAll(()=> ClientHomePage());
                   
-                   }
+                  // }
                    
 
                     

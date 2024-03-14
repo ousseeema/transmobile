@@ -8,9 +8,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:transmobile/api/api.dart';
-import 'package:transmobile/controller/authController/signupController.dart';
 import 'package:transmobile/repository/transporter/authTransRepo.dart';
+import 'package:transmobile/view/login%20screens/verificationCode.dart';
 
 class transDetaislController extends GetxController{
  
@@ -89,28 +88,52 @@ class transDetaislController extends GetxController{
       is_Loading= true;
       update();
    Response response = await authTrasnRepo().signup1Trans(datatosend);
-  
+   if(response.body == null){
+        is_Loading=false;
+        success_signup1 = false;
+        Get.snackbar("Connection Error", "Check your internet connection" ,colorText: Colors.white, backgroundColor: Colors.red);
+          update();
+
+        
+      }
+  try{
+      
      if(response.statusCode == 200 ){
        is_Loading=false;
-       success_signup1 = true;
+       Get.offAll(()=>const verificationCode());
+       Get.snackbar("Success", response.body["message"], colorText: Colors.white, backgroundColor: Colors.green);
        update();
      }else{
+      
       is_Loading=false;
       success_signup1 = false;
-       Get.snackbar("Error", response.body.message);
+
+      Get.snackbar("Error", response.body["message"] ,colorText: Colors.white, backgroundColor: Colors.red);
+      update();
+       
+     }}
+     catch(e){
+            Get.snackbar("Error", e.toString() ,colorText: Colors.white, backgroundColor: Colors.red);
+
      }
 
 
  }
 
+
+
+//! function helpes to pick the profil image and testing it if the size is over 1MB or its null  then return fals e
 Future PickimageFromGallery()async{
    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
      
+   
 
+  
   if(image == null){
     update();
     return ;
   }
+  
    
      selectedImage = File(image.path);
      update();
@@ -168,7 +191,7 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
 
   return paysAutorises.contains(pays);
 } 
-//! this is the main function 
+//! this is function for testing the address input
  bool verification_full_address(address, countries){
  
 
@@ -208,10 +231,13 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
 
    
   // ! this the function that will be called from the trans detaisl ui 
-   void check_before_send(){
+   void check_before_send()async {
    
-    if(selectedImage == null){
-    Get.snackbar("Error", "Ops! Please select a profile image", colorText: Colors.white, backgroundColor: Colors.red);
+    if(selectedImage == null  ){
+    Get.snackbar("Error", "Ops! Please select a profile image ", colorText: Colors.white, backgroundColor: Colors.red);
+
+    }else if(await selectedImage!.length() >100000){
+     Get.snackbar("Error", "Ops! Please select a profile image that her size less then 1MB ", colorText: Colors.white, backgroundColor: Colors.red);
 
     }
     else if(!check_Number()){
