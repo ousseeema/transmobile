@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:get/get.dart';
@@ -31,9 +32,51 @@ class _verificationCodeState extends State<verificationCode> {
                       padding: const EdgeInsets.only(left: 14, top: 5),
                       child: GestureDetector(
                           onTap: () {
-                            Get.snackbar("Netfication", "you will not be able to create an account intel tomorrow", colorText: Colors.white, backgroundColor: Colors.red);
-                            Get.offAll(()=>const  TransOuClient());
-
+                            showAdaptiveDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog.adaptive(
+                                      backgroundColor: Colors.white,
+                                      actions: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.back();
+                                          },
+                                          child: const Text(
+                                            "Stay ",
+                                            style: TextStyle(
+                                                color: AppColors.buttonColor),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: Dimenssions.width20,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.offAll(
+                                                () => const TransOuClient());
+                                          },
+                                          child: const Text(
+                                            "back",
+                                            style: TextStyle(
+                                                color: AppColors.buttonColor),
+                                          ),
+                                        )
+                                      ],
+                                      content: SizedBox(
+                                        height: 180,
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                                height: 100,
+                                                child: LottieBuilder.asset(
+                                                    "assets/animations/attention.json")),
+                                            const Text(
+                                                "If you left this page you will \nnot be able to create another \naccount  until 24H passes"),
+                                          ],
+                                        ),
+                                      ));
+                                });
                           },
                           child: Icon(
                             Icons.arrow_back,
@@ -86,13 +129,19 @@ class _verificationCodeState extends State<verificationCode> {
                     SizedBox(
                       width: Dimenssions.width10 - 5,
                     ),
-                    const Text("Re-Send code",
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.black,
-                          decorationStyle: TextDecorationStyle.solid,
-                          color: AppColors.bigTextColor,
-                        ))
+                    GestureDetector(
+                      onTap: () {
+                        //! resending the verifiçcation code 
+                        
+                      },
+                      child: const Text("Re-Send code",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.black,
+                            decorationStyle: TextDecorationStyle.solid,
+                            color: AppColors.bigTextColor,
+                          )),
+                    )
                   ],
                 ),
                 SizedBox(
@@ -105,8 +154,7 @@ class _verificationCodeState extends State<verificationCode> {
                       //! after the verification code is recieved and entred
                       //* we test if its a client or transporter for the direction after
                       if (signincontroller.isClient) {
-                       
-                       // Get.offAll(() => const ClientHomepage());
+                        // Get.offAll(() => const ClientHomepage());
                       } else if (signincontroller.isTrans) {
                         //Get.offAll(() => const transporterhomepage());
                       }

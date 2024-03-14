@@ -6,6 +6,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:transmobile/repository/client/authRepo.dart';
+import 'package:transmobile/view/login%20screens/verificationCode.dart';
 class ClientDetailsController extends GetxController{
 
 
@@ -35,16 +37,43 @@ class ClientDetailsController extends GetxController{
       };
 
       String userdetailsdecoded = json.encode(userdetails);
-      FormData(
+     FormData datatoSend = FormData(
         {
-          "file":MultipartFile( selectedImage!.readAsBytesSync() , filename: "image"),
+          "file":MultipartFile( selectedImage!.readAsBytesSync() , filename: "image.jpg"),
           "data":userdetailsdecoded,
         }
+       
+       
       );
+
       is_Loading= true;
       update();
-     // Response response = await update yuser ()
+      //! sending post the request with the user details
+     try{
+      Response response = await  authClientRepo().signup1Client(datatoSend);
+      if(response.body["success"]==true){
+          
+       Get.offAll(()=>const verificationCode());
+       Future.delayed(const Duration(seconds: 1),(){
+        is_Loading=false;
+      });
+       Get.snackbar("Success", response.body["message"], colorText: Colors.white, backgroundColor: Colors.green);
+       update();
+      }
+      else{
+      is_Loading=false;
+      update();
+      Get.snackbar("Error", response.body["message"], colorText: Colors.white, backgroundColor: Colors.red);
+      }
 
+
+     }catch(e){
+      
+     }
+      
+
+     
+     
 
 
 
@@ -110,7 +139,7 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
   }
   String pays = composants[2].trim().toLowerCase();
 
-  return paysAutorises.contains(pays);
+  return paysAutorises.contains(pays) && pays == currentCountry.toLowerCase() ;
 } 
 //! this is the main function 
  bool verification_full_address(){
@@ -140,9 +169,6 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
   return true;
  } 
 
-
-
- 
 // verification input number 
   
   bool check_Number(){
@@ -156,10 +182,14 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
   }
    
   // ! this the function that will be called from the trans detaisl ui 
-   void check_before_send(){
+   void check_before_send()async {
    
   if(selectedImage == null){
     Get.snackbar("Error", "Ops! Please select a profile image", colorText: Colors.white, backgroundColor: Colors.red);
+
+    }
+    else if(await selectedImage!.length()>1000000){
+     Get.snackbar("Error", "Ops! selected profil image must be less then 1MB size", colorText: Colors.white, backgroundColor: Colors.red);
 
     }
     else if(!check_Number()){
@@ -179,7 +209,7 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
       // send the detaisln to serveur to update the details 
       //  ! and if the respons status is sccess update response_success and go to the next page
       
-
+          signupClient();
   
     }
     

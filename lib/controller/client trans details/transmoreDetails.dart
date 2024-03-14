@@ -51,7 +51,6 @@ class transDetaislController extends GetxController{
     
   ];
   bool is_Loading = false;
-  bool success_signup1 =false;
 
 
 
@@ -90,7 +89,7 @@ class transDetaislController extends GetxController{
    Response response = await authTrasnRepo().signup1Trans(datatosend);
    if(response.body == null){
         is_Loading=false;
-        success_signup1 = false;
+        
         Get.snackbar("Connection Error", "Check your internet connection" ,colorText: Colors.white, backgroundColor: Colors.red);
           update();
 
@@ -99,14 +98,17 @@ class transDetaislController extends GetxController{
   try{
       
      if(response.statusCode == 200 ){
-       is_Loading=false;
-       Get.offAll(()=>const verificationCode());
+
+      Get.offAll(()=>const verificationCode());
+      Future.delayed(const Duration(seconds: 1),(){
+        is_Loading=false;
+      });
        Get.snackbar("Success", response.body["message"], colorText: Colors.white, backgroundColor: Colors.green);
        update();
      }else{
       
       is_Loading=false;
-      success_signup1 = false;
+      
 
       Get.snackbar("Error", response.body["message"] ,colorText: Colors.white, backgroundColor: Colors.red);
       update();
@@ -236,7 +238,7 @@ bool verifierPays(String adresse, List<String> paysAutorises) {
     if(selectedImage == null  ){
     Get.snackbar("Error", "Ops! Please select a profile image ", colorText: Colors.white, backgroundColor: Colors.red);
 
-    }else if(await selectedImage!.length() >100000){
+    }else if(await selectedImage!.length() >1000000){
      Get.snackbar("Error", "Ops! Please select a profile image that her size less then 1MB ", colorText: Colors.white, backgroundColor: Colors.red);
 
     }

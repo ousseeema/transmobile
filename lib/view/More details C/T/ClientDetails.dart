@@ -14,11 +14,17 @@ class ClientMoreDetails extends StatefulWidget {
 }
 
 class _ClientMoreDetailsState extends State<ClientMoreDetails> {
+  final TextEditingController number1controller = new TextEditingController();
+    final TextEditingController number2controller = new TextEditingController();
+  final TextEditingController addresscontroller = new TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
          body: GetBuilder<ClientDetailsController>(builder: (controller){
-          return SafeArea(
+          return (controller.is_Loading)? const  Center(child: CircularProgressIndicator()):
+          SafeArea(
            child: SingleChildScrollView(
              child: Column(
               children: [ 
@@ -88,7 +94,7 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                                         height: Dimenssions.height20*6.2,
                                             fit: BoxFit.cover,
                                             image:const  AssetImage(
-                                                "assets/images/oussema.JPG")),
+                                                "assets/images/default.png")),
                                       )
                                     : ClipOval(
                                         child: Image.file(
@@ -141,6 +147,7 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                 ),
                 width: Dimenssions.width - Dimenssions.width20 * 2,
                 child: InternationalPhoneNumberInput(
+                  textFieldController: number1controller,
                   countries: const [
                     "GB",
                     "FR",
@@ -176,6 +183,7 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                 ),
                 width: Dimenssions.width - Dimenssions.width20 * 2,
                 child: InternationalPhoneNumberInput(
+                  textFieldController: number2controller,
                  countries: const [
                     "TN",
                     "DZ",
@@ -218,7 +226,7 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                               ),
                             ),
                             SizedBox(
-                              width: Dimenssions.width20 * 2.3,
+                              width: Dimenssions.width20 * 1.4,
                             ),
 
                   CountryCodePicker(
@@ -252,6 +260,7 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                 height: Dimenssions.height20 * 4,
                 width: Dimenssions.width - Dimenssions.width20,
                 child: TextField(
+                  controller: addresscontroller,
                   decoration: InputDecoration(
                       hintText: "23 Rue de Grenell,75700 PARIS CEDEX,FRANCE ",
                       hintStyle: TextStyle(color: Colors.grey[400]),
@@ -280,7 +289,7 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                 ),
               ),
               SizedBox(
-                height: Dimenssions.height20 * 4,
+                height: Dimenssions.height20 * 2,
               ),
               GestureDetector(
                 onTap: () {
@@ -289,11 +298,7 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
 
                     // if the response from the server is sucess and the input verification if good then o to the home page 
                        
-                  // if(  ){
-                   // Get.offAll(()=> ClientHomePage());
-                  
-                  // }
-                   
+                 
 
                     
                 
@@ -314,6 +319,8 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                   ),
                 ),
               ),
+
+              SizedBox(height: Dimenssions.height20*2,)
               
         
 
@@ -324,8 +331,10 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
              
              ),
            ),
-         ); 
+         );
    
-         }) );
+         }
+         ) ,
+         );
   }
 }

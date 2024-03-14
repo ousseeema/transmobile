@@ -5,11 +5,11 @@ class AppConstant {
   static String baseurl = "http://192.168.100.20:3000/api/v0";
   // client auth endpoints
   static String loginUser = "/authClient/signin";
-  static String signup1Client = "/authTransporteur/signup1";
-  static String signup2Client = "/authTransporteur/signup2";
-  static String forgotpasswordClient = "/authTransporteur/forgotpassword";
-  static String resetpasswordClient = "/authTransporteur/resetpassword";
-  static String resendverificationcodeClient ="/authTransporteur/resendverificationcode";
+  static String signup1Client = "/authClient/signup1";
+  static String signup2Client = "/authClient/signup2";
+  static String forgotpasswordClient = "/authClient/forgotpassword";
+  static String resetpasswordClient = "/authClient/resetpassword";
+  static String resendverificationcodeClient ="/authClient/resendverificationcode";
 
   // transporteur auth endpoints
   static String loginTrans = "/authTransporteur/signin";

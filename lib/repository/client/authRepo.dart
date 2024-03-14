@@ -7,9 +7,9 @@ class authClientRepo extends GetxService{
 
    
 
- Future<Response> signup1Client(data, ){
+ Future<Response> signup1Client(data ){
     
-    return  UserApi().postRequest(data,AppConstant.signup1Trans );
+    return  UserApi().postRequest(data,AppConstant.signup1Client );
    }
 
 

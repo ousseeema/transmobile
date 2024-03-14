@@ -28,7 +28,15 @@ class UserApi extends GetConnect implements GetxService {
 
 
     }catch(e){
-      return Response(statusCode: 1, statusText: e.toString());
+      return const Response(
+        body: {
+          "message": "error creating user",
+          "success": false
+        },
+        statusCode: 1,
+         
+         
+         );
 
     }
 

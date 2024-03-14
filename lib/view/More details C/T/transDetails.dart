@@ -46,21 +46,7 @@ class _TransDetailsState extends State<TransDetails> {
                 width: Dimenssions.width,
                 child: Stack(
                   children: [
-                    Positioned(
-                      top: Dimenssions.height20,
-                      left: Dimenssions.width30,
-                      child:
-                       GestureDetector(
-                        onTap: () {
-                          
-                          Get.offAll(()=> const TransOuClient());
-                        },
-                         child: Icon(
-                          Icons.arrow_back,
-                           size: Dimenssions.icon16*2,
-                           
-                         ),
-                       ) ),
+                    
                     Positioned(
                         top: 0,
                         child: Container(
@@ -588,7 +574,7 @@ class _TransDetailsState extends State<TransDetails> {
                             child: TextField(
                               controller: carmodelcontroller,
                               decoration: InputDecoration(
-                                  hintText: "HX 67 AES",
+                                  hintText: "Kia ...",
                                   hintStyle:
                                       TextStyle(color: Colors.grey[400]),
                                   labelText: "Car model",
@@ -748,11 +734,8 @@ class _TransDetailsState extends State<TransDetails> {
                   // verification input then go to teh next page
                   controller.check_before_send();
     
-                  // if the response from the server is sucess and the input verification if good then o to the home page
+                  
                  
-                  if (controller.success_signup1) {
-                    Get.offAll(()=> const verificationCode());
-                  }
                 },
                 child: Container(
                   height: Dimenssions.height10 * 5,
