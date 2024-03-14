@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:transmobile/controller/authController/signinController.dart';
-import 'package:transmobile/controller/authController/signupController.dart';
+import 'package:transmobile/controller/authController/verificationcodeController.dart';
 import 'package:transmobile/view/splashscreens/transOuclient.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -22,7 +21,7 @@ class _verificationCodeState extends State<verificationCode> {
     return PopScope(
       canPop: false,
       child: Scaffold(body: SafeArea(
-        child: GetBuilder<signupController>(
+        child: GetBuilder<verificationCodeController>(
           builder: (controller) {
             return SingleChildScrollView(
               child: Column(children: [
@@ -109,11 +108,12 @@ class _verificationCodeState extends State<verificationCode> {
                     padding: EdgeInsets.all(Dimenssions.LRpadmarg10),
                     margin: EdgeInsets.only(right: Dimenssions.LRpadmarg10),
                     onCompleted: (String value) {
-                      controller.verificationCode = value;
+                     controller.verificationCode =value;
+                    
                     },
                     onEditing: (bool value) {
                       controller.onediting_verification_code = value;
-                      if (!controller.onediting_verification_code)
+                      if (!value)
                         FocusScope.of(context).unfocus();
                     }),
                 SizedBox(
@@ -132,7 +132,8 @@ class _verificationCodeState extends State<verificationCode> {
                     GestureDetector(
                       onTap: () {
                         //! resending the verifiçcation code 
-                        
+                        controller.resending_verification_code();
+ 
                       },
                       child: const Text("Re-Send code",
                           style: TextStyle(
@@ -147,34 +148,28 @@ class _verificationCodeState extends State<verificationCode> {
                 SizedBox(
                   height: Dimenssions.height20 * 4,
                 ),
-                GetBuilder<signinController>(builder: (signincontroller) {
-                  return GestureDetector(
-                    onTap: () {
-                      // ! verification code
-                      //! after the verification code is recieved and entred
-                      //* we test if its a client or transporter for the direction after
-                      if (signincontroller.isClient) {
-                        // Get.offAll(() => const ClientHomepage());
-                      } else if (signincontroller.isTrans) {
-                        //Get.offAll(() => const transporterhomepage());
-                      }
-                    },
-                    child: Container(
-                      height: Dimenssions.height10 * 5,
-                      width: Dimenssions.width30 * 9,
-                      decoration: BoxDecoration(
-                          color: AppColors.buttonColor,
-                          borderRadius:
-                              BorderRadius.circular(Dimenssions.radius10)),
-                      child: const Center(
-                        child: Text(
-                          "Verify",
-                          style: TextStyle(color: AppColors.insidetextcolor),
-                        ),
+                GestureDetector(
+                  onTap: () {
+                    // ! verification code
+                    //! after the verification code is recieved and entred
+                    
+                     controller.sendverification_code();
+                  },
+                  child: Container(
+                    height: Dimenssions.height10 * 5,
+                    width: Dimenssions.width30 * 9,
+                    decoration: BoxDecoration(
+                        color: AppColors.buttonColor,
+                        borderRadius:
+                            BorderRadius.circular(Dimenssions.radius10)),
+                    child: const Center(
+                      child: Text(
+                        "Verify",
+                        style: TextStyle(color: AppColors.insidetextcolor),
                       ),
                     ),
-                  );
-                })
+                  ),
+                )
               ]),
             );
           },

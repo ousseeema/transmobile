@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/authController/signinController.dart';
+import 'package:transmobile/controller/authController/verificationcodeController.dart';
 import 'package:transmobile/view/login%20screens/login.dart';
+import 'package:transmobile/view/login%20screens/verificationCode.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -16,10 +18,15 @@ class TransOuClient extends StatelessWidget {
                if(text == "Client"){
                 controller.isClient=true;
                 controller.isTrans =false;
+                Get.find<verificationCodeController>().isClient=true;
+                 Get.find<verificationCodeController>().istrans=false;
+                
                }
                else{
                 controller.isTrans=true;
                 controller.isClient = false;
+                  Get.find<verificationCodeController>().isClient=false;
+                 Get.find<verificationCodeController>().istrans=true;
                }
                 
                

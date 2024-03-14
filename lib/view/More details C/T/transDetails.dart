@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
 import 'package:transmobile/view/login%20screens/verificationCode.dart';
 import 'package:transmobile/view/splashscreens/transOuclient.dart';
@@ -66,6 +67,40 @@ class _TransDetailsState extends State<TransDetails> {
                         child: GestureDetector(
                           onTap: () {
                             //!affiche les info sur cette  page
+                            showAdaptiveDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog.adaptive(
+                                      backgroundColor: Colors.white,
+                                      actions: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.back();
+                                          },
+                                          child: const Text(
+                                            "Back ",
+                                            style: TextStyle(
+                                                color: AppColors.buttonColor),
+                                          ),
+                                        ),
+                                        
+                                         
+                                      ],
+                                      content: SizedBox(
+                                        height: Dimenssions.height20*15,
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                                height: Dimenssions.height20*7,
+                                                child: LottieBuilder.asset(
+                                                    "assets/animations/info.json")),
+                                            const Text(
+                                                "This page must Contains your exact details and information that will help the people and you have a very nice experience in our app and make it more  professional for you and the others , So please fill the fileds with the right information "),
+                                          ],
+                                        ),
+                                      ));
+                                      }
+                                      );
                           },
                           child: Icon(
                             Icons.info,
@@ -104,7 +139,7 @@ class _TransDetailsState extends State<TransDetails> {
                             child: controller.selectedImage == null
                                 ? ClipOval(
                                     child: Image(
-                                      color: Colors.black,
+                                      
                                         width: Dimenssions.width30 * 4,
                                         height: Dimenssions.height20 * 6.2,
                                         fit: BoxFit.cover,

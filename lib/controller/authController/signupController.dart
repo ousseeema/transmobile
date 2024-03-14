@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/authController/signinController.dart';
+import 'package:transmobile/controller/authController/verificationcodeController.dart';
 import 'package:transmobile/controller/client%20trans%20details/clientmoreDetails.dart';
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
 
@@ -9,9 +10,7 @@ class signupController extends GetxController {
   String email = "";
   String password = "";
   String repassword = "";
-  String verificationCode = "";
   bool verificationstatus = false;
-  bool onediting_verification_code = true;
 // !called from the signup page for both the user and the client to test the input fileds
   void inputVerification() {
     // if its client : njib donnes mn clientdetails 
@@ -45,20 +44,13 @@ class signupController extends GetxController {
           colorText: Colors.white, backgroundColor: Colors.red);
       verificationstatus = false;
     } else {
-     
+      
+       Get.find<verificationCodeController>().email= email ;
       verificationstatus = true;
       Get.snackbar("Success", "One more step and we're done",
           colorText: Colors.white, backgroundColor: Colors.green);
     }
   }
 
-  void sendverification_code() {
-    //! this function is the responsble for sending the verification code
-    //! to complete the processs of the signup
-
-    if (verificationCode.isEmpty) {
-      Get.snackbar("Error", "Please enter your code ",
-          colorText: Colors.white, backgroundColor: Colors.red);
-    }
-  }
+  
 }

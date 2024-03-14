@@ -17,7 +17,7 @@ class UserApi extends GetConnect implements GetxService {
     };
   }
 
-   Future<Response> postRequest(FormData data, String uri )async{ 
+   Future<Response> postRequest(data, String uri )async{ 
    //String final_uri = '${baseurl}${uri}';
     try{
       Response response = await post("$baseurl${uri}",
@@ -30,7 +30,7 @@ class UserApi extends GetConnect implements GetxService {
     }catch(e){
       return const Response(
         body: {
-          "message": "error creating user",
+          "message": "error in serveur",
           "success": false
         },
         statusCode: 1,

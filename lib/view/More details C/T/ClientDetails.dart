@@ -2,6 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/client%20trans%20details/clientmoreDetails.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -52,6 +53,40 @@ class _ClientMoreDetailsState extends State<ClientMoreDetails> {
                             child: GestureDetector(
                               onTap: () {
                                 //!affiche les info sur cette  page
+                                 showAdaptiveDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog.adaptive(
+                                      backgroundColor: Colors.white,
+                                      actions: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.back();
+                                          },
+                                          child: const Text(
+                                            "Back ",
+                                            style: TextStyle(
+                                                color: AppColors.buttonColor),
+                                          ),
+                                        ),
+                                        
+                                         
+                                      ],
+                                      content: SizedBox(
+                                        height: Dimenssions.height20*15,
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                                height: Dimenssions.height20*7,
+                                                child: LottieBuilder.asset(
+                                                    "assets/animations/info.json")),
+                                            const Text(
+                                                "This page must Contains your exact details and information that will help the people and you have a very nice experience in our app and make it more  professional for you and the others , So please fill the fileds with the right information "),
+                                          ],
+                                        ),
+                                      ));
+                                      }
+                                      );
                               },
                               child: Icon(
                                 Icons.info,

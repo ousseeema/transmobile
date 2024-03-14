@@ -22,7 +22,9 @@ class _SigninState extends State<Signin> {
     return Scaffold(
       body: GetBuilder<signinController>(
        builder: (controller) {
-         return SingleChildScrollView(
+         return  (controller.is_Loading)? 
+        const  Center(child:CircularProgressIndicator()) :
+         SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
@@ -208,7 +210,7 @@ class _SigninState extends State<Signin> {
             ],
           ),
         );
-       },
+      },
        
       ),
     );
