@@ -32,8 +32,9 @@ class authTrasnRepo extends GetxService{
 
 
 // ! reset password of the transporter 
+
  Future<Response> resetPassword(data){
-    return UserApi().postRequest(data,AppConstant.resetpasswordTrans);
+    return UserApi().putRequest(data,AppConstant.resetpasswordTrans);
    }
 
 }

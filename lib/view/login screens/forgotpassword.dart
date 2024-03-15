@@ -14,6 +14,7 @@ class forgotpassword extends StatefulWidget {
 }
 
 class _forgotpasswordState extends State<forgotpassword> {
+  final TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +65,7 @@ class _forgotpasswordState extends State<forgotpassword> {
               height: Dimenssions.height20 * 4,
               width: Dimenssions.width - Dimenssions.width20,
               child: TextField(
+                  controller: emailController,
                 decoration: InputDecoration(
                     hintText: "Exemple@gmail.com",
                     hintStyle: TextStyle(color: Colors.grey[400]),

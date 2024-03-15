@@ -13,12 +13,20 @@ class resetpassword extends StatefulWidget {
 }
 
 class _resetpasswordState extends State<resetpassword> {
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: GetBuilder<resetpassController>(builder: (controller) {
-        return SingleChildScrollView(
+        return controller.resent_Loading? const Center(
+          child: CircularProgressIndicator(),
+        ):
+         (controller.reset_Loading) ? const Center(
+          child: CircularProgressIndicator(),
+        ) : SingleChildScrollView(
           child: Column(
             children: [
               Row(
@@ -71,11 +79,11 @@ class _resetpasswordState extends State<resetpassword> {
                   margin: EdgeInsets.only(right: Dimenssions.LRpadmarg10),
                   cursorColor: AppColors.hintTextColor,
                   onCompleted: (String value) {
-                    controller.verification_code = value;
+                    controller.Reset_code = value;
                   },
                   onEditing: (bool value) {
-                    controller.onediting_verification_code = value;
-                    if (!controller.onediting_verification_code)
+                    controller.onediting_Reset_code = value;
+                    if (!controller.onediting_Reset_code)
                       FocusScope.of(context).unfocus();
                   }),
               SizedBox(
@@ -87,6 +95,7 @@ class _resetpasswordState extends State<resetpassword> {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                             hintText: "New Password",
@@ -115,6 +124,7 @@ class _resetpasswordState extends State<resetpassword> {
                         height: Dimenssions.height20 * 2,
                       ),
                       TextFormField(
+                        controller: repasswordController,
                         obscureText: true,
                         decoration: InputDecoration(
                             hintText: " New Password",
@@ -155,8 +165,8 @@ class _resetpasswordState extends State<resetpassword> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // resent the code (same api with the send reset code )
-                      controller.resendresetcode();
+                      // resent the reset code 
+                      controller.resendResetCode();
                     },
                     child: Text(
                       "Re-sent",
@@ -197,7 +207,13 @@ class _resetpasswordState extends State<resetpassword> {
             ],
           ),
         );
-      })),
+               
+        
+
+
+
+
+         })),
     );
   }
 }

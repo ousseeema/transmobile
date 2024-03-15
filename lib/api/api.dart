@@ -20,7 +20,33 @@ class UserApi extends GetConnect implements GetxService {
    Future<Response> postRequest(data, String uri )async{ 
    //String final_uri = '${baseurl}${uri}';
     try{
-      Response response = await post("$baseurl${uri}",
+      Response response = await post("$baseurl$uri",
+         data ,
+       contentType: "application/json", 
+        );
+        return response;
+
+
+    }catch(e){
+      return const Response(
+        body: {
+          "message": "error in serveur",
+          "success": false
+        },
+        statusCode: 1,
+         
+         
+         );
+
+    }
+
+   }
+
+
+     Future<Response> putRequest(data, String uri )async{ 
+   //String final_uri = '${baseurl}${uri}';
+    try{
+      Response response = await put("$baseurl$uri",
          data ,
        contentType: "application/json", 
         );

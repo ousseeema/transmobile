@@ -16,8 +16,8 @@ class _TransHomeScreenState extends State<TransHomeScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
 body: GetBuilder<transHomeController>(builder: (controller){
-        return Center(
-        child: Text("user client${controller.transporter!.fullName}"),
+        return const Center(
+        child: Text("user transporter"),
       );
       }),
     );

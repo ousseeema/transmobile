@@ -47,8 +47,9 @@ class verificationCodeController extends GetxController {
         Get.offAll(() => const ClienHomeScreen());
         Future.delayed(const Duration(seconds: 1), () {
           is_Loading = false;
+          update();
         });
-        update();
+        
       } else {
       
         is_Loading = false;
