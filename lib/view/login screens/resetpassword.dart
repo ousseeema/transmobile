@@ -177,7 +177,7 @@ class _resetpasswordState extends State<resetpassword> {
                 onTap: () {
                   // ! verification input
                   //! changing the password 
-                  controller.resetpassword();
+                  controller.reset_password();
                 },
                 child: Container(
                   height: Dimenssions.height10 * 5,

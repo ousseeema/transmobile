@@ -27,8 +27,18 @@ class authClientRepo extends GetxService{
    Future<Response> SignInClient(data){
     return UserApi().postRequest(data,AppConstant.loginUser);
    }
+ 
+
+ //! send reset code to the client email
+  Future<Response> sendResetCode(data){
+    return UserApi().postRequest(data,AppConstant.forgotpasswordClient);
+   }
 
 
+// ! reset password of the client 
+ Future<Response> resetPassword(data){
+    return UserApi().postRequest(data,AppConstant.resetpasswordClient);
+   }
 
 
 

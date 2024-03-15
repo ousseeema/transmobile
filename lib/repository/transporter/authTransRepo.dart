@@ -25,5 +25,15 @@ class authTrasnRepo extends GetxService{
    Future<Response> SignInTrans(data){
     return UserApi().postRequest(data,AppConstant.loginTrans);
    }
+   //! send reset code to the transporter email
+  Future<Response> sendResetCode(data){
+    return UserApi().postRequest(data,AppConstant.forgotpasswordTrans);
+   }
+
+
+// ! reset password of the transporter 
+ Future<Response> resetPassword(data){
+    return UserApi().postRequest(data,AppConstant.resetpasswordTrans);
+   }
 
 }

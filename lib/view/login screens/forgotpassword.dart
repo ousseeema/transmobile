@@ -19,7 +19,9 @@ class _forgotpasswordState extends State<forgotpassword> {
     return Scaffold(
       body: SafeArea(
         child: GetBuilder<resetpassController>(builder: (controller) {
-          return SingleChildScrollView(
+          return (controller.is_Loading1)? const Center(
+            child: CircularProgressIndicator(),
+          ): SingleChildScrollView(
             child: Column(children: [
             Row(
               children: [
@@ -115,7 +117,7 @@ class _forgotpasswordState extends State<forgotpassword> {
                      // ! verification input and sending the code to the email for the reset password
                      
                      controller.SendresetCode();
-                     Get.to(()=> const resetpassword());
+                    
                   },
                   child: Container(
                     height: Dimenssions.height10 * 5,

@@ -16,7 +16,8 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  final TextEditingController  emailController = TextEditingController();
+  final TextEditingController  passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,8 +58,9 @@ class _SigninState extends State<Signin> {
                     child: Column(
                       children: [
                         TextFormField(
-                          
+                          controller: emailController,
                           decoration: InputDecoration(
+                            
                               hintText: "Exemple@gmail.com",
                               hintStyle: TextStyle(color: Colors.grey[400]),
                               labelText: "Email",
@@ -91,6 +93,7 @@ class _SigninState extends State<Signin> {
                           height: Dimenssions.height20 * 2,
                         ),
                         TextFormField(
+                          controller: passwordController,
                           obscureText: true,
                           decoration: InputDecoration(
                               hintText: " Password",
