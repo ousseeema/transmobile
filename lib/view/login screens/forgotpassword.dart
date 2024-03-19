@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/authController/resetpassController.dart';
-import 'package:transmobile/view/login%20screens/resetpassword.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

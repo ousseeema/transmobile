@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/authController/signinController.dart';
 import 'package:transmobile/controller/authController/verificationcodeController.dart';
 import 'package:transmobile/view/login%20screens/login.dart';
-import 'package:transmobile/view/login%20screens/verificationCode.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

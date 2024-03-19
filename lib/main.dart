@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/helpers/dependencies.dart';
-import 'package:transmobile/view/More%20details%20C/T/ClientDetails.dart';
-import 'package:transmobile/view/login%20screens/verificationCode.dart';
-import 'package:transmobile/view/splashscreens/SplachScreen.dart';
-import 'package:transmobile/view/splashscreens/transOuclient.dart';
+import 'package:transmobile/view/home%20screen/Client/ClientHomeScreen.dart';
 
 void main() async{
   
@@ -26,7 +23,7 @@ class TransMobile extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:const SplachScreen(),
+      home:const ClientMainScreens(),
     );
   }
 }

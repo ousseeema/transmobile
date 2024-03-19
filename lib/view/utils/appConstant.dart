@@ -28,6 +28,7 @@ class AppConstant {
   static String usergetverified = "/clients/getverified";
   static String getAllDemande = "/clients//getalldemande/:id";
   static String userAddReview = "/clients//addreview/:id";
+  static String getCurrentTrips = "/clients/currentTrips";
 
   // transporteur other endpoints
 

@@ -6,8 +6,6 @@ import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
-import 'package:transmobile/view/login%20screens/verificationCode.dart';
-import 'package:transmobile/view/splashscreens/transOuclient.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

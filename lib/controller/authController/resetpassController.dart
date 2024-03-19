@@ -160,7 +160,7 @@ class resetpassController extends GetxController {
         // afficche un snack bar de succes et move to the next page
         Get.snackbar("Success", "Reset password  successfully",
             colorText: Colors.white, backgroundColor: Colors.green);
-        Get.offAll(() => const ClienHomeScreen());
+        Get.offAll(() => const ClientMainScreens());
         Future.delayed(const Duration(seconds: 1), () {
           reset_Loading = false;
           update();

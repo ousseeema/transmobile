@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/clientHomeController.dart';
 
-class ClienHomeScreen extends StatefulWidget {
-  const ClienHomeScreen({super.key});
+class ClientMainScreens extends StatefulWidget {
+  const ClientMainScreens({super.key});
 
   @override
-  State<ClienHomeScreen> createState() => _ClienHomeScreenState();
+  State<ClientMainScreens> createState() => _ClientMainScreensState();
 }
 
-class _ClienHomeScreenState extends State<ClienHomeScreen> {
+class _ClientMainScreensState extends State<ClientMainScreens> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(

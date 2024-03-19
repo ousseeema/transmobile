@@ -44,7 +44,7 @@ class verificationCodeController extends GetxController {
             // afficche un snack bar de succes et move to the next page 
         Get.snackbar("Success", "Sign up successfully",
             colorText: Colors.white, backgroundColor: Colors.green);
-        Get.offAll(() => const ClienHomeScreen());
+        Get.offAll(() => const ClientMainScreens());
         Future.delayed(const Duration(seconds: 1), () {
           is_Loading = false;
           update();
