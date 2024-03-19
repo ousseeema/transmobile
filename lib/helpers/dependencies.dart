@@ -8,7 +8,7 @@ import 'package:transmobile/controller/authController/verificationcodeController
 import 'package:transmobile/controller/client%20trans%20details/clientmoreDetails.dart';
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
 import 'package:transmobile/controller/homeScreen/TransHomeController.dart';
-import 'package:transmobile/controller/homeScreen/clientHomeController.dart';
+import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
 import 'package:transmobile/controller/infoController/informationcontroller.dart';
 import 'package:transmobile/repository/client/authRepo.dart';
 import 'package:transmobile/repository/transporter/authTransRepo.dart';
@@ -29,7 +29,7 @@ class dependency {
     Get.lazyPut(() => transDetaislController(), fenix: true);
     Get.lazyPut(() => ClientDetailsController(), fenix: true);
     Get.lazyPut(() => verificationCodeController(), fenix: true);
-    Get.lazyPut(() => ClienntHomeController());
+    Get.lazyPut(() => ClientMainScreensController());
     Get.lazyPut(() => transHomeController());
 
 

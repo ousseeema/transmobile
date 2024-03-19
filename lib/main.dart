@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/helpers/dependencies.dart';
-import 'package:transmobile/view/home%20screen/Client/ClientHomeScreen.dart';
+import 'package:transmobile/view/home%20screen/Client/ClientMainScreens.dart';
 
 void main() async{
   

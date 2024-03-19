@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:transmobile/controller/homeScreen/clientHomeController.dart';
+import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
 
 class ClientMainScreens extends StatefulWidget {
   const ClientMainScreens({super.key});
@@ -13,7 +13,7 @@ class _ClientMainScreensState extends State<ClientMainScreens> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: GetBuilder<ClienntHomeController>(builder: (controller){
+      body: GetBuilder<ClientMainScreensController>(builder: (controller){
         return const Center(
         child: Text("user client"),
       );

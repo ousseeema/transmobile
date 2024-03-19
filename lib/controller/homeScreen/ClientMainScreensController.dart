@@ -6,7 +6,7 @@ import 'package:transmobile/view/home%20screen/Client/notifications%20Pages/Noti
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/search.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/settings.dart';
 
-class ClienntHomeController extends GetxController{
+class ClientMainScreensController extends GetxController{
   
    // ! client model 
   ClientModel? client;
