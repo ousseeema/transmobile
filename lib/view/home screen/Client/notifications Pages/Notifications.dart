@@ -12,6 +12,8 @@ class notificationScreen extends StatefulWidget {
 class _notificationScreenState extends State<notificationScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Container(
+      height: 400,
+    );
   }
 }

@@ -12,6 +12,8 @@ class searchScreen extends StatefulWidget {
 class _searchScreenState extends State<searchScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Container(
+      height: 400,
+    );
   }
 }

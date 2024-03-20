@@ -12,6 +12,8 @@ class messagesScreen extends StatefulWidget {
 class _messagesScreenState extends State<messagesScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Container(
+      height: 400,
+    ); 
   }
 }

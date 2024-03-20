@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/view/home%20screen/Client/home%20Pages/Home.dart';
@@ -7,11 +8,11 @@ import 'package:transmobile/view/home%20screen/Client/search%20Pages/search.dart
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/settings.dart';
 
 class ClientMainScreensController extends GetxController{
-  
+  int currentIndex = 0;
    // ! client model 
-  ClientModel? client;
+ ClientModel? client;
    
-List Pages =[
+List<Widget> Pages =[
  const Home(),
  const  messagesScreen(),
  const  notificationScreen(),
@@ -19,6 +20,10 @@ List Pages =[
  const SettingsScreen(),
 ];
 
+ void changePages(index){
+  currentIndex = index;
+  update();
+ }
 
 
 }

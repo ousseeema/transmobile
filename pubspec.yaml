@@ -30,17 +30,17 @@ environment:
 dependencies:
   country_code_picker: ^3.0.0
   cupertino_icons: ^1.0.2
-  dots_indicator: ^3.0.0
+  curved_navigation_bar: ^1.0.3
   flutter:
     sdk: flutter
   flutter_google_maps_webservices: ^1.1.1
   flutter_multi_select_items: ^0.4.2
   flutter_verification_code: ^1.1.7
   get: ^4.6.6
+  icons_plus: ^5.0.0
   image_picker: ^1.0.7
   intl_phone_number_input: ^0.7.4
   lottie: ^3.1.0
-  persistent_bottom_nav_bar: ^5.0.2
   shared_preferences: ^2.2.2
 
 dev_dependencies:
