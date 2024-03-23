@@ -10,6 +10,7 @@ import 'package:transmobile/controller/client%20trans%20details/transmoreDetails
 import 'package:transmobile/controller/homeScreen/TransHomeController.dart';
 import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
 import 'package:transmobile/controller/infoController/informationcontroller.dart';
+import 'package:transmobile/repository/client/ClientRepo.dart';
 import 'package:transmobile/repository/client/authRepo.dart';
 import 'package:transmobile/repository/transporter/authTransRepo.dart';
 
@@ -39,6 +40,7 @@ class dependency {
   //client:
  
    Get.lazyPut(() => authClientRepo());
+   Get.lazyPut(() => ClientRepo());
 
 //transporter:
  Get.lazyPut(() => authTrasnRepo());

@@ -113,6 +113,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  decimal:
+    dependency: transitive
+    description:
+      name: decimal
+      sha256: "24a261d5d5c87e86c7651c417a5dbdf8bcd7080dd592533910e8d0505a279f21"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.3"
   equatable:
     dependency: transitive
     description:
@@ -182,6 +190,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_charts:
+    dependency: "direct main"
+    description:
+      name: flutter_charts
+      sha256: eb9d2bf98bfc779c1da9cf1fe80afd598094aed33e536cf04845d8f266f48c11
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.2"
   flutter_google_maps_webservices:
     dependency: "direct main"
     description:
@@ -248,6 +264,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.6.6"
+  google_fonts:
+    dependency: transitive
+    description:
+      name: google_fonts
+      sha256: b1ac0fe2832c9cc95e5e88b57d627c5e68c223b9657f4b96e1487aa9098c7b82
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.1"
   google_maps:
     dependency: transitive
     description:
@@ -480,6 +504,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      sha256: b3ff55aeb08d9d8901b767650285872cb1bb8f508373b3e348d60268b0c7f770
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   lottie:
     dependency: "direct main"
     description:
@@ -536,6 +568,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  path_provider:
+    dependency: transitive
+    description:
+      name: path_provider
+      sha256: b27217933eeeba8ff24845c34003b003b2b22151de3c908d0e679e8fe1aa078b
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.2"
+  path_provider_android:
+    dependency: transitive
+    description:
+      name: path_provider_android
+      sha256: "477184d672607c0a3bf68fbbf601805f92ef79c82b64b4d6eb318cbca4c48668"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
+  path_provider_foundation:
+    dependency: transitive
+    description:
+      name: path_provider_foundation
+      sha256: "5a7999be66e000916500be4f15a3633ebceb8302719b47b9cc49ce924125350f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
   path_provider_linux:
     dependency: transitive
     description:
@@ -592,6 +648,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.7.4"
+  rational:
+    dependency: transitive
+    description:
+      name: rational
+      sha256: ba58e9e18df9abde280e8b10051e4bce85091e41e8e7e411b6cde2e738d357cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
   sanitize_html:
     dependency: transitive
     description:
@@ -717,6 +781,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.1"
+  tuple:
+    dependency: transitive
+    description:
+      name: tuple
+      sha256: a97ce2013f240b2f3807bcbaf218765b6f301c3eff91092bcfa23a039e7dd151
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   typed_data:
     dependency: transitive
     description:
@@ -799,4 +871,4 @@ packages:
     version: "6.5.0"
 sdks:
   dart: ">=3.3.0 <4.0.0"
-  flutter: ">=3.19.0"
+  flutter: ">=3.19.2"

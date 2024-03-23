@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 class AppConstant {
-  static String token = "";
+  static String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGUzMjdhNzk5ZTViYzA1NTdmODkzMiIsImlhdCI6MTcwOTA2MDkyNCwiZXhwIjoxNzEwMzU2OTI0fQ.hxscIAVVZ7s52CrBC163W5tl6zVxRt2eArNSGr1YUPk";
   static String baseurl = "http://192.168.100.20:3000/api/v0";
   // client auth endpoints
   static String loginUser = "/authClient/signin";

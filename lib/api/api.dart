@@ -18,7 +18,6 @@ class UserApi extends GetConnect implements GetxService {
   }
 
    Future<Response> postRequest(data, String uri )async{ 
-   //String final_uri = '${baseurl}${uri}';
     try{
       Response response = await post("$baseurl$uri",
          data ,
@@ -44,10 +43,39 @@ class UserApi extends GetConnect implements GetxService {
 
 
      Future<Response> putRequest(data, String uri )async{ 
-   //String final_uri = '${baseurl}${uri}';
     try{
       Response response = await put("$baseurl$uri",
          data ,
+       contentType: "application/json", 
+        );
+        return response;
+
+
+    }catch(e){
+      return const Response(
+        body: {
+          "message": "error in serveur",
+          "success": false
+        },
+        statusCode: 1,
+         
+         
+         );
+
+    }
+
+   }
+   
+
+   // get request 
+   Future<Response> GetRequest(String uri)async{ 
+    try{
+      Response response = await get(
+        "$baseurl$uri",
+        headers: {
+           'Authorization': 'Bearer $token',
+        },
+      
        contentType: "application/json", 
         );
         return response;

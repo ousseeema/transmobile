@@ -222,10 +222,13 @@ class _HomeState extends State<Home> {
                padding: EdgeInsets.only(left: Dimenssions.LRpadmarg10/2, right:Dimenssions.LRpadmarg10/2),
                 child: ClipRRect(
           borderRadius: BorderRadius.circular(20), // Adjust the radius to match the container's borderRadius
-          child: Image.asset("assets/images/default.png", height: Dimenssions.height20*4,width: Dimenssions.width20*2.2,,) 
+          child: Image.asset("assets/images/default.png", height: Dimenssions.height20*6,width: Dimenssions.width20*4,) 
            ),
               );
-            }) ,)
+            }) ,),
+            SizedBox(height: Dimenssions.height20,),
+            
+            
 
         ]),
       ),
