@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/repository/client/ClientRepo.dart';
@@ -15,7 +17,7 @@ class ClientMainScreensController extends GetxController{
    // ! client model 
  ClientModel? client;
    List<TransporterModel> Transporteurs =[];
-  // List<TripModel> trips=[];
+   List<TripModel> trips=[];
 List<Widget> Pages =[
  const Home(),
  const  messagesScreen(),
@@ -33,6 +35,9 @@ List<Widget> Pages =[
 
  void LoadData()async {
   Transporteurs=[];
+  // this is the responsable if we tap in refresh button this will display the shimmer effect
+  isloading=true;
+  update();
 
   // getting the transporter's from the data base 
   Response TransResponse = await ClientRepo().GetAllTransporteurs();
@@ -40,12 +45,15 @@ List<Widget> Pages =[
   // adding the stats endpoint in the future
   if(TripResponse.body.success == true&& TransResponse.body.success == true ){
         TransResponse.body['data'].forEach((transporter)=> Transporteurs.add(TransporterModel.fromJson(transporter)));
-      //  TripResponse.body["data"].forEach((trip)=>   )
-      
+        TripResponse.body["data"].forEach((trip)=> trips.add(TripModel.fromJson(trip)));
+        
+        isloading=false;
+        update();
 
 
   }else{
-
+    
+    Get.snackbar("Error", "Error while getting data , Try reloading the page", colorText: Colors.white, backgroundColor: Colors.red);
 
   }
    
