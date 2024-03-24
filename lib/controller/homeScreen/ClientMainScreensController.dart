@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
@@ -13,7 +14,7 @@ import 'package:transmobile/view/home%20screen/Client/settings%20Pages/settings.
 
 class ClientMainScreensController extends GetxController{
   int currentIndex = 0;
-  bool isloading =true;
+  bool isloading =false;
    // ! client model 
  ClientModel? client;
    List<TransporterModel> Transporteurs =[];
@@ -46,6 +47,7 @@ List<Widget> Pages =[
   if(TripResponse.body.success == true&& TransResponse.body.success == true ){
         TransResponse.body['data'].forEach((transporter)=> Transporteurs.add(TransporterModel.fromJson(transporter)));
         TripResponse.body["data"].forEach((trip)=> trips.add(TripModel.fromJson(trip)));
+        print("Sibon");
         
         isloading=false;
         update();
