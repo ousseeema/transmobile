@@ -20,8 +20,8 @@ class dependency {
   static void init()async{
 
      //shared preferences
-     final sharedpreferences = await SharedPreferences.getInstance();
-     Get.lazyPut(() => sharedpreferences);
+   final sharedpreferences = await SharedPreferences.getInstance();
+      Get.lazyPut(() => sharedpreferences);
     // inject controllers to access in other pages 
     Get.lazyPut(() => InformationController(),fenix: true);
     Get.lazyPut(() => signupController(),fenix: true);

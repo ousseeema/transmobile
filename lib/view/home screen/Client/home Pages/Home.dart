@@ -4,6 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
 import 'package:transmobile/view/utils/colors.dart';
@@ -19,15 +20,29 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late GoogleMapController _mapcontroller;
     CameraPosition? new_position;
+ 
+  @override
+  void initState(){
+    super.initState();
+    // always wwhen the  this page open wee get the data from the server
+   Get.find<ClientMainScreensController>().LoadData();
+  
 
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RefreshIndicator(
+      body: GetBuilder<ClientMainScreensController>(
+        builder: (controller) {
+
+          return RefreshIndicator(
         onRefresh: () async  {
-           Get.find<ClientMainScreensController>().LoadData();
+         controller.LoadData();
+           print(controller.shared.getString("token"));
         },
-        child: Get.find<ClientMainScreensController>().isloading?  // animation while loading
+        child: controller.isloading? 
+         // animation while loading
+         // shimmer effect
        Shimmer.fromColors(
           baseColor: Colors.grey.shade300,
           highlightColor: Colors.grey.shade100,
@@ -443,7 +458,10 @@ class _HomeState extends State<Home> {
             ]),
           )
          ,
-      ),
-    );
+      );
+    
+        
+      },)
+      ,);
   }
 }

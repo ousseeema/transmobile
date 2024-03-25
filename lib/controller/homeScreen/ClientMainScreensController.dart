@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
@@ -14,7 +15,8 @@ import 'package:transmobile/view/home%20screen/Client/settings%20Pages/settings.
 
 class ClientMainScreensController extends GetxController{
   int currentIndex = 0;
-  bool isloading =false;
+  bool isloading =true;
+   SharedPreferences  shared = Get.find();
    // ! client model 
  ClientModel? client;
    List<TransporterModel> Transporteurs =[];
@@ -44,17 +46,18 @@ List<Widget> Pages =[
   Response TransResponse = await ClientRepo().GetAllTransporteurs();
   Response TripResponse = await ClientRepo().GetCurrentTrip();
   // adding the stats endpoint in the future
-  if(TripResponse.body.success == true&& TransResponse.body.success == true ){
+
+  if(TripResponse.body["success"] && TransResponse.body["success"]){
         TransResponse.body['data'].forEach((transporter)=> Transporteurs.add(TransporterModel.fromJson(transporter)));
         TripResponse.body["data"].forEach((trip)=> trips.add(TripModel.fromJson(trip)));
-        print("Sibon");
+           
         
         isloading=false;
         update();
 
 
   }else{
-    
+   
     Get.snackbar("Error", "Error while getting data , Try reloading the page", colorText: Colors.white, backgroundColor: Colors.red);
 
   }
