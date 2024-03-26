@@ -33,9 +33,13 @@ class signinController extends GetxController {
 
         // enregistre le client object in a string in the sharedpreferences
         await shared.setString(
-            "user", jsonDecode(response.body["data"]));
+            "user", jsonEncode(response.body["data"]));
         // enregistre el token fi sharedpreferences
-        await shared.setString("token",jsonDecode(response.body["token"]));
+        await shared.setString("token",jsonEncode(response.body["token"]));
+         await shared.setBool("isLogged",true);
+                  // setting is transporteur to false  and client for true 
+         await shared.setBool("client", true);
+         await shared.setBool("transporteur", false);
         
 
         Get.snackbar("Success", "Sign up successfully",
@@ -63,9 +67,14 @@ class signinController extends GetxController {
 
         // enregistre le client object in a string in the sharedpreferences
         await shared.setString(
-            "user", jsonDecode(response.body["data"]));
+            "user", jsonEncode(response.body["data"]));
         // enregistre el token fi sharedpreferences
-        await shared.setString("token", jsonDecode(response.body["token"]));
+        await shared.setString("token", jsonEncode(response.body["token"]));
+         await shared.setBool("isLogged",true);
+         // setting is transporteur to true and client for false 
+         await shared.setBool("transporteur", true);
+                  await shared.setBool("client", false);
+
 
         Get.snackbar("Success", "Sign up successfully",
             colorText: Colors.white, backgroundColor: Colors.green);

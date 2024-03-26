@@ -44,7 +44,7 @@ class signupController extends GetxController {
           colorText: Colors.white, backgroundColor: Colors.red);
       verificationstatus = false;
     } else {
-      
+    
        Get.find<verificationCodeController>().email= email ;
       verificationstatus = true;
       Get.snackbar("Success", "One more step and we're done",

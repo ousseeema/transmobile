@@ -20,7 +20,7 @@ class dependency {
   static void init()async{
 
      //shared preferences
-   final sharedpreferences = await SharedPreferences.getInstance();
+   SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
       Get.lazyPut(() => sharedpreferences);
     // inject controllers to access in other pages 
     Get.lazyPut(() => InformationController(),fenix: true);
@@ -30,8 +30,8 @@ class dependency {
     Get.lazyPut(() => transDetaislController(), fenix: true);
     Get.lazyPut(() => ClientDetailsController(), fenix: true);
     Get.lazyPut(() => verificationCodeController(), fenix: true);
-    Get.lazyPut(() => ClientMainScreensController());
-    Get.lazyPut(() => transHomeController());
+    Get.lazyPut(() => ClientMainScreensController(),fenix: true);
+    Get.lazyPut(() => transHomeController(),fenix: true);
 
 
   // injecting repo,

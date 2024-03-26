@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
+import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -23,12 +24,17 @@ class _HomeState extends State<Home> {
  
   @override
   void initState(){
+    // always wwhen the  this page open wee get the data from the server
+    Future.delayed(Duration.zero).then((value) {
+
+     Get.find<ClientMainScreensController>().LoadData();
+    },);
+      
     super.initState();
     // always wwhen the  this page open wee get the data from the server
-   Get.find<ClientMainScreensController>().LoadData();
   
-
   }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +42,9 @@ class _HomeState extends State<Home> {
         builder: (controller) {
 
           return RefreshIndicator(
-        onRefresh: () async  {
-         controller.LoadData();
-           print(controller.shared.getString("token"));
+          onRefresh: () async  {
+        await  controller.LoadData();
+         
         },
         child: controller.isloading? 
          // animation while loading
@@ -439,11 +445,13 @@ class _HomeState extends State<Home> {
                             right: Dimenssions.LRpadmarg10 / 2),
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(
-                                20), // Adjust the radius to match the container's borderRadius
-                            child: Image.asset(
-                              "assets/images/default.png",
+                                100),
+                                 // Adjust the radius to match the container's borderRadius
+                            child: Image.network(
+                              "${AppConstant.Transimage}/${controller.Transporteurs[index].profilePicture}",
                               height: Dimenssions.height20 * 6,
                               width: Dimenssions.width20 * 4,
+                               fit: BoxFit.cover,
                             )),
                       );
                     }),

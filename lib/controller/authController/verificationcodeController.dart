@@ -40,6 +40,7 @@ class verificationCodeController extends GetxController {
               await  shared.setString("client", jsonEncode(response.body["data"]));
             // enregistre el token fi sharedpreferences 
            await  shared.setString("token", jsonEncode(response.body["token"]));
+            await shared.setBool("isLogged",true);
 
             // afficche un snack bar de succes et move to the next page 
         Get.snackbar("Success", "Sign up successfully",
@@ -70,6 +71,7 @@ class verificationCodeController extends GetxController {
               await  shared.setString("transporter", jsonEncode(response.body["data"]));
             // enregistre el token fi sharedpreferences 
            await  shared.setString("token", jsonEncode(response.body["token"]));
+            await shared.setBool("isLogged",true);
       
          
         Get.snackbar("Success", "Sign up successfully",
