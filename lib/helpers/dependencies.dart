@@ -9,6 +9,7 @@ import 'package:transmobile/controller/client%20trans%20details/clientmoreDetail
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
 import 'package:transmobile/controller/homeScreen/TransHomeController.dart';
 import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
+import 'package:transmobile/controller/homeScreen/home/homeController.dart';
 import 'package:transmobile/controller/infoController/informationcontroller.dart';
 import 'package:transmobile/repository/client/ClientRepo.dart';
 import 'package:transmobile/repository/client/authRepo.dart';
@@ -32,6 +33,7 @@ class dependency {
     Get.lazyPut(() => verificationCodeController(), fenix: true);
     Get.lazyPut(() => ClientMainScreensController(),fenix: true);
     Get.lazyPut(() => transHomeController(),fenix: true);
+    Get.lazyPut(() => HomeController(),);
 
 
   // injecting repo,

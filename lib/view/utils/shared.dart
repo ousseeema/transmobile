@@ -1,9 +1,10 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class shared{
 
- 
   void clear()async{
 SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     sharedpreferences.clear();
@@ -30,10 +31,15 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     
     SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     
-      return sharedpreferences.getBool("isLogged")==false  && sharedpreferences.getBool("client") == false && sharedpreferences.getBool("transporteur") == false;
+      return sharedpreferences.getBool("isLogged")==true  && sharedpreferences.getBool("client") == false && sharedpreferences.getBool("transporteur") == false;
     
   
   }
+   static Future<String?>  getuser()async{
+        SharedPreferences sharedpreferences = await SharedPreferences.getInstance();      
+         return  sharedpreferences.getString("user")  ;
+ 
+    }
 
 
 

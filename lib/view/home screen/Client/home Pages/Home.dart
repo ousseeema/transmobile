@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
+import 'package:transmobile/controller/homeScreen/home/homeController.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -27,7 +28,7 @@ class _HomeState extends State<Home> {
     // always wwhen the  this page open wee get the data from the server
     Future.delayed(Duration.zero).then((value) {
 
-     Get.find<ClientMainScreensController>().LoadData();
+     Get.find<HomeController>().LoadData();
     },);
       
     super.initState();
@@ -38,7 +39,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetBuilder<ClientMainScreensController>(
+      body: GetBuilder<HomeController>(
         builder: (controller) {
 
           return RefreshIndicator(
@@ -265,16 +266,19 @@ class _HomeState extends State<Home> {
                               ),
                               ClipRRect(
                                   borderRadius: BorderRadius.circular(
-                                      20), // Adjust the radius to match the container's borderRadius
-                                  child: Image.asset(
-                                    "assets/images/default.png",
-                                    height: Dimenssions.height20 * 3,
-                                    width: Dimenssions.height20 * 3,
-                                  )),
+                                     100), // Adjust the radius to match the container's borderRadius
+                                  child: Image.network(
+                                    "${AppConstant.Clientimage}${controller.client!.profilePicture}",
+                                    fit: BoxFit.cover,
+                                    height: Dimenssions.height20*3,
+                                    width: Dimenssions.width30*2,
+                                    ),
+                                  
+                                  ),
                               SizedBox(
                                 width: Dimenssions.width20,
                               ),
-                              const Text("Welcome Back! \n User fullname"),
+                               Text("Welcome Back! \n ${controller.client!.fullName}"),
                             ],
                           ),
                         )),

@@ -43,6 +43,8 @@ class _TransMobileState extends State<TransMobile> {
           if(value==true){
             setState(() {
               isClient=true;
+              isTransporteur=false;
+              
             });
           }
 
@@ -50,11 +52,12 @@ class _TransMobileState extends State<TransMobile> {
         await shared.getTransporteur().then((value) {
            if(value==true){
             setState(() {
-              isClient=true;
+              isTransporteur=true;
+              isClient=false;
             });
           }
         },);
-
+        
         await shared.noCnoT().then((value) {
             if(value==true){
             setState(() {
@@ -77,7 +80,7 @@ class _TransMobileState extends State<TransMobile> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ( isClient== true )? const ClientMainScreens() :(isTransporteur!)? TransHomeScreen(): SplachScreen()   ,
+      home: ( isClient== null && isTransporteur==null  )? Center(child: const CircularProgressIndicator()):(isTransporteur==true)? const TransHomeScreen(): (isClient==true)? const ClientMainScreens(): const SplachScreen()   ,
     );
   }
 }
