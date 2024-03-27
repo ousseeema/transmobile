@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
 import 'package:transmobile/controller/homeScreen/home/homeController.dart';
+import 'package:transmobile/view/home%20screen/Client/home%20Pages/Maps.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -328,29 +329,30 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: Dimenssions.height10,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimenssions.radius30),
-                  color: Colors.grey,
-                ),
-                height: Dimenssions.height20 * 10,
-                width: Dimenssions.width,
-                child: Stack(
-                  children: [
-                    Positioned(
-                        top: 0,
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        //google maps here
-                        child: GestureDetector(
-                          onTap: () {
-                            // going to the details of the trip
-                          },
+              GestureDetector(
+                onTap: () {
+                     Get.to(()=>Maps());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimenssions.radius30),
+                    color: Colors.grey,
+                  ),
+                  height: Dimenssions.height20 * 10,
+                  width: Dimenssions.width,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                          top: 0,
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          //google maps here
                           child: GoogleMap(
+                            zoomControlsEnabled: false,
                             mapType: MapType.terrain,
                             initialCameraPosition: const CameraPosition(
-                             zoom: 100,
+                             
                               
                               target: LatLng(37, 10.991030),
                             ),
@@ -361,46 +363,46 @@ class _HomeState extends State<Home> {
                                 _mapcontroller = controller;
                               });
                                 _mapcontroller = controller;
-
+                          
                               
                             },
                              onCameraMove: (position) {
                               new_position = position;
                             },
-
+                          
                             onCameraIdle: () {
                               
                             },
-                          ),
-                        )),
-                    Positioned(
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: Container(
-                          width: Dimenssions.width,
-                          height: Dimenssions.height20 * 3,
-                          decoration: BoxDecoration(
-                            color: AppColors.iconColor.withOpacity(0.7),
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: Dimenssions.width20 * 2,
-                              ),
-                              const Expanded(
-                                  flex: 3,
-                                  child: Text(
-                                    "Click to see your package",
-                                    style:
-                                        TextStyle(color: AppColors.insidetextcolor),
-                                  )),
-                              const Expanded(
-                                  flex: 1, child: Icon(Icons.arrow_forward))
-                            ],
-                          ),
-                        )),
-                  ],
+                          )),
+                      Positioned(
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: Container(
+                            width: Dimenssions.width,
+                            height: Dimenssions.height20 * 3,
+                            decoration: BoxDecoration(
+                              color: AppColors.iconColor.withOpacity(0.7),
+                            ),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: Dimenssions.width20 * 2,
+                                ),
+                                const Expanded(
+                                    flex: 3,
+                                    child: Text(
+                                      "Click to see your package",
+                                      style:
+                                          TextStyle(color: AppColors.insidetextcolor),
+                                    )),
+                                const Expanded(
+                                    flex: 1, child: Icon(Icons.arrow_forward))
+                              ],
+                            ),
+                          )),
+                    ],
+                  ),
                 ),
               ),
               // displaying the text Transporteur and view more

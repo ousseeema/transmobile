@@ -36,6 +36,7 @@ dependencies:
   flutter_google_maps_webservices: ^1.1.1
   flutter_multi_select_items: ^0.4.2
   flutter_verification_code: ^1.1.7
+
   get: ^4.6.6
   icons_plus: ^5.0.0
   image_picker: ^1.0.7
@@ -43,9 +44,15 @@ dependencies:
   lottie: ^3.1.0
   shared_preferences: ^2.2.2
   google_maps_flutter: ^2.5.0
+  flutter_typeahead: ^4.8.0
+  geocoding: ^2.0.4
+  geolocator: ^8.2.0
+  google_places_flutter: ^2.0.6
   flutter_charts: ^0.5.2
   shimmer: ^3.0.0
   url_launcher: ^6.2.5
+  google_maps_flutter_web: ^0.5.6+2
+  timeline_tile: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
