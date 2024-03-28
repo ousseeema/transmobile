@@ -47,7 +47,7 @@ dependencies:
   flutter_typeahead: ^4.8.0
   geocoding: ^2.0.4
   geolocator: ^8.2.0
-  google_places_flutter: ^2.0.6
+  google_places_flutter: ^2.0.8
   flutter_charts: ^0.5.2
   shimmer: ^3.0.0
   url_launcher: ^6.2.5

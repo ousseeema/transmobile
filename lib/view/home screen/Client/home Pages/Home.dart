@@ -305,7 +305,7 @@ class _HomeState extends State<Home> {
                                               ),
                                               CostumeAnimatedText(
                                                   text: controller
-                                                      .client!.fullName),
+                                                      .client!.fullName, color: AppColors.insidetextcolor,),
                                             ],
                                           ),
                                         ],
