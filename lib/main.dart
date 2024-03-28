@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/helpers/dependencies.dart';
 import 'package:transmobile/view/home%20screen/Client/ClientMainScreens.dart';
 import 'package:transmobile/view/home%20screen/Client/home%20Pages/Home.dart';
+import 'package:transmobile/view/home%20screen/Client/home%20Pages/tripDetails.dart';
 import 'package:transmobile/view/home%20screen/trans/TransHomeScreen.dart';
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 import 'package:transmobile/view/utils/shared.dart';
@@ -80,7 +81,8 @@ class _TransMobileState extends State<TransMobile> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ( isClient== null && isTransporteur==null  )? Center(child: const CircularProgressIndicator()):(isTransporteur==true)? const TransHomeScreen(): (isClient==true)? const ClientMainScreens(): const SplachScreen()   ,
+      home: TripDetails()
+      //( isClient== null && isTransporteur==null  )? const Center(child:  CircularProgressIndicator()):(isTransporteur==true)? const TransHomeScreen(): (isClient==true)? const ClientMainScreens(): const SplachScreen()   ,
     );
   }
 }

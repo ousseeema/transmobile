@@ -9,57 +9,137 @@ import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/repository/client/ClientRepo.dart';
 import 'package:transmobile/view/utils/shared.dart';
 
-class HomeController extends GetxController{
+class HomeController extends GetxController {
+  List<TransporterModel> Transporteurs = [];
+  List<TripModel> trips = [
+    TripModel(
+        id: "445453453",
+        transporter: "oussema",
+        citys: [
+          City(
+              city: "Djerba",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: true),
+                
+          City(
+              city: "sfax",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: false),
+              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: false) 
+        ],
+        homePickUp: true,
+        homeDelivery: true,
+        packages: [],
+        isDone: false,
+        createdAt: "createdAt"),
+        TripModel(
+        id: "445453453",
+        transporter: "oussema",
+        citys: [
+          City(
+              city: "Djerba",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: false),
+          City(
+              city: "sfax",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: false),
+              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: true) 
+        ],
+        homePickUp: true,
+        homeDelivery: true,
+        packages: [],
+        isDone: false,
+        createdAt: "createdAt"),
+        TripModel(
+        id: "445453453",
+        transporter: "oussema",
+        citys: [
+          City(
+              city: "Djerba",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: true),
+          City(
+              city: "sfax",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: true),
+              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: true) 
+        ],
+        homePickUp: true,
+        homeDelivery: true,
+        packages: [],
+        isDone: false,
+        createdAt: "createdAt"),
+         TripModel(
+        id: "445453453",
+        transporter: "oussema",
+        citys: [
+          City(
+              city: "Djerba",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: true),
+          City(
+              city: "sfax",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: true),
+              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: true) 
+        ],
+        homePickUp: true,
+        homeDelivery: true,
+        packages: [],
+        isDone: false,
+        createdAt: "createdAt"),
+        TripModel(
+        id: "445453453",
+        transporter: "oussema",
+        citys: [
+          City(
+              city: "Djerba",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: true),
+          City(
+              city: "sfax",
+              dateofpassage: DateTime(2024, 3, 28),
+              done: true),
+              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: true) 
+        ],
+        homePickUp: true,
+        homeDelivery: true,
+        packages: [],
+        isDone: false,
+        createdAt: "createdAt"),
+ 
+  ];
+  bool isloading = true;
+  ClientModel? client;
 
- List<TransporterModel> Transporteurs =[];
-   List<TripModel> trips=[];
-bool isloading =true;
-ClientModel? client;
+  Future<void> LoadData() async {
+    Transporteurs = [];
+    // this is the responsable if we tap in refresh button this will display the shimmer effect
+    isloading = true;
+    update();
 
-
-Future<void>  LoadData()async {
-  Transporteurs=[];
-  // this is the responsable if we tap in refresh button this will display the shimmer effect
-  isloading=true;
-  update();
-
-  
-  // connverting the user data into client model 
-     await shared.getuser().then((value) {
+    // connverting the user data into client model
+    await shared.getuser().then((value) {
       client = ClientModel.fromJson(jsonDecode(value!));
+    });
 
-     });
-   
+    // getting the transporter's from the data base
+    Response TransResponse = await ClientRepo().GetAllTransporteurs();
+    Response TripResponse = await ClientRepo().GetCurrentTrip();
+    // adding the stats endpoint in the future
 
-  
-  // getting the transporter's from the data base 
-  Response TransResponse = await ClientRepo().GetAllTransporteurs();
-  Response TripResponse = await ClientRepo().GetCurrentTrip();
-  // adding the stats endpoint in the future
+    if (TripResponse.body["success"] && TransResponse.body["success"]) {
+      TransResponse.body['data'].forEach((transporter) =>
+          Transporteurs.add(TransporterModel.fromJson(transporter)));
+      TripResponse.body["data"]
+          .forEach((trip) => trips.add(TripModel.fromJson(trip)));
 
-  if(TripResponse.body["success"] && TransResponse.body["success"]){
-        TransResponse.body['data'].forEach((transporter)=> Transporteurs.add(TransporterModel.fromJson(transporter)));
-        TripResponse.body["data"].forEach((trip)=> trips.add(TripModel.fromJson(trip)));
-           
-        
-        isloading=false;
-        update();
-
-
-  }else{
-   
-    Get.snackbar("Error", "Error while getting data , Try reloading the page", colorText: Colors.white, backgroundColor: Colors.red);
-
+      isloading = false;
+      update();
+    } else {
+      Get.snackbar("Error", "Error while getting data , Try reloading the page",
+          colorText: Colors.white, backgroundColor: Colors.red);
+    }
   }
-   
-    
-
-
-
- }
-
-
-
-
-
 }

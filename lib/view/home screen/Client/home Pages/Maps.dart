@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:transmobile/view/home%20screen/Client/home%20Pages/tripDetails.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -33,6 +35,7 @@ class Maps extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // going to the trip details
+                Get.to(()=> TripDetails() );
                 
               },
               child: Container(

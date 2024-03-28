@@ -46,7 +46,7 @@ class TripModel {
 
 class City {
     String city;
-    String dateofpassage;
+    DateTime dateofpassage;
     bool done;
 
     City({
