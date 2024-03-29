@@ -1,4 +1,6 @@
 
+// ignore_for_file: camel_case_types, must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';

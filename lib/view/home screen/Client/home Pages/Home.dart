@@ -1,13 +1,13 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
-import 'package:transmobile/controller/homeScreen/home/homeController.dart';
+import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
 import 'package:transmobile/view/home%20screen/Client/home%20Pages/Maps.dart';
 import 'package:transmobile/view/utils/appConstant.dart';

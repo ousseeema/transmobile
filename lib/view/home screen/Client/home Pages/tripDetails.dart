@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:transmobile/controller/homeScreen/home/homeController.dart';
+import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/view/components/constumeListeView.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

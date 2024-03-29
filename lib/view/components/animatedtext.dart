@@ -1,10 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:transmobile/view/utils/colors.dart';
-import 'package:transmobile/view/utils/dimenssion.dart';
 
 class CostumeAnimatedText extends StatelessWidget {
   String text;

@@ -1,5 +1,4 @@
 
-import 'dart:convert';
 class TripModel {
     String id;
     String transporter;
