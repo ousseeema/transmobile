@@ -16,8 +16,9 @@ class ClientMainScreensController extends GetxController{
 List<Widget> Pages =[
  const Home(),
  const  messagesScreen(),
+  const searchScreen(),
  const  notificationScreen(),
- const searchScreen(),
+
  const SettingsScreen(),
 ];
 

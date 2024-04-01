@@ -93,8 +93,37 @@ class UserApi extends GetConnect implements GetxService {
          );
 
     }
+   
 
    }
+    // get methodde for the search for a trip 
+    Future<Response> SearchForTrip(query)async{
+      try {
+        Response response = await get(baseurl + AppConstant.usersearchTrip+ query,
+        headers: {
+           'Authorization': 'Bearer $token',
+        },
+      
+       contentType: "application/json", 
+        );
+        return response;
+        
+      } catch (e) {
+         return const Response(
+        body: {
+          "message": "error in serveur",
+          "success": false
+        },
+        statusCode: 1,
+         
+         
+         );
+
+        
+      }
+      
+    }
+
 
 
 }

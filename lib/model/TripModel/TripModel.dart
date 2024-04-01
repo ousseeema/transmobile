@@ -1,7 +1,9 @@
 
+import 'package:transmobile/model/trans/transporteruModel.dart';
+
 class TripModel {
     String id;
-    String transporter;
+    TransporterModel transporter;
     List<City> citys;
     bool homePickUp;
     bool homeDelivery;

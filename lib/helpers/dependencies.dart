@@ -32,8 +32,8 @@ class dependency {
     Get.lazyPut(() => ClientDetailsController(), fenix: true);
     Get.lazyPut(() => ClientMainScreensController(), fenix: true);
     Get.lazyPut(() => transHomeController(), fenix: true);
-    Get.lazyPut(() => HomeController(),);
-    Get.lazyPut(() => searchController());
+    Get.lazyPut(() => HomeController(), fenix: true);
+    Get.lazyPut(() => searchController(), fenix: true);
 
     // injecting repo,
     //apiRepository:

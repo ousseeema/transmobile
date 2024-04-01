@@ -110,11 +110,12 @@ class _searchScreenState extends State<searchScreen> {
                       text: "Receive parcels : ",
                       variable: "parcles"),
                 ),
+            
                 // price per kg 
                 Row(
                         children: [
                           SizedBox(
-                            width: Dimenssions.width10 / 2 + 1,
+                            width: Dimenssions.width30 -5 ,
                           ),
                           Icon(
                             CupertinoIcons.money_euro_circle,
@@ -166,7 +167,7 @@ class _searchScreenState extends State<searchScreen> {
                           ),
                         ],
                       ),
-                      SizedBox(height: Dimenssions.height20*4,),
+                      SizedBox(height: Dimenssions.height20,),
                       GestureDetector(
                 onTap: () {
                   // verification input then go to  next page
@@ -189,7 +190,8 @@ class _searchScreenState extends State<searchScreen> {
                     ),
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: Dimenssions.height20*3,)
 
 
 

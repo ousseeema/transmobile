@@ -14,4 +14,8 @@ Future<Response> GetCurrentTrip(){
     return  UserApi().GetRequest(AppConstant.getCurrentTrips);
    }
 
+   Future<Response> SearchForTrip(query){
+    return UserApi().SearchForTrip(query);
+   }
+
 }
