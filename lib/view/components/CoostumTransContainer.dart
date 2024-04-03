@@ -6,17 +6,19 @@ import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class CostumTransContainer extends StatelessWidget {
+  String id;
   String TransName;
   String imagename;
   bool parcels;
   double price;
   String depart;
-  DateTime dateDepart;
+  String dateDepart;
   String Destination;
-  DateTime destinationDate;
+  String destinationDate;
 
   CostumTransContainer(
       {super.key,
+      required this.id,
       required this.TransName,
       required this.imagename,
       required this.depart,
@@ -29,10 +31,10 @@ class CostumTransContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Dimenssions.height20 * 5,
+      height: Dimenssions.height20 * 10,
       width: Dimenssions.width - Dimenssions.width30,
       decoration: BoxDecoration(
-          color: Colors.grey.shade700,
+          color: Colors.grey,
           borderRadius: BorderRadius.circular(Dimenssions.radius20)),
       child: Row(
         children: [

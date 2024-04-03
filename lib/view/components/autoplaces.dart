@@ -3,8 +3,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
+import 'package:transmobile/controller/homeScreen/Client/searchController.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -16,12 +18,13 @@ class autoPlaces extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController googlecontroller = TextEditingController();
-    return Padding(
+    return GetBuilder<searchController>(
+      builder: (controller){
+      return Padding(
       padding:  EdgeInsets.only(left: Dimenssions.LRpadmarg20, right: Dimenssions.LRpadmarg20),
       child: GooglePlaceAutoCompleteTextField(
       
-                googleAPIKey: "AIzaSyBkKs82L66jBg20jlFOGMwJL6oljrKGDV8",
+                googleAPIKey: "",
                   boxDecoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimenssions.radius20)
                   ),
@@ -65,10 +68,10 @@ class autoPlaces extends StatelessWidget {
             print("placeDetails" + prediction.lng.toString());
             }, 
                itemClick: (Prediction prediction) {
-             googlecontroller.text=prediction.description!;
-              googlecontroller.selection = TextSelection.fromPosition(TextPosition(offset: prediction.description!.length));
+             controller.googleSearchController.text=prediction.description!;
+              controller.googleSearchController.selection = TextSelection.fromPosition(TextPosition(offset: prediction.description!.length));
             },
-              textEditingController: googlecontroller,
+              textEditingController: controller.googleSearchController,
               seperatedBuilder:const  Divider(),
                containerHorizontalPadding: 10,
                itemBuilder:(context, index, Prediction prediction){
@@ -90,5 +93,6 @@ class autoPlaces extends StatelessWidget {
                
                ),
     );
+    });
   }
 }

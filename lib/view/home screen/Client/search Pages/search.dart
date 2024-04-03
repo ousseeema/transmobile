@@ -9,6 +9,7 @@ import 'package:transmobile/view/components/Datepicker.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
 import 'package:transmobile/view/components/autoplaces.dart';
 import 'package:transmobile/view/components/switcher.dart';
+import 'package:transmobile/view/home%20screen/Client/search%20Pages/result.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -171,7 +172,7 @@ class _searchScreenState extends State<searchScreen> {
                       GestureDetector(
                 onTap: () {
                   // verification input then go to  next page
-                  
+                   controller.SearchForTrip();
     
                   
                  

@@ -23,8 +23,8 @@ class TripModel {
     });
 
     factory TripModel.fromJson(Map<String, dynamic> json) => TripModel(
-        id: json["id"],
-        transporter: json["transporter"],
+        id:  json["_id"].toString(),
+        transporter:TransporterModel.fromJson(json["transporter"]),
         citys: List<City>.from(json["Citys"].map((x) => City.fromJson(x))),
         homePickUp: json["Home_pick_up"],
         homeDelivery: json["Home_delivery"],
@@ -46,23 +46,27 @@ class TripModel {
 }
 
 class City {
+     String id;
     String city;
-    DateTime dateofpassage;
+    String dateofpassage;
     bool done;
 
     City({
+        required this.id,
         required this.city,
         required this.dateofpassage,
         required this.done,
     });
 
     factory City.fromJson(Map<String, dynamic> json) => City(
+      id: json["_id"].toString(),
         city: json["city"],
         dateofpassage: json["dateofpassage"],
         done: json["Done"],
     );
 
     Map<String, dynamic> toJson() => {
+        "_id" : id,
         "city": city,
         "dateofpassage": dateofpassage,
         "Done": done,

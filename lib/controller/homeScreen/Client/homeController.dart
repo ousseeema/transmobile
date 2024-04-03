@@ -13,100 +13,103 @@ class HomeController extends GetxController {
   List<TripModel> trips = [
     TripModel(
         id: "445453453",
-        transporter: "oussema",
+        transporter: TransporterModel(id: "zaadqscqc", fullName: "fullName", email: "email", phoneNumberA: "phoneNumberA", phoneNumberB: "phoneNumberB", DestinationAddress: "DestinationAddress", localAddress: "localAddress", carBrand: "carBrand", carSerieNumber: "carSerieNumber", listCountry1: "listCountry1", listCountry2: "listCountry2", homePickUps: true, homeDelivery: false, priceKg: 10, parsols: true, parsolsSite: ["amazon"], Adresse_Parsols: "Adresse_Parsols", numberofTrips: 10, numberofClients: 10, numberofPackages: 11, role: "role", totalRevenue: 1000, verified: true, profilePicture: "profilePicture", pro: true, createdAt: "414/575/58585", comments: []),
         citys: [
-          City(
+          City(id: "lzmkdqsdqsd",
               city: "Djerba",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage:' DateTime(2024, 3, 28)',
               done: true),
                 
-          City(
+          City(id: "lzmkdqsdqsd",
               city: "sfax",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage:' DateTime(2024, 3, 28)',
               done: false),
-              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: false) 
+              City(id: "lzmkdqsdqsd",city: "lyon", dateofpassage: 'DateTime(2024, 3,28)',done: false) 
         ],
         homePickUp: true,
         homeDelivery: true,
         packages: [],
         isDone: false,
-        createdAt: "createdAt"),
+        createdAt:'DateTime(2024,14,14)'),
         TripModel(
         id: "445453453",
-        transporter: "oussema",
+        transporter: TransporterModel(id: "zaadqscqc", fullName: "fullName", email: "email", phoneNumberA: "phoneNumberA", phoneNumberB: "phoneNumberB", DestinationAddress: "DestinationAddress", localAddress: "localAddress", carBrand: "carBrand", carSerieNumber: "carSerieNumber", listCountry1: "listCountry1", listCountry2: "listCountry2", homePickUps: true, homeDelivery: false, priceKg: 10, parsols: true, parsolsSite: ["amazon"], Adresse_Parsols: "Adresse_Parsols", numberofTrips: 10, numberofClients: 10, numberofPackages: 11, role: "role", totalRevenue: 1000, verified: true, profilePicture: "profilePicture", pro: true, createdAt: "414/575/58585", comments: []),
         citys: [
-          City(
+          City(id: "lzmkdqsdqsd",
               city: "Djerba",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage: 'DateTime(2024, 3, 28)',
               done: false),
-          City(
+          City(id: "lzmkdqsdqsd",
               city: "sfax",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage: 'DateTime(2024, 3, 28)',
               done: false),
-              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: true) 
+              City(id: "lzmkdqsdqsd",city: "lyon", dateofpassage: 'DateTime(2024, 3,28)',done: true) 
         ],
         homePickUp: true,
         homeDelivery: true,
         packages: [],
         isDone: false,
-        createdAt: "createdAt"),
+        createdAt:'DateTime(2024,14,14)'),
         TripModel(
         id: "445453453",
-        transporter: "oussema",
+        transporter: TransporterModel(id: "zaadqscqc", fullName: "fullName", email: "email", phoneNumberA: "phoneNumberA", phoneNumberB: "phoneNumberB", DestinationAddress: "DestinationAddress", localAddress: "localAddress", carBrand: "carBrand", carSerieNumber: "carSerieNumber", listCountry1: "listCountry1", listCountry2: "listCountry2", homePickUps: true, homeDelivery: false, priceKg: 10, parsols: true, parsolsSite: ["amazon"], Adresse_Parsols: "Adresse_Parsols", numberofTrips: 10, numberofClients: 10, numberofPackages: 11, role: "role", totalRevenue: 1000, verified: true, profilePicture: "profilePicture", pro: true, createdAt: "414/575/58585", comments: []),
         citys: [
-          City(
+          City(id: "lzmkdqsdqsd",
               city: "Djerba",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage: 'DateTime(2024, 3, 28)',
               done: true),
-          City(
+          City(id: "lzmkdqsdqsd",
               city: "sfax",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage: 'DateTime(2024, 3, 28)',
               done: true),
-              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: true) 
+              City(id: "lzmkdqsdqsd",city: "lyon", dateofpassage: 'DateTime(2024, 3,28)',done: true) 
         ],
         homePickUp: true,
         homeDelivery: true,
         packages: [],
         isDone: false,
-        createdAt: "createdAt"),
+        createdAt: 'DateTime(2024,14,14)'),
          TripModel(
         id: "445453453",
-        transporter: "oussema",
+        transporter: TransporterModel(id: "zaadqscqc", fullName: "fullName", email: "email", phoneNumberA: "phoneNumberA", phoneNumberB: "phoneNumberB", DestinationAddress: "DestinationAddress", localAddress: "localAddress", carBrand: "carBrand", carSerieNumber: "carSerieNumber", listCountry1: "listCountry1", listCountry2: "listCountry2", homePickUps: true, homeDelivery: false, priceKg: 10, parsols: true, parsolsSite: ["amazon"], Adresse_Parsols: "Adresse_Parsols", numberofTrips: 10, numberofClients: 10, numberofPackages: 11, role: "role", totalRevenue: 1000, verified: true, profilePicture: "profilePicture", pro: true, createdAt: "414/575/58585", comments: []),
         citys: [
           City(
+            id: "lzmkdqsdqsd",
               city: "Djerba",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage: 'DateTime(2024, 3, 28)',
               done: true),
           City(
+            id: "lzmkdqsdqsd",
               city: "sfax",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage: 'DateTime(2024, 3, 28)',
               done: true),
-              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: true) 
+              City(
+                id: "lzmkdqsdqsd",city: "lyon", dateofpassage:' DateTime(2024, 3,28)',done: true) 
         ],
         homePickUp: true,
         homeDelivery: true,
         packages: [],
         isDone: false,
-        createdAt: "createdAt"),
+        createdAt: 'DateTime(2024,14,14)'),
         TripModel(
         id: "445453453",
-        transporter: "oussema",
+        transporter: TransporterModel(id: "zaadqscqc", fullName: "fullName", email: "email", phoneNumberA: "phoneNumberA", phoneNumberB: "phoneNumberB", DestinationAddress: "DestinationAddress", localAddress: "localAddress", carBrand: "carBrand", carSerieNumber: "carSerieNumber", listCountry1: "listCountry1", listCountry2: "listCountry2", homePickUps: true, homeDelivery: false, priceKg: 10, parsols: true, parsolsSite: ["amazon"], Adresse_Parsols: "Adresse_Parsols", numberofTrips: 10, numberofClients: 10, numberofPackages: 11, role: "role", totalRevenue: 1000, verified: true, profilePicture: "profilePicture", pro: true, createdAt: "414/575/58585", comments: []),
         citys: [
-          City(
+          City(id: "lzmkdqsdqsd",
               city: "Djerba",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage: 'DateTime(2024, 3, 28)',
               done: true),
-          City(
+          City(id: "lzmkdqsdqsd",
               city: "sfax",
-              dateofpassage: DateTime(2024, 3, 28),
+              dateofpassage:' DateTime(2024, 3, 28)',
               done: true),
-              City(city: "lyon", dateofpassage: DateTime(2024, 3,28),done: true) 
+              City(id: "lzmkdqsdqsd",city: "lyon", dateofpassage: 'DateTime(2024, 3,28)',done: true) 
         ],
         homePickUp: true,
         homeDelivery: true,
         packages: [],
         isDone: false,
-        createdAt: "createdAt"),
+        createdAt:' DateTime(2024,14,14)'),
  
   ];
   bool isloading = true;

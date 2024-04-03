@@ -9,7 +9,7 @@ import 'package:transmobile/controller/client%20trans%20details/clientmoreDetail
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
 import 'package:transmobile/controller/homeScreen/Client/searchController.dart';
 import 'package:transmobile/controller/homeScreen/TransHomeController.dart';
-import 'package:transmobile/controller/homeScreen/ClientMainScreensController.dart';
+import 'package:transmobile/controller/homeScreen/Client/ClientMainScreensController.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/controller/infoController/informationcontroller.dart';
 import 'package:transmobile/repository/client/ClientRepo.dart';

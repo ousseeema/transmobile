@@ -457,7 +457,7 @@ class _HomeState extends State<Home> {
                               CostumeAnimatedText(
                                 text: "view more ",
                                 weight: FontWeight.w100,
-                                fontSize: Dimenssions.font20 - 10,
+                                fontSize: Dimenssions.font20 -5,
                                 color: Colors.grey,
                                 textDecoration: TextDecoration.underline,
                               ),
@@ -475,7 +475,7 @@ class _HomeState extends State<Home> {
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 // list of transporteurs length
-                                itemCount: 5,
+                                itemCount: controller.Transporteurs.length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: EdgeInsets.only(

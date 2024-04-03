@@ -8,7 +8,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
-import '../../../controller/homeScreen/ClientMainScreensController.dart';
+import '../../../controller/homeScreen/Client/ClientMainScreensController.dart';
 
 class ClientMainScreens extends StatefulWidget {
   const ClientMainScreens({super.key});
