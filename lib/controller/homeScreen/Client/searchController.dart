@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/repository/client/ClientRepo.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/result.dart';
@@ -14,7 +15,7 @@ class searchController extends GetxController {
   double coastkg = 0;
   bool isLoading = false;
   List<TripModel> trips = [];
-  List<TripModel> tripsafterFilter = [];
+  
 
   void change_value(bool value, String variable) {
     if (variable == "Pickup") {
@@ -33,14 +34,15 @@ class searchController extends GetxController {
   //! sending the details to the server and the server will send the list of transporteurs that have that specific details
 
   void SearchForTrip() async {
-    tripsafterFilter = [];
+     Get.find<ResultController>().tripsafterFilter = [];
     trips = [];
     isLoading = true;
     update();
     // query to ssend to the serveur
     Map<String, dynamic> query = {
       "Home_delivery": home_delivery.toString(),
-      "Home_pick_up": home_pickup.toString()
+      "Home_pick_up": home_pickup.toString(),
+      "isDone":"false"
     };
 
     // send the request to the serveur
@@ -52,22 +54,56 @@ class searchController extends GetxController {
       response.body['data']
           .forEach((trip) => trips.add(TripModel.fromJson(trip)));
       // filtring the data with the specific details entered in the search page
-      for (var trip in trips) {
-        if (trip.isDone == true) {
-          tripsafterFilter = [];
-        } else {
+      if(googleSearchController.text.isEmpty && dateController.text.isEmpty && coastkg== 0){
+         Get.find<ResultController>().tripsafterFilter = trips;
+
+      }
+      else if(googleSearchController.text.isEmpty == false  && dateController.text.isEmpty && coastkg== 0){
+        for (var trip in trips) {
+          for (var city in trip.citys) {
+            if (trip.transporter.parsols == parcels 
+            && city.city == googleSearchController.text
+               ) {
+               Get.find<ResultController>().tripsafterFilter.add(trip);
+              break;
+            }
+          }
+        
+      }
+      }
+      else if(googleSearchController.text.isEmpty == false && dateController.text.isEmpty== false && coastkg== 0){
+        for (var trip in trips) {
+          for (var city in trip.citys) {
+            if (trip.transporter.parsols == parcels &&                
+                city.city == googleSearchController.text &&
+                city.dateofpassage == dateController.text
+               ) {
+               Get.find<ResultController>().tripsafterFilter.add(trip);
+              break;
+            }
+          }
+        
+      }
+
+      }else if(googleSearchController.text.isEmpty == false && dateController.text.isEmpty== false && coastkg > 0)
+      {
+          for (var trip in trips) {
+      
           for (var city in trip.citys) {
             if (trip.transporter.parsols == parcels &&
                 trip.transporter.priceKg >= coastkg - 2 &&
                 trip.transporter.priceKg <= coastkg + 2 &&
-                city.city == googleSearchController &&
-                city.dateofpassage.substring(0, 11) == dateController) {
-              tripsafterFilter.add(trip);
+                city.city == googleSearchController.text &&
+                city.dateofpassage.substring(0, 11) == dateController.text) {
+              Get.find<ResultController>().tripsafterFilter.add(trip);
               break;
             }
           }
-        }
+        
       }
+      }
+      
+      
 
       Get.to(() => const SearchResult());
    
@@ -93,12 +129,5 @@ class searchController extends GetxController {
 
 
 
-  void validateBeforeSend(){
-    if(coastkg== 0){
-      Get.snackbar("Missing fields", "Please enter the price", backgroundColor: Colors.red, colorText: Colors.white);
-    }
-
-
-
-  }
+  
 }

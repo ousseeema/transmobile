@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
+import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/controller/homeScreen/Client/searchController.dart';
 import 'package:transmobile/view/components/CoostumTransContainer.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -18,7 +19,7 @@ class _SearchResultState extends State<SearchResult> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: GetBuilder<searchController>(builder: (controller) {
+        child: GetBuilder<ResultController>(builder: (controller) {
         return SizedBox(
           height: Dimenssions.height,
           width: Dimenssions.width,

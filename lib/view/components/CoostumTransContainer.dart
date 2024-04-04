@@ -10,7 +10,7 @@ class CostumTransContainer extends StatelessWidget {
   String TransName;
   String imagename;
   bool parcels;
-  double price;
+  var price;
   String depart;
   String dateDepart;
   String Destination;
@@ -45,7 +45,7 @@ class CostumTransContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(
                     100), // Adjust the radius to match the container's borderRadius
                 child: Image.network(
-                  "${AppConstant.Transimage}${imagename}",
+                  "${AppConstant.Transimage}/${imagename}",
                   fit: BoxFit.cover,
                   height: Dimenssions.height20 * 3,
                   width: Dimenssions.width30 * 2,
@@ -96,9 +96,9 @@ class CostumTransContainer extends StatelessWidget {
               ),
               Row(
                 children: [
-                  CostumeAnimatedText(text: dateDepart.toString()),
+                  CostumeAnimatedText(text: dateDepart.toString().substring(0,10)),
                   SizedBox(width: Dimenssions.width20,),
-                  CostumeAnimatedText(text: destinationDate.toString()),
+                  CostumeAnimatedText(text: destinationDate.toString().substring(0,10)),
                 ],
               )
             ],
