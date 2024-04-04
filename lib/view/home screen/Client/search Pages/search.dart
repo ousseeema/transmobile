@@ -27,7 +27,7 @@ class _searchScreenState extends State<searchScreen> {
     return SafeArea(
       child: Scaffold(body: GetBuilder<searchController>(
         builder: (controller) {
-          return SingleChildScrollView(
+          return controller.isLoading? const Center(child:  CircularProgressIndicator()):SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(

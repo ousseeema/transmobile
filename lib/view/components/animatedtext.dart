@@ -32,7 +32,7 @@ class CostumeAnimatedText extends StatelessWidget {
       TyperAnimatedText(
     
       speed:const Duration(milliseconds: 100),
-      text,
+      " $text",
       textStyle: TextStyle(
         decorationColor: decorationColor,
         decorationStyle: decorationStyle,

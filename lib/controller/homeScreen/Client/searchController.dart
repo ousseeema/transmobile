@@ -106,13 +106,15 @@ class searchController extends GetxController {
       
 
       Get.to(() => const SearchResult());
-   
-      isLoading = false;
+   Future.delayed(const Duration(seconds: 1), () {
+          isLoading = false;
+        });
+    
       update();
     } else {
       Get.snackbar("Ops",
           "Erreur while getting data \n try again or check your connection",backgroundColor: Colors.red, colorText: Colors.white);
-      print(response.body);
+     
       isLoading = false;
       update();
     }
