@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
@@ -7,6 +8,7 @@ import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/controller/homeScreen/Client/searchController.dart';
 import 'package:transmobile/view/components/CoostumTransContainer.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class SearchResult extends StatefulWidget {
@@ -25,10 +27,18 @@ class _SearchResultState extends State<SearchResult> {
         child: Column(
           children: [
             SizedBox(height: Dimenssions.height20,),
-            Center(child: 
-            CostumeAnimatedText(text: "Search Result",weight: FontWeight.bold,fontSize: Dimenssions.font20,)
-            
-            ,),
+            Row(
+              children: [
+                SizedBox(width: Dimenssions.width20,),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Icon(Icons.arrow_back_rounded, color: AppColors.iconColor,)),
+                  SizedBox(width: Dimenssions.width30,),
+                CostumeAnimatedText(text: "Search Result",weight: FontWeight.bold,fontSize: Dimenssions.font20,),
+              ],
+            ),
             GetBuilder<ResultController>(builder: (controller) {
             return SizedBox(
               height: Dimenssions.height- Dimenssions.height20*4,
