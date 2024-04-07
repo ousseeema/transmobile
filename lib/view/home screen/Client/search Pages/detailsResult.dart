@@ -6,7 +6,9 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/view/components/Costumedetailsinfo.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/home%20screen/Client/search%20Pages/TripInfo.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/infowidget.dart';
+import 'package:transmobile/view/home%20screen/Client/search%20Pages/reviewWidget.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -126,8 +128,8 @@ class _detailsResultState extends State<detailsResult> with SingleTickerProvider
                         controller: _tabController,
                         children: const  [
                         infoWidget(),
-                        SizedBox(),
-                         SizedBox(),
+                        TripInfo(),
+                         ReviewWidget(),
                       ]),
                     )
 
