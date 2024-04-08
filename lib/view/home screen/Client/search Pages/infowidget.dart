@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,50 +36,97 @@ class _infoWidgetState extends State<infoWidget> {
                       Icons.email_outlined,
                       color: AppColors.iconColor,
                     ),
+                    text1:"Email :" ,
                     text: CostumeAnimatedText(
                         text:
-                            "Email :${controller.SelectedTrip!.transporter.email}")),
+                            " ${controller.SelectedTrip!.transporter.email}")),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
                 CostumeInfoDetails(
+                  text1: "Local Country:",
                     icon: const Icon(BoxIcons.bx_world,
                         color: AppColors.iconColor),
                     text: CostumeAnimatedText(
                         text:
-                            "Local Country: ${controller.SelectedTrip!.transporter.listCountry1}")),
+                            "${controller.SelectedTrip!.transporter.listCountry1}")),
+                SizedBox(
+                  height: Dimenssions.height20,
+                ),
+                // local address
+                CostumeInfoDetails(
+                  text1: "Local Address:",
+                    icon: const Icon(Icons.location_on_outlined,
+                        color: AppColors.iconColor),
+                    text: CostumeAnimatedText(
+                        text:
+                            "${controller.SelectedTrip!.transporter.localAddress}")),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
 
                 // local number
                 CostumeInfoDetails(
+                  text1:"Local Number: " ,
+                    icon: const Icon(Icons.phone_sharp,
+                        color: AppColors.iconColor),
+                    text: CostumeAnimatedText(
+                        text:
+                            "${controller.SelectedTrip!.transporter.phoneNumberA}")),
+                SizedBox(
+                  height: Dimenssions.height20,
+                ), 
+               
+
+                // destination country
+                CostumeInfoDetails(
+                  text1: "Destination Country:",
                     icon: const Icon(BoxIcons.bx_world,
                         color: AppColors.iconColor),
                     text: CostumeAnimatedText(
                         text:
-                            "Local Number: ${controller.SelectedTrip!.transporter.phoneNumberA}")),
-                SizedBox(
+                            "${controller.SelectedTrip!.transporter.listCountry2}")),
+                
+               SizedBox(
                   height: Dimenssions.height20,
                 ),
+                 CostumeInfoDetails(
+                  text1: "Destination Address:",
+                    icon: const Icon(Icons.location_on_outlined,
+                        color: AppColors.iconColor),
+                    text: CostumeAnimatedText(
+                        text:
+                            "${controller.SelectedTrip!.transporter.DestinationAddress}")),
+                
+               SizedBox(
+                  height: Dimenssions.height20,
+                ),
+
+
+
+
+
+
 
                 // second phone number
                 CostumeInfoDetails(
+                  text1: "Destination Number: ",
                     icon: const Icon(Icons.phone, color: AppColors.iconColor),
                     text: CostumeAnimatedText(
                         text:
-                            "second Number: ${controller.SelectedTrip!.transporter.phoneNumberB}")),
+                            "${controller.SelectedTrip!.transporter.phoneNumberB}")),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
-
+                    
                 // parcles true or false
                 CostumeInfoDetails(
-                    icon: const Icon(BoxIcons.bx_world,
+                  text1:"Parcles:" ,
+                    icon: const Icon(BoxIcons.bx_box,
                         color: AppColors.iconColor),
                     text: CostumeAnimatedText(
                         text:
-                            "Parcles: ${controller.SelectedTrip!.transporter.parsols.toString()}")),
+                            "${controller.SelectedTrip!.transporter.parsols.toString()}")),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
@@ -89,11 +138,12 @@ class _infoWidgetState extends State<infoWidget> {
                         ? Column(
                           children: [
                             CostumeInfoDetails(
+                              text1: "Parcels Sites:",
                                 icon: const Icon(Icons.place_outlined,
                                     color: AppColors.iconColor),
                                 text: CostumeAnimatedText(
                                     text:
-                                        "Parcels Sites: ${controller.SelectedTrip!.transporter.parsolsSite}")),
+                                        "${controller.SelectedTrip!.transporter.parsolsSite}")),
                          SizedBox(height: Dimenssions.height20,)
                           ],
                         )
@@ -101,13 +151,15 @@ class _infoWidgetState extends State<infoWidget> {
                         : Column(
                             children: [
                               CostumeInfoDetails(
+                                text1:"Parcels Sites: " ,
                                   icon: const Icon(Icons.place_outlined,
                                       color: AppColors.iconColor),
                                   text: CostumeAnimatedText(
                                       text:
-                                          "Parcels Sites: ${controller.SelectedTrip!.transporter.parsolsSite[0]},${controller.SelectedTrip!.transporter.parsolsSite[1]},${controller.SelectedTrip!.transporter.parsolsSite[3]}")),
+                                          "${controller.SelectedTrip!.transporter.parsolsSite[0]},${controller.SelectedTrip!.transporter.parsolsSite[1]},${controller.SelectedTrip!.transporter.parsolsSite[3]}")),
                              SizedBox(height: Dimenssions.height20,),
                               CostumeInfoDetails(
+                                text1: "Parcels Sites: ",
                                   icon: const Icon(Icons.place_outlined,
                                       color: AppColors.iconColor),
                                   text: CostumeAnimatedText(
@@ -122,11 +174,12 @@ class _infoWidgetState extends State<infoWidget> {
                     ? Column(
                       children: [
                         CostumeInfoDetails(
+                          text1: "Parcels Address: ",
                             icon: const Icon(Icons.location_on_outlined,
                                 color: AppColors.iconColor),
                             text: CostumeAnimatedText(
                                 text:
-                                    "Parcels Address: ${controller.SelectedTrip!.transporter.Adresse_Parsols}")),
+                                    "${controller.SelectedTrip!.transporter.Adresse_Parsols}")),
                      SizedBox(height: 
                      Dimenssions.height20,)
                       ],
@@ -135,42 +188,46 @@ class _infoWidgetState extends State<infoWidget> {
 
                 // price for kg
                 CostumeInfoDetails(
+                  text1: "Price/kg: ",
                     icon: const Icon(BoxIcons.bx_dollar_circle,
                         color: AppColors.iconColor),
                     text: CostumeAnimatedText(
                         text:
-                            "Price/kg: ${controller.SelectedTrip!.transporter.priceKg}")),
+                            "${controller.SelectedTrip!.transporter.priceKg}")),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
                 // home pickups and delivery
                 CostumeInfoDetails(
+                  text1: "Home Pickups/Delivery:",
                     icon: const Icon(BoxIcons.bx_transfer,
                         color: AppColors.iconColor),
                     text: CostumeAnimatedText(
                         text:
-                            "Home Pickups/Delivery: ${controller.SelectedTrip!.transporter.homePickUps.toString()}/ ${controller.SelectedTrip!.transporter.homeDelivery.toString()}")),
+                            " ${controller.SelectedTrip!.transporter.homePickUps.toString()}/ ${controller.SelectedTrip!.transporter.homeDelivery.toString()}")),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
 
                 CostumeInfoDetails(
+                  text1:"Car Model: " ,
                     icon: const Icon(EvaIcons.car_outline,
                         color: AppColors.iconColor),
                     text: CostumeAnimatedText(
                         text:
-                            "Car Model: ${controller.SelectedTrip!.transporter.carBrand}")),
+                            "${controller.SelectedTrip!.transporter.carBrand}")),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
 
                 // car plate
                 CostumeInfoDetails(
+                  text1: "Car Plate: ",
                     icon: const Icon(Icons.numbers_outlined,
                         color: AppColors.iconColor),
                     text: CostumeAnimatedText(
                         text:
-                            "Car Plate: ${controller.SelectedTrip!.transporter.carSerieNumber}")),
+                            "${controller.SelectedTrip!.transporter.carSerieNumber}")),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),

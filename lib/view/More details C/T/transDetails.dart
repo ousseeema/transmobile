@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
@@ -639,7 +640,7 @@ class _TransDetailsState extends State<TransDetails> {
                             width: Dimenssions.width10 / 2 + 1,
                           ),
                           Icon(
-                            CupertinoIcons.cube_box_fill,
+                           BoxIcons.bx_box,
                             size: Dimenssions.icon16 * 2,
                             color: AppColors.iconColor,
                           ),

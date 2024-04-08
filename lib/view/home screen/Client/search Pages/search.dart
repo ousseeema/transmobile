@@ -107,7 +107,7 @@ class _searchScreenState extends State<searchScreen> {
                 Padding(
                   padding: EdgeInsets.only(left: Dimenssions.LRpadmarg20),
                   child: CostumeSwitcher(
-                      icon: CupertinoIcons.cube_box_fill,
+                      icon: BoxIcons.bx_box,
                       text: "Receive parcels : ",
                       variable: "parcles"),
                 ),
