@@ -15,6 +15,8 @@ void main() async{
   
   runApp(const TransMobile());
    dependency.init();
+   
+   
  
   
 }
@@ -27,48 +29,17 @@ class TransMobile extends StatefulWidget {
 }
 
 class _TransMobileState extends State<TransMobile> {
-  bool? isClient ;
-  bool? isTransporteur ; 
+ 
   // This widget is the root of your application.
   @override
   void initState() {
  
     super.initState();
-     getUserCurrentState();
+     
     
   }
 
-  getUserCurrentState()async{
-       await shared.getClient().then(
-        (value) {
-          if(value==true){
-            setState(() {
-              isClient=true;
-              isTransporteur=false;
-              
-            });
-          }
-
-        });
-        await shared.getTransporteur().then((value) {
-           if(value==true){
-            setState(() {
-              isTransporteur=true;
-              isClient=false;
-            });
-          }
-        },);
-        
-        await shared.noCnoT().then((value) {
-            if(value==true){
-            setState(() {
-              isClient=false;
-              isTransporteur=false;
-            });
-          }
-        });
-    
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +52,8 @@ class _TransMobileState extends State<TransMobile> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: detailsResult(),
-      //home: ( isClient== null && isTransporteur==null  )? const Center(child:  CircularProgressIndicator()):(isTransporteur==true)? const TransHomeScreen(): (isClient==true)? const ClientMainScreens(): const SplachScreen()   ,
+     // home: detailsResult(),
+      home: const SplachScreen()
     );
   }
 }

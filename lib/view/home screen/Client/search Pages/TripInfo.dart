@@ -30,78 +30,81 @@ class _TripInfoState extends State<TripInfo> {
                     } else {
                       isPast = false;
                     }
-                    return TimelineTile(
-                      isFirst: index == 0 ? true : false,
-                      isLast: index == controller.SelectedTrip!.citys.length - 1 ? true : false,
-                      beforeLineStyle: LineStyle(
+                    return Padding(
+                      padding:  EdgeInsets.only(left: Dimenssions.LRpadmarg20, right: Dimenssions.LRpadmarg20),
+                      child: TimelineTile(
+                        isFirst: index == 0 ? true : false,
+                        isLast: index == controller.SelectedTrip!.citys.length - 1 ? true : false,
+                        beforeLineStyle: LineStyle(
+                            color: isPast
+                                ? AppColors.buttonColor
+                                : AppColors.buttonColor.withOpacity(0.4)),
+                        indicatorStyle: IndicatorStyle(
+                          drawGap: true,
+                          // size of the indicator
+                          width: Dimenssions.width30,
                           color: isPast
                               ? AppColors.buttonColor
-                              : AppColors.buttonColor.withOpacity(0.4)),
-                      indicatorStyle: IndicatorStyle(
-                        drawGap: true,
-                        // size of the indicator
-                        width: Dimenssions.width30,
-                        color: isPast
-                            ? AppColors.buttonColor
-                            : AppColors.buttonColor.withOpacity(0.4),
-                        iconStyle: IconStyle(
-                            iconData: Icons.done, color: Colors.white),
-                      ),
-                      endChild: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: Dimenssions.height20 * 8,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(Dimenssions.radius20),
-                              color: isPast
-                                  ? AppColors.buttonColor
-                                  : AppColors.buttonColor.withOpacity(0.2)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: Dimenssions.height20,
-                                  ),
-                                  CostumeAnimatedText(
-                                    text:
-                                        "Destination : ${controller.SelectedTrip!.citys[index].city}",
-                                    color: AppColors.mainTextColor,
-                                    textDecoration: isPast
-                                        ? TextDecoration.lineThrough
-                                        : TextDecoration.underline,
-                                    fontSize: Dimenssions.font20,
-                                    weight: FontWeight.bold,
-                                  ),
-                                  CostumeAnimatedText(
-                                    text:
-                                        "Visit Date : ${controller.SelectedTrip!.citys[index].dateofpassage.toString().substring(0, 11)}",
-                                    fontSize: Dimenssions.font20 - 5,
-                                    weight: FontWeight.normal,
-                                    color: AppColors.mainTextColor,
-                                    textDecoration: isPast
-                                        ? TextDecoration.lineThrough
-                                        : TextDecoration.underline,
-                                    decorationStyle: TextDecorationStyle.solid,
-                                  ),
-                                  
-                                ],
-                              ),
-                              SizedBox(
-                                width: Dimenssions.width20 * 2,
-                              ),
-                              Icon(
-                                isPast
-                                    ? Iconsax.location_slash_bold
-                                    : Iconsax.location_bold,
-                                size: Dimenssions.icon24,
-                                color:
-                                    isPast ? Colors.white : AppColors.iconColor,
-                              ),
-                            ],
+                              : AppColors.buttonColor.withOpacity(0.4),
+                          iconStyle: IconStyle(
+                              iconData: Icons.done, color: Colors.white),
+                        ),
+                        endChild: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: Dimenssions.height20 * 5,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.circular(Dimenssions.radius20),
+                                color: isPast
+                                    ? AppColors.buttonColor
+                                    : AppColors.buttonColor.withOpacity(0.2)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: Dimenssions.height20,
+                                    ),
+                                    CostumeAnimatedText(
+                                      text:
+                                          "Destination : ${controller.SelectedTrip!.citys[index].city}",
+                                      color: AppColors.mainTextColor,
+                                      textDecoration: isPast
+                                          ? TextDecoration.lineThrough
+                                          : TextDecoration.underline,
+                                      fontSize: Dimenssions.font20,
+                                      weight: FontWeight.bold,
+                                    ),
+                                    CostumeAnimatedText(
+                                      text:
+                                          "Visit Date : ${controller.SelectedTrip!.citys[index].dateofpassage.toString().substring(0, 11)}",
+                                      fontSize: Dimenssions.font20 - 5,
+                                      weight: FontWeight.normal,
+                                      color: AppColors.mainTextColor,
+                                      textDecoration: isPast
+                                          ? TextDecoration.lineThrough
+                                          : TextDecoration.underline,
+                                      decorationStyle: TextDecorationStyle.solid,
+                                    ),
+                                    
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: Dimenssions.width20 * 2,
+                                ),
+                                Icon(
+                                  isPast
+                                      ? Iconsax.location_slash_bold
+                                      : Iconsax.location_bold,
+                                  size: Dimenssions.icon24,
+                                  color:
+                                      isPast ? Colors.white : AppColors.iconColor,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

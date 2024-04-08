@@ -122,10 +122,10 @@ class HomeController extends GetxController {
     update();
 
     // connverting the user data into client model
-    await shared.getuser().then((value) {
-      client = ClientModel.fromJson(jsonDecode(value!));
-    });
-
+    
+   await shared.getuser().then((value) {
+        client = ClientModel.fromJson(jsonDecode(value!));
+       });
     // getting the transporter's from the data base
     Response TransResponse = await ClientRepo().GetAllTransporteurs();
     Response TripResponse = await ClientRepo().GetCurrentTrip();

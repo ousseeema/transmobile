@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:transmobile/view/home%20screen/Client/ClientMainScreens.dart';
+import 'package:transmobile/view/home%20screen/trans/TransHomeScreen.dart';
 import 'package:transmobile/view/splashscreens/information.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
+import 'package:transmobile/view/utils/shared.dart';
 
 class SplachScreen extends StatefulWidget {
   const SplachScreen({super.key});
@@ -14,9 +17,12 @@ class SplachScreen extends StatefulWidget {
 
 class _SplachScreenState extends State<SplachScreen> {
   bool _isExpanded = false;
+   bool? isClient ;
+  bool? isTransporteur ; 
   @override
   void initState() {
     super.initState();
+    getUserCurrentState();
 
     Future.delayed(const Duration(milliseconds: 100), () {
       setState(() {
@@ -24,10 +30,42 @@ class _SplachScreenState extends State<SplachScreen> {
       });
     });
 
-    Future.delayed(const Duration(milliseconds: 3000), () {
-      Get.off(()=> const informations() ,transition: Transition.fade);
+    Future.delayed(const Duration(milliseconds: 3500), () {
+      Get.off(()=> ( isClient== null && isTransporteur==null  )? const informations() :(isTransporteur==true)? const TransHomeScreen(): (isClient==true)? const ClientMainScreens(): const informations() , transition: Transition.fade);
     });
   
+  }
+  getUserCurrentState()async{
+       await shared.getClient().then(
+        (value) {
+          if(value==true){
+            setState(() {
+              isClient=true;
+              isTransporteur=false;
+              
+            });
+          }
+
+        });
+        await shared.getTransporteur().then((value) {
+           if(value==true){
+            setState(() {
+              isTransporteur=true;
+              isClient=false;
+            });
+          }
+        },);
+        
+        
+        await shared.noCnoT().then((value) {
+            if(value==true){
+            setState(() {
+              isClient=false;
+              isTransporteur=false;
+            });
+          }
+        });
+    
   }
 
   @override

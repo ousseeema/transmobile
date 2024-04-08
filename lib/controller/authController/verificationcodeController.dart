@@ -14,10 +14,10 @@ class verificationCodeController extends GetxController {
   String verificationCode = "";
   bool onediting_verification_code = true;
   bool is_Loading = false;
-  SharedPreferences shared= Get.find();
+  SharedPreferences shared = Get.find();
   bool? isClient;
   bool? istrans;
-  String email ="";
+  String email = "";
 
   void signup2() async {
     is_Loading = true;
@@ -34,15 +34,15 @@ class verificationCodeController extends GetxController {
       response = await authClientRepo().signup2Client(dataTosend);
 
       if (response.body["success"] == true) {
-        
-      
-            // enregistre le client object in a string in the sharedpreferences 
-              await  shared.setString("client", jsonEncode(response.body["data"]));
-            // enregistre el token fi sharedpreferences 
-           await  shared.setString("token", jsonEncode(response.body["token"]));
-            await shared.setBool("isLogged",true);
+        await shared.setString("user", jsonEncode(response.body["data"]));
+        // enregistre el token fi sharedpreferences
+        await shared.setString("token", jsonEncode(response.body["token"]));
+        await shared.setBool("isLogged", true);
+        // setting is transporteur to false  and client for true
+        await shared.setBool("client", true);
+        await shared.setBool("transporteur", false);
 
-            // afficche un snack bar de succes et move to the next page 
+        // afficche un snack bar de succes et move to the next page
         Get.snackbar("Success", "Sign up successfully",
             colorText: Colors.white, backgroundColor: Colors.green);
         Get.offAll(() => const ClientMainScreens());
@@ -50,30 +50,30 @@ class verificationCodeController extends GetxController {
           is_Loading = false;
           update();
         });
-        
       } else {
-      
         is_Loading = false;
-       update();
+        update();
 
-        Get.snackbar("Error", response.body["message"], colorText: Colors.white, backgroundColor: Colors.red);
+        Get.snackbar("Error", response.body["message"],
+            colorText: Colors.white, backgroundColor: Colors.red);
       }
-    } 
-    
-       // if the user is transporter then access this route of function and work 
+    }
+
+    // if the user is transporter then access this route of function and work
     else {
       response = await authTrasnRepo().signup2Trans(dataTosend);
-       // ! if  the respoonse is true then create a  &transporter object to access every where after 
-                
+      // ! if  the respoonse is true then create a  &transporter object to access every where after
+
       if (response.body["success"] == true) {
-         
-            // enregistre le client object in a string in the sharedpreferences 
-              await  shared.setString("transporter", jsonEncode(response.body["data"]));
-            // enregistre el token fi sharedpreferences 
-           await  shared.setString("token", jsonEncode(response.body["token"]));
-            await shared.setBool("isLogged",true);
-      
-         
+        // enregistre le client object in a string in the sharedpreferences
+        await shared.setString("user", jsonEncode(response.body["data"]));
+        // enregistre el token fi sharedpreferences
+        await shared.setString("token", jsonEncode(response.body["token"]));
+        await shared.setBool("isLogged", true);
+        // setting is transporteur to true and client for false
+        await shared.setBool("transporteur", true);
+        await shared.setBool("client", false);
+
         Get.snackbar("Success", "Sign up successfully",
             colorText: Colors.white, backgroundColor: Colors.green);
         Get.offAll(() => const TransHomeScreen());
@@ -82,11 +82,11 @@ class verificationCodeController extends GetxController {
         });
         update();
       } else {
-          is_Loading = false;
-          update();
+        is_Loading = false;
+        update();
 
-        Get.snackbar("Error", response.body["message"], colorText: Colors.white, backgroundColor: Colors.red);
-
+        Get.snackbar("Error", response.body["message"],
+            colorText: Colors.white, backgroundColor: Colors.red);
       }
     }
   }
@@ -103,89 +103,46 @@ class verificationCodeController extends GetxController {
     }
   }
 
+  void resending_verification_code() async {
+    is_Loading = true;
+    update();
 
+    Map<String, dynamic> data = {"email": email};
 
+    // encode the data to a json
+    String DataToSend = jsonEncode(data);
+    Response response;
+    if (isClient!) {
+      response =
+          await authClientRepo().ResendVerificationCodeClient(DataToSend);
 
-
-
-  void resending_verification_code()async  {
-
-      is_Loading = true ; 
-      update();
-
-
-
-      Map<String, dynamic> data  ={
-        "email": email
-      }     ;
-
-
-      // encode the data to a json 
-      String DataToSend= jsonEncode(data);
-      Response response ;
-      if(isClient!){
-        response = await  authClientRepo().ResendVerificationCodeClient(DataToSend);
-
-        if(response.body["success"] == true) {
-          
-                 Get.snackbar("Success", "Code reset successfully,check your email",
+      if (response.body["success"] == true) {
+        Get.snackbar("Success", "Code reset successfully,check your email",
             colorText: Colors.white, backgroundColor: Colors.green);
-          
-           is_Loading =false ;
-           update();
 
-                
-        }else {
-          Get.snackbar("Success", response.body["message"],
+        is_Loading = false;
+        update();
+      } else {
+        Get.snackbar("Success", response.body["message"],
             colorText: Colors.white, backgroundColor: Colors.red);
-           is_Loading =false ;
-           update();
-
-
-
-        }
-
-
-
- 
-
-
-  
-
-      }else{
-
-         response = await authTrasnRepo().ResendVerificationCodeTrans(DataToSend);
-
-          if(response.body["success"] == true) {
-                 Get.snackbar("Success", "Code reset successfully,check your email",
-            colorText: Colors.white, backgroundColor: Colors.green);
-          
-           is_Loading =false ;
-           update();
-
-                
-        }else {
-          Get.snackbar("Success", response.body["message"],
-            colorText: Colors.white, backgroundColor: Colors.red);
-           is_Loading =false ;
-           update();
-
-
-
-        }
-
-
-
+        is_Loading = false;
+        update();
       }
+    } else {
+      response = await authTrasnRepo().ResendVerificationCodeTrans(DataToSend);
 
+      if (response.body["success"] == true) {
+        Get.snackbar("Success", "Code reset successfully,check your email",
+            colorText: Colors.white, backgroundColor: Colors.green);
 
-
-
-
-    
-     
-      
-
-
+        is_Loading = false;
+        update();
+      } else {
+        Get.snackbar("Success", response.body["message"],
+            colorText: Colors.white, backgroundColor: Colors.red);
+        is_Loading = false;
+        update();
+      }
+    }
   }
 }

@@ -108,6 +108,7 @@ class searchController extends GetxController {
       Get.to(() => const SearchResult());
    Future.delayed(const Duration(seconds: 1), () {
           isLoading = false;
+          update();
         });
     
       update();
