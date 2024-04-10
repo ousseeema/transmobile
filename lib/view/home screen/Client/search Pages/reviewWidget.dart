@@ -19,7 +19,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
         return ListView.builder(
         itemCount: controller.SelectedTrip!.transporter.comments.length,
         itemBuilder: (_, index){
-          return const CostumeReviewContainer();
+          return  CostumeReviewContainer(username: "Oussema Ferchichi", createdAt: "10-02-2024",rating: 4, Comment: "qsdsqjkmQSJDKHHHHHHHHHHHDLLLLLLLLLLLLLLLZEEFHILRDFHOMKZLFHZEFHEDFLKJQSFLMQSKHDFMSZDEFHQSDF",imageUrl: 'users_66146e6030f52a171ac1ef6c.jpg',);
 
         });
       },)

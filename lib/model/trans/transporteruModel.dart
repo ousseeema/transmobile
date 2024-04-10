@@ -3,6 +3,8 @@
 
 import 'dart:convert';
 
+import 'package:transmobile/model/client/ClientModel.dart';
+
 TransporterModel transporterModelFromJson(String str) => TransporterModel.fromJson(json.decode(str));
 
 String transporterModelToJson(TransporterModel data) => json.encode(data.toJson());
@@ -129,12 +131,14 @@ class TransporterModel {
 
 class Comment {
     String fullname;
+    ClientModel user;
     String comment;
     int rating;
     String createdAt;
 
     Comment({
         required this.fullname,
+        required this.user,
         required this.comment,
         required this.rating,
         required this.createdAt,
@@ -142,6 +146,7 @@ class Comment {
 
     factory Comment.fromJson(Map<String, dynamic> json) => Comment(
         fullname: json["fullname"],
+         user:ClientModel.fromJson(json["user"]), 
         comment: json["comment"],
         rating: json["rating"],
         createdAt: json["createdAt"],
@@ -149,6 +154,7 @@ class Comment {
 
     Map<String, dynamic> toJson() => {
         "fullname": fullname,
+        "user": user,
         "comment": comment,
         "rating": rating,
         "createdAt": createdAt,
