@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -9,7 +11,7 @@ import 'package:transmobile/repository/client/ClientRepo.dart';
 import 'package:transmobile/view/utils/shared.dart';
 
 class HomeController extends GetxController {
-  List<TransporterModel> Transporteurs = [];
+  List<TripModel> alltrips = [];
   List<TripModel> trips = [
     TripModel(
         id: "445453453",
@@ -116,7 +118,7 @@ class HomeController extends GetxController {
   ClientModel? client;
 
   Future<void> LoadData() async {
-    Transporteurs = [];
+    alltrips = [];
     // this is the responsable if we tap in refresh button this will display the shimmer effect
     isloading = true;
     update();
@@ -127,13 +129,15 @@ class HomeController extends GetxController {
         client = ClientModel.fromJson(jsonDecode(value!));
        });
     // getting the transporter's from the data base
-    Response TransResponse = await ClientRepo().GetAllTransporteurs();
+    Response TripsResponse = await ClientRepo().GetAllTrips();
     Response TripResponse = await ClientRepo().GetCurrentTrip();
     // adding the stats endpoint in the future
 
-    if (TripResponse.body["success"] && TransResponse.body["success"]) {
-      TransResponse.body['data'].forEach((transporter) =>
-          Transporteurs.add(TransporterModel.fromJson(transporter)));
+    if (TripResponse.body["success"] && TripResponse.body["success"]) {
+      //all trips
+      TripsResponse.body['data'].forEach((trip) =>
+          alltrips.add(TripModel.fromJson(trip)));
+          //current trip
       TripResponse.body["data"]
           .forEach((trip) => trips.add(TripModel.fromJson(trip)));
 

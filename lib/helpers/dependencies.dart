@@ -7,9 +7,11 @@ import 'package:transmobile/controller/authController/signupController.dart';
 import 'package:transmobile/controller/authController/verificationcodeController.dart';
 import 'package:transmobile/controller/client%20trans%20details/clientmoreDetails.dart';
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
+import 'package:transmobile/controller/homeScreen/Client/SendRequest.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/controller/homeScreen/Client/searchController.dart';
+import 'package:transmobile/controller/homeScreen/Client/transporteurDetailsController.dart';
 import 'package:transmobile/controller/homeScreen/TransHomeController.dart';
 import 'package:transmobile/controller/homeScreen/Client/ClientMainScreensController.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
@@ -37,7 +39,11 @@ class dependency {
     Get.lazyPut(() => HomeController(), fenix: true);
     Get.lazyPut(() => searchController(), fenix: true);
     Get.lazyPut(() => ResultController(), fenix: true);
-    Get.lazyPut(() => DetailsResult(), fenix: true);
+    Get.lazyPut(() => DetailsResult(), fenix: true);  
+    Get.lazyPut(() => TransporterDetailsController(), fenix: true);
+    Get.lazyPut(() => SendRequestController(), fenix: true);
+
+
 
     // injecting repo,
     //apiRepository:

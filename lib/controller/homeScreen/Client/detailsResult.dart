@@ -10,6 +10,7 @@ class DetailsResult extends GetxController{
 TripModel?  SelectedTrip ;
   void selectedtrip(TripModel selectedone){
     SelectedTrip = selectedone;  
+    
     Get.to(()=> const detailsResult() );
   }
 }

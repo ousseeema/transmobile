@@ -26,6 +26,7 @@ SharedPreferences shared = Get.find();
   static String resendverificationcodeTrans = "/authTransporteur/resendverificationcode";
 
   // client other endpoints
+  static String getalltrips = "/clients/getalltrips";
   static String updatesuser = "/clinets/updateUserDetails";
   static String updatePicUser = "/clients/uploadProfilePicture";
   static String usergetAllTransporter = "/clients/getAllTransporteur";

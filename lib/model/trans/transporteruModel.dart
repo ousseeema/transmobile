@@ -95,10 +95,9 @@ class TransporterModel {
         profilePicture: json["profilePicture"],
         pro: json["pro"],
         createdAt: json["createdAt"],
-        comments: List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),
-    );
+        comments:List<Comment>.from(json["comments"].map((commentJson) => Comment.fromJson(commentJson))));
 
-    Map<String, dynamic> toJson() => {
+        Map<String, dynamic> toJson() => {
         "_id": id,
         "fullName": fullName,
         "email": email,
@@ -125,36 +124,39 @@ class TransporterModel {
         "profilePicture": profilePicture,
         "pro": pro,
         "createdAt": createdAt,
-        "comments": List<dynamic>.from(comments.map((x) => x.toJson())),
+        "comments": List<Comment>.from(comments.map((x) => x.toJson())),
     };
 }
 
 class Comment {
-    String fullname;
-    ClientModel user;
+    String id;
+   ClientModel user;
     String comment;
     int rating;
     String createdAt;
 
     Comment({
-        required this.fullname,
-        required this.user,
+     required this.id,
+       required this.user,
         required this.comment,
         required this.rating,
         required this.createdAt,
     });
 
-    factory Comment.fromJson(Map<String, dynamic> json) => Comment(
-        fullname: json["fullname"],
-         user:ClientModel.fromJson(json["user"]), 
-        comment: json["comment"],
+    factory Comment.fromJson(Map<String, dynamic> json) {
+      return Comment(
+   
+        id: json["_id"].toString(),
+       user:ClientModel.fromJson(json['user']), 
+        comment: json["comment"], 
         rating: json["rating"],
         createdAt: json["createdAt"],
     );
+    }
 
     Map<String, dynamic> toJson() => {
-        "fullname": fullname,
-        "user": user,
+      "_id" : id,
+        "user": user.toJson(),
         "comment": comment,
         "rating": rating,
         "createdAt": createdAt,

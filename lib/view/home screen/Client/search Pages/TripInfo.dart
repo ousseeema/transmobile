@@ -73,7 +73,9 @@ class _TripInfoState extends State<TripInfo> {
                               SizedBox(
                                 height: Dimenssions.height20,
                               ),
-                              AnimatedTextKit(animatedTexts: [
+                              AnimatedTextKit(
+                                repeatForever: true,
+                                animatedTexts: [
                                 ColorizeAnimatedText(
                                     "Destination : ${controller.SelectedTrip!.citys[index].city}",
                                     textStyle: TextStyle(

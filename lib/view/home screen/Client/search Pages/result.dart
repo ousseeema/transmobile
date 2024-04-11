@@ -54,32 +54,25 @@ class _SearchResultState extends State<SearchResult> {
               child: ListWheelScrollView.useDelegate(
                 itemExtent: Dimenssions.height20 * 10,
                 controller: FixedExtentScrollController(initialItem: 1),
-                physics: FixedExtentScrollPhysics(),
+                physics: const FixedExtentScrollPhysics(),
                 childDelegate: ListWheelChildBuilderDelegate(
                       childCount: controller.tripsafterFilter.length,
                   builder: (context, index){
-                    return  GestureDetector(
-                     onTap:(){
-                      // select the trip that we will be interested in  on the next page
-                      Get.find<DetailsResult>().selectedtrip(controller.tripsafterFilter[index]);
-                      
-                     },
-                      child: CostumTransContainer(
-                          id: controller.tripsafterFilter[index].id, 
-                          TransName: controller.tripsafterFilter[index].transporter.fullName,
-                          imagename: controller.tripsafterFilter[index].transporter.profilePicture,
-                          depart: controller.tripsafterFilter[index].citys[0].city,
-                          dateDepart: controller.tripsafterFilter[index].citys[0].dateofpassage,
-                          Destination: controller.tripsafterFilter[index]
-                          .citys[controller.tripsafterFilter[index].citys.length-1].city,
-                          destinationDate: controller
-                          .tripsafterFilter[index]
-                          .citys[controller.tripsafterFilter[index].citys.length-1]
-                          .dateofpassage,
-                          parcels: controller.tripsafterFilter[index].transporter.parsols,
-                      price: controller.tripsafterFilter[index].transporter.priceKg),
-                         
-                    );
+                    return  CostumTransContainer(
+                      index : index,
+                        id: controller.tripsafterFilter[index].id, 
+                        TransName: controller.tripsafterFilter[index].transporter.fullName,
+                        imagename: controller.tripsafterFilter[index].transporter.profilePicture,
+                        depart: controller.tripsafterFilter[index].citys[0].city,
+                        dateDepart: controller.tripsafterFilter[index].citys[0].dateofpassage,
+                        Destination: controller.tripsafterFilter[index]
+                        .citys[controller.tripsafterFilter[index].citys.length-1].city,
+                        destinationDate: controller
+                        .tripsafterFilter[index]
+                        .citys[controller.tripsafterFilter[index].citys.length-1]
+                        .dateofpassage,
+                        parcels: controller.tripsafterFilter[index].transporter.parsols,
+                    price: controller.tripsafterFilter[index].transporter.priceKg);
                   },
                
             )));

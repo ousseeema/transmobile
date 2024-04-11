@@ -1,9 +1,7 @@
 
 import 'dart:convert';
 
-ClientModel clientModelFromJson(String str) => ClientModel.fromJson(json.decode(str));
 
-String clientModelToJson(ClientModel data) => json.encode(data.toJson());
 
 class ClientModel {
     String id;
@@ -37,7 +35,7 @@ class ClientModel {
     });
 
     factory ClientModel.fromJson(Map<String, dynamic> json) => ClientModel(
-        id: json["_id"],
+        id: json["_id"].toString(),
         fullName: json["fullName"],
         email: json["email"],
         phoneNumber: json["Phone_Number"],

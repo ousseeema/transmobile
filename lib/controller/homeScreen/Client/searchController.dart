@@ -121,8 +121,9 @@ class searchController extends GetxController {
     }
       
     } catch (e) {
+      print(e);
       Get.snackbar("Ops",
-          "Check your internet connection",backgroundColor: Colors.red, colorText: Colors.white);
+          'check your internet',backgroundColor: Colors.red, colorText: Colors.white);
      
     }
   }

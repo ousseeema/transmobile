@@ -7,7 +7,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
+import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
+import 'package:transmobile/controller/homeScreen/Client/transporteurDetailsController.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
 import 'package:transmobile/view/home%20screen/Client/home%20Pages/Maps.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
@@ -114,7 +117,7 @@ class _HomeState extends State<Home> {
                               height: Dimenssions.height10,
                             ),
                             SizedBox(
-                              height: Dimenssions.height20 * 10,
+                              height: Dimenssions.height20 * 11,
                               width: Dimenssions.width,
                               child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
@@ -126,6 +129,7 @@ class _HomeState extends State<Home> {
                                         height: Dimenssions.height20 * 10,
                                         width: Dimenssions.width - 20,
                                         decoration: BoxDecoration(
+                                           
                                             color: Colors.red,
                                             image: const DecorationImage(
                                                 fit: BoxFit.cover,
@@ -298,14 +302,18 @@ class _HomeState extends State<Home> {
                                           ),
                                           Column(
                                             children: [
-                                              CostumeAnimatedText(
-                                                  text: "Welcome Back! "),
                                               SizedBox(
-                                                height: Dimenssions.height10,
+                                                height:
+                                                    Dimenssions.height20 * 1.5,
                                               ),
                                               CostumeAnimatedText(
-                                                  text: controller
-                                                      .client!.fullName, color: AppColors.insidetextcolor,),
+                                                  text: "Welcome Back! "),
+                                              CostumeAnimatedText(
+                                                text:
+                                                    controller.client!.fullName,
+                                                color:
+                                                    AppColors.insidetextcolor,
+                                              ),
                                             ],
                                           ),
                                         ],
@@ -330,7 +338,14 @@ class _HomeState extends State<Home> {
                                       height: Dimenssions.height20 * 10,
                                       width: Dimenssions.width - 20,
                                       decoration: BoxDecoration(
-                                          color: Colors.red,
+                                           boxShadow: const [
+                                              BoxShadow(
+                                                color: Colors.grey,
+                                                blurRadius: 4,
+                                                offset:  Offset(
+                                                    4, 8), // Shadow position
+                                              ),
+                                            ],
                                           image: const DecorationImage(
                                               fit: BoxFit.cover,
                                               image: AssetImage(
@@ -359,15 +374,14 @@ class _HomeState extends State<Home> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              if(controller.trips.length>0){
-                                Get.to(() => Maps());
-
+                              if (controller.trips.isNotEmpty) {
+                                Get.to(() => const Maps());
+                              } else {
+                                Get.snackbar(
+                                  "No trips",
+                                  "Sorry but no Trips found",
+                                );
                               }
-                              else{
-                                Get.snackbar("No trips", "Sorry but no Trips found", );
-
-                              }
-                              
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -457,7 +471,7 @@ class _HomeState extends State<Home> {
                               CostumeAnimatedText(
                                 text: "view more ",
                                 weight: FontWeight.w100,
-                                fontSize: Dimenssions.font20 -5,
+                                fontSize: Dimenssions.font20 - 5,
                                 color: Colors.grey,
                                 textDecoration: TextDecoration.underline,
                               ),
@@ -475,22 +489,28 @@ class _HomeState extends State<Home> {
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 // list of transporteurs length
-                                itemCount: controller.Transporteurs.length,
+                                itemCount: controller.trips.length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: EdgeInsets.only(
                                         left: Dimenssions.LRpadmarg10 / 2,
                                         right: Dimenssions.LRpadmarg10 / 2),
-                                    child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        // Adjust the radius to match the container's borderRadius
-                                        child: Image.network(
-                                          "${AppConstant.Transimage}/${controller.Transporteurs[index].profilePicture}",
-                                          height: Dimenssions.height20 * 6,
-                                          width: Dimenssions.width20 * 4,
-                                          fit: BoxFit.cover,
-                                        )),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Get.find<DetailsResult>().selectedtrip(controller.trips[index]);
+                                        Get.to(()=> DetailsResult());
+                                      },
+                                      child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          // Adjust the radius to match the container's borderRadius
+                                          child: Image.network(
+                                            "${AppConstant.Transimage}/${controller.trips[index].transporter.profilePicture}",
+                                            height: Dimenssions.height20 * 6,
+                                            width: Dimenssions.width20 * 4,
+                                            fit: BoxFit.cover,
+                                          )),
+                                    ),
                                   );
                                 }),
                           ),
