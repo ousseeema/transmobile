@@ -21,6 +21,9 @@ class UserApi extends GetConnect implements GetxService {
     try{
       Response response = await post("$baseurl$uri",
          data ,
+         headers: {
+           'Authorization': 'Bearer $token',
+        },
        contentType: "application/json", 
         );
         return response;
@@ -46,6 +49,9 @@ class UserApi extends GetConnect implements GetxService {
     try{
       Response response = await put("$baseurl$uri",
          data ,
+         headers: {
+           'Authorization': 'Bearer $token',
+        },
        contentType: "application/json", 
         );
         return response;
