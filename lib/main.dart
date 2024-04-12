@@ -6,6 +6,7 @@ import 'package:transmobile/helpers/dependencies.dart';
 import 'package:transmobile/view/home%20screen/Client/ClientMainScreens.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/detailsResult.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/search.dart';
+import 'package:transmobile/view/home%20screen/Client/search%20Pages/sendRequest.dart';
 import 'package:transmobile/view/home%20screen/trans/TransHomeScreen.dart';
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 
@@ -45,15 +46,15 @@ class _TransMobileState extends State<TransMobile> {
   Widget build(BuildContext context) {
 
     return GetMaterialApp(
-      
+      defaultTransition: Transition.fade,
       debugShowCheckedModeBanner: false, 
       theme: ThemeData(
         fontFamily: "MadimiOne",
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-     // home: detailsResult(),
-      home: const SplachScreen()
+     // home: SendRequest(),
+     home: const SplachScreen()
     );
   }
 }

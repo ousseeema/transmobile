@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, avoid_unnecessary_containers
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +10,10 @@ import 'package:shimmer/shimmer.dart';
 import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
-import 'package:transmobile/controller/homeScreen/Client/transporteurDetailsController.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
 import 'package:transmobile/view/home%20screen/Client/home%20Pages/Maps.dart';
+import 'package:transmobile/view/home%20screen/Client/home%20Pages/allTripsList.dart';
+import 'package:transmobile/view/home%20screen/Client/search%20Pages/detailsResult.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -129,7 +130,6 @@ class _HomeState extends State<Home> {
                                         height: Dimenssions.height20 * 10,
                                         width: Dimenssions.width - 20,
                                         decoration: BoxDecoration(
-                                           
                                             color: Colors.red,
                                             image: const DecorationImage(
                                                 fit: BoxFit.cover,
@@ -338,14 +338,14 @@ class _HomeState extends State<Home> {
                                       height: Dimenssions.height20 * 10,
                                       width: Dimenssions.width - 20,
                                       decoration: BoxDecoration(
-                                           boxShadow: const [
-                                              BoxShadow(
-                                                color: Colors.grey,
-                                                blurRadius: 4,
-                                                offset:  Offset(
-                                                    4, 8), // Shadow position
-                                              ),
-                                            ],
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              color: Colors.grey,
+                                              blurRadius: 4,
+                                              offset: Offset(
+                                                  4, 8), // Shadow position
+                                            ),
+                                          ],
                                           image: const DecorationImage(
                                               fit: BoxFit.cover,
                                               image: AssetImage(
@@ -468,13 +468,19 @@ class _HomeState extends State<Home> {
                                     fontSize: Dimenssions.font20 + 3),
                               ),
                               const Spacer(),
-                              CostumeAnimatedText(
-                                text: "view more ",
-                                weight: FontWeight.w100,
-                                fontSize: Dimenssions.font20 - 5,
-                                color: Colors.grey,
-                                textDecoration: TextDecoration.underline,
+                              GestureDetector(
+                                onTap: () {
+                                Get.to(()=> const AllTripsListScreen());
+                                },
+                                child: Text("View more", style: TextStyle(
+                                  
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: Dimenssions.font20 - 5,
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.underline,
+                                ),),
                               ),
+                              SizedBox(width: Dimenssions.width20,)
                             ],
                           ),
                           SizedBox(
@@ -489,28 +495,62 @@ class _HomeState extends State<Home> {
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 // list of transporteurs length
-                                itemCount: controller.trips.length,
+                                itemCount: 5,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: EdgeInsets.only(
                                         left: Dimenssions.LRpadmarg10 / 2,
                                         right: Dimenssions.LRpadmarg10 / 2),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Get.find<DetailsResult>().selectedtrip(controller.trips[index]);
-                                        Get.to(()=> DetailsResult());
-                                      },
-                                      child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(100),
-                                          // Adjust the radius to match the container's borderRadius
-                                          child: Image.network(
-                                            "${AppConstant.Transimage}/${controller.trips[index].transporter.profilePicture}",
-                                            height: Dimenssions.height20 * 6,
-                                            width: Dimenssions.width20 * 4,
-                                            fit: BoxFit.cover,
-                                          )),
-                                    ),
+                                    child: index == 4
+                                        ? GestureDetector(
+                                            onTap: () {
+                                              Get.to(
+                                                  () =>
+                                                      const AllTripsListScreen(),
+                                                  transition: Transition.fade,
+                                                  duration: const Duration(
+                                                      seconds: 1));
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              child: Container(
+                                                height:
+                                                    Dimenssions.height20 * 6,
+                                                width: Dimenssions.width20 * 4,
+                                                color: AppColors.buttonColor
+                                                    .withOpacity(0.3),
+                                                child: const Center(
+                                                  child: Icon(
+                                                      Icons.plus_one_outlined),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        : GestureDetector(
+                                            onTap: () {
+                                              Get.find<DetailsResult>()
+                                                  .selectedtrip(controller
+                                                      .alltrips[index]);
+                                              Get.to(
+                                                () => const detailsResult(),
+                                                transition: Transition.fade,
+                                              
+                                              );
+                                            },
+                                            child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(100),
+                                                // Adjust the radius to match the container's borderRadius
+                                                child: Image.network(
+                                                  "${AppConstant.Transimage}/${controller.alltrips[index].transporter.profilePicture}",
+                                                  height:
+                                                      Dimenssions.height20 * 6,
+                                                  width:
+                                                      Dimenssions.width20 * 4,
+                                                  fit: BoxFit.cover,
+                                                )),
+                                          ),
                                   );
                                 }),
                           ),

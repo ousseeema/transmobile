@@ -3,11 +3,13 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/view/components/Costumedetailsinfo.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/home%20screen/Client/search%20Pages/sendRequest.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -232,18 +234,25 @@ class _infoWidgetState extends State<infoWidget> {
                   height: Dimenssions.height20,
                 ),
 
-                Container(
-                    height: Dimenssions.height10 * 5,
-                    width: Dimenssions.width30 * 9,
-                    decoration: BoxDecoration(
-                        color: AppColors.buttonColor,
-                        borderRadius:
-                            BorderRadius.circular(Dimenssions.radius10)),
-                    child: Center(
-                        child: CostumeAnimatedText(
-                      text: "Send a request",
-                      color: AppColors.insidetextcolor,
-                    ))),
+                
+               controller.SelectedTrip!.citys.isEmpty? 
+               SizedBox(height: Dimenssions.height20,) :
+                GestureDetector(
+                  onTap: () {
+                    Get.to(()=> const SendRequest());
+                  },
+                  child: Container(
+                      height: Dimenssions.height10 * 5,
+                      width: Dimenssions.width30 * 9,
+                      decoration: BoxDecoration(
+                          color: AppColors.buttonColor,
+                          borderRadius:
+                              BorderRadius.circular(Dimenssions.radius10)),
+                      child:const  Center(
+                          child: Text("Send a request", style: TextStyle(
+                            color: AppColors.insidetextcolor
+                          ),))),
+                ),
                 SizedBox(
                   height: Dimenssions.height20 * 2,
                 ),

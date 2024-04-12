@@ -37,7 +37,7 @@ class _ClientMainScreensState extends State<ClientMainScreens> {
              Icon(BoxIcons.bx_home, color: Controller.currentIndex==0?Colors.black : AppColors.iconColor ),
              Icon(BoxIcons.bx_message, color: Controller.currentIndex==1?Colors.black:AppColors.iconColor),
               Icon(BoxIcons.bx_search, color:Controller.currentIndex==2? Colors.black:AppColors.iconColor),
-             Icon(BoxIcons.bx_notification, color: Controller.currentIndex==3?Colors.black:AppColors.iconColor),
+             Icon(EvaIcons.bell_outline, color: Controller.currentIndex==3?Colors.black:AppColors.iconColor),
              Icon(BoxIcons.bx_user, color: Controller.currentIndex==4? Colors.black:AppColors.iconColor),
             
           ]),

@@ -43,7 +43,7 @@ class _detailsResultState extends State<detailsResult>
     return Scaffold(
       body: SafeArea(
           child: Stack(
-        children: [
+                  children: [
           Positioned(
               top: Dimenssions.height20 * 5,
               bottom: 0,
@@ -73,13 +73,13 @@ class _detailsResultState extends State<detailsResult>
                                     speed: const Duration(
                                       milliseconds: 500
                                     ),
-
+          
                                   controller
                                     .SelectedTrip!.transporter.fullName,
                                     textStyle: TextStyle(
                                        fontSize: Dimenssions.font20,
                                        fontWeight: FontWeight.bold, 
-
+          
                                     ),
                                     colors: [
                                        Colors.purple,
@@ -87,8 +87,8 @@ class _detailsResultState extends State<detailsResult>
                                       Colors.yellow,
                                       Colors.red,
                                     ]
-
-
+          
+          
                                 )
                                 ]),
                               
@@ -110,7 +110,7 @@ class _detailsResultState extends State<detailsResult>
                           SizedBox(
                             height: Dimenssions.height20,
                           ),
-
+          
                           // message button to lance the coonversation
                           Container(
                             decoration: BoxDecoration(
@@ -184,14 +184,14 @@ class _detailsResultState extends State<detailsResult>
                                   height: Dimenssions.height20*5,
                                   width: Dimenssions.width20*5,
                                   
-                                  child: LottieBuilder.asset("assets/animations/nodatafound.json")) ,
+                                  child:Center(
+                                    child: CostumeAnimatedText(text: 'No Trips Available'),
+                                  )) ,
                                )  :const TripInfo(),
                                   controller.SelectedTrip!.transporter.comments.isEmpty?Center(
-                                child:  SizedBox(
-                                  height: Dimenssions.height20*5,
-                                  width: Dimenssions.width20*5,
-                                  
-                                  child: LottieBuilder.asset("assets/animations/nodatafound.json")) ,
+                                child: Center(
+                                  child: CostumeAnimatedText(text: 'No Comments Available'),
+                                ) ,
                                ) : const  ReviewWidget(),
                                 ]),
                           )
@@ -219,11 +219,19 @@ class _detailsResultState extends State<detailsResult>
                                       
                                           ),
                                     ) ;
-
-                })),
-          )
-        ],
-      )),
+          
+                  })),
+                ),
+            Positioned(
+               top: Dimenssions.height20,
+               left: Dimenssions.width20,
+               child:GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+              child: const  Icon(Icons.arrow_back_rounded, )))
+                  ],
+                )),
     );
   }
 }

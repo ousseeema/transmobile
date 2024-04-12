@@ -11,7 +11,12 @@ import 'package:transmobile/repository/client/ClientRepo.dart';
 import 'package:transmobile/view/utils/shared.dart';
 
 class HomeController extends GetxController {
+  //all trips
+ 
+
+
   List<TripModel> alltrips = [];
+  // current trip
   List<TripModel> trips = [
     TripModel(
         id: "445453453",
@@ -114,6 +119,8 @@ class HomeController extends GetxController {
         createdAt:' DateTime(2024,14,14)'),
  
   ];
+
+  
   bool isloading = true;
   ClientModel? client;
 
@@ -134,6 +141,7 @@ class HomeController extends GetxController {
     // adding the stats endpoint in the future
 
     if (TripResponse.body["success"] && TripResponse.body["success"]) {
+      print(TripsResponse.body["data"]);
       //all trips
       TripsResponse.body['data'].forEach((trip) =>
           alltrips.add(TripModel.fromJson(trip)));

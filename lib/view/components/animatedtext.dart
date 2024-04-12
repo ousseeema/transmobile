@@ -33,7 +33,10 @@ class CostumeAnimatedText extends StatelessWidget {
     
       speed:const Duration(milliseconds: 100),
       " $text",
+
       textStyle: TextStyle(
+        overflow: TextOverflow.ellipsis,
+
         decorationColor: decorationColor,
         decorationStyle: decorationStyle,
       color: color,
