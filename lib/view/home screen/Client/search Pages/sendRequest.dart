@@ -21,6 +21,7 @@ class _SendRequestState extends State<SendRequest> {
   final TextEditingController number1 = TextEditingController();
   final TextEditingController number2 = TextEditingController();
   final TextEditingController pickupAddress = TextEditingController();
+  final TextEditingController recieverAddress = TextEditingController();
   final TextEditingController totalkg = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class _SendRequestState extends State<SendRequest> {
       body: SafeArea(
         child: GetBuilder<SendRequestController>(
           builder: (controller) {
-            return SingleChildScrollView(
+            return  controller.is_Loading==true ? const CircularProgressIndicator() :  SingleChildScrollView(
               child: Column(
                 children: [
                   SizedBox(
@@ -185,7 +186,7 @@ class _SendRequestState extends State<SendRequest> {
                     height: Dimenssions.height20 * 4,
                     width: Dimenssions.width - Dimenssions.width20,
                     child: TextField(
-                      controller: pickupAddress,
+                      controller: recieverAddress,
                       decoration: InputDecoration(
                           hintText:
                               "23 Rue de Grenell,75700 PARIS CEDEX,FRANCE ",
