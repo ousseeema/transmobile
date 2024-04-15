@@ -11,6 +11,7 @@ import 'package:transmobile/controller/homeScreen/Client/SendRequestController.d
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/controller/homeScreen/Client/searchController.dart';
+import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/controller/homeScreen/TransHomeController.dart';
 import 'package:transmobile/controller/homeScreen/Client/ClientMainScreensController.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
@@ -40,6 +41,7 @@ class dependency {
     Get.lazyPut(() => ResultController(), fenix: true);
     Get.lazyPut(() => DetailsResult(), fenix: true);  
     Get.lazyPut(() => SendRequestController(), fenix: true);
+    Get.lazyPut(() => SettingController(),fenix: true);
 
 
 

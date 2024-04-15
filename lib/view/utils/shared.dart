@@ -1,4 +1,6 @@
 
+// ignore_for_file: await_only_futures
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class shared{
@@ -13,7 +15,7 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     
     SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     
-      return sharedpreferences.getBool("isLogged")==true  && sharedpreferences.getBool("transporteur") == true;
+      return  sharedpreferences.getBool("isLogged")==true  && sharedpreferences.getBool("transporteur") == true;
     
   
   }
@@ -35,7 +37,7 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
   }
    static Future<String?>  getuser()async{
         SharedPreferences sharedpreferences = await SharedPreferences.getInstance();      
-         return  sharedpreferences.getString("user")  ;
+         return  await sharedpreferences.getString("user")  ;
  
     }
 

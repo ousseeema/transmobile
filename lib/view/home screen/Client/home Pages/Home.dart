@@ -408,9 +408,7 @@ class _HomeState extends State<Home> {
                                         ),
                                         onMapCreated:
                                             (GoogleMapController controller) {
-                                          setState(() {
-                                            _mapcontroller = controller;
-                                          });
+                                        
                                           _mapcontroller = controller;
                                         },
                                         onCameraMove: (position) {

@@ -25,6 +25,8 @@ class SendRequestController extends GetxController {
   bool is_Loading = false;
 
   void sendRequest() async {
+     is_Loading =true;
+     update();
     Map<String, dynamic> message = {
       "numberofkg": totalkg.toString(),
       "phoneNumberof_the_sender": phoneNumberof_the_sender,

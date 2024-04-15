@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class CostumeAnimatedText extends StatelessWidget {
+  
   String text;
   double? fontSize ;
   Color? color ;
@@ -26,6 +27,7 @@ class CostumeAnimatedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedTextKit(
+     
       totalRepeatCount: 1,
       animatedTexts: [ 
 

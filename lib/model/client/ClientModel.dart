@@ -16,10 +16,12 @@ class ClientModel {
     String country;
     String profilePicture;
     String createdAt;
+    bool verified;
     List<dynamic> historique;
 
     ClientModel({
         required this.id,
+        required this.verified ,
         required this.fullName,
         required this.email,
         required this.phoneNumber,
@@ -47,6 +49,7 @@ class ClientModel {
         country: json["country"],
         profilePicture: json["profilePicture"],
         createdAt: json["createdAt"],
+        verified: json["verified"],
         historique: List<dynamic>.from(json["Historique"].map((x) => x)),
     );
 
@@ -63,6 +66,7 @@ class ClientModel {
         "country": country,
         "profilePicture": profilePicture,
         "createdAt": createdAt,
+        "verified": verified,
         "Historique": List<dynamic>.from(historique.map((x) => x)),
     };
 }
