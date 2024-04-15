@@ -1,5 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
@@ -100,7 +102,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        Get.snackbar("title", "message");
+                       // going to the edit page
                       },
                       child: SettingsContainer(
                           iconData: Icons.person_pin, text: "Edit profile", ),
@@ -108,12 +110,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
-                    SettingsContainer(
-                        iconData: Icons.settings_suggest_sharp,
-                        text: "Settings"),
+                    GestureDetector(
+                      onTap: (){
+                       // going to the params page 
+                       
+                      },
+                      child: SettingsContainer(
+                          iconData: Icons.settings_suggest_rounded, text: "Settings", ),
+                    ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
+
+                    
                     Row(
                       children: [
                         SettingsContainer(
@@ -135,29 +144,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
-                    SettingsContainer(
-                        iconData: Icons.upgrade_rounded, text: "Go pro"),
+                    GestureDetector(
+                      onTap: () {
+                        // go pro page 
+
+                      },
+                      child: SettingsContainer(
+                          iconData: Icons.upgrade_rounded, text: "Go pro"),
+                    ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
-                    SettingsContainer(
-                        iconData: Icons.history_rounded, text: "History"),
+                    GestureDetector(
+                      onTap: () {
+                        // go to history page
+                      },
+                      child: SettingsContainer(
+                      iconData: Icons.history_rounded, text: "History"),
+                    ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
-                    SettingsContainer(
-                        iconData: Icons.send_outlined, text: "Contact us"),
+                  GestureDetector(
+                    onTap: () {
+                      //  contact us page 
+                    },
+                      child: SettingsContainer(
+                          iconData: Icons.send_outlined, text: "Contact us"),
+                    ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
-                    SettingsContainer(
-                        iconData: Icons.help_outline_rounded,
-                        text: "Help center"),
+                    GestureDetector(
+                      onTap: () {
+                        // help center page 
+                      },
+                      child: SettingsContainer(
+                          iconData: Icons.help_outline_rounded,
+                          text: "Help center"),
+                    ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
-                    SettingsContainer(
-                        iconData: BoxIcons.bx_log_out, text: "Sign out"),
+                    GestureDetector(
+                      onTap: () {
+                        // sign out the user from the app 
+                        
+                      },
+                      child: SettingsContainer(
+                          iconData: BoxIcons.bx_log_out, text: "Sign out"),
+                    ),
                   ],
                 ),
               );

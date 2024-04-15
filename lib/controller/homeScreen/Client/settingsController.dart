@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,4 +40,15 @@ class SettingController extends GetxController {
     NightMode = value;
     update();
   }
+
+
+
+
+
+  // edit page variable and functions 
+
+
+  File? selectedImage;
+
+  
 }
