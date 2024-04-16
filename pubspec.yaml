@@ -55,6 +55,7 @@ dependencies:
   timeline_tile: ^2.0.0
   animated_text_kit: ^4.2.2
   mobkit_dashed_border: ^0.0.6
+  popup_card: ^0.1.0
  
 
 dev_dependencies:

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/view/components/settingsContainer.dart';
+import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Editpage.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -103,6 +104,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GestureDetector(
                       onTap: (){
                        // going to the edit page
+                       Get.to(()=>const EditPage());
                       },
                       child: SettingsContainer(
                           iconData: Icons.person_pin, text: "Edit profile", ),

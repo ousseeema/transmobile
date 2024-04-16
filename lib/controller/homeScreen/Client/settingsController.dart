@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
@@ -49,6 +50,25 @@ class SettingController extends GetxController {
 
 
   File? selectedImage;
+  String newfullname ="";
+  String newaddress="";
+  String newphonenumber1="";
+    String newphonenumber2="";
+    String newcountry ="";
+Future PickimageFromGallery()async{
+   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+     
 
+  if(image == null){
+    update();
+    return ;
+  }
+   
+     selectedImage = File(image.path);
+     update();
+   
+
+   
   
+}
 }
