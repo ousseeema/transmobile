@@ -17,7 +17,7 @@ class signinController extends GetxController {
   bool isTrans = false;
   bool is_Loading = false;
   SharedPreferences shared = Get.find();
-
+   
   void signin() async {
     is_Loading = true;
     update();

@@ -31,7 +31,10 @@ class _EditPageState extends State<EditPage> {
     return Scaffold(body: GetBuilder<SettingController>(
       builder: (controller) {
         return SafeArea(
-          child: Padding(
+          child:
+           controller.edit_loading ==true? const Center(
+            child: CircularProgressIndicator()
+          ):  Padding(
             padding: EdgeInsets.only(left: Dimenssions.LRpadmarg30),
             child: SingleChildScrollView(
               child: Column(
@@ -710,6 +713,7 @@ class _EditPageState extends State<EditPage> {
                GestureDetector(
                 onTap: () {
                   // validate the input the update the user details in trhe data base 
+                  controller.EditProfile();
                 },
                 child: CostumeButton(height: Dimenssions.height10 * 5, width: Dimenssions.width30 * 9, text: "Update Information"))
                
@@ -718,7 +722,7 @@ class _EditPageState extends State<EditPage> {
               ),
             ),
           ),
-        );
+       );
       },
     ));
   }
