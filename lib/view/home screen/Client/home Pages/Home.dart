@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:transmobile/controller/client%20trans%20details/transmoreDetails.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/view/components/animatedtext.dart';

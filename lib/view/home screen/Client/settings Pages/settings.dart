@@ -45,7 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 100), // Adjust the radius to match the container's borderRadius
                             child: Image.network(
                               errorBuilder: (context, error, stackTrace) {
-                              return  Image.asset("assets/images/default.png");
+                              return const  CircularProgressIndicator();
                               },
                               "${AppConstant.Clientimage}${controller.client!.profilePicture}",
                               fit: BoxFit.cover,

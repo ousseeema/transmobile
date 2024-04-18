@@ -1,16 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/helpers/dependencies.dart';
-import 'package:transmobile/view/home%20screen/Client/ClientMainScreens.dart';
-import 'package:transmobile/view/home%20screen/Client/search%20Pages/detailsResult.dart';
-import 'package:transmobile/view/home%20screen/Client/search%20Pages/search.dart';
-import 'package:transmobile/view/home%20screen/Client/search%20Pages/sendRequest.dart';
-import 'package:transmobile/view/home%20screen/trans/TransHomeScreen.dart';
+
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 
-import 'package:transmobile/view/utils/shared.dart';
 
 void main() async{
   

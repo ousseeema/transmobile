@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, unnecessary_import, file_names, non_constant_identifier_names, unnecessary_brace_in_string_interps
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -72,7 +74,7 @@ class TransporterContainer extends StatelessWidget {
                   fontSize: Dimenssions.font20 - 4,
                   weight: FontWeight.bold,
                 ),
-                Spacer(),
+               const  Spacer(),
                 const Icon(
                   BoxIcons.bx_world,
                   color: AppColors.iconColor,

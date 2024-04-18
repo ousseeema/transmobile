@@ -27,7 +27,7 @@ SharedPreferences shared = Get.find();
 
   // client other endpoints
   static String getalltrips = "/clients/getalltrips";
-  static String updatesuser = "/clinets/updateUserDetails";
+  static String updatesuser = "/clients/updateUserDetails";
   static String updatePicUser = "/clients/uploadProfilePicture";
   static String usergetAllTransporter = "/clients/getAllTransporteur";
   static String usersearchTrip = "/clients/searchtrip";

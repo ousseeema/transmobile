@@ -67,27 +67,9 @@ class SettingController extends GetxController {
     edit_loading = true;
     update();
     Map<String, dynamic> data = {};
-    // if all the champ are empty and the user tap the button show error message
-    if (newfullname.length < 4 &&
-        newaddress.length < 10 &&
-        newphonenumber1.length < 7 &&
-        newphonenumber2.length < 7 &&
-        newcountry.isEmpty &&
-        selectedImage == null) {
-      Get.snackbar("Error", "Please update at least one ",
-          backgroundColor: Colors.red, colorText: Colors.white);
-    }
-    // if some of  the champ are not good and the user tap the button show error message
 
-    else if (newfullname.length < 4 ||
-        newaddress.length < 10 ||
-        newphonenumber1.length < 7 ||
-        newphonenumber2.length < 7) {
-      Get.snackbar("Error", "Please check the information modified ",
-          backgroundColor: Colors.red, colorText: Colors.white);
-    } 
     // if the data are all good the add the modified one to the json object to send to the server
-    else {
+    if (validateInput() == true) {
       // testing if  user
       if (newfullname.length >= 4) {
         data['fullName'] = newfullname;
@@ -95,10 +77,10 @@ class SettingController extends GetxController {
       if (newaddress.length >= 10) {
         data['fulladdress'] = newaddress;
       }
-      if (newphonenumber1.length >= 7) {
+      if (newphonenumber1.length >= 6) {
         data['Phone_Number'] = newphonenumber1;
       }
-      if (newphonenumber2.length >= 7) {
+      if (newphonenumber2.length >= 6) {
         data['Phone_Number2'] = newphonenumber2;
       }
       if (newcountry.isNotEmpty) {
@@ -120,31 +102,59 @@ class SettingController extends GetxController {
         });
       }
 
-      // send the data to the server to modified the user details 
-     try {
-        Response updateUserDetails = await Get.find<UserApi>().postRequest(datatosend, AppConstant.updatesuser);
-       if(updateUserDetails.body["success"]==true){
+      // send the data to the server to modified the user details
+
+      Response updateUserDetails = await Get.find<UserApi>()
+          .putRequest(datatosend, AppConstant.updatesuser);
+      if (updateUserDetails.body["success"] == true) {
         await SHARED.setString(
             "user", jsonEncode(updateUserDetails.body["data"]));
-         
-         edit_loading = false;
-            update();
-            Get.snackbar("Success", "Your account has been updated successfuly",backgroundColor: Colors.green, colorText: Colors.white );
-
-
-       }
-       else{
-         Get.snackbar("Error", "Error while updating your details",backgroundColor: Colors.red, colorText: Colors.white );
-
-       }
-     } catch (e) {
-       Get.snackbar("Error", "Error while updating your details",backgroundColor: Colors.red, colorText: Colors.white );
-     }
-
-
+              // seeting everything to the beginning status
+        String newfullname = "";
+        String newaddress = "";
+        String newphonenumber1 = "";
+        String newphonenumber2 = "";
+        String newcountry = "";
+            
+        edit_loading = false;
+        update();
+        Get.back();
+        Get.snackbar("Success", "Your account has been updated successfuly",
+            backgroundColor: Colors.green, colorText: Colors.white);
+      } else {
+        Get.snackbar("Error", "Error while updating your details",
+            backgroundColor: Colors.red, colorText: Colors.white);
+        edit_loading = false;
+        update();
+      }
+    } else {
+      // to rset the edit_loading i case the input is not correct
+      edit_loading = false;
+      update();
     }
+  }
 
-
-    
+  bool validateInput() {
+    // if all the champ are empty and the user tap the button show error message
+    if (newfullname.isEmpty &&
+        newaddress.isEmpty &&
+        newphonenumber1.isEmpty &&
+        newphonenumber2.isEmpty &&
+        newcountry.isEmpty) {
+      Get.snackbar("Error", "Please update at least one ",
+          backgroundColor: Colors.red, colorText: Colors.white);
+      return false;
+    }
+    // if some of  the champ are not good and the user tap the button show error message
+    else if ((newfullname.isNotEmpty && newfullname.length < 4) ||
+        (newaddress.isNotEmpty && newaddress.length < 10) ||
+        (newphonenumber1.isNotEmpty && newphonenumber1.length < 6) ||
+        (newphonenumber2.isNotEmpty && newphonenumber2.length < 6)) {
+      Get.snackbar("Error", "Please update at least one mandatory field",
+          backgroundColor: Colors.red, colorText: Colors.white);
+      return false;
+    } else {
+      return true;
+    }
   }
 }
