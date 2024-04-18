@@ -109,13 +109,13 @@ class SettingController extends GetxController {
       if (updateUserDetails.body["success"] == true) {
         await SHARED.setString(
             "user", jsonEncode(updateUserDetails.body["data"]));
-              // seeting everything to the beginning status
-        String newfullname = "";
-        String newaddress = "";
-        String newphonenumber1 = "";
-        String newphonenumber2 = "";
-        String newcountry = "";
-            
+        // seeting everything to the beginning status
+        newfullname = "";
+        newaddress = "";
+        newphonenumber1 = "";
+        newphonenumber2 = "";
+        newcountry = "";
+
         edit_loading = false;
         update();
         Get.back();
@@ -140,7 +140,8 @@ class SettingController extends GetxController {
         newaddress.isEmpty &&
         newphonenumber1.isEmpty &&
         newphonenumber2.isEmpty &&
-        newcountry.isEmpty) {
+        newcountry.isEmpty &&
+        selectedImage == null) {
       Get.snackbar("Error", "Please update at least one ",
           backgroundColor: Colors.red, colorText: Colors.white);
       return false;
@@ -155,6 +156,90 @@ class SettingController extends GetxController {
       return false;
     } else {
       return true;
+    }
+  }
+
+  // change  email  functions and variables
+  bool resetEmail_loading = false;
+  String changedemail = "";
+
+  void changeEmailAddress() async {
+    resetEmail_loading = true;
+    update();
+
+    if (changedemail == "" || !changedemail.isEmail) {
+      Get.snackbar("Error", "Please enter your new valid email address",
+          backgroundColor: Colors.red, colorText: Colors.white);
+    } else {
+      String data = jsonEncode({"email": changedemail});
+
+      Response changeEmailResponse = await Get.find<UserApi>()
+          .putRequest(AppConstant.changeuseremail, data);
+
+      if (changeEmailResponse.body["success"] == true) {
+        //
+        await SHARED.setString(
+            "user", jsonEncode(changeEmailResponse.body["data"]));
+        changedemail = "";
+        resetEmail_loading = false;
+        update();
+        Get.snackbar("Success", "Your email has been updated successfuly",
+            backgroundColor: Colors.green, colorText: Colors.white);
+        Get.back();
+      } else {
+        resetEmail_loading = false;
+        update();
+        Get.snackbar("Error", changeEmailResponse.body["message"],
+            backgroundColor: Colors.green, colorText: Colors.white);
+      }
+    }
+  }
+
+  // change password functionality and variables
+  bool changepassword_loading = false;
+  String oldpassword = "";
+  String newpassword = "";
+
+  void changepassword() async {
+    changepassword_loading = true;
+    update();
+
+    // ! first check the passwords fields
+    if (oldpassword.isEmpty ||
+        oldpassword.length < 8 ||
+        oldpassword.contains(RegExp(r'^(?=.*[a-zA-Z])(?=.*\d{7,}).{8,}$'))) {
+      Get.snackbar("Error", "Please enter your old password correctly",
+          backgroundColor: Colors.red, colorText: Colors.white);
+    } else if (newpassword.isEmpty ||
+        newpassword.length < 8 ||
+        newpassword.contains(RegExp(r'^(?=.*[a-zA-Z])(?=.*\d{7,}).{8,}$'))) {
+      Get.snackbar("Error", "your new password must be atleast 8 caractere",
+          backgroundColor: Colors.red, colorText: Colors.white);
+    }
+    //! then send the new and old password to the server to update the password
+    else {
+      // encoding object to json string besh yefhmha server
+      String data = jsonEncode({
+        {"oldpassword": oldpassword, "newpassword": newpassword}
+      });
+
+      Response updatedpassword = await Get.find<UserApi>()
+          .putRequest(data, AppConstant.changeuserpassword);
+
+      if (updatedpassword.body["success"] == true) {
+        oldpassword = "";
+        newpassword = "";
+        changepassword_loading = false;
+        update();
+        Get.snackbar("Success", "Your email has been updated successfuly",
+            backgroundColor: Colors.green, colorText: Colors.white);
+        Get.back();
+      } else {
+         changepassword_loading = false;
+        update();
+        Get.snackbar("Error", updatedpassword.body["message"],
+            backgroundColor: Colors.green, colorText: Colors.white);
+      }
     }
   }
 }

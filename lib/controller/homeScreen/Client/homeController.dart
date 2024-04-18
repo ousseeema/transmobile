@@ -141,7 +141,7 @@ class HomeController extends GetxController {
     // adding the stats endpoint in the future
 
     if (TripResponse.body["success"] && TripResponse.body["success"]) {
-      print(TripsResponse.body["data"]);
+      
       //all trips
       TripsResponse.body['data'].forEach((trip) =>
           alltrips.add(TripModel.fromJson(trip)));

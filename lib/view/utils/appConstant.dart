@@ -36,6 +36,8 @@ SharedPreferences shared = Get.find();
   static String getAllDemande = "/clients//getalldemande/:id";
   static String userAddReview = "/clients//addreview/:id";
   static String getCurrentTrips = "/clients/currentTrips";
+   static String changeuseremail = "/clients/changeuseremail";
+     static String changeuserpassword = "/clients/changepassword";
 
   // transporteur other endpoints
 
