@@ -268,4 +268,11 @@ class SettingController extends GetxController {
       }
     }
   }
+
+
+
+  // go pro functions and variables
+  File? passportimage;
+
+  
 }
