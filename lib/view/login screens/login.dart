@@ -29,7 +29,7 @@ class _SigninState extends State<Signin> {
           child: Column(
             children: [
               SizedBox(
-                height: Dimenssions.height20,
+                height: Dimenssions.height10,
               ),
               SizedBox(
                 height: Dimenssions.height20 * 20,
@@ -51,82 +51,85 @@ class _SigninState extends State<Signin> {
                 height: Dimenssions.height20,
               ),
               SizedBox(
-                  height: Dimenssions.height20 * 9,
+                  height: Dimenssions.height20 * 10,
                   width: Dimenssions.width - Dimenssions.width20,
                   child: Form(
                      key: _formKey,
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          controller: emailController,
-                          decoration: InputDecoration(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            controller: emailController,
+                            decoration: InputDecoration(
+                              
+                                hintText: "Exemple@gmail.com",
+                                hintStyle: TextStyle(color: Colors.grey[400]),
+                                labelText: "Email",
+                                labelStyle:
+                                    const TextStyle(color: AppColors.bigTextColor),
+                                icon: const Icon(Icons.email),
+                                iconColor: AppColors.iconColor,
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(color: Colors.red),
+                                  borderRadius:
+                                      BorderRadius.circular(Dimenssions.radius20),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: AppColors.bigTextColor),
+                                  borderRadius:
+                                      BorderRadius.circular(Dimenssions.radius20),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: AppColors.bigTextColor),
+                                    borderRadius: BorderRadius.circular(
+                                        Dimenssions.radius20))),
                             
-                              hintText: "Exemple@gmail.com",
-                              hintStyle: TextStyle(color: Colors.grey[400]),
-                              labelText: "Email",
-                              labelStyle:
-                                  const TextStyle(color: AppColors.bigTextColor),
-                              icon: const Icon(Icons.email),
-                              iconColor: AppColors.iconColor,
-                              errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(Dimenssions.radius20),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: AppColors.bigTextColor),
-                                borderRadius:
-                                    BorderRadius.circular(Dimenssions.radius20),
-                              ),
-                              focusedBorder: OutlineInputBorder(
+                            onChanged: (value) {
+                              controller.email = value.trim();
+                            },
+                          ),
+                          SizedBox(
+                            height: Dimenssions.height20 * 2,
+                          ),
+                          TextFormField(
+                            controller: passwordController,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                hintText: " Password",
+                                hintStyle: TextStyle(color: Colors.grey[400]),
+                                labelText: "Password",
+                                labelStyle:
+                                    const TextStyle(color: AppColors.bigTextColor),
+                                icon: const Icon(Icons.password),
+                                iconColor: AppColors.iconColor,
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(color: Colors.red),
+                                  borderRadius:
+                                      BorderRadius.circular(Dimenssions.radius20),
+                                ),
+                                enabledBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(
                                       color: AppColors.bigTextColor),
-                                  borderRadius: BorderRadius.circular(
-                                      Dimenssions.radius20))),
-                          
-                          onChanged: (value) {
-                            controller.email = value.trim();
-                          },
-                        ),
-                        SizedBox(
-                          height: Dimenssions.height20 * 2,
-                        ),
-                        TextFormField(
-                          controller: passwordController,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                              hintText: " Password",
-                              hintStyle: TextStyle(color: Colors.grey[400]),
-                              labelText: "Password",
-                              labelStyle:
-                                  const TextStyle(color: AppColors.bigTextColor),
-                              icon: const Icon(Icons.password),
-                              iconColor: AppColors.iconColor,
-                              errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(Dimenssions.radius20),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: AppColors.bigTextColor),
-                                borderRadius:
-                                    BorderRadius.circular(Dimenssions.radius20),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: AppColors.bigTextColor),
-                                  borderRadius: BorderRadius.circular(
-                                      Dimenssions.radius20))),
-                          
-                          onChanged: (value) {
-                           controller.password = value.trim();
-                          },
-                        ),
-                      ],
+                                  borderRadius:
+                                      BorderRadius.circular(Dimenssions.radius20),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: AppColors.bigTextColor),
+                                    borderRadius: BorderRadius.circular(
+                                        Dimenssions.radius20))),
+                            
+                            onChanged: (value) {
+                             controller.password = value.trim();
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   )),
+                  SizedBox(height: Dimenssions.height10,),
                   
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

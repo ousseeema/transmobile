@@ -34,7 +34,7 @@ class TransporterContainer extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(Dimenssions.LRpadmarg10),
       child: Container(
-        height: Dimenssions.height20 * 7,
+        height: Dimenssions.height20 * 9,
         width: Dimenssions.width,
         decoration: BoxDecoration(
             boxShadow: [

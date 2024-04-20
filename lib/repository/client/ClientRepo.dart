@@ -22,5 +22,7 @@ Future<Response> GetCurrentTrip(){
    // getting all trips
 Future<Response> GetAllTrips(){
     return  UserApi().GetRequest(AppConstant.getalltrips);
+
    }
+   
 }

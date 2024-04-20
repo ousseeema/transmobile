@@ -38,7 +38,7 @@ SharedPreferences shared = Get.find();
   static String getCurrentTrips = "/clients/currentTrips";
    static String changeuseremail = "/clients/changeuseremail";
      static String changeuserpassword = "/clients/changepassword";
-
+     static String GetalldemandesVerifi = "/clients/GetverificationDemandesList";
   // transporteur other endpoints
 
   static String updateTrans = "/transporteur/updateTransporteurDetails";

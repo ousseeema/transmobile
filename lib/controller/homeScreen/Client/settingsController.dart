@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/api/api.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
+import 'package:transmobile/view/home%20screen/Client/settings%20Pages/settings.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
 
@@ -48,7 +49,7 @@ class SettingController extends GetxController {
   String newphonenumber2 = "";
   String newcountry = "";
   bool edit_loading = false;
-  SharedPreferences SHARED = Get.find();
+ 
   Future PickimageFromGallery() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -64,6 +65,7 @@ class SettingController extends GetxController {
 // update user details like name and address and country , phone number 1 et 2, pdp
 
   void EditProfile() async {
+    SharedPreferences SHARED = await SharedPreferences.getInstance();
     edit_loading = true;
     update();
     Map<String, dynamic> data = {};
@@ -135,6 +137,7 @@ class SettingController extends GetxController {
   }
 
   bool validateInput() {
+    
     // if all the champ are empty and the user tap the button show error message
     if (newfullname.isEmpty &&
         newaddress.isEmpty &&
@@ -164,33 +167,36 @@ class SettingController extends GetxController {
   String changedemail = "";
 
   void changeEmailAddress() async {
-    resetEmail_loading = true;
-    update();
+      SharedPreferences SHARED = await SharedPreferences.getInstance();
+    
 
     if (changedemail == "" || !changedemail.isEmail) {
       Get.snackbar("Error", "Please enter your new valid email address",
           backgroundColor: Colors.red, colorText: Colors.white);
     } else {
-      String data = jsonEncode({"email": changedemail});
+      resetEmail_loading = true;
+       update();
+      Map<String, dynamic> data = {"email": changedemail};
 
       Response changeEmailResponse = await Get.find<UserApi>()
-          .putRequest(AppConstant.changeuseremail, data);
+          .putRequest( data, AppConstant.changeuseremail);
 
       if (changeEmailResponse.body["success"] == true) {
-        //
         await SHARED.setString(
-            "user", jsonEncode(changeEmailResponse.body["data"]));
+        "user", jsonEncode(changeEmailResponse.body["data"]));
+        Get.back();
         changedemail = "";
+                
         resetEmail_loading = false;
         update();
         Get.snackbar("Success", "Your email has been updated successfuly",
-            backgroundColor: Colors.green, colorText: Colors.white);
-        Get.back();
+        backgroundColor: Colors.green, colorText: Colors.white);
+
       } else {
         resetEmail_loading = false;
         update();
         Get.snackbar("Error", changeEmailResponse.body["message"],
-            backgroundColor: Colors.green, colorText: Colors.white);
+            backgroundColor: Colors.red, colorText: Colors.white);
       }
     }
   }
@@ -199,29 +205,44 @@ class SettingController extends GetxController {
   bool changepassword_loading = false;
   String oldpassword = "";
   String newpassword = "";
-
-  void changepassword() async {
-    changepassword_loading = true;
-    update();
-
-    // ! first check the passwords fields
+   // ! verification input field
+   bool validPass(){
     if (oldpassword.isEmpty ||
         oldpassword.length < 8 ||
         oldpassword.contains(RegExp(r'^(?=.*[a-zA-Z])(?=.*\d{7,}).{8,}$'))) {
+         
       Get.snackbar("Error", "Please enter your old password correctly",
           backgroundColor: Colors.red, colorText: Colors.white);
+          return false;
+           
     } else if (newpassword.isEmpty ||
         newpassword.length < 8 ||
         newpassword.contains(RegExp(r'^(?=.*[a-zA-Z])(?=.*\d{7,}).{8,}$'))) {
       Get.snackbar("Error", "your new password must be atleast 8 caractere",
           backgroundColor: Colors.red, colorText: Colors.white);
+          return false;
     }
+    else{
+      return true;
+    }
+  }
+
+
+  void changepassword() async {
+      SharedPreferences SHARED = await SharedPreferences.getInstance();
+    
+
+   
+     // ! first check the passwords fields
     //! then send the new and old password to the server to update the password
-    else {
+    if(validPass() == true) {
+      changepassword_loading = true;
+    update();
       // encoding object to json string besh yefhmha server
-      String data = jsonEncode({
-        {"oldpassword": oldpassword, "newpassword": newpassword}
-      });
+      Map<String, dynamic> data = {
+        "oldpassword": oldpassword, 
+        "newpassword": newpassword};
+      
 
       Response updatedpassword = await Get.find<UserApi>()
           .putRequest(data, AppConstant.changeuserpassword);
@@ -229,11 +250,16 @@ class SettingController extends GetxController {
       if (updatedpassword.body["success"] == true) {
         oldpassword = "";
         newpassword = "";
-        changepassword_loading = false;
-        update();
-        Get.snackbar("Success", "Your email has been updated successfuly",
-            backgroundColor: Colors.green, colorText: Colors.white);
+
         Get.back();
+       
+        
+        Get.snackbar("Success", "Your password has been updated successfuly",
+            backgroundColor: Colors.green, colorText: Colors.white);
+       Future.delayed(Duration.zero,(){
+         changepassword_loading = false;
+        update();
+       });
       } else {
          changepassword_loading = false;
         update();

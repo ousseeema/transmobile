@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
@@ -27,15 +28,25 @@ class _paramsPageState extends State<paramsPage> {
                 Dimenssions.LRpadmarg20, Dimenssions.LRpadmarg20, 0),
             child: Column(
               children: [
+                  Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: const Icon(Icons.arrow_back))
+                      ],
+                    ),
                 SizedBox(
-                  height: Dimenssions.height20 * 10,
+                  height: Dimenssions.height20 * 15,
                   width: Dimenssions.width,
                   child:
                       LottieBuilder.asset("assets/animations/animation5.json"),
                 ),
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height: Dimenssions.height20*4,
                 ),
+                //! email adddress container
                 Container(
                   padding: EdgeInsets.only(left: Dimenssions.LRpadmarg20),
                   height: Dimenssions.height20 * 3.5,

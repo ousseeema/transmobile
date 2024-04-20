@@ -44,8 +44,9 @@ class UserApi extends GetConnect implements GetxService {
 
    }
 
-
-     Future<Response> putRequest(data, String uri )async{ 
+     
+   //! put request for the data and image together in the same request
+     Future<Response> putRequest(dynamic data, String uri )async{ 
     try{
       Response response = await put("$baseurl$uri",
          data ,

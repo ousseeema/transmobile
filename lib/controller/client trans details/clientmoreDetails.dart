@@ -68,7 +68,9 @@ class ClientDetailsController extends GetxController{
 
 
      }catch(e){
-      
+       is_Loading=false;
+      update();
+       Get.snackbar("Error", "Lost connection", colorText: Colors.white, backgroundColor: Colors.red);
      }
       
 

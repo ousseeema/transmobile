@@ -35,6 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 padding: EdgeInsets.only(left: Dimenssions.LRpadmarg20),
                 child: Column(
                   children: [
+                   
                     SizedBox(
                       height: Dimenssions.height20 * 4,
                     ),
@@ -59,6 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                         // column for name and email address
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AnimatedTextKit(
                                 repeatForever: true,
@@ -83,7 +85,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   ColorizeAnimatedText(
                                       controller.client!.email,
                                       textStyle: TextStyle(
-                                          fontSize: Dimenssions.font20 - 7,
+                                          fontSize: Dimenssions.font20 - 4,
                                           fontWeight: FontWeight.w300),
                                       colors: [
                                         Colors.black,
