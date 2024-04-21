@@ -136,7 +136,8 @@ class HomeController extends GetxController {
         client = ClientModel.fromJson(jsonDecode(value!));
        });
     // getting the transporter's from the data base
-    Response TripsResponse = await ClientRepo().GetAllTrips();
+   try {
+      Response TripsResponse = await ClientRepo().GetAllTrips();
     Response TripResponse = await ClientRepo().GetCurrentTrip();
     // adding the stats endpoint in the future
 
@@ -155,5 +156,9 @@ class HomeController extends GetxController {
       Get.snackbar("Error", "Error while getting data , Try reloading the page",
           colorText: Colors.white, backgroundColor: Colors.red);
     }
+   } catch (e) {
+      Get.snackbar("Error", "Error while getting data , Try reloading the page",
+          colorText: Colors.white, backgroundColor: Colors.red);
+   }
   }
 }

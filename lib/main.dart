@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/helpers/dependencies.dart';
+import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Go%20pro.dart';
 
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 
@@ -48,7 +49,7 @@ class _TransMobileState extends State<TransMobile> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-     // home: SendRequest(),
+     // home:const   GoPro(),
      home: const SplachScreen()
     );
   }

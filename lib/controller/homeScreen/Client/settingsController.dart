@@ -66,8 +66,7 @@ class SettingController extends GetxController {
 
   void EditProfile() async {
     SharedPreferences SHARED = await SharedPreferences.getInstance();
-    edit_loading = true;
-    update();
+    
     Map<String, dynamic> data = {};
 
     // if the data are all good the add the modified one to the json object to send to the server
@@ -104,8 +103,10 @@ class SettingController extends GetxController {
         });
       }
 
-      // send the data to the server to modified the user details
-
+     try {
+        // send the data to the server to modified the user details
+      edit_loading = true;
+      update();
       Response updateUserDetails = await Get.find<UserApi>()
           .putRequest(datatosend, AppConstant.updatesuser);
       if (updateUserDetails.body["success"] == true) {
@@ -129,11 +130,13 @@ class SettingController extends GetxController {
         edit_loading = false;
         update();
       }
-    } else {
-      // to rset the edit_loading i case the input is not correct
-      edit_loading = false;
-      update();
-    }
+     } catch (e) {
+        Get.snackbar("Error", "Error while updating your details",
+            backgroundColor: Colors.red, colorText: Colors.white);
+        edit_loading = false;
+        update();
+     }
+    } 
   }
 
   bool validateInput() {
@@ -178,7 +181,8 @@ class SettingController extends GetxController {
        update();
       Map<String, dynamic> data = {"email": changedemail};
 
-      Response changeEmailResponse = await Get.find<UserApi>()
+     try {
+       Response changeEmailResponse = await Get.find<UserApi>()
           .putRequest( data, AppConstant.changeuseremail);
 
       if (changeEmailResponse.body["success"] == true) {
@@ -198,6 +202,13 @@ class SettingController extends GetxController {
         Get.snackbar("Error", changeEmailResponse.body["message"],
             backgroundColor: Colors.red, colorText: Colors.white);
       }
+       
+     } catch (e) {
+       resetEmail_loading = false;
+        update();
+        Get.snackbar("Error", "Connection lost , try again later",
+            backgroundColor: Colors.red, colorText: Colors.white);
+     }
     }
   }
 
@@ -244,7 +255,8 @@ class SettingController extends GetxController {
         "newpassword": newpassword};
       
 
-      Response updatedpassword = await Get.find<UserApi>()
+      try {
+        Response updatedpassword = await Get.find<UserApi>()
           .putRequest(data, AppConstant.changeuserpassword);
 
       if (updatedpassword.body["success"] == true) {
@@ -266,6 +278,13 @@ class SettingController extends GetxController {
         Get.snackbar("Error", updatedpassword.body["message"],
             backgroundColor: Colors.green, colorText: Colors.white);
       }
+      } catch (e) {
+        changepassword_loading = false;
+        update(); 
+        Get.snackbar("Error", "Connection lost try again later",
+            backgroundColor: Colors.green, colorText: Colors.white);
+           
+      }
     }
   }
 
@@ -273,6 +292,24 @@ class SettingController extends GetxController {
 
   // go pro functions and variables
   File? passportimage;
+    String message="";
+  Future PickimagePassportFromGallery() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
 
+    if (image == null) {
+      update();
+      return;
+    }
+
+    passportimage = File(image.path);
+    update();
+  }
+
+  // ! sending the passport image and the message to the admin to verifie
+  void SendverfRequest(){
   
+   
+
+    
+  }
 }
