@@ -9,6 +9,7 @@ import 'package:text_area/text_area.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
 import 'package:transmobile/view/components/button.dart';
+import 'package:transmobile/view/components/demandeVerificationContainer.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -25,7 +26,10 @@ class _GoProState extends State<GoPro> with SingleTickerProviderStateMixin {
       return Padding(
         padding: EdgeInsets.only(
             left: Dimenssions.LRpadmarg20, right: Dimenssions.LRpadmarg20),
-        child: Column(
+        child: controller.getverified_Loading? const Center(
+          child: CircularProgressIndicator(),
+        ):
+         Column(
           children: [
             SizedBox(height: Dimenssions.height20*4,),
             GestureDetector(
@@ -98,7 +102,7 @@ class _GoProState extends State<GoPro> with SingleTickerProviderStateMixin {
               validation: true,
               borderRadius: 10,
               borderColor: const Color(0xFFCFD6FF),
-              textEditingController: myTextController,
+              textEditingController: controller.messageController,
              
               errorText: 'Please type a reason!',
             ),
@@ -117,25 +121,38 @@ class _GoProState extends State<GoPro> with SingleTickerProviderStateMixin {
             )
           ],
         ),
-      );
+     
+        );
     });
   }
 
   Widget historyContainer() {
     return SizedBox(
-      child: ListView.builder(
-          itemCount: 10,
+      child: GetBuilder<SettingController>(builder: (controller) {
+        return ListView.builder(
+          itemCount:  controller.verifiDemandes.length,
           itemBuilder: (context, index) {
-            return Container();
-          }),
+
+            return demandeverificationContainer(
+              message: controller.verifiDemandes[index].message,
+              approved: controller.verifiDemandes[index].approved,
+              imageurl: controller.verifiDemandes[index].passport_image,
+              created_at: controller.verifiDemandes[index].createdAt,
+
+            );
+          });
+      },)
     );
   }
 
   late TabController _tabController;
-  final myTextController = TextEditingController();
+  
   @override
   void initState() {
     super.initState();
+   Future.delayed(Duration.zero,(){
+     Get.find<SettingController>().GetverifiedDemandes();
+   });
     _tabController = TabController(vsync: this, length: 2);
   }
 

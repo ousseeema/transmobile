@@ -58,7 +58,7 @@ SharedPreferences shared = Get.find();
   static String Clientimage ="http://192.168.100.20:3000/Images/private/users/";
     static String Transimage ="http://192.168.100.20:3000/Images/private/transporteurs";
       static String Packagesimage ="http://192.168.100.20:3000/Images/private/packages/demandeimage/";
-        static String Passportimage ="http://192.168.100.20:3000/Images/private/passport/";
+        static String Passportimage ="http://192.168.100.20:3000/Images/passport/";
 
 
 
