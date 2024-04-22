@@ -33,7 +33,7 @@ class demandeverificationContainer extends StatelessWidget {
                   offset: const Offset(4, 8), // changes position of shadow
                 ),
               ],
-              color: Colors.grey,
+              color: Colors.grey[350],
               borderRadius: BorderRadius.circular(Dimenssions.radius20)),
               child: Row(
                 children: [ 

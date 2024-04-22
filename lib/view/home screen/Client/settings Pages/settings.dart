@@ -110,6 +110,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                        // going to the edit page
                        Get.to(()=>const EditPage());
                       },
+                       // costume container for settings
                       child: SettingsContainer(
                           iconData: Icons.person_pin, text: "Edit profile", ),
                     ),
@@ -121,6 +122,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                        // going to the params page 
                        Get.to(()=> const paramsPage());
                       },
+                       // costume container for settings
                       child: SettingsContainer(
                           iconData: Icons.settings_suggest_rounded, text: "Settings", ),
                     ),
@@ -131,6 +133,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     
                     Row(
                       children: [
+                         // costume container for settings
                         SettingsContainer(
                             iconData: Icons.nights_stay_outlined,
                             text: "Night mode"),
@@ -153,9 +156,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GestureDetector(
                       onTap: () {
                         // go pro page 
+                        //! if the user is not verified then give it the access to go pro page
+                        //! if the user is already verified then affiche the the snack bar
+                       controller.client!.verified?
+                        Get.snackbar("Remainder", "Your account is already Pro", backgroundColor: Colors.green[100], colorText: Colors.white) :
                         Get.to(()=>const GoPro());
 
                       },
+                      // costume container for settings
                       child: SettingsContainer(
                           iconData: Icons.upgrade_rounded, text: "Go pro"),
                     ),
@@ -165,7 +173,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GestureDetector(
                       onTap: () {
                         // go to history page
+                        
                       },
+                       // costume container for settings
                       child: SettingsContainer(
                       iconData: Icons.history_rounded, text: "History"),
                     ),
@@ -176,6 +186,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     onTap: () {
                       //  contact us page 
                     },
+                     // costume container for settings
                       child: SettingsContainer(
                           iconData: Icons.send_outlined, text: "Contact us"),
                     ),
@@ -186,6 +197,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       onTap: () {
                         // help center page 
                       },
+                       // costume container for settings
                       child: SettingsContainer(
                           iconData: Icons.help_outline_rounded,
                           text: "Help center"),
@@ -198,6 +210,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         // sign out the user from the app 
                         
                       },
+                       // costume container for settings
                       child: SettingsContainer(
                           iconData: BoxIcons.bx_log_out, text: "Sign out"),
                     ),
