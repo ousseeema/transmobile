@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/api/api.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
+import 'package:transmobile/model/demande%20livrasion/demandelivr.dart';
 import 'package:transmobile/model/verification%20demande/verificationDemandes%20model.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
@@ -414,6 +415,58 @@ getverified_Loading = false;
 
 
 
+
+  }
+
+
+
+  //! history page function and variables 
+
+  bool historypage_loader = false;
+  List<DemandeLiv> demandesLiv=[];
+// get all demande de liv that a user have sent to all transporteurs 
+  void getAlldemandesLiv()async{
+historypage_loader=true;
+update();
+  
+//! sent request to the serveur 
+  try {
+    Response alldemandeLiv = await Get.find<UserApi>().GetRequest(AppConstant.getAllDemande);
+    List<DemandeLiv> demandesLiv=[]; 
+  if(alldemandeLiv.body["success"]==true){
+   alldemandeLiv.body["data"].forEach((demandeLiv){
+    demandesLiv.add(DemandeLiv.fromJson(demandeLiv) );
+   });
+  Get.snackbar("Success", "Getting demandes successfuly",
+              backgroundColor: Colors.green, colorText: Colors.white);
+    Future.delayed(Duration.zero,(){
+      historypage_loader=false;
+      update();
+    }); 
+
+  }
+   else{
+      
+        Get.snackbar("Error", alldemandeLiv.body["message"],
+              backgroundColor: Colors.red, colorText: Colors.white);
+          Get.back();
+           Future.delayed(Duration.zero,(){
+            historypage_loader = false;
+          update();
+          });
+      
+    }
+  } catch (e) {
+    Get.snackbar("Error","Lost Connection , try again later",
+              backgroundColor: Colors.red, colorText: Colors.white);
+          Get.back();
+           Future.delayed(Duration.zero,(){
+            historypage_loader = false;
+          update();
+          });
+  }
+
+ 
 
   }
 }

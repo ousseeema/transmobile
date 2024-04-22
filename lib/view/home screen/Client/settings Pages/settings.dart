@@ -173,7 +173,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GestureDetector(
                       onTap: () {
                         // go to history page
-                        
+                        controller.getAlldemandesLiv();
                       },
                        // costume container for settings
                       child: SettingsContainer(
