@@ -113,7 +113,9 @@ class searchController extends GetxController {
     
       update();
     } else {
-      Get.snackbar("Ops",
+   
+      Get.snackbar(
+        "Ops",
           "Erreur while getting data \n try again or check your connection",backgroundColor: Colors.red, colorText: Colors.white);
      
       isLoading = false;

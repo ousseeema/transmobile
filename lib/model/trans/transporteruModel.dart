@@ -143,16 +143,15 @@ class Comment {
         required this.createdAt,
     });
 
-    factory Comment.fromJson(Map<String, dynamic> json) {
-      return Comment(
-   
-        id: json["_id"].toString(),
-       user:ClientModel.fromJson(json['user']), 
-        comment: json["comment"], 
-        rating: json["rating"],
-        createdAt: json["createdAt"],
+     factory Comment.fromJson(Map<String, dynamic> json) {
+    return Comment(
+      id: json["_id"].toString(),
+      user: json['user'] != null ? ClientModel.fromJson(json['user']) : ClientModel(), // Handle null user
+      comment: json["comment"] ?? '',
+      rating: json["rating"] ?? 0, // Provide default value for rating if null
+      createdAt: json["createdAt"] ?? '',
     );
-    }
+  }
 
     Map<String, dynamic> toJson() => {
       "_id" : id,

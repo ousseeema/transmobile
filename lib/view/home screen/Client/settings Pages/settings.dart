@@ -67,7 +67,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 repeatForever: true,
                                 animatedTexts: [
                                   ColorizeAnimatedText(
-                                      controller.client!.fullName,
+                                      controller.client!.fullName!,
                                       textStyle: TextStyle(
                                           fontSize: Dimenssions.font20,
                                           fontWeight: FontWeight.bold),
@@ -84,7 +84,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 repeatForever: true,
                                 animatedTexts: [
                                   ColorizeAnimatedText(
-                                      controller.client!.email,
+                                      controller.client!.email!,
                                       textStyle: TextStyle(
                                           fontSize: Dimenssions.font20 - 4,
                                           fontWeight: FontWeight.w300),
@@ -99,7 +99,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         SizedBox(
                           width: Dimenssions.width20*2,
                         ),
-                        Icon( Icons.verified, color:  controller.client!.verified? Colors.blue: Colors.grey,size: Dimenssions.icon24,)
+                        Icon( Icons.verified, color:  controller.client!.verified==true ? Colors.blue: Colors.grey,size: Dimenssions.icon24,)
                       ],
                     ),
                     SizedBox(
@@ -158,7 +158,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         // go pro page 
                         //! if the user is not verified then give it the access to go pro page
                         //! if the user is already verified then affiche the the snack bar
-                       controller.client!.verified?
+                       controller.client!.verified== true?
                         Get.snackbar("Remainder", "Your account is already Pro", backgroundColor: Colors.green[100], colorText: Colors.white) :
                         Get.to(()=>const GoPro());
 

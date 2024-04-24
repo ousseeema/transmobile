@@ -29,6 +29,7 @@ class _searchScreenState extends State<searchScreen> {
         builder: (controller) {
           return controller.isLoading? const Center(child:  CircularProgressIndicator()):SingleChildScrollView(
             child: Column(
+           
               children: [
                 SizedBox(
                   height: Dimenssions.height20,
@@ -36,16 +37,9 @@ class _searchScreenState extends State<searchScreen> {
                 Row(
                   children: [
                     // search title
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: AppColors.mainTextColor,
-                        size: Dimenssions.icon24,
-                      ),
-                    ),
+                  
                     SizedBox(
-                        width: Dimenssions.width / 2 - Dimenssions.width30 * 2),
+                        width: Dimenssions.width / 2 - Dimenssions.width30 ),
                     CostumeAnimatedText(
                       text: "Search",
                       color: AppColors.mainTextColor,

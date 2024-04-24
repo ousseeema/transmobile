@@ -1,28 +1,30 @@
 
 import 'package:get/get.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
+import 'package:transmobile/view/utils/shared.dart';
 
 class UserApi extends GetConnect implements GetxService {
-  late String token;
+  
 
   late String baseurl;
   late Map<String,String> headers ;
 
   UserApi() {
-    token = AppConstant.token;
+    
     baseurl = AppConstant.baseurl;
     headers = {
       'Content-Type': 'application/json',
-      'Authorization': 'bearer   $token',
+     
     };
   }
 
    Future<Response> postRequest(data, String uri )async{ 
+     String?  token = await  shared.gettoken();
     try{
       Response response = await post("$baseurl$uri",
          data ,
          headers: {
-           'Authorization': 'Bearer $token',
+           'Authorization': "Bearer ${token!.substring(1,token.length-1)}",
         },
        contentType: "application/json", 
         );
@@ -47,11 +49,12 @@ class UserApi extends GetConnect implements GetxService {
      
    //! put request for the data and image together in the same request
      Future<Response> putRequest(dynamic data, String uri )async{ 
+      String?  token = await  shared.gettoken();
     try{
       Response response = await put("$baseurl$uri",
          data ,
          headers: {
-           'Authorization': 'Bearer $token',
+           'Authorization': "Bearer ${token!.substring(1,token.length-1)}",
         },
        contentType: "application/json", 
         );
@@ -76,15 +79,20 @@ class UserApi extends GetConnect implements GetxService {
 
    // get request 
    Future<Response> GetRequest(String uri)async{ 
+    String?  token = await  shared.gettoken();
+
+   
     try{
+ 
       Response response = await get(
         "$baseurl$uri",
         headers: {
-           'Authorization': 'Bearer $token',
+           'Authorization':"Bearer ${token!.substring(1,token.length-1)}" ,
         },
       
        contentType: "application/json", 
         );
+       
         return response;
 
 
@@ -105,11 +113,12 @@ class UserApi extends GetConnect implements GetxService {
    }
     // get methodde for the search for a trip 
     Future<Response> SearchForTrip(query)async{
+      String?  token = await  shared.gettoken();
       try {
         Response response = await get("${baseurl}${AppConstant.usersearchTrip}",
         query:query ,
         headers: {
-           'Authorization': 'Bearer $token',
+           'Authorization': "Bearer ${token!.substring(1,token.length-1)}",
         },
       
        contentType: "application/json", 

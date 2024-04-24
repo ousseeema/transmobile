@@ -24,7 +24,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                 padding:  EdgeInsets.only(top: Dimenssions.TBpadmarg10, left: Dimenssions.TBpadmarg10, right: Dimenssions.TBpadmarg10),
                 child: CostumeReviewContainer(
                     username: controller
-                        .SelectedTrip!.transporter.comments[index].user.fullName,
+                        .SelectedTrip!.transporter.comments[index].user.fullName!,
                     createdAt: controller
                         .SelectedTrip!.transporter.comments[index].createdAt,
                     rating: controller
@@ -32,7 +32,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                     Comment: controller
                         .SelectedTrip!.transporter.comments[index].comment,
                     imageUrl: controller.SelectedTrip!.transporter.comments[index]
-                        .user.profilePicture),
+                        .user.profilePicture!),
               );
             });
       },

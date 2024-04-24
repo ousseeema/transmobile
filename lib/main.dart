@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/helpers/dependencies.dart';
-import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Go%20pro.dart';
 
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 
@@ -11,11 +10,7 @@ void main() async{
   
   runApp(const TransMobile());
    dependency.init();
-   
-   
-   
- 
-  
+
 }
 
 class TransMobile extends StatefulWidget {

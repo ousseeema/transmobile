@@ -111,6 +111,7 @@ class SettingController extends GetxController {
         Response updateUserDetails = await Get.find<UserApi>()
             .putRequest(datatosend, AppConstant.updatesuser);
         if (updateUserDetails.body["success"] == true) {
+          selectedImage = null;
           await SHARED.setString(
               "user", jsonEncode(updateUserDetails.body["data"]));
           // seeting everything to the beginning status
@@ -120,29 +121,28 @@ class SettingController extends GetxController {
           newphonenumber2 = "";
           newcountry = "";
 
-          
           Get.back();
           Get.snackbar("Success", "Your account has been updated successfuly",
               backgroundColor: Colors.green, colorText: Colors.white);
-              Future.delayed(Duration.zero,(){
+          Future.delayed(Duration.zero, () {
             edit_loading = false;
-          update();
+            update();
           });
         } else {
           Get.snackbar("Error", "Error while updating your details",
               backgroundColor: Colors.red, colorText: Colors.white);
-        Future.delayed(Duration.zero,(){
+          Future.delayed(Duration.zero, () {
             edit_loading = false;
-          update();
+            update();
           });
         }
       } catch (e) {
         Get.snackbar("Error", "Error while updating your details",
             backgroundColor: Colors.red, colorText: Colors.white);
-        Future.delayed(Duration.zero,(){
-            edit_loading = false;
+        Future.delayed(Duration.zero, () {
+          edit_loading = false;
           update();
-          });
+        });
       }
     }
   }
@@ -196,28 +196,25 @@ class SettingController extends GetxController {
               "user", jsonEncode(changeEmailResponse.body["data"]));
           Get.back();
           changedemail = "";
- Get.snackbar("Success", "Your email has been updated successfuly",
+          Get.snackbar("Success", "Your email has been updated successfuly",
               backgroundColor: Colors.green, colorText: Colors.white);
-         Future.delayed(Duration.zero,(){
-           resetEmail_loading = false;
-          update();
-         
-         });
+          Future.delayed(Duration.zero, () {
+            resetEmail_loading = false;
+            update();
+          });
         } else {
-        Future.delayed(Duration.zero,(){
-           resetEmail_loading = false;
-          update();
-         
-         });
+          Future.delayed(Duration.zero, () {
+            resetEmail_loading = false;
+            update();
+          });
           Get.snackbar("Error", changeEmailResponse.body["message"],
               backgroundColor: Colors.red, colorText: Colors.white);
         }
       } catch (e) {
-        Future.delayed(Duration.zero,(){
-           resetEmail_loading = false;
+        Future.delayed(Duration.zero, () {
+          resetEmail_loading = false;
           update();
-         
-         });
+        });
         Get.snackbar("Error", "Connection lost , try again later",
             backgroundColor: Colors.red, colorText: Colors.white);
       }
@@ -286,10 +283,10 @@ class SettingController extends GetxController {
               backgroundColor: Colors.red, colorText: Colors.white);
         }
       } catch (e) {
-       Future.delayed(Duration.zero, () {
-            changepassword_loading = false;
-            update();
-          });
+        Future.delayed(Duration.zero, () {
+          changepassword_loading = false;
+          update();
+        });
         Get.snackbar("Error", "Connection lost try again later",
             backgroundColor: Colors.red, colorText: Colors.white);
       }
@@ -300,7 +297,7 @@ class SettingController extends GetxController {
   File? passportimage;
   final messageController = TextEditingController();
   bool getverified_Loading = false;
-  List<VerificationDemmnades>verifiDemandes=[];
+  List<VerificationDemmnades> verifiDemandes = [];
 
   Future PickimagePassportFromGallery() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -338,135 +335,119 @@ class SettingController extends GetxController {
             .postRequest(datatosend, AppConstant.usergetverified);
 
         if (verificationClient.body["success"] == true) {
+          passportimage = null;
+          messageController.clear();
           Get.back();
-           Get.snackbar("Success",verificationClient.body["message"] ,
+
+          Get.snackbar("Success", verificationClient.body["message"],
               backgroundColor: Colors.green, colorText: Colors.white);
-             
-           
-           Future.delayed(Duration.zero,(){
-getverified_Loading = false;
-          update();
+
+          Future.delayed(Duration.zero, () {
+            getverified_Loading = false;
+            update();
           });
-         
-          
-         
         } else {
           Get.snackbar("Error", verificationClient.body["message"],
               backgroundColor: Colors.red, colorText: Colors.white);
           Get.back();
-           Future.delayed(Duration.zero,(){
-getverified_Loading = false;
-          update();
+          Future.delayed(Duration.zero, () {
+            getverified_Loading = false;
+            update();
           });
         }
       } catch (e) {
+       
         Get.back();
         Get.snackbar("Error", "Connection Lost ,try again later",
             backgroundColor: Colors.red, colorText: Colors.white);
-        Future.delayed(Duration.zero,(){
-getverified_Loading = false;
+        Future.delayed(Duration.zero, () {
+          getverified_Loading = false;
           update();
-          });
+        });
       }
     }
   }
+
   //! getting verified demande that user have seb=nt to the admins
-   bool demandes_Loader = false;
-  void GetverifiedDemandes()async{
-   
+  bool demandes_Loader = false;
+  void GetverifiedDemandes() async {
     try {
       demandes_Loader = true;
       update();
-      Response demandes = await Get.find<UserApi>().GetRequest(AppConstant.GetalldemandesVerifi);
+      Response demandes = await Get.find<UserApi>()
+          .GetRequest(AppConstant.GetalldemandesVerifi);
 
-      if(demandes.body["success"]==true){
-        demandes.body["data"].forEach((demande)=>verifiDemandes.add(VerificationDemmnades.fromJson(demande)));
-        Get.snackbar("Success",demandes.body["message"] ,
-              backgroundColor: Colors.green, colorText: Colors.white);
-             
-           
-           Future.delayed(Duration.zero,(){
-               demandes_Loader = false;
-                update();
-           });
+      if (demandes.body["success"] == true) {
+        demandes.body["data"].forEach((demande) =>
+            verifiDemandes.add(VerificationDemmnades.fromJson(demande)));
+        Get.snackbar("Success", demandes.body["message"],
+            backgroundColor: Colors.green, colorText: Colors.white);
 
-      }else{
-       
+        Future.delayed(Duration.zero, () {
+          demandes_Loader = false;
+          update();
+        });
+      } else {
         Get.snackbar("Error", demandes.body["message"],
-              backgroundColor: Colors.red, colorText: Colors.white);
-          Get.back();
-           Future.delayed(Duration.zero,(){
-            demandes_Loader = false;
+            backgroundColor: Colors.red, colorText: Colors.white);
+        Get.back();
+        Future.delayed(Duration.zero, () {
+          demandes_Loader = false;
           update();
-          });
-
+        });
       }
-       
     } catch (e) {
-       Get.snackbar("Error","Lost Connection , try again later",
-              backgroundColor: Colors.red, colorText: Colors.white);
-          Get.back();
-           Future.delayed(Duration.zero,(){
-            demandes_Loader = false;
-          update();
-          });
+      Get.snackbar("Error", "Lost Connection , try again later",
+          backgroundColor: Colors.red, colorText: Colors.white);
+      Get.back();
+      Future.delayed(Duration.zero, () {
+        demandes_Loader = false;
+        update();
+      });
     }
-   
-
-
-
-
   }
 
-
-
-  //! history page function and variables 
+  //! history page function and variables
 
   bool historypage_loader = false;
-  List<DemandeLiv> demandesLiv=[];
-// get all demande de liv that a user have sent to all transporteurs 
-  void getAlldemandesLiv()async{
-historypage_loader=true;
-update();
-  
-//! sent request to the serveur 
-  try {
-    Response alldemandeLiv = await Get.find<UserApi>().GetRequest(AppConstant.getAllDemande);
-    List<DemandeLiv> demandesLiv=[]; 
-  if(alldemandeLiv.body["success"]==true){
-   alldemandeLiv.body["data"].forEach((demandeLiv){
-    demandesLiv.add(DemandeLiv.fromJson(demandeLiv) );
-   });
-  Get.snackbar("Success", "Getting demandes successfuly",
-              backgroundColor: Colors.green, colorText: Colors.white);
-    Future.delayed(Duration.zero,(){
-      historypage_loader=false;
-      update();
-    }); 
+  List<DemandeLiv> demandesLiv = [];
+// get all demande de liv that a user have sent to all transporteurs
+  void getAlldemandesLiv() async {
+    historypage_loader = true;
+    update();
 
-  }
-   else{
-      
+//! sent request to the serveur
+    try {
+      Response alldemandeLiv =
+          await Get.find<UserApi>().GetRequest(AppConstant.getAllDemande);
+      List<DemandeLiv> demandesLiv = [];
+      if (alldemandeLiv.body["success"] == true) {
+        alldemandeLiv.body["data"].forEach((demandeLiv) {
+          demandesLiv.add(DemandeLiv.fromJson(demandeLiv));
+        });
+        Get.snackbar("Success", "Getting demandes successfuly",
+            backgroundColor: Colors.green, colorText: Colors.white);
+        Future.delayed(Duration.zero, () {
+          historypage_loader = false;
+          update();
+        });
+      } else {
         Get.snackbar("Error", alldemandeLiv.body["message"],
-              backgroundColor: Colors.red, colorText: Colors.white);
-          Get.back();
-           Future.delayed(Duration.zero,(){
-            historypage_loader = false;
+            backgroundColor: Colors.red, colorText: Colors.white);
+        Get.back();
+        Future.delayed(Duration.zero, () {
+          historypage_loader = false;
           update();
-          });
-      
+        });
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Lost Connection , try again later",
+          backgroundColor: Colors.red, colorText: Colors.white);
+      Get.back();
+      Future.delayed(Duration.zero, () {
+        historypage_loader = false;
+        update();
+      });
     }
-  } catch (e) {
-    Get.snackbar("Error","Lost Connection , try again later",
-              backgroundColor: Colors.red, colorText: Colors.white);
-          Get.back();
-           Future.delayed(Duration.zero,(){
-            historypage_loader = false;
-          update();
-          });
-  }
-
- 
-
   }
 }

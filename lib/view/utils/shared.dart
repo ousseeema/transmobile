@@ -27,6 +27,7 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     
   
   }
+
   static  Future<bool?>  noCnoT()async{
     
     SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
@@ -42,5 +43,10 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     }
 
 
+   static Future<String?> gettoken()async{
+            SharedPreferences sharedpreferences = await SharedPreferences.getInstance();  
+         return   await sharedpreferences.getString("token")??"token:";
+ 
+    }
 
 }

@@ -188,7 +188,7 @@ class _detailsResultState extends State<detailsResult>
                                     child: CostumeAnimatedText(text: 'No Trips Available'),
                                   )) ,
                                )  :const TripInfo(),
-                                  controller.SelectedTrip!.transporter.comments.isEmpty?Center(
+                                  controller.SelectedTrip!.transporter.comments==null ?Center(
                                 child: Center(
                                   child: CostumeAnimatedText(text: 'No Comments Available'),
                                 ) ,

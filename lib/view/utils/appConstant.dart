@@ -1,13 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+
+import 'package:transmobile/view/utils/shared.dart';
 
 class AppConstant  {
-SharedPreferences shared = Get.find();
 
-  static String token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDFjOWI4ZTQ1Yjc2MTAxOGNiZGRhMyIsImlhdCI6MTcxMTM5MzIyOX0.gCA6g6vpxvcMgf8aQZ5ZS38qILXzQ2Bvxeli9TVoGVM";
+
+  
   static String baseurl = "http://192.168.100.20:3000/api/v0";
   // client auth endpoints
   static String loginUser = "/authClient/signin";

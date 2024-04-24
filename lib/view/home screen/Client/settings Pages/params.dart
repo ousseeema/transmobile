@@ -77,7 +77,7 @@ class _paramsPageState extends State<paramsPage> {
                             style: TextStyle(color: Colors.grey),
                           ),
                           // display the email address
-                          CostumeAnimatedText(text: controller.client!.email),
+                          CostumeAnimatedText(text: controller.client!.email!),
                           
                         ],
                       ),

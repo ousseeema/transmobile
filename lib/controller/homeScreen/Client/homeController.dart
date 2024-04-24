@@ -146,6 +146,7 @@ class HomeController extends GetxController {
       //all trips
       TripsResponse.body['data'].forEach((trip) =>
           alltrips.add(TripModel.fromJson(trip)));
+        
           //current trip
       TripResponse.body["data"]
           .forEach((trip) => trips.add(TripModel.fromJson(trip)));
@@ -153,10 +154,12 @@ class HomeController extends GetxController {
       isloading = false;
       update();
     } else {
+    
       Get.snackbar("Error", "Error while getting data , Try reloading the page",
           colorText: Colors.white, backgroundColor: Colors.red);
     }
    } catch (e) {
+   
       Get.snackbar("Error", "Error while getting data , Try reloading the page",
           colorText: Colors.white, backgroundColor: Colors.red);
    }

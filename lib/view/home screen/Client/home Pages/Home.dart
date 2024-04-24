@@ -309,7 +309,7 @@ class _HomeState extends State<Home> {
                                                   text: "Welcome Back! "),
                                               CostumeAnimatedText(
                                                 text:
-                                                    controller.client!.fullName,
+                                                    controller.client!.fullName!,
                                                 color:
                                                     AppColors.insidetextcolor,
                                               ),

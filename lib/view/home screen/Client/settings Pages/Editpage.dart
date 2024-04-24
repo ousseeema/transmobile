@@ -136,7 +136,7 @@ class _EditPageState extends State<EditPage> {
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                   CostumeAnimatedText(
-                                      text: controller.client!.fullName),
+                                      text: controller.client!.fullName!),
                                 ],
                               ),
                               const Spacer(),
@@ -300,7 +300,7 @@ class _EditPageState extends State<EditPage> {
                                 width: Dimenssions.width20,
                               ),
                               CostumeAnimatedText(
-                                  text: controller.client!.fulladdress),
+                                  text: controller.client!.fulladdress!),
                               const Spacer(),
                               GestureDetector(
                                   onTap: () {
@@ -463,7 +463,7 @@ class _EditPageState extends State<EditPage> {
                                 width: Dimenssions.width20,
                               ),
                               CostumeAnimatedText(
-                                  text: controller.client!.phoneNumber),
+                                  text: controller.client!.phoneNumber!),
                               const Spacer(),
                               GestureDetector(
                                   onTap: () {
@@ -608,7 +608,7 @@ class _EditPageState extends State<EditPage> {
                                 width: Dimenssions.width20,
                               ),
                               CostumeAnimatedText(
-                                  text: controller.client!.phoneNumber2),
+                                  text: controller.client!.phoneNumber2!),
                               const Spacer(),
                               GestureDetector(
                                   onTap: () {
@@ -759,7 +759,7 @@ class _EditPageState extends State<EditPage> {
                                 width: Dimenssions.width20,
                               ),
                               CostumeAnimatedText(
-                                  text: controller.client!.country),
+                                  text: controller.client!.country!),
                               const Spacer(),
                               GestureDetector(
                                   onTap: () {

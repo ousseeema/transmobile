@@ -5,36 +5,36 @@
 // ignore_for_file: file_names
 
 class ClientModel {
-    String id;
-    String fullName;
-    String email;
-    String phoneNumber;
-    String phoneNumber2;
-    String role;
-    String fulladdress;
-    int numberofPackagesSended;
-    int numberofPackagesDelivred;
-    String country;
-    String profilePicture;
-    String createdAt;
-    bool verified;
-    List<dynamic> historique;
+    String? id;
+    String? fullName;
+    String? email;
+    String? phoneNumber;
+    String? phoneNumber2;
+    String? role;
+    String? fulladdress;
+    int? numberofPackagesSended;
+    int? numberofPackagesDelivred;
+    String? country;
+    String? profilePicture;
+    String? createdAt;
+    bool? verified;
+    List<dynamic>? historique;
 
     ClientModel({
-        required this.id,
-        required this.verified ,
-        required this.fullName,
-        required this.email,
-        required this.phoneNumber,
-        required this.phoneNumber2,
-        required this.role,
-        required this.fulladdress,
-        required this.numberofPackagesSended,
-        required this.numberofPackagesDelivred,
-        required this.country,
-        required this.profilePicture,
-        required this.createdAt,
-        required this.historique,
+        this.id,
+         this.verified ,
+         this.fullName,
+         this.email,
+         this.phoneNumber,
+        this.phoneNumber2,
+        this.role,
+         this.fulladdress,
+         this.numberofPackagesSended,
+         this.numberofPackagesDelivred,
+         this.country,
+         this.profilePicture,
+        this.createdAt,
+         this.historique,
     });
 
     factory ClientModel.fromJson(Map<String, dynamic> json) => ClientModel(
@@ -68,6 +68,6 @@ class ClientModel {
         "profilePicture": profilePicture,
         "createdAt": createdAt,
         "verified": verified,
-        "Historique": List<dynamic>.from(historique.map((x) => x)),
+        "Historique": List<dynamic>.from(historique!.map((x) => x)),
     };
 }
