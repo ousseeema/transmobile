@@ -33,8 +33,8 @@ class AppConstant  {
   static String usersearchTrip = "/clients/searchtrip";
   static String usersendrequest = "/clients/sendrequest";
   static String usergetverified = "/clients/getverified";
-  static String getAllDemande = "/clients//getalldemande/:id";
-  static String userAddReview = "/clients//addreview/:id";
+  static String getAllDemande = "/clients/getalldemande";
+  static String userAddReview = "/clients/addreview/:id";
   static String getCurrentTrips = "/clients/currentTrips";
    static String changeuseremail = "/clients/changeuseremail";
      static String changeuserpassword = "/clients/changepassword";

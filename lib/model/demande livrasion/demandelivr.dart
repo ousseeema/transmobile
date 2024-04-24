@@ -11,7 +11,7 @@ import 'package:transmobile/model/trans/transporteruModel.dart';
 
 class DemandeLiv {
     String id;
-    ClientModel client ;
+   String client ;
     TransporterModel transporter;
     Message message;
     bool  accepted;
@@ -32,9 +32,9 @@ class DemandeLiv {
 
     factory DemandeLiv.fromJson(Map<String, dynamic> json) => DemandeLiv(
         id: json["_id"].toString(),
-        client: ClientModel.fromJson(json["Client"]),
+        client: json["Client"],
         transporter: TransporterModel.fromJson(json["transporter"]),
-        message: json["message"],
+        message: Message.fromJson(json["message"]),
         accepted: json["accepted"],
         refused: json["refused"],
         createdAt: json["createdAt"],
@@ -43,7 +43,7 @@ class DemandeLiv {
 
     Map<String, dynamic> toJson() => {
         "_id": id,
-        "Client": client.toJson,
+        "Client": client,
         "transporter": transporter.toJson,
         "message": message.toJson(),
         "accepted": accepted,
@@ -54,7 +54,7 @@ class DemandeLiv {
 }
 
 class Message{
-  double numberofkg;
+  var numberofkg;
   String phoneNumberof_the_sender;
   String phoneNumberof_the_receiver;
   String Pickupaddress;

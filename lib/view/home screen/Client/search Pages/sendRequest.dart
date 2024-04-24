@@ -29,7 +29,9 @@ class _SendRequestState extends State<SendRequest> {
       body: SafeArea(
         child: GetBuilder<SendRequestController>(
           builder: (controller) {
-            return  controller.is_Loading==true ? const CircularProgressIndicator() :  SingleChildScrollView(
+            return  controller.is_Loading==true ? const Center(
+              child:  CircularProgressIndicator()
+              ) :  SingleChildScrollView(
               child: Column(
                 children: [
                   SizedBox(
@@ -395,7 +397,7 @@ class _SendRequestState extends State<SendRequest> {
                               BorderRadius.circular(Dimenssions.radius10)),
                       child: const Center(
                         child: Text(
-                          "Sign up",
+                          "Send request",
                           style: TextStyle(color: AppColors.insidetextcolor),
                         ),
                       ),

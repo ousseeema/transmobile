@@ -8,6 +8,7 @@ import 'package:transmobile/controller/homeScreen/Client/settingsController.dart
 import 'package:transmobile/view/components/settingsContainer.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Editpage.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Go%20pro.dart';
+import 'package:transmobile/view/home%20screen/Client/settings%20Pages/historypage.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/params.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -24,6 +25,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   initState() {
     super.initState();
     Get.find<SettingController>().GetUserInfo();
+       
   }
 
   @override
@@ -173,7 +175,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GestureDetector(
                       onTap: () {
                         // go to history page
-                        controller.getAlldemandesLiv();
+                       Get.to(()=>const HistoryPage());
+                      
                       },
                        // costume container for settings
                       child: SettingsContainer(

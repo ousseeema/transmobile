@@ -12,6 +12,7 @@ import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/demande%20livrasion/demandelivr.dart';
 import 'package:transmobile/model/verification%20demande/verificationDemandes%20model.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
+import 'package:transmobile/view/home%20screen/Client/settings%20Pages/historypage.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
 
@@ -417,21 +418,27 @@ class SettingController extends GetxController {
     update();
 
 //! sent request to the serveur
-    try {
+   
       Response alldemandeLiv =
           await Get.find<UserApi>().GetRequest(AppConstant.getAllDemande);
       List<DemandeLiv> demandesLiv = [];
       if (alldemandeLiv.body["success"] == true) {
+        print(alldemandeLiv.body["message"]);
         alldemandeLiv.body["data"].forEach((demandeLiv) {
           demandesLiv.add(DemandeLiv.fromJson(demandeLiv));
         });
+         
         Get.snackbar("Success", "Getting demandes successfuly",
             backgroundColor: Colors.green, colorText: Colors.white);
         Future.delayed(Duration.zero, () {
           historypage_loader = false;
           update();
         });
+        print(demandesLiv);
+       
+       
       } else {
+        
         Get.snackbar("Error", alldemandeLiv.body["message"],
             backgroundColor: Colors.red, colorText: Colors.white);
         Get.back();
@@ -440,14 +447,6 @@ class SettingController extends GetxController {
           update();
         });
       }
-    } catch (e) {
-      Get.snackbar("Error", "Lost Connection , try again later",
-          backgroundColor: Colors.red, colorText: Colors.white);
-      Get.back();
-      Future.delayed(Duration.zero, () {
-        historypage_loader = false;
-        update();
-      });
-    }
+    
   }
 }
