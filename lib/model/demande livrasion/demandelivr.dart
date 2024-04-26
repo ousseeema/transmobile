@@ -61,9 +61,11 @@ class Message{
   String receivedAdress;
   bool homepickup;
   bool homedelivery;
+  String  packagephoto;
   Message({
     required this.Pickupaddress,
     required this.homedelivery,
+    required this.packagephoto,
     required this.homepickup,
     required this.numberofkg,
     required this.phoneNumberof_the_receiver,
@@ -78,6 +80,7 @@ class Message{
       homedelivery: json["homedelivery"],
       homepickup: json["homepickup"],
       numberofkg: json["numberofkg"],
+      packagephoto: json["packagephoto"],
       phoneNumberof_the_receiver: json["phoneNumberof_the_receiver"],
       phoneNumberof_the_sender: json["phoneNumberof_the_sender"],
       receivedAdress: json["receivedAdress"]

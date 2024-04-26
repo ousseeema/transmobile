@@ -25,7 +25,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   initState() {
     super.initState();
     Get.find<SettingController>().GetUserInfo();
-       
   }
 
   @override
@@ -175,8 +174,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GestureDetector(
                       onTap: () {
                         // go to history page
-                       Get.to(()=>const HistoryPage());
                       
+                       controller.getAlldemandesLiv();
                       },
                        // costume container for settings
                       child: SettingsContainer(

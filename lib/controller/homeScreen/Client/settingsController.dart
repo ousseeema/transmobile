@@ -416,37 +416,45 @@ class SettingController extends GetxController {
   void getAlldemandesLiv() async {
     historypage_loader = true;
     update();
-
+     demandesLiv = [];
 //! sent request to the serveur
    
-      Response alldemandeLiv =
+     try {
+        Response alldemandeLiv =
           await Get.find<UserApi>().GetRequest(AppConstant.getAllDemande);
-      List<DemandeLiv> demandesLiv = [];
+         
       if (alldemandeLiv.body["success"] == true) {
-        print(alldemandeLiv.body["message"]);
+      
         alldemandeLiv.body["data"].forEach((demandeLiv) {
           demandesLiv.add(DemandeLiv.fromJson(demandeLiv));
         });
-         
-        Get.snackbar("Success", "Getting demandes successfuly",
-            backgroundColor: Colors.green, colorText: Colors.white);
+           Get.to(()=>const HistoryPage());
+       
         Future.delayed(Duration.zero, () {
           historypage_loader = false;
           update();
         });
-        print(demandesLiv);
        
+     
        
       } else {
-        
-        Get.snackbar("Error", alldemandeLiv.body["message"],
-            backgroundColor: Colors.red, colorText: Colors.white);
-        Get.back();
+       
         Future.delayed(Duration.zero, () {
           historypage_loader = false;
           update();
         });
       }
+     } catch (e) {
+
+         Future.delayed(Duration.zero, () {
+          historypage_loader = false;
+          update();
+        });
+     }
     
   }
+
+
+//! selected history to display in the hsitory details page 
+   DemandeLiv? selectedDemande;
 }
