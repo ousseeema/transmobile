@@ -49,7 +49,16 @@ class _HistoryPageState extends State<HistoryPage> {
                 SizedBox(height: Dimenssions.height20,),
               controller.demandesLiv.isEmpty?
 
-                 
+                  Column(
+                  children: [ 
+                    Icon(Icons.sentiment_dissatisfied_outlined, size: Dimenssions.icon24*2,color: AppColors.iconColor,),
+                    SizedBox(height: Dimenssions.height20),
+                    Text("you don't have any history", style: TextStyle(
+                      color: AppColors.hintTextColor,
+                      fontSize: Dimenssions.font20*1.5
+                    ),),
+                  ],
+                 )
                  : SizedBox(
                     height: Dimenssions.height-40,
                     child: ListView.builder(
