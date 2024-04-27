@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
@@ -23,13 +24,25 @@ class HistoryDetails extends StatelessWidget {
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
-                CostumeAnimatedText(text: "History Details"),
+                Row(
+                  children: [
+                    SizedBox(width: Dimenssions.width30,),
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: const Icon(Icons.arrow_back_rounded)),
+                    SizedBox(width: Dimenssions.width30*3.5,),
+                    CostumeAnimatedText(text: "History Details"),
+                  ],
+                ),
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
 
                 //! display the package image
                 Container(
+                  
                   margin: EdgeInsets.only(
                       left: Dimenssions.LRpadmarg20,
                       right: Dimenssions.LRpadmarg20),
@@ -45,145 +58,291 @@ class HistoryDetails extends StatelessWidget {
                 SizedBox(
                   height: Dimenssions.height20,
                 ),
-                CostumeInfoDetails(
-                    icon: const Icon(
-                      Icons.email_outlined,
-                      color: AppColors.iconColor,
-                    ),
-                    text1: "Transporter Name  :",
-                    text: CostumeAnimatedText(
-                        text:
-                            " ${controller.selectedDemande!.transporter.fullName}")),
+                Container(
+                  margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      icon: const Icon(
+                        Icons.email_outlined,
+                        color: AppColors.iconColor,
+                      ),
+                      text1: "Transporter Name  :",
+                      text: CostumeAnimatedText(
+                          text:
+                              " ${controller.selectedDemande!.transporter.fullName}")),
+                ),
                              SizedBox(
-                  height: Dimenssions.height20,
+                  height: Dimenssions.height10/2,
                 ),
-                CostumeInfoDetails(
-                    icon: const Icon(
-                      Icons.email_outlined,
-                      color: AppColors.iconColor,
-                    ),
-                    text1: "Email :",
-                    text: CostumeAnimatedText(
-                        text:
-                            " ${controller.selectedDemande!.transporter.email
-                            }")),
-                SizedBox(
-                  height: Dimenssions.height20,
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      icon: const Icon(
+                        Icons.email_outlined,
+                        color: AppColors.iconColor,
+                      ),
+                      text1: "Email :",
+                      text: CostumeAnimatedText(
+                          text:
+                              " ${controller.selectedDemande!.transporter.email
+                              }")),
                 ),
-                CostumeInfoDetails(
-                    text1: "Local Country:",
-                    icon: const Icon(BoxIcons.bx_world,
-                        color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.transporter.listCountry1}")),
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height: Dimenssions.height10/2,
+                ),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "Local Country:",
+                      icon: const Icon(BoxIcons.bx_world,
+                          color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.transporter.listCountry1}")),
+                ),
+                SizedBox(
+                  height: Dimenssions.height10/2,
                 ),
                 // local address
-                CostumeInfoDetails(
-                    text1: "Local Address:",
-                    icon: const Icon(Icons.location_on_outlined,
-                        color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.message.Pickupaddress}")),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "Local Address:",
+                      icon: const Icon(Icons.location_on_outlined,
+                          color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.message.Pickupaddress}")),
+                ),
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height:Dimenssions.height10/2,
                 ),
 
                 // local number
-                CostumeInfoDetails(
-                    text1: "Local Number: ",
-                    icon: const Icon(Icons.phone_sharp,
-                        color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.message.phoneNumberof_the_sender}")),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "Local Number: ",
+                      icon: const Icon(Icons.phone_sharp,
+                          color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.message.phoneNumberof_the_sender}")),
+                ),
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height: Dimenssions.height10/2,
                 ),
 
                 // destination country
-                CostumeInfoDetails(
-                    text1: "Destination Country:",
-                    icon: const Icon(BoxIcons.bx_world,
-                        color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.message.receivedAdress}")),
-
-                SizedBox(
-                  height: Dimenssions.height20,
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "Destination Country:",
+                      icon: const Icon(BoxIcons.bx_world,
+                          color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.message.receivedAdress}")),
                 ),
-                CostumeInfoDetails(
-                    text1: "PickUp Address:",
-                    icon: const Icon(Icons.location_on_outlined,
-                        color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.message.Pickupaddress}")),
 
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height: Dimenssions.height10/2,
+                ),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "PickUp Address:",
+                      icon: const Icon(Icons.location_on_outlined,
+                          color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.message.Pickupaddress}")),
+                ),
+
+                SizedBox(
+                  height: Dimenssions.height10/2,
                 ),
 
                 // second phone number of the reciver
-                CostumeInfoDetails(
-                    text1: "Destination Number: ",
-                    icon: const Icon(Icons.phone, color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.message.phoneNumberof_the_receiver}")),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "Destination Number: ",
+                      icon: const Icon(Icons.phone, color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.message.phoneNumberof_the_receiver}")),
+                ),
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height:Dimenssions.height10/2,
                 ),
 
                 // parcles true or false
-                CostumeInfoDetails(
-                    text1: "Parcles:",
-                    icon:
-                        const Icon(BoxIcons.bx_box, color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.transporter.parsols.toString()}")),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "Parcles:",
+                      icon:
+                          const Icon(BoxIcons.bx_box, color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.transporter.parsols.toString()}")),
+                ),
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height: Dimenssions.height10/2,
                 ),
 
                 // price for kg
-                CostumeInfoDetails(
-                    text1: "Price/kg: ",
-                    icon: const Icon(BoxIcons.bx_dollar_circle,
-                        color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.transporter.priceKg}")),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "Price/kg: ",
+                      icon: const Icon(BoxIcons.bx_dollar_circle,
+                          color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.transporter.priceKg}")),
+                ),
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height:Dimenssions.height10/2,
                 ),
                 // home pickups and delivery
-                CostumeInfoDetails(
-                    text1: "User Home Pickups/Delivery:",
-                    icon: const Icon(BoxIcons.bx_transfer,
-                        color: AppColors.iconColor),
-                    text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.message.homepickup.toString()}/ ${controller.selectedDemande!.message.homedelivery.toString()}")),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                      text1: "Home Pickups/Delivery:",
+                      icon: const Icon(BoxIcons.bx_transfer,
+                          color: AppColors.iconColor),
+                      text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.message.homepickup.toString()}/ ${controller.selectedDemande!.message.homedelivery.toString()}")),
+                ),
                 SizedBox(
-                  height: Dimenssions.height20,
+                  height: Dimenssions.height10/2,
                 ),
 
-                CostumeInfoDetails(
-                  
-                     text1: "Number of Kg: ",
-                     icon: const Icon(Icons.numbers,
-                        color: AppColors.iconColor),
-                     text: CostumeAnimatedText(
-                        text:
-                            "${controller.selectedDemande!.message.numberofkg}")),
+                Container(
+                   margin: EdgeInsets.only(left: Dimenssions.LRpadmarg10, right:  Dimenssions.LRpadmarg10,top:  Dimenssions.LRpadmarg10),
+                  padding: EdgeInsets.only(
+                    left: Dimenssions.LRpadmarg20
+                  ),
+                  height: Dimenssions.height20*2.5,
+                  width: Dimenssions.width,
+                  decoration: BoxDecoration( 
+                    color: Colors.green[100],
+                    borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                  ),
+                  child: CostumeInfoDetails(
+                    
+                       text1: "Number of Kg: ",
+                       icon: const Icon(Icons.numbers,
+                          color: AppColors.iconColor),
+                       text: CostumeAnimatedText(
+                          text:
+                              "${controller.selectedDemande!.message.numberofkg}")),
+                ),
                 
-                
+                SizedBox(
+                  height: Dimenssions.height20*4,
+                )
                ],
             ),
           );
