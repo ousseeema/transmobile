@@ -453,8 +453,24 @@ class SettingController extends GetxController {
      }
     
   }
-
-
+  
 //! selected history to display in the hsitory details page 
    DemandeLiv? selectedDemande;
+
+
+
+
+
+
+   //! send message to the admin to contact us
+   TextEditingController ContactUsMessageController =  TextEditingController();
+  
+   void contactUs()async{
+
+    
+
+   }
+
+
+
 }
