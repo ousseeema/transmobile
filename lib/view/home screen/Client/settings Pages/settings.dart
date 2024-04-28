@@ -8,7 +8,8 @@ import 'package:transmobile/controller/homeScreen/Client/settingsController.dart
 import 'package:transmobile/view/components/settingsContainer.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Editpage.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Go%20pro.dart';
-import 'package:transmobile/view/home%20screen/Client/settings%20Pages/historypage.dart';
+import 'package:transmobile/view/home%20screen/Client/settings%20Pages/contact%20us.dart';
+import 'package:transmobile/view/home%20screen/Client/settings%20Pages/InfoCenter.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/params.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -187,6 +188,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   GestureDetector(
                     onTap: () {
                       //  contact us page 
+                      Get.to(()=> const ContactUsPage());
                     },
                      // costume container for settings
                       child: SettingsContainer(
@@ -198,11 +200,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GestureDetector(
                       onTap: () {
                         // help center page 
+                        Get.to(()=>const  InfoCenter());
                       },
                        // costume container for settings
                       child: SettingsContainer(
                           iconData: Icons.help_outline_rounded,
-                          text: "Help center"),
+                          text: "Info Center"),
                     ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,

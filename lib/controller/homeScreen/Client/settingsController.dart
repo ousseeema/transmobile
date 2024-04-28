@@ -464,10 +464,54 @@ class SettingController extends GetxController {
 
    //! send message to the admin to contact us
    TextEditingController ContactUsMessageController =  TextEditingController();
-  
+  bool ContactUs_loading = false;
+// send the message to the admin for reclaimation
    void contactUs()async{
+   
 
-    
+    Map<String, dynamic> data = {
+      "reclamation": ContactUsMessageController.text
+    };
+    // ! if the message is empty then display the error message
+    if(ContactUsMessageController.text.isEmpty){
+Get.snackbar("Success", "Your reclamation must not be empty",
+            backgroundColor: Colors.red, colorText: Colors.white);
+    }else{
+       ContactUs_loading =true ;
+    update();
+      try {
+      String datatoSend= jsonEncode(data);
+         // send request to the server
+      Response reclamation = await Get.find<UserApi>().postRequest(datatoSend, AppConstant.sendReclamationRequest);
+
+      if(reclamation.body["success"] == true){
+              // if the request sent successfully the back to the pre page and display
+              // success message
+               // else errer message 
+            Get.back();
+            ContactUsMessageController.clear();
+
+       Get.snackbar("Success", reclamation.body["message"],
+            backgroundColor: Colors.green, colorText: Colors.white);
+
+        Future.delayed(Duration.zero, () {
+           ContactUs_loading= false;
+          update();
+        });
+        
+      }
+    } catch (e) {
+      Get.back();
+       Get.snackbar("Success", "error in the server",
+            backgroundColor: Colors.red, colorText: Colors.white);
+
+        Future.delayed(Duration.zero, () {
+           ContactUs_loading= false;
+          update();
+        });
+      
+    }
+    }
 
    }
 

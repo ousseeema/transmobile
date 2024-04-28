@@ -92,7 +92,7 @@ class _GoProState extends State<GoPro> with SingleTickerProviderStateMixin {
                 SizedBox(
                   width: Dimenssions.width10,
                 ),
-                CostumeAnimatedText(text: "Message to the admin :")
+                CostumeAnimatedText(text: "Message to the admin to get verified:")
               ],
             ),
             SizedBox(
