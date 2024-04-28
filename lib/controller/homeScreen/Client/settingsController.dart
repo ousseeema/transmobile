@@ -13,6 +13,7 @@ import 'package:transmobile/model/demande%20livrasion/demandelivr.dart';
 import 'package:transmobile/model/verification%20demande/verificationDemandes%20model.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/historypage.dart';
+import 'package:transmobile/view/splashscreens/transOuclient.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
 
@@ -515,6 +516,14 @@ Get.snackbar("Success", "Your reclamation must not be empty",
 
    }
 
+
+
+//! signout func 
+//! clear the token and everything
+  void signOut(){
+    shared().clear();
+    Get.offAll(()=> const TransOuClient());
+  }
 
 
 }

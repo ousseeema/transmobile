@@ -58,7 +58,8 @@ class InfoCenter extends StatelessWidget {
           children: [ 
             Container(
               height: Dimenssions.height20*2,
-              decoration: const BoxDecoration( 
+              decoration:  BoxDecoration( 
+                borderRadius: BorderRadius.circular(100),
                 color: AppColors.iconColor
               ),
               child:const  Center(
@@ -68,7 +69,8 @@ class InfoCenter extends StatelessWidget {
             SizedBox(width: Dimenssions.width20,),
              Container(
               height: Dimenssions.height20*2,
-              decoration: const BoxDecoration( 
+              decoration:  BoxDecoration( 
+                borderRadius: BorderRadius.circular(100),
                 color: AppColors.iconColor
               ),
               child:const  Center(
@@ -78,7 +80,8 @@ class InfoCenter extends StatelessWidget {
             SizedBox(width: Dimenssions.width20,),
              Container(
               height: Dimenssions.height20*2,
-              decoration: const BoxDecoration( 
+              decoration:  BoxDecoration( 
+                borderRadius: BorderRadius.circular(100),
                 color: AppColors.iconColor
               ),
               child:const  Center(

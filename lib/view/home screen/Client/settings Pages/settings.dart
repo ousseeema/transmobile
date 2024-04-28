@@ -213,6 +213,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GestureDetector(
                       onTap: () {
                         // sign out the user from the app 
+                        controller.signOut();
                         
                       },
                        // costume container for settings
