@@ -57,6 +57,7 @@ dependencies:
   mobkit_dashed_border: ^0.0.6
   popup_card: ^0.1.0
   text_area: ^0.0.3
+  socket_io_client: ^2.0.3+1
  
 
 dev_dependencies:

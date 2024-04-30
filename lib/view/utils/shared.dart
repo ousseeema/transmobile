@@ -33,13 +33,11 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     
       return sharedpreferences.getBool("isLogged")==true  && sharedpreferences.getBool("client") == false && sharedpreferences.getBool("transporteur") == false;
-    
   
   }
    static Future<String?>  getuser()async{
         SharedPreferences sharedpreferences = await SharedPreferences.getInstance();      
-         return  await sharedpreferences.getString("user")  ;
- 
+         return  await sharedpreferences.getString("user");
     }
 
 
