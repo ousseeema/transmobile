@@ -40,7 +40,10 @@ class AppConstant  {
      static String changeuserpassword = "/clients/changepassword";
      static String GetalldemandesVerifi = "/clients/GetverificationDemandesList";
   static String sendReclamationRequest = "/clients/sendReclamationRequest";
+    static String getListOfMessage = "/clients/sendReclamationRequest";
+
   // transporteur other endpoints
+  
 
   static String updateTrans = "/transporteur/updateTransporteurDetails";
   static String updatepicTrans = "/transporteur/uploadProfilePicture";
