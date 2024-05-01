@@ -1,7 +1,10 @@
+import 'package:transmobile/model/client/ClientModel.dart';
+import 'package:transmobile/model/trans/transporteruModel.dart';
+
 class Message {
   String id;
   String userId;
-  String transporterId;
+  TransporterModel transporterId;
   List<Map<String, dynamic>> messages;
   String createdAt;
 
@@ -13,9 +16,10 @@ class Message {
     required this.createdAt,
   });
 
-  factory Message.fromJson(Map<String, dynamic> json) => VerificationDemmnades(
+  factory Message.fromJson(Map<String, dynamic> json) => Message(
         id: json["_id"].toString(),
-        userId: json["userId"].toString(),
+        userId: json["clientId"].toString(),
+        transporterId:TransporterModel.fromJson(json["transporteur"]),
         messages: json["messages"],
         createdAt: json["createdAt"],
       );
@@ -23,6 +27,7 @@ class Message {
   Map<String, dynamic> toJson() => {
         "_id": id,
         "userId": userId,
+        "transporterId": transporterId.toJson(),
         "message": messages,
         "createdAt": createdAt,
       };

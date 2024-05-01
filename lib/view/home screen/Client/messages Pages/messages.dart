@@ -1,7 +1,15 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, unnecessary_string_interpolations
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:transmobile/controller/homeScreen/Client/messageController.dart';
+import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
+import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/utils/appConstant.dart';
+import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
+import 'package:transmobile/view/utils/shared.dart';
+import 'package:intl/intl.dart';
 
 class messagesScreen extends StatefulWidget {
   const messagesScreen({super.key});
@@ -12,31 +20,129 @@ class messagesScreen extends StatefulWidget {
 
 class _messagesScreenState extends State<messagesScreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+   
+     Get.find<MessageController>().GetAllMessages();
+                   Get.find<MessageController>().getuser();
+  }
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child:   Stack(
-          children: [
-            Positioned(
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
-              child: 
-            Container(
-              height: Dimenssions.height,
-              width: Dimenssions.width,
-              decoration: BoxDecoration(),
-              child: ListView.builder(
-                itemCount: 2,
-                itemBuilder: (context, index){
-                //  return MessageWidget(isMe: true, Message : messagetext, createdAt: CreatedAt);
-
-
-                }),
-            ))
-          ],
-        ) ),
-    );
+    return Scaffold(body: GetBuilder<MessageController>(
+      builder: (controller) {
+        return SafeArea(
+            child: SingleChildScrollView(
+          child: controller.messageLoader
+              ? const Center(child: CircularProgressIndicator())
+              : Column(
+                  children: [
+                    SizedBox(
+                      height: Dimenssions.height10,
+                    ),
+                    CostumeAnimatedText(
+                      text: "Messages",
+                    ),
+                    SizedBox(
+                      height: Dimenssions.height20 * 2,
+                    ),
+                    Container(
+                      height: Dimenssions.height,
+                      width: Dimenssions.width,
+                      decoration: BoxDecoration(),
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) => Divider(
+                          indent: Dimenssions.width20 * 2,
+                          endIndent: Dimenssions.width20 * 2,
+                        ),
+                        itemCount: controller.ListOfMessage.length,
+                        itemBuilder: (context, index) {
+                           DateTime now = DateTime.now();
+  
+                          final lastMessage =
+                              controller.ListOfMessage[index].messages.last;
+                          final createdAt = lastMessage["CreatedAt"];
+                          DateTime parsedDate = DateFormat("yyyy-MM-dd").parse(createdAt.toString().substring(0, 10));
+                          final isToday = now.compareTo(parsedDate);
+                             
+                           
+                          //message container for each discussion that a user have done
+                          return Container(
+                            height: Dimenssions.height20 * 4,
+                            margin: EdgeInsets.only(
+                                left: Dimenssions.LRpadmarg30,
+                                bottom: Dimenssions.LRpadmarg10 / 2,
+                                top: Dimenssions.LRpadmarg10 / 2),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        100), // Adjust the radius to match the container's borderRadius
+                                    child: Image.network(
+                                      "${AppConstant.Transimage}/${controller.ListOfMessage[index].transporterId.profilePicture}",
+                                      height: Dimenssions.height20 * 2.5,
+                                      width: Dimenssions.height20 * 2.5,
+                                    )),
+                                SizedBox(
+                                  width: Dimenssions.width20,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "${controller.ListOfMessage[index].transporterId.fullName}",
+                                      style: const TextStyle(
+                                          color: AppColors.buttonColor,
+                                          fontSize: 12),
+                                    ),
+                                    SizedBox(
+                                      height: Dimenssions.height10,
+                                    ),
+                                    lastMessage["user"].toString() ==
+                                            controller.client.id
+                                        ? SizedBox(
+                                            width: Dimenssions.width30 * 2,
+                                            child: Text(
+                                              "${lastMessage["message"]}",
+                                              overflow: TextOverflow.ellipsis,
+                                              style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Colors.grey),
+                                            ),
+                                          )
+                                        : SizedBox(
+                                            width: Dimenssions.width30 * 5,
+                                            child: Text(
+                                                "${lastMessage["message"]}",
+                                                overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black)),
+                                          ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: Dimenssions.width30,
+                                ),
+                                Text(
+                                  isToday==1 
+                                      ? "${createdAt.substring(11, 16)}" // Display time only
+                                      : "${createdAt.substring(0, 10)}", // Display full date
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
+        ));
+      },
+    ));
   }
 }
