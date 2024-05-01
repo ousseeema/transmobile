@@ -99,11 +99,13 @@ class MessageController extends GetxController {
   ];
   bool messageLoader = true;
   void GetAllMessages() async {
+   
     Response allMessage =
         await Get.find<UserApi>().GetRequest(AppConstant.getListOfMessage);
    
 
     if (allMessage.body['success'] == true) {
+      //ListOfMessage=[];
       allMessage.body['data'].forEach((message) {
         ListOfMessage.add(Message.fromJson(message));
       });

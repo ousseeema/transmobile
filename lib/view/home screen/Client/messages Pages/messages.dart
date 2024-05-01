@@ -23,19 +23,21 @@ class _messagesScreenState extends State<messagesScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-   
-     Get.find<MessageController>().GetAllMessages();
-                   Get.find<MessageController>().getuser();
+
+    Get.find<MessageController>().GetAllMessages();
+    Get.find<MessageController>().getuser();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: GetBuilder<MessageController>(
       builder: (controller) {
         return SafeArea(
-            child: SingleChildScrollView(
-          child: controller.messageLoader
-              ? const Center(child: CircularProgressIndicator())
-              : Column(
+            child:
+            controller.messageLoader? const Center(
+                child: CircularProgressIndicator()):
+             SingleChildScrollView(
+          child: Column(
                   children: [
                     SizedBox(
                       height: Dimenssions.height10,
@@ -57,18 +59,26 @@ class _messagesScreenState extends State<messagesScreen> {
                         ),
                         itemCount: controller.ListOfMessage.length,
                         itemBuilder: (context, index) {
-                           DateTime now = DateTime.now();
-  
+                          DateTime now = DateTime.now();
+
                           final lastMessage =
                               controller.ListOfMessage[index].messages.last;
                           final createdAt = lastMessage["CreatedAt"];
-                          DateTime parsedDate = DateFormat("yyyy-MM-dd").parse(createdAt.toString().substring(0, 10));
-                          final isToday = now.compareTo(parsedDate);
-                             
-                           
+                          DateTime parsedDate = DateFormat("yyyy-MM-dd")
+                              .parse(createdAt.substring(0, 10));
+
+                          // Create new DateTime objects with time set to midnight
+                          DateTime nowDate =
+                              DateTime(now.year, now.month, now.day);
+                          DateTime parsedDateWithoutTime = DateTime(
+                              parsedDate.year,
+                              parsedDate.month,
+                              parsedDate.day);
+                          final isToday = nowDate.compareTo(parsedDateWithoutTime);
+ 
                           //message container for each discussion that a user have done
                           return Container(
-                            height: Dimenssions.height20 * 4,
+                            height: Dimenssions.height20 * 3,
                             margin: EdgeInsets.only(
                                 left: Dimenssions.LRpadmarg30,
                                 bottom: Dimenssions.LRpadmarg10 / 2,
@@ -125,14 +135,17 @@ class _messagesScreenState extends State<messagesScreen> {
                                           ),
                                   ],
                                 ),
-                                SizedBox(
-                                  width: Dimenssions.width30,
-                                ),
+                               Spacer(),
                                 Text(
-                                  isToday==1 
+                                  isToday == 0
                                       ? "${createdAt.substring(11, 16)}" // Display time only
                                       : "${createdAt.substring(0, 10)}", // Display full date
-                                )
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: AppColors.iconColor
+                                ), 
+                                ),
+                                SizedBox(width: Dimenssions.width20,)
                               ],
                             ),
                           );
