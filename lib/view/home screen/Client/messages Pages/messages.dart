@@ -48,10 +48,10 @@ class _messagesScreenState extends State<messagesScreen> {
                     SizedBox(
                       height: Dimenssions.height20 * 2,
                     ),
-                    Container(
+                    SizedBox(
                       height: Dimenssions.height,
                       width: Dimenssions.width,
-                      decoration: BoxDecoration(),
+                      
                       child: ListView.separated(
                         separatorBuilder: (context, index) => Divider(
                           indent: Dimenssions.width20 * 2,
@@ -77,76 +77,82 @@ class _messagesScreenState extends State<messagesScreen> {
                           final isToday = nowDate.compareTo(parsedDateWithoutTime);
  
                           //message container for each discussion that a user have done
-                          return Container(
-                            height: Dimenssions.height20 * 3,
-                            margin: EdgeInsets.only(
-                                left: Dimenssions.LRpadmarg30,
-                                bottom: Dimenssions.LRpadmarg10 / 2,
-                                top: Dimenssions.LRpadmarg10 / 2),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                        100), // Adjust the radius to match the container's borderRadius
-                                    child: Image.network(
-                                      "${AppConstant.Transimage}/${controller.ListOfMessage[index].transporterId.profilePicture}",
-                                      height: Dimenssions.height20 * 2.5,
-                                      width: Dimenssions.height20 * 2.5,
-                                    )),
-                                SizedBox(
-                                  width: Dimenssions.width20,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "${controller.ListOfMessage[index].transporterId.fullName}",
-                                      style: const TextStyle(
-                                          color: AppColors.buttonColor,
-                                          fontSize: 12),
-                                    ),
-                                    SizedBox(
-                                      height: Dimenssions.height10,
-                                    ),
-                                    lastMessage["user"].toString() ==
-                                            controller.client.id
-                                        ? SizedBox(
-                                            width: Dimenssions.width30 * 2,
-                                            child: Text(
-                                              "${lastMessage["message"]}",
-                                              overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w300,
-                                                  color: Colors.grey),
-                                            ),
-                                          )
-                                        : SizedBox(
-                                            width: Dimenssions.width30 * 5,
-                                            child: Text(
+                          return InkWell(
+                            onTap: () {
+                              // going to the chat page 
+                              Get.to(()=> )
+                            },
+                            child: Container(
+                              height: Dimenssions.height20 * 3,
+                              margin: EdgeInsets.only(
+                                  left: Dimenssions.LRpadmarg30,
+                                  bottom: Dimenssions.LRpadmarg10 / 2,
+                                  top: Dimenssions.LRpadmarg10 / 2),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  ClipRRect(
+                                      borderRadius: BorderRadius.circular(
+                                          100), // Adjust the radius to match the container's borderRadius
+                                      child: Image.network(
+                                        "${AppConstant.Transimage}/${controller.ListOfMessage[index].transporterId.profilePicture}",
+                                        height: Dimenssions.height20 * 2.5,
+                                        width: Dimenssions.height20 * 2.5,
+                                      )),
+                                  SizedBox(
+                                    width: Dimenssions.width20,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "${controller.ListOfMessage[index].transporterId.fullName}",
+                                        style: const TextStyle(
+                                            color: AppColors.buttonColor,
+                                            fontSize: 12),
+                                      ),
+                                      SizedBox(
+                                        height: Dimenssions.height10,
+                                      ),
+                                      lastMessage["user"].toString() ==
+                                              controller.client.id
+                                          ? SizedBox(
+                                              width: Dimenssions.width30 * 2,
+                                              child: Text(
                                                 "${lastMessage["message"]}",
                                                 overflow: TextOverflow.ellipsis,
                                                 style: const TextStyle(
                                                     fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black)),
-                                          ),
-                                  ],
-                                ),
-                               Spacer(),
-                                Text(
-                                  isToday == 0
-                                      ? "${createdAt.substring(11, 16)}" // Display time only
-                                      : "${createdAt.substring(0, 10)}", // Display full date
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: AppColors.iconColor
-                                ), 
-                                ),
-                                SizedBox(width: Dimenssions.width20,)
-                              ],
+                                                    fontWeight: FontWeight.w300,
+                                                    color: Colors.grey),
+                                              ),
+                                            )
+                                          : SizedBox(
+                                              width: Dimenssions.width30 * 5,
+                                              child: Text(
+                                                  "${lastMessage["message"]}",
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: const TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.black)),
+                                            ),
+                                    ],
+                                  ),
+                                 Spacer(),
+                                  Text(
+                                    isToday == 0
+                                        ? "${createdAt.substring(11, 16)}" // Display time only
+                                        : "${createdAt.substring(0, 10)}", // Display full date
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: AppColors.iconColor
+                                  ), 
+                                  ),
+                                  SizedBox(width: Dimenssions.width20,)
+                                ],
+                              ),
                             ),
                           );
                         },
