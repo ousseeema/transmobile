@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/api/api.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
+
 import 'package:transmobile/model/messages/messageModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
@@ -119,4 +120,23 @@ class MessageController extends GetxController {
       Get.snackbar('Error', 'Error loading data', backgroundColor: Colors.red);
     }
   }
+
+
+// chatmessage page 
+
+  TextEditingController messagecontroller = new TextEditingController();
+
+ late Message Selectedmessage ;
+
+  void selectDiscussion(Message message){
+    Selectedmessage = message;
+  }
+
+
+
+
+
+
+
+
 }

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/messageController.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/home%20screen/Client/messages%20Pages/chatPage.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -80,7 +81,8 @@ class _messagesScreenState extends State<messagesScreen> {
                           return InkWell(
                             onTap: () {
                               // going to the chat page 
-                              Get.to(()=> )
+                              controller.selectDiscussion(controller.ListOfMessage[index]);
+                              Get.to(()=> const chatPage());
                             },
                             child: Container(
                               height: Dimenssions.height20 * 3,
