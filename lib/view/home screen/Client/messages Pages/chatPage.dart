@@ -15,6 +15,13 @@ class chatPage extends StatefulWidget {
 }
 
 class _chatPageState extends State<chatPage> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Get.find<MessageController>().socketInit();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,14 +30,43 @@ class _chatPageState extends State<chatPage> {
               return SingleChildScrollView(
       child: Column(
         children: [
+
+          //message listbuilder : contains all the messages 
           SizedBox(
             height: Dimenssions.height - Dimenssions.height20 * 5,
             width: Dimenssions.width,
             child: ListView.builder(
-                itemCount: 10, itemBuilder: ((context, index) {
+                itemCount:controller.SelectedDiscussion.messages.length,
+                 itemBuilder: ((context, index) {
+                   bool client =controller.SelectedDiscussion.userId ==  controller.SelectedDiscussion.messages[index]['user'];
+                 return Align(
+                
+                  alignment:client ? Alignment.centerLeft: Alignment.centerRight,
+                   child: Container(
+                    color: client? AppColors.bigTextColor: AppColors.buttonColor,
+                    margin: EdgeInsets.only(top: Dimenssions.LRpadmarg10),
+                    padding: EdgeInsets.all(Dimenssions.LRpadmarg10),
+                    height: Dimenssions.height20*4,
+                    child: Wrap(
+                   
+                     children: [ 
+                      Text(controller.SelectedDiscussion.messages[index]['message']),
+                      Text(controller.SelectedDiscussion.createdAt, style: TextStyle(
+                        fontSize: Dimenssions.font10-3,
+                        fontWeight: FontWeight.w200
+
+
+                      ),)
+                     ],
+                    ),
+                    
+                   ),
+                 );
+
                   
                 })),
           ),
+          // textfield container 
           Container(
             padding: EdgeInsets.only(top: Dimenssions.LRpadmarg10),
             height: Dimenssions.height20 * 4,
@@ -45,7 +81,10 @@ class _chatPageState extends State<chatPage> {
                 Expanded(
                   flex: 7,
                   child: TextField(
-                    controller: controller.messagecontroller,
+                    onChanged: (value) {
+                    controller.messagecontroller.text= value;
+                    },
+               
                     style:const  TextStyle(color: Colors.black),
                     cursorColor: Colors.white,
                     focusNode: FocusNode(),
@@ -61,10 +100,16 @@ class _chatPageState extends State<chatPage> {
                 ),
                 Expanded(
                     flex: 1,
-                    child: Icon(
-                      BoxIcons.bxs_send,
-                      size: Dimenssions.icon24 * 1.2,
-                      color: Colors.white,
+                    child: GestureDetector(
+                      onTap: () {
+                        controller.sendMessage();
+                        controller.messagecontroller.text='';
+                      },
+                      child: Icon(
+                        BoxIcons.bxs_send,
+                        size: Dimenssions.icon24 * 1.2,
+                        color: Colors.white,
+                      ),
                     ))
               ],
             ),

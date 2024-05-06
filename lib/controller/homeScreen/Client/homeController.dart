@@ -4,10 +4,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:transmobile/api/api.dart';
 import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/repository/client/ClientRepo.dart';
+import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
 
 class HomeController extends GetxController {
@@ -123,8 +125,10 @@ class HomeController extends GetxController {
   
   bool isloading = true;
   ClientModel? client;
+  List<TransporterModel> transporteurs =[];
 
   Future<void> LoadData() async {
+    List<TransporterModel> transporteurs =[];
     alltrips = [];
     // this is the responsable if we tap in refresh button this will display the shimmer effect
     isloading = true;
@@ -136,12 +140,14 @@ class HomeController extends GetxController {
         client = ClientModel.fromJson(jsonDecode(value!));
        });
     // getting the transporter's from the data base
-   try {
+
       Response TripsResponse = await ClientRepo().GetAllTrips();
     Response TripResponse = await ClientRepo().GetCurrentTrip();
+    Response transporters= await Get.find<UserApi>().GetRequest(AppConstant.usergetAllTransporter);
     // adding the stats endpoint in the future
 
-    if (TripResponse.body["success"] && TripResponse.body["success"]) {
+    if (TripResponse.body["success"] && TripResponse.body["success"]&& transporters.body['success']) {
+    
       
       //all trips
       TripsResponse.body['data'].forEach((trip) =>
@@ -158,10 +164,6 @@ class HomeController extends GetxController {
       Get.snackbar("Error", "Error while getting data , Try reloading the page",
           colorText: Colors.white, backgroundColor: Colors.red);
     }
-   } catch (e) {
-   
-      Get.snackbar("Error", "Error while getting data , Try reloading the page",
-          colorText: Colors.white, backgroundColor: Colors.red);
-   }
+ 
   }
 }

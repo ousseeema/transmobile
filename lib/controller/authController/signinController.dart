@@ -26,7 +26,8 @@ class signinController extends GetxController {
     Response response;
     String DataToSend = jsonEncode(data);
 
-    if (isClient) {
+  try {
+      if (isClient) {
       response = await authClientRepo().SignInClient(DataToSend);
       if (response.body["success"] == true) {
 
@@ -63,7 +64,7 @@ class signinController extends GetxController {
     } else {
       response = await authTrasnRepo().SignInTrans(DataToSend);
       if (response.body["success"] == true) {
-
+       print(response.body["token"]);
 
         // enregistre le client object in a string in the sharedpreferences
         await shared.setString(
@@ -91,6 +92,14 @@ class signinController extends GetxController {
             colorText: Colors.white, backgroundColor: Colors.red);
       }
     }
+  } catch (e) {
+     Get.snackbar("Error", "connection error",
+            colorText: Colors.white, backgroundColor: Colors.red);
+            
+            Get.back();
+            is_Loading = false;
+        update();
+  }
   }
 
   void verificationinput() {

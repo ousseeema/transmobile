@@ -7,7 +7,7 @@ class transHomeController extends GetxController{
   TransporterModel? transporter ;
   
 
-
+  
 
 
 

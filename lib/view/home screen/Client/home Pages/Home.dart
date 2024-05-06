@@ -492,7 +492,7 @@ class _HomeState extends State<Home> {
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 // list of transporteurs length
-                                itemCount: 5,
+                                itemCount:controller.alltrips.length ,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: EdgeInsets.only(
