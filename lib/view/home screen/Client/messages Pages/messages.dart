@@ -97,7 +97,7 @@ class _messagesScreenState extends State<messagesScreen> {
                                       borderRadius: BorderRadius.circular(
                                           100), // Adjust the radius to match the container's borderRadius
                                       child: Image.network(
-                                        "${AppConstant.Transimage}/${controller.ListOfMessage[index].transporterId.profilePicture}",
+                                        "${AppConstant.Transimage}/${controller.ListOfMessage[index].transporterId}",
                                         height: Dimenssions.height20 * 2.5,
                                         width: Dimenssions.height20 * 2.5,
                                       )),
@@ -109,7 +109,7 @@ class _messagesScreenState extends State<messagesScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "${controller.ListOfMessage[index].transporterId.fullName}",
+                                        "${controller.ListOfMessage[index].transporterId}",
                                         style: const TextStyle(
                                             color: AppColors.buttonColor,
                                             fontSize: 12),

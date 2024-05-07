@@ -19,8 +19,9 @@ class _chatPageState extends State<chatPage> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
     Get.find<MessageController>().socketInit();
+    super.initState();
+     
   }
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class _chatPageState extends State<chatPage> {
                    
                      children: [ 
                       Text(controller.SelectedDiscussion.messages[index]['message']),
-                      Text(controller.SelectedDiscussion.createdAt, style: TextStyle(
+                      Text(controller.SelectedDiscussion.createdAt.substring(12,16), style: TextStyle(
                         fontSize: Dimenssions.font10-3,
                         fontWeight: FontWeight.w200
 
@@ -84,6 +85,7 @@ class _chatPageState extends State<chatPage> {
                     onChanged: (value) {
                     controller.messagecontroller.text= value;
                     },
+                    controller: controller.messagecontroller,
                
                     style:const  TextStyle(color: Colors.black),
                     cursorColor: Colors.white,

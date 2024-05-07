@@ -8,7 +8,8 @@ class AppConstant  {
 
 
   
-  static String baseurl = "http://192.168.1.38:3000/api/v0";
+  static String baseurl = "http://192.168.100.20:3000/api/v0";
+   static String socekturl = "http://192.168.100.20:3000";
   // client auth endpoints
   static String loginUser = "/authClient/signin";
   static String signup1Client = "/authClient/signup1";
@@ -59,10 +60,10 @@ class AppConstant  {
   static String TransaddTriptohistory = "/transporteur/addtriptohistory/:id";
 
   /// images path
-  static String Clientimage ="http://192.168.1.38:3000/Images/private/users/";
-    static String Transimage ="http://192.168.1.38:3000/Images/private/transporteurs";
-      static String Packagesimage ="http://192.168.1.38:3000/Images/packages/";
-        static String Passportimage ="http://192.168.1.38:3000/Images/passport/";
+  static String Clientimage ="http://192.168.100.20:3000/Images/private/users/";
+    static String Transimage ="http://192.168.100.20:3000/Images/private/transporteurs";
+      static String Packagesimage ="http://192.168.100.20:3000/Images/packages/";
+        static String Passportimage ="http://192.168.100.20:3000/Images/passport/";
 
 
 

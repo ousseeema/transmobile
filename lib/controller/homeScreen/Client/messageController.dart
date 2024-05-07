@@ -1,21 +1,26 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:socket_io_client/socket_io_client.dart' as Io;
+
 import 'package:transmobile/api/api.dart';
+import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
 
 import 'package:transmobile/model/messages/messageModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
+import 'package:socket_io_client/socket_io_client.dart' as Io;
+
 
 class MessageController extends GetxController {
   late ClientModel client;
-  late Io.Socket socket;
+   late Io.Socket socket;
+
 
   void getuser() async {
     shared.getuser().then((value) {
@@ -34,84 +39,7 @@ class MessageController extends GetxController {
             'CreatedAt': '2024-04-04T16:19:32.990Z'
           }
         ],
-        transporterId: TransporterModel(
-            id: "660ed383a68c5c38446f4bce",
-            fullName: 'ihsdusdfsdf',
-            email: 'fdsfsdfsdfsdff',
-            phoneNumberA: 'phoneNumberA',
-            phoneNumberB: 'phoneNumberB',
-            DestinationAddress: 'DestinationAddress',
-            localAddress: 'localAddress',
-            carBrand: 'carBrand',
-            carSerieNumber: 'carSerieNumber',
-            listCountry1: 'listCountry1',
-            listCountry2: 'listCountry2',
-            homePickUps: true,
-            homeDelivery: false,
-            priceKg: 14,
-            parsols: true,
-            parsolsSite: ['qsfqsfqsfqsfqsf'],
-            Adresse_Parsols: "Adresse_Parsols",
-            numberofTrips: 14,
-            numberofClients: 10,
-            numberofPackages: 11,
-            role: "transporteur",
-            totalRevenue: 1000,
-            verified: false,
-            profilePicture: "transporteurs_660ed383a68c5c38446f4bce.jpg",
-            pro: true,
-            createdAt: "2024-04-04T16:19:32.990Z",
-            comments: []),
-        createdAt: "2024-04-04T16:19:32.990Z"),
-    Discussion(
-        id: "lqkcssckcqscqs",
-        userId: "662960884fd5711489e1ad1c",
-        messages: [
-          {
-            'user': "660ed383a68c5c38446f4bce",
-            "message": "heeelo there from here",
-            'CreatedAt': '2024-04-04T16:19:32.990Z'
-          },
-          {
-            'user': "660ed383a68c5c38446f4bce",
-            "message": "heeelo there from here",
-            'CreatedAt': '2024-04-04T16:19:32.990Z'
-          },
-          {
-            'user': "660ed383a68c5c38446f4bce",
-            "message": "heeelo there from here",
-            'CreatedAt': '2024-04-04T16:19:32.990Z'
-          }
-        ],
-        transporterId: TransporterModel(
-            id: "660ed383a68c5c38446f4bce",
-            fullName: 'ihsdusdfsdf',
-            email: 'fdsfsdfsdfsdff',
-            phoneNumberA: 'phoneNumberA',
-            phoneNumberB: 'phoneNumberB',
-            DestinationAddress: 'DestinationAddress',
-            localAddress: 'localAddress',
-            carBrand: 'carBrand',
-            carSerieNumber: 'carSerieNumber',
-            listCountry1: 'listCountry1',
-            listCountry2: 'listCountry2',
-            homePickUps: true,
-            homeDelivery: false,
-            priceKg: 14,
-            parsols: true,
-            parsolsSite: ['qsfqsfqsfqsfqsf'],
-            Adresse_Parsols: "Adresse_Parsols",
-            numberofTrips: 14,
-            numberofClients: 10,
-            numberofPackages: 11,
-            role: "transporteur",
-            totalRevenue: 1000,
-            verified: false,
-            profilePicture: "transporteurs_660ed383a68c5c38446f4bce.jpg",
-            pro: true,
-            createdAt: "2024-04-04T16:19:32.990Z",
-            comments: []),
-        createdAt: "2024-04-04T16:19:32.990Z")
+        transporterId: '660c06bb190aa4cdc410dfd1', createdAt: "2024-04-04T16:19")
   ];
   bool messageLoader = true;
   void GetAllMessages() async {
@@ -136,13 +64,17 @@ class MessageController extends GetxController {
 
   //init socket io
   void socketInit() {
-    socket = Io.io(
-        "http://192.168.1.38:3000",
+  
+      socket = Io.io(
+        AppConstant.socekturl,
         Io.OptionBuilder()
             .setTransports(["websocket"])
             .disableAutoConnect()
             .build());
+           
+
             socket.connect();
+             setUpsSocketListener();
   }
 
   TextEditingController messagecontroller = TextEditingController();
@@ -152,6 +84,26 @@ class MessageController extends GetxController {
   void selectDiscussion(Discussion discussion) {
     SelectedDiscussion = discussion;
   }
+late ClientModel me;
+  void sendMessage() async{
+  await shared.getuser().then((value) {
+    me= ClientModel.fromJson(jsonDecode(value!));
+  });
+    Map<String, dynamic> message ={
+      "message": messagecontroller.text, 
+      "user": me.id,
+      "transporteur": SelectedDiscussion.transporterId
 
-  void sendMessage() {}
+
+    };
+    socket.emit('sendMessage', message );
+  }
+  void setUpsSocketListener() {
+  socket.on('message-recived',(message){
+    print(message);
+
+  });
 }
+}
+
+

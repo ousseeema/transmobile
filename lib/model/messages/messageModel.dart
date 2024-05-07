@@ -4,22 +4,22 @@ import 'package:transmobile/model/trans/transporteruModel.dart';
 class Discussion {
   String id;
   String userId;
-  TransporterModel transporterId;
-  List<Map<String, dynamic>> messages;
+  String  transporterId;
+ List<dynamic> messages;
   String createdAt;
 
   Discussion({
     required this.id,
     required this.userId,
     required this.messages,
-    required this.transporterId,
+   required this.transporterId,
     required this.createdAt,
   });
 
   factory Discussion.fromJson(Map<String, dynamic> json) => Discussion(
         id: json["_id"].toString(),
         userId: json["clientId"].toString(),
-        transporterId:TransporterModel.fromJson(json["transporteur"]),
+        transporterId:json["transporteur"].toString(),
         messages: json["messages"],
         createdAt: json["createdAt"],
       );
@@ -27,7 +27,7 @@ class Discussion {
   Map<String, dynamic> toJson() => {
         "_id": id,
         "userId": userId,
-        "transporterId": transporterId.toJson(),
+        "transporterId": transporterId,
         "message": messages,
         "createdAt": createdAt,
       };
