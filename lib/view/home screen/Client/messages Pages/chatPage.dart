@@ -105,7 +105,7 @@ class _chatPageState extends State<chatPage> {
                     child: GestureDetector(
                       onTap: () {
                         controller.sendMessage();
-                        controller.messagecontroller.text='';
+                        
                       },
                       child: Icon(
                         BoxIcons.bxs_send,

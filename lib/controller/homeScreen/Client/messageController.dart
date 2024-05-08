@@ -97,6 +97,7 @@ late ClientModel me;
 
     };
     socket.emit('sendMessage', message );
+    messagecontroller.text='';
   }
   void setUpsSocketListener() {
   socket.on('message-recived',(message){

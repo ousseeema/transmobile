@@ -26,9 +26,10 @@ class signinController extends GetxController {
     Response response;
     String DataToSend = jsonEncode(data);
 
-  try {
+
       if (isClient) {
-      response = await authClientRepo().SignInClient(DataToSend);
+    try {
+        response = await authClientRepo().SignInClient(DataToSend);
       if (response.body["success"] == true) {
 
 
@@ -58,11 +59,20 @@ class signinController extends GetxController {
             colorText: Colors.white, backgroundColor: Colors.red);
       }
 
+      
+    } catch (e) {
+       is_Loading = false;
+        update();
+       
+      Get.snackbar("Error","serveur error",
+            colorText: Colors.white, backgroundColor: Colors.red);
+    }
 
 
 
     } else {
-      response = await authTrasnRepo().SignInTrans(DataToSend);
+      try {
+        response = await authTrasnRepo().SignInTrans(DataToSend);
       if (response.body["success"] == true) {
        print(response.body["token"]);
 
@@ -87,19 +97,15 @@ class signinController extends GetxController {
       } else {
         is_Loading = false;
         update();
-
         Get.snackbar("Error", response.body["message"],
             colorText: Colors.white, backgroundColor: Colors.red);
       }
-    }
-  } catch (e) {
-     Get.snackbar("Error", "connection error",
+      } catch (e) {
+         Get.snackbar("Error", "Server error",
             colorText: Colors.white, backgroundColor: Colors.red);
-            
-            Get.back();
-            is_Loading = false;
-        update();
-  }
+        
+      }
+    }
   }
 
   void verificationinput() {
