@@ -95,6 +95,7 @@ late ClientModel me;
       "transporteur": SelectedDiscussion.transporterId
 
 
+
     };
     socket.emit('sendMessage', message );
     messagecontroller.text='';
