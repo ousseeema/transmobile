@@ -97,7 +97,7 @@ class _messagesScreenState extends State<messagesScreen> {
                                       borderRadius: BorderRadius.circular(
                                           100), // Adjust the radius to match the container's borderRadius
                                       child: Image.network(
-                                        "${AppConstant.Transimage}/${controller.ListOfMessage[index].transporterId}",
+                                        "${AppConstant.Transimage}/${controller.ListOfMessage[index].transporterId.profilePicture}",
                                         height: Dimenssions.height20 * 2.5,
                                         width: Dimenssions.height20 * 2.5,
                                       )),
@@ -109,7 +109,7 @@ class _messagesScreenState extends State<messagesScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "${controller.ListOfMessage[index].transporterId}",
+                                        "${controller.ListOfMessage[index].transporterId.fullName}",
                                         style: const TextStyle(
                                             color: AppColors.buttonColor,
                                             fontSize: 12),
@@ -143,7 +143,7 @@ class _messagesScreenState extends State<messagesScreen> {
                                     ],
                                   ),
                                  Spacer(),
-                                  Text(
+                                 Text(
                                     isToday == 0
                                         ? "${createdAt.substring(11, 16)}" // Display time only
                                         : "${createdAt.substring(0, 10)}", // Display full date

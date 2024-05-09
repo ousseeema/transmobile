@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/messageController.dart';
+import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -15,12 +16,16 @@ class chatPage extends StatefulWidget {
 }
 
 class _chatPageState extends State<chatPage> {
+    final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     // TODO: implement initState
     Get.find<MessageController>().socketInit();
     super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+    });
      
   }
   @override
@@ -37,6 +42,7 @@ class _chatPageState extends State<chatPage> {
             height: Dimenssions.height - Dimenssions.height20 * 5,
             width: Dimenssions.width,
             child: ListView.builder(
+           controller: _scrollController,
                 itemCount:controller.SelectedDiscussion.messages.length,
                  itemBuilder: ((context, index) {
                    bool client =controller.SelectedDiscussion.userId ==  controller.SelectedDiscussion.messages[index]['user'];
@@ -44,17 +50,50 @@ class _chatPageState extends State<chatPage> {
                 
                   alignment:client ? Alignment.centerLeft: Alignment.centerRight,
                    child: Container(
-                    color: client? AppColors.bigTextColor: AppColors.buttonColor,
-                    margin: EdgeInsets.only(top: Dimenssions.LRpadmarg10),
+                    decoration: BoxDecoration(
+                      boxShadow:[ 
+               BoxShadow(
+                  color: Colors.grey.withOpacity(0.5), //color of shadow
+                  spreadRadius: 5, //spread radius
+                  blurRadius: 7, // blur radius
+                  offset: Offset(0, 2), // changes position of shadow
+                  //first paramerter of offset is left-right
+                  //second parameter is top to down
+               ),
+               //you can set more BoxShadow() here
+              ],
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimenssions.radius10), bottomRight: Radius.circular(Dimenssions.radius10), topRight: Radius.circular(Dimenssions.radius10)),
+                        color: client? AppColors.bigTextColor: AppColors.buttonColor,
+                    ),
+                  
+                    margin: EdgeInsets.only(top: Dimenssions.LRpadmarg10, left: Dimenssions.LRpadmarg10, right: Dimenssions.LRpadmarg10),
                     padding: EdgeInsets.all(Dimenssions.LRpadmarg10),
                     height: Dimenssions.height20*4,
                     child: Wrap(
                    
                      children: [ 
-                      Text(controller.SelectedDiscussion.messages[index]['message']),
+                      
+
+                      Text(controller.SelectedDiscussion.messages[index]['message'], style:const  TextStyle(
+                        color: AppColors.insidetextcolor
+                      ),),
+                      SizedBox(width: Dimenssions.width30,),
+                        ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                                100), // Adjust the radius to match the container's borderRadius
+                                            child: Image.network(
+                                              client?
+                                              "${AppConstant.Clientimage}${controller.client.profilePicture}":"${AppConstant.Transimage}${controller.SelectedDiscussion.transporterId.profilePicture}",
+                                              fit: BoxFit.cover,
+                                              height: Dimenssions.height20,
+                                              width: Dimenssions.width20 ,
+                                            ),
+                                          ),
+                                          SizedBox(width: Dimenssions.width10,),
                       Text(controller.SelectedDiscussion.createdAt.substring(12,16), style: TextStyle(
-                        fontSize: Dimenssions.font10-3,
-                        fontWeight: FontWeight.w200
+                        fontSize: Dimenssions.font10,
+                        fontWeight: FontWeight.w200,
+                           color: AppColors.insidetextcolor
 
 
                       ),)
@@ -82,6 +121,7 @@ class _chatPageState extends State<chatPage> {
                 Expanded(
                   flex: 7,
                   child: TextField(
+                    maxLines: 4,
                     onChanged: (value) {
                     controller.messagecontroller.text= value;
                     },

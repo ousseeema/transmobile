@@ -308,8 +308,8 @@ class _HomeState extends State<Home> {
                                               CostumeAnimatedText(
                                                   text: "Welcome Back! "),
                                               CostumeAnimatedText(
-                                                text:
-                                                    controller.client!.fullName!,
+                                                text: controller
+                                                    .client!.fullName!,
                                                 color:
                                                     AppColors.insidetextcolor,
                                               ),
@@ -325,33 +325,40 @@ class _HomeState extends State<Home> {
                             height: Dimenssions.height10,
                           ),
                           SizedBox(
+                            // list of the sites displayed in list view builder
                             height: Dimenssions.height20 * 10,
                             width: Dimenssions.width,
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: 8,
+                                itemCount: controller.get_site_images.length,
                                 itemBuilder: (_, index) {
                                   return Padding(
                                     padding: const EdgeInsets.all(10),
-                                    child: Container(
-                                      height: Dimenssions.height20 * 10,
-                                      width: Dimenssions.width - 20,
-                                      decoration: BoxDecoration(
-                                          boxShadow: const [
-                                            BoxShadow(
-                                              color: Colors.grey,
-                                              blurRadius: 4,
-                                              offset: Offset(
-                                                  4, 8), // Shadow position
-                                            ),
-                                          ],
-                                          image: const DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: AssetImage(
-                                                "assets/images/amazon.jpg",
-                                              )),
-                                          borderRadius: BorderRadius.circular(
-                                              Dimenssions.radius20)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        controller.launchURL(index);
+                                      },
+                                      child: Container(
+                                        height: Dimenssions.height20 * 10,
+                                        width: Dimenssions.width - 20,
+                                        decoration: BoxDecoration(
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                color: Colors.grey,
+                                                blurRadius: 4,
+                                                offset: Offset(
+                                                    4, 8), // Shadow position
+                                              ),
+                                            ],
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                // image displayed
+                                                image: AssetImage(
+                                                  "assets/images/${controller.get_site_images[index]}",
+                                                )),
+                                            borderRadius: BorderRadius.circular(
+                                                Dimenssions.radius20)),
+                                      ),
                                     ),
                                   );
                                 }),
@@ -371,8 +378,10 @@ class _HomeState extends State<Home> {
                           SizedBox(
                             height: Dimenssions.height10,
                           ),
+
                           GestureDetector(
                             onTap: () {
+                              // if the user has a trip go to the next page else dispaly error message
                               if (controller.trips.isNotEmpty) {
                                 Get.to(() => const Maps());
                               } else {
@@ -407,7 +416,6 @@ class _HomeState extends State<Home> {
                                         ),
                                         onMapCreated:
                                             (GoogleMapController controller) {
-                                        
                                           _mapcontroller = controller;
                                         },
                                         onCameraMove: (position) {
@@ -467,17 +475,21 @@ class _HomeState extends State<Home> {
                               const Spacer(),
                               GestureDetector(
                                 onTap: () {
-                                Get.to(()=> const AllTripsListScreen());
+                                  Get.to(() => const AllTripsListScreen());
                                 },
-                                child: Text("View more", style: TextStyle(
-                                  
-                                  fontWeight: FontWeight.w100,
-                                  fontSize: Dimenssions.font20 - 5,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.underline,
-                                ),),
+                                child: Text(
+                                  "View more",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w100,
+                                    fontSize: Dimenssions.font20 - 5,
+                                    color: Colors.grey,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
                               ),
-                              SizedBox(width: Dimenssions.width20,)
+                              SizedBox(
+                                width: Dimenssions.width20,
+                              )
                             ],
                           ),
                           SizedBox(
@@ -492,7 +504,7 @@ class _HomeState extends State<Home> {
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 // list of transporteurs length
-                                itemCount:controller.alltrips.length ,
+                                itemCount: controller.alltrips.length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: EdgeInsets.only(
@@ -532,7 +544,6 @@ class _HomeState extends State<Home> {
                                               Get.to(
                                                 () => const detailsResult(),
                                                 transition: Transition.fade,
-                                              
                                               );
                                             },
                                             child: ClipRRect(
@@ -556,6 +567,14 @@ class _HomeState extends State<Home> {
                           ),
 
                           // this space to display charts
+                          
+
+
+
+
+
+
+
                         ]),
                   ),
           );

@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:socket_io_common/src/util/event_emitter.dart';
 
 import 'package:transmobile/api/api.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
@@ -29,25 +30,16 @@ class MessageController extends GetxController {
   }
 
   List<Discussion> ListOfMessage = [
-    Discussion(
-        id: "lqkcssckcqscqs",
-        userId: "662960884fd5711489e1ad1c",
-        messages: [
-          {
-            'user': "660ed383a68c5c38446f4bce",
-            "message": "heeelo there from here",
-            'CreatedAt': '2024-04-04T16:19:32.990Z'
-          }
-        ],
-        transporterId: '660c06bb190aa4cdc410dfd1', createdAt: "2024-04-04T16:19")
+  
   ];
   bool messageLoader = true;
   void GetAllMessages() async {
+   
     Response allMessage =
         await Get.find<UserApi>().GetRequest(AppConstant.getListOfMessage);
 
     if (allMessage.body['success'] == true) {
-      //ListOfMessage=[];
+      ListOfMessage=[];
       allMessage.body['data'].forEach((message) {
         ListOfMessage.add(Discussion.fromJson(message));
       });
@@ -83,6 +75,7 @@ class MessageController extends GetxController {
 
   void selectDiscussion(Discussion discussion) {
     SelectedDiscussion = discussion;
+     update();
   }
 late ClientModel me;
   void sendMessage() async{
@@ -92,7 +85,7 @@ late ClientModel me;
     Map<String, dynamic> message ={
       "message": messagecontroller.text, 
       "user": me.id,
-      "transporteur": SelectedDiscussion.transporterId
+      "transporteur": SelectedDiscussion.transporterId.id
 
 
 
@@ -101,10 +94,22 @@ late ClientModel me;
     messagecontroller.text='';
   }
   void setUpsSocketListener() {
-  socket.on('message-recived',(message){
-    print(message);
+  socket.on('message-received',(message){
+    SelectedDiscussion = Discussion.fromJson(message);
+    
+    ListOfMessage.forEach((element) {
+      
+     if (element.id == SelectedDiscussion.id ){
+      ListOfMessage.remove(element);
+      ListOfMessage.add(SelectedDiscussion);
+      update();
+     }
+    },);
+    update();
+
 
   });
+  
 }
 }
 
