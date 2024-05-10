@@ -420,7 +420,7 @@ class SettingController extends GetxController {
      demandesLiv = [];
 //! sent request to the serveur
    
-     try {
+    
         Response alldemandeLiv =
           await Get.find<UserApi>().GetRequest(AppConstant.getAllDemande);
          
@@ -445,13 +445,7 @@ class SettingController extends GetxController {
           update();
         });
       }
-     } catch (e) {
-
-         Future.delayed(Duration.zero, () {
-          historypage_loader = false;
-          update();
-        });
-     }
+   
     
   }
   

@@ -13,7 +13,8 @@ class InfoCenter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(children: [ 
+        child: Column(
+          children: [ 
            SizedBox(
           
             height: Dimenssions.height20*12,
@@ -27,40 +28,51 @@ class InfoCenter extends StatelessWidget {
         ,SizedBox(
           height: Dimenssions.height20*2,
         ),
-        Row(
-          children: [ 
-            const Icon(Icons.email, color : AppColors.iconColor),
-            SizedBox(width: Dimenssions.width20,),
-            CostumeAnimatedText(text: "E-Mail : westudy.tn@gmail.com " )
-
-          ],
+        Padding(
+          padding:  EdgeInsets.only(left: Dimenssions.LRpadmarg20),
+          child: Row(
+            children: [ 
+              const Icon(Icons.email, color : AppColors.iconColor),
+              SizedBox(width: Dimenssions.width20,),
+              CostumeAnimatedText(text: "E-Mail : westudy.tn@gmail.com " )
+          
+            ],
+          ),
         ),
         SizedBox(height: Dimenssions.height20,),
-        Row(
-          children: [ 
-            const Icon(Icons.phone_iphone_rounded, color : AppColors.iconColor),
-            SizedBox(width: Dimenssions.width20,),
-            CostumeAnimatedText(text: "Téléphone: 56 329 392" )
-
-          ],
+        Padding(
+        padding:  EdgeInsets.only(left: Dimenssions.LRpadmarg20),
+          child: Row(
+            children: [ 
+              const Icon(Icons.phone_iphone_rounded, color : AppColors.iconColor),
+              SizedBox(width: Dimenssions.width20,),
+              CostumeAnimatedText(text: "Téléphone: 56 329 392" )
+          
+            ],
+          ),
         ),
         SizedBox(height: Dimenssions.height20,),
-         Row(
-          children: [ 
-            const Icon(Icons.phone_iphone_rounded, color : AppColors.iconColor),
-            SizedBox(width: Dimenssions.width20,),
-            CostumeAnimatedText(text: " Adresse: 7 Av Farhat Hached, Ezzahra,\n Ben Arous, 2034, Tunis" )
-
-          ],
-        ),
-        SizedBox(height: Dimenssions.height20*2,),
+         Padding(
+           padding:  EdgeInsets.only(left: Dimenssions.LRpadmarg20),
+           child: Row(
+            children: [ 
+              const Icon(Icons.location_on, color : AppColors.iconColor),
+              SizedBox(width: Dimenssions.width20,),
+              CostumeAnimatedText(text: " Adresse: 7 Av Farhat Hached, Ezzahra,\n Ben Arous, 2034, Tunis" )
+           
+            ],
+                   ),
+         ),
+        SizedBox(height: Dimenssions.height20*4,),
         Row( 
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [ 
             Container(
-              height: Dimenssions.height20*2,
+               height: Dimenssions.height20*2.5,
+              width: Dimenssions.width30*1.8,
               decoration:  BoxDecoration( 
                 borderRadius: BorderRadius.circular(100),
-                color: AppColors.iconColor
+                 color: Colors.black
               ),
               child:const  Center(
                 child: Icon(BoxIcons.bxl_facebook, color: AppColors.iconColor,),
@@ -68,10 +80,11 @@ class InfoCenter extends StatelessWidget {
             ),
             SizedBox(width: Dimenssions.width20,),
              Container(
-              height: Dimenssions.height20*2,
+              height: Dimenssions.height20*2.5,
+              width: Dimenssions.width30*1.8,
               decoration:  BoxDecoration( 
                 borderRadius: BorderRadius.circular(100),
-                color: AppColors.iconColor
+                color: Colors.black
               ),
               child:const  Center(
                 child: Icon(  BoxIcons.bxl_instagram, color: AppColors.iconColor,),
@@ -79,10 +92,11 @@ class InfoCenter extends StatelessWidget {
             ),
             SizedBox(width: Dimenssions.width20,),
              Container(
-              height: Dimenssions.height20*2,
+              height: Dimenssions.height20*2.5,
+              width: Dimenssions.width30*1.8,
               decoration:  BoxDecoration( 
                 borderRadius: BorderRadius.circular(100),
-                color: AppColors.iconColor
+                color: Colors.black
               ),
               child:const  Center(
                 child: Icon(  BoxIcons.bxl_tiktok, color: AppColors.iconColor,),
@@ -90,9 +104,10 @@ class InfoCenter extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(height: Dimenssions.height20*4,),
-        CostumeAnimatedText(text: 'Copyright © 2024 WeStudy')
-         
+        Spacer(),
+       
+        CostumeAnimatedText(text: 'Copyright © 2024 WeStudy'),
+          SizedBox(height: Dimenssions.height20,),
 
 
         

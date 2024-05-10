@@ -50,12 +50,15 @@ class _HistoryPageState extends State<HistoryPage> {
               controller.demandesLiv.isEmpty?
 
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                 
                   children: [ 
+                    SizedBox(height: Dimenssions.height20*10,),
                     Icon(Icons.sentiment_dissatisfied_outlined, size: Dimenssions.icon24*2,color: AppColors.iconColor,),
                     SizedBox(height: Dimenssions.height20),
                     Text("you don't have any history", style: TextStyle(
                       color: AppColors.hintTextColor,
-                      fontSize: Dimenssions.font20*1.5
+                      fontSize: Dimenssions.font20
                     ),),
                   ],
                  )
