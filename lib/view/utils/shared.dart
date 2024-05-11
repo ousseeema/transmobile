@@ -1,7 +1,10 @@
 
 // ignore_for_file: await_only_futures
 
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:transmobile/model/client/ClientModel.dart';
 
 class shared{
 
@@ -45,6 +48,11 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
             SharedPreferences sharedpreferences = await SharedPreferences.getInstance();  
          return   await sharedpreferences.getString("token")??"token:";
  
+    }
+
+    static saveUser(ClientModel user)async{
+        SharedPreferences sharedpreferences = await SharedPreferences.getInstance();  
+  sharedpreferences.setString("user", jsonEncode(user) );
     }
 
 }

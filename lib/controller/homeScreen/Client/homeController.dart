@@ -314,11 +314,23 @@ class HomeController extends GetxController {
       Response TripResponse = await ClientRepo().GetCurrentTrip();
       Response transporters = await Get.find<UserApi>()
           .GetRequest(AppConstant.usergetAllTransporter);
+
+          Response currentClient = await Get.find<UserApi>().GetRequest(AppConstant.getCurrentUser);
       // adding the stats endpoint in the future
 
       if (TripResponse.body["success"] &&
           TripResponse.body["success"] &&
-          transporters.body['success']) {
+          transporters.body['success']&&
+          currentClient.body['success']
+          ) {
+            // save in the shared pref the user with the new updated user if its updatedd
+            shared.saveUser(ClientModel.fromJson(currentClient.body['data']));
+            
+             client = ClientModel.fromJson(currentClient.body['data']);
+ 
+
+
+
         //all trips
         TripsResponse.body['data']
             .forEach((trip) => alltrips.add(TripModel.fromJson(trip)));

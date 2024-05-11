@@ -39,6 +39,7 @@ class AppConstant  {
      static String GetalldemandesVerifi = "/clients/GetverificationDemandesList";
   static String sendReclamationRequest = "/clients/sendReclamationRequest";
     static String getListOfMessage = "/clients/getListOfMessage";
+     static String getCurrentUser = "/clients/getcurrentuser";
 
   // transporteur other endpoints
   

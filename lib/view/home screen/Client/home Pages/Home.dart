@@ -10,6 +10,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/components/linechart.dart';
 import 'package:transmobile/view/home%20screen/Client/home%20Pages/Maps.dart';
 import 'package:transmobile/view/home%20screen/Client/home%20Pages/allTripsList.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/detailsResult.dart';
@@ -563,11 +564,24 @@ class _HomeState extends State<Home> {
                                 }),
                           ),
                           SizedBox(
-                            height: Dimenssions.height20,
+                            height: Dimenssions.height20*2,
                           ),
+                          Center(
+                            child: CostumeAnimatedText(
+                                    text: "Packages  ",
+                                    weight: FontWeight.bold,
+                                    fontSize: Dimenssions.font20 + 3),
+                          ),
+                          SizedBox(height: Dimenssions.height20,),
 
                           // this space to display charts
-                          
+                          Container(
+                            margin:  EdgeInsets.all(Dimenssions.LRpadmarg20),
+                            height: Dimenssions.height20*20,
+                            width: Dimenssions.width,
+                            child: BarChartSample()),
+                            SizedBox(height: Dimenssions.height20*3,)
+
 
 
 
