@@ -31,9 +31,7 @@ class _notificationScreenState extends State<notificationScreen> {
               child: ListView.builder(
                 itemCount: controller.notifications.length ,
                 itemBuilder: ((context, index) {
-                  return Container(
-
-                  );
+                  return ;
                 })),
               );
             })
