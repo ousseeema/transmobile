@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/notificationController.dart';
 import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/components/notifcationsContainer.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class notificationScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _notificationScreenState extends State<notificationScreen> {
               child: ListView.builder(
                 itemCount: controller.notifications.length ,
                 itemBuilder: ((context, index) {
-                  return ;
+                  return  notificationsContainer(Data: controller.notifications[index]['data'], Name: controller.notifications[index]['sender'], date: controller.notifications[index]['date']);
                 })),
               );
             })
