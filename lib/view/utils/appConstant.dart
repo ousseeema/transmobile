@@ -56,6 +56,7 @@ class AppConstant  {
   static String TransAddsinglePackage = "/transporteur/addSinglepackage/:id";
   static String TransgetAllTrip = "/transporteur/getAlltrips";
   static String TransaddTriptohistory = "/transporteur/addtriptohistory/:id";
+  static String getCurrentTransporteur = "/transporteur/getCurrentTransporter";
 
   /// images path
   static String Clientimage ="http://192.168.100.20:3000/Images/private/users/";
