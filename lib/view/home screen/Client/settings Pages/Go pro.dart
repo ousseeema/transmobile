@@ -7,9 +7,9 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:text_area/text_area.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
-import 'package:transmobile/view/components/animatedtext.dart';
-import 'package:transmobile/view/components/button.dart';
-import 'package:transmobile/view/components/demandeVerificationContainer.dart';
+import 'package:transmobile/view/Client%20components/animatedtext.dart';
+import 'package:transmobile/view/Client%20components/button.dart';
+import 'package:transmobile/view/Client%20components/demandeVerificationContainer.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

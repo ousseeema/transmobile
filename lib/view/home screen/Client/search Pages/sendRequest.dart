@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:transmobile/controller/homeScreen/Client/SendRequestController.dart';
-import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

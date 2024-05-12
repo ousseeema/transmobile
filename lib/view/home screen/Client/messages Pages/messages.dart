@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/messageController.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
-import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/home%20screen/Client/messages%20Pages/chatPage.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';

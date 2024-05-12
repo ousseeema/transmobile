@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/view/home%20screen/Client/ClientMainScreens.dart';
-import 'package:transmobile/view/home%20screen/trans/TransHomeScreen.dart';
+import 'package:transmobile/view/home%20screen/trans/TransMainScreen.dart';
 import 'package:transmobile/view/splashscreens/information.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';

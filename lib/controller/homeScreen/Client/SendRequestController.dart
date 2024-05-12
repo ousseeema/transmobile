@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:transmobile/api/api.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
-import 'package:transmobile/view/components/packageDone.dart';
+import 'package:transmobile/view/Client%20components/packageDone.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 
 class SendRequestController extends GetxController {

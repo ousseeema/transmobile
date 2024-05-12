@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
+import 'package:transmobile/model/trans/transporteruModel.dart';
 
 class shared{
 
@@ -53,6 +54,10 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     static saveUser(ClientModel user)async{
         SharedPreferences sharedpreferences = await SharedPreferences.getInstance();  
   sharedpreferences.setString("user", jsonEncode(user) );
+    }
+    static saveTransporter(TransporterModel transporteur)async{
+      SharedPreferences sharedpreferences = await SharedPreferences.getInstance();  
+  sharedpreferences.setString("user", jsonEncode(transporteur) );
     }
 
 }

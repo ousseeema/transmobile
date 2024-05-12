@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
-import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/edit%20password%20page.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/reset%20email%20page.dart';
 import 'package:transmobile/view/utils/colors.dart';

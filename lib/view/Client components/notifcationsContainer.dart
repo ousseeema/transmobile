@@ -20,7 +20,7 @@ class notificationsContainer extends StatelessWidget {
       ),
       margin: EdgeInsets.all(Dimenssions.LRpadmarg10),
       padding: EdgeInsets.only(left: Dimenssions.LRpadmarg20),
-      height: Dimenssions.height20 * 10,
+      height: Dimenssions.height20 * 5,
       width: Dimenssions.width,
       child: Row(
         children: [
@@ -31,7 +31,7 @@ class notificationsContainer extends StatelessWidget {
               "${AppConstant.Clientimage}users_662960884fd5711489e1ad1c.jpg",
               fit: BoxFit.cover,
               height: Dimenssions.height20 * 3,
-              width: Dimenssions.width30 * 2,
+              width: Dimenssions.width30 * 1.7,
             ),
           ),
           SizedBox(
@@ -39,9 +39,9 @@ class notificationsContainer extends StatelessWidget {
           ),
           Column(
             children: [
-              Text(Name),
+              
               SizedBox(
-                height: Dimenssions.height20,
+                height: Dimenssions.height20*2,
               ),
               Text(Data),
             ],

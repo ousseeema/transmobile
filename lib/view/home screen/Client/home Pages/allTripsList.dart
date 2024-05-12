@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
-import 'package:transmobile/view/components/animatedtext.dart';
-import 'package:transmobile/view/components/transporteurContainer.dart';
+import 'package:transmobile/view/Client%20components/animatedtext.dart';
+import 'package:transmobile/view/Client%20components/transporteurContainer.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/detailsResult.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

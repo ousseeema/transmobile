@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
-import 'package:transmobile/view/components/CostumeReviewContainer.dart';
+import 'package:transmobile/view/Client%20components/CostumeReviewContainer.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class ReviewWidget extends StatefulWidget {

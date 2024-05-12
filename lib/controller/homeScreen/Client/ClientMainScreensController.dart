@@ -11,7 +11,7 @@ import 'package:transmobile/view/home%20screen/Client/settings%20Pages/settings.
 class ClientMainScreensController extends GetxController{
   int currentIndex = 0;
   
-   // ! client model 
+  
   
 List<Widget> Pages =[
  const Home(),

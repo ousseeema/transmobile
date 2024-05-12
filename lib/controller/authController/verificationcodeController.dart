@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/repository/client/authRepo.dart';
 import 'package:transmobile/repository/transporter/authTransRepo.dart';
 import 'package:transmobile/view/home%20screen/Client/ClientMainScreens.dart';
-import 'package:transmobile/view/home%20screen/trans/TransHomeScreen.dart';
+import 'package:transmobile/view/home%20screen/trans/TransMainScreen.dart';
 
 class verificationCodeController extends GetxController {
   String verificationCode = "";

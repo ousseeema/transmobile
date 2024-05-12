@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
-import 'package:transmobile/view/components/settingsContainer.dart';
+import 'package:transmobile/view/Client%20components/settingsContainer.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Editpage.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Go%20pro.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/contact%20us.dart';

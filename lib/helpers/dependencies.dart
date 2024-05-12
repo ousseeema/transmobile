@@ -14,9 +14,10 @@ import 'package:transmobile/controller/homeScreen/Client/notificationController.
 import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/controller/homeScreen/Client/searchController.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
-import 'package:transmobile/controller/homeScreen/TransHomeController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/TransHomeController.dart';
 import 'package:transmobile/controller/homeScreen/Client/ClientMainScreensController.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/transMainScreenController.dart';
 import 'package:transmobile/controller/infoController/informationcontroller.dart';
 import 'package:transmobile/repository/client/ClientRepo.dart';
 import 'package:transmobile/repository/client/authRepo.dart';
@@ -58,5 +59,7 @@ class dependency {
 
 //transporter:
     Get.lazyPut(() => authTrasnRepo());
+    Get.lazyPut(() =>TransmainScreenController(), fenix: true );
+    Get.lazyPut(() =>transHomeController(), fenix: true );
   }
 }

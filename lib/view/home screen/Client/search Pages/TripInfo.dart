@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
-import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

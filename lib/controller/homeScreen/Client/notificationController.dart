@@ -5,20 +5,20 @@ class notificationsController extends GetxController{
 
 List notifications=[
   {"sender": "Oussema Ferchichi ",
-  "date": "10-02-24",
+  "date": "20-02-24",
   "data": "you ve a message from med Ali ", 
   },
   {"sender": "Oussema Ferchichi ",
-  "date": "10-02-24",
+  "date":"19-02-24" ,
+  "data": "your request has been accepted", 
+  },
+  {"sender": "Oussema Ferchichi ",
+  "date": "11-02-24",
   "data": "you ve a message from med Ali ", 
   },
   {"sender": "Oussema Ferchichi ",
-  "date": "10-02-24",
-  "data": "you ve a message from med Ali ", 
-  },
-  {"sender": "Oussema Ferchichi ",
-  "date": "10-02-24",
-  "data": "you ve a message from med Ali ", 
+  "date": "09-02-24",
+  "data": "your request has been accepted", 
   },
 
 ];

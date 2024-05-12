@@ -6,8 +6,8 @@ import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/controller/homeScreen/Client/searchController.dart';
-import 'package:transmobile/view/components/CoostumTransContainer.dart';
-import 'package:transmobile/view/components/animatedtext.dart';
+import 'package:transmobile/view/Client%20components/CoostumTransContainer.dart';
+import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

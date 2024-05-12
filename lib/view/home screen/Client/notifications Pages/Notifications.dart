@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/notificationController.dart';
-import 'package:transmobile/view/components/animatedtext.dart';
-import 'package:transmobile/view/components/notifcationsContainer.dart';
+import 'package:transmobile/view/Client%20components/animatedtext.dart';
+import 'package:transmobile/view/Client%20components/notifcationsContainer.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class notificationScreen extends StatefulWidget {
@@ -21,13 +21,14 @@ class _notificationScreenState extends State<notificationScreen> {
       body: SafeArea(
         child: Column(
           children: [ 
+            SizedBox(height: Dimenssions.height20,),
             CostumeAnimatedText(text: 'Notification'),
             SizedBox(
               height: Dimenssions.height20*2,
             ),
             GetBuilder<notificationsController>(builder: (controller){
               return SizedBox(
-              height: Dimenssions.height-Dimenssions.height20*2,
+              height: Dimenssions.height-Dimenssions.height20*10,
               width: Dimenssions.width,
               child: ListView.builder(
                 itemCount: controller.notifications.length ,
