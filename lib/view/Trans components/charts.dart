@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/TransHomeController.dart';
 import 'package:transmobile/view/utils/colors.dart';
-import 'package:transmobile/view/utils/dimenssion.dart';
 
-class BarChartSample extends StatefulWidget {
+
+class charts extends StatefulWidget {
+  
+ const  charts({super.key,});
+
   @override
-  _BarChartSampleState createState() => _BarChartSampleState();
+  State<charts> createState() => _chartsState();
 }
 
-class _BarChartSampleState extends State<BarChartSample> {
-  List<int> data = [Get.find<HomeController>().client!.numberofPackagesSended!,
-  Get.find<HomeController>().client!.numberofPackagesDelivred! ]; //les donnees a entre 
-
+class _chartsState extends State<charts> {
+  List<int>data= [Get.find<transHomeController>().transporter!.numberofClients,
+  Get.find<transHomeController>().transporter!.numberofTrips
+  ];
   @override
   Widget build(BuildContext context) {
     return BarChart(
@@ -24,7 +28,7 @@ class _BarChartSampleState extends State<BarChartSample> {
         titlesData: const  FlTitlesData(
           bottomTitles: AxisTitles(
             axisNameWidget: Text( 
-              '             Delivred                               Sended',
+              '             Client Number                    Trip Number',
                style: TextStyle(
                 color: AppColors.buttonColor,
 

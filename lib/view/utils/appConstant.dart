@@ -2,11 +2,10 @@
 
 
 
-import 'package:transmobile/view/utils/shared.dart';
 
 class AppConstant  {
-  static String baseurl = "http://192.168.100.20:3000/api/v0";
-   static String socekturl = "http://192.168.100.20:3000";
+  static String baseurl = "http://192.168.1.36:3000/api/v0";
+   static String socekturl = "http://192.168.1.36:3000";
   // client auth endpoints
   static String loginUser = "/authClient/signin";
   static String signup1Client = "/authClient/signup1";
@@ -44,25 +43,29 @@ class AppConstant  {
   // transporteur other endpoints
   
 
-  static String updateTrans = "/transporteur/updateTransporteurDetails";
-  static String updatepicTrans = "/transporteur/uploadProfilePicture";
-  static String Transgetallpackage = "/transporteur/getAllPackage";
-  static String transacceptDemande = "/transporteur/acceptDemande/:id";
-  static String TransrefuseDemande = "/transporteur/refuseDemande/:id";
-  static String Transgetalldemande = "/transporteur/getAllDemande";
-  static String TransaddTrip = "/transporteur/addtrip";
-  static String TransupdateTrip = "/transporteur/updateTrip/:id";
-  static String TransDeleteTrip = "/transporteur/deleteTrip/:id";
-  static String TransAddsinglePackage = "/transporteur/addSinglepackage/:id";
-  static String TransgetAllTrip = "/transporteur/getAlltrips";
-  static String TransaddTriptohistory = "/transporteur/addtriptohistory/:id";
-  static String getCurrentTransporteur = "/transporteur/getCurrentTransporter";
-
-  /// images path
-  static String Clientimage ="http://192.168.100.20:3000/Images/private/users/";
-    static String Transimage ="http://192.168.100.20:3000/Images/private/transporteurs";
-      static String Packagesimage ="http://192.168.100.20:3000/Images/packages/";
-  static String Passportimage ="http://192.168.100.20:3000/Images/passport/";
+  static String updateTrans = "/transporteurs/updateTransporteurDetails";
+  static String updatepicTrans = "/transporteurs/uploadProfilePicture";
+  static String Transgetallpackage = "/transporteurs/getAllPackage";
+  static String transacceptDemande = "/transporteurs/acceptDemande/:id";
+  static String TransrefuseDemande = "/transporteurs/refuseDemande/:id";
+  static String Transgetalldemande = "/transporteurs/getAllDemande";
+  static String TransaddTrip = "/transporteurs/addtrip";
+  static String TransupdateTrip = "/transporteurs/updateTrip/:id";
+  static String TransDeleteTrip = "/transporteurs/deleteTrip/:id";
+  static String TransAddsinglePackage = "/transporteurs/addSinglepackage/:id";
+  static String TransgetAllTripInHistory = "/transporteurs/getAlltrips";
+  static String TransaddTriptohistory = "/transporteurs/addtriptohistory/:id";
+  static String getCurrentTransporteur = "/transporteurs/getCurrentTransporter";
+static String getCurrentTrip = "/transporteurs/getCurrentTrip";
+ 
+ 
+ 
+ 
+ /// images path
+  static String Clientimage ="http://192.168.1.36:3000/Images/private/users/";
+    static String Transimage ="http://192.168.1.36:3000/Images/private/transporteurs";
+      static String Packagesimage ="http://192.168.1.36:3000/Images/packages/";
+  static String Passportimage ="http://192.168.1.36:3000/Images/passport/";
 
 
 
