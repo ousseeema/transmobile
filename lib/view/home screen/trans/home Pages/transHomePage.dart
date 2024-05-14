@@ -326,7 +326,7 @@ class _TransHomePageState extends State<TransHomePage> {
                 child: CostumeAnimatedText(text: "No Trip for the moment", weight: FontWeight.bold, fontSize: Dimenssions.font20, color: AppColors.iconColor,),
 
                ) : 
-               SizedBox(height: Dimenssions.height20*5,
+               SizedBox(height: Dimenssions.height20*20,
                child: ListView.builder(
                   itemCount: controller.Trip!.citys.length,
                   itemBuilder: (_, index) {
@@ -354,40 +354,70 @@ class _TransHomePageState extends State<TransHomePage> {
                       ),
                       endChild: Padding(
                         padding: const EdgeInsets.all(8.0),
+                        //container that contains the city and the remove and done containers
                         child: Container(
-                          height: Dimenssions.height20 * 8,
+                          height: Dimenssions.height20 * 5,
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(Dimenssions.radius20),
-                              color: isPast
-                                  ? AppColors.buttonColor
-                                  : AppColors.buttonColor.withOpacity(0.2)),
-                          child: Row(
+                              color: Colors.white,),
+
+                          child: Column( 
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: Dimenssions.height20,
+                            children: [ 
+                              CostumeAnimatedText(text:controller.Trip!.citys[index].city ),
+                              SizedBox(height: Dimenssions.height20,),
+                              //! if the transporteur has passed the city then display youhave passed 
+                              //!this city in the place of remove and done containers
+                              isPast? Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(Dimenssions.radius10/2),
+                                  color: AppColors.buttonColor
                                   ),
-                                 
-                                  
+                                height: Dimenssions.height20*2,
+                                width: Dimenssions.width30*6,
+                                child: Center(
+
+                                  child: CostumeAnimatedText(text: "You've passed this city", color: AppColors.insidetextcolor,)),
+                              ): Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  //done container 
+                                  Container(
+                                     height: Dimenssions.height20*2,
+                                width: Dimenssions.width30*3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(Dimenssions.radius10/2),
+                                  color: Colors.blue
+                                  ),
+                                  child:  const Center(
+                                    child:  Text("Done", style: TextStyle(
+                                      color: AppColors.insidetextcolor
+                                      
+                                    ),),
+                                  ),
+
+                                  ),
+                                  SizedBox(width: Dimenssions.width30,),
+                                  // remove container 
+                                  Container(
+                                    height: Dimenssions.height20*2,
+                                width: Dimenssions.width30*3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(Dimenssions.radius10/2),
+                                  color: Colors.red[200]
+                                  ),
+                                  child:  const Center(
+                                    child:  Text("Remove", style: TextStyle(
+                                      color: AppColors.insidetextcolor
+                                      
+                                    ),),
+                                  ),
+                                  )
                                 ],
                               ),
-                              SizedBox(
-                                width: Dimenssions.width20 * 2,
-                              ),
-                              Icon(
-                                isPast
-                                    ? Iconsax.location_slash_bold
-                                    : Iconsax.location_bold,
-                                size: Dimenssions.icon24,
-                                color:
-                                    isPast ? Colors.white : AppColors.iconColor,
-                              ),
                             ],
-                          ),
+                          )
                         ),
                       ),
                     );

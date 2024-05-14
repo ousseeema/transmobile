@@ -45,7 +45,7 @@ body:  SafeArea(
           items: [
              Icon(BoxIcons.bx_home, color: Controller.currentIndex==0?Colors.black : AppColors.iconColor ),
              Icon(BoxIcons.bx_message, color: Controller.currentIndex==1?Colors.black:AppColors.iconColor),
-              Icon(Icons.add_circle_outline_rounded, color:Controller.currentIndex==2? Colors.black:AppColors.iconColor),
+              Icon(Icons.add_circle_outline_rounded, color:Controller.currentIndex==2? Colors.black:AppColors.iconColor,size: Dimenssions.icon24,),
              Icon(EvaIcons.bell_outline, color: Controller.currentIndex==3?Colors.black:AppColors.iconColor),
              Icon(BoxIcons.bx_user, color: Controller.currentIndex==4? Colors.black:AppColors.iconColor),
             
