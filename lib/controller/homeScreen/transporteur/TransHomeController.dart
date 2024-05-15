@@ -12,6 +12,8 @@ import 'package:transmobile/view/utils/shared.dart';
 
 class transHomeController extends GetxController {
   TransporterModel? transporter;
+   String? newCity;
+   int? newCityIndex;
   bool isloading = false;
   TripModel Trip = TripModel(
       id: "zqddqlskdhqdaqzd",
@@ -109,5 +111,70 @@ class transHomeController extends GetxController {
       Get.snackbar("Error", "Error while getting data , Try reloading the page",
           colorText: Colors.white, backgroundColor: Colors.red);
     }
+  }
+  /// ! changing the status of specified city
+  void DoneCity(index) async {
+    Trip.citys[index].done = true;
+    isloading = true;
+    update();
+   try {
+    
+      Response updatedTrip = await Get.find<UserApi>()
+        .TransputRequest(Trip.citys, AppConstant.TransupdateTrip, Trip.id);
+    if (updatedTrip.body["success"]) {
+      Trip = TripModel.fromJson(updatedTrip.body['data']);
+      isloading = false;
+      update();
+      Get.snackbar("Success", "Trip updated successfully",
+          backgroundColor: Colors.green, colorText: Colors.white);
+    } else {
+       Trip.citys[index].done = false;
+      isloading = false;
+      update();
+      Get.snackbar("Error", "Trip cannoot be updated ",
+          backgroundColor: Colors.red, colorText: Colors.white);
+    }
+   } catch (e) {
+        Trip.citys[index].done = false;
+      isloading = false;
+      update();
+      Get.snackbar("Error", "Connection error",
+          backgroundColor: Colors.red, colorText: Colors.white);
+   }
+  }
+  //! delete a specific city from the list
+   void DeleteCity(index) async {
+   
+    isloading = true;
+    update();
+   try {
+     Trip.citys.removeAt(index);
+      Response updatedTrip = await Get.find<UserApi>()
+        .TransputRequest(Trip.citys, AppConstant.TransupdateTrip, Trip.id);
+    if (updatedTrip.body["success"]) {
+      Trip = TripModel.fromJson(updatedTrip.body['data']);
+      isloading = false;
+      update();
+      Get.snackbar("Success", "Trip updated successfully",
+          backgroundColor: Colors.green, colorText: Colors.white);
+    } else {
+      isloading = false;
+      update();
+      Get.snackbar("Error", "Trip cannoot be updated ",
+          backgroundColor: Colors.red, colorText: Colors.white);
+    }
+   } catch (e) {
+      isloading = false;
+      update();
+      Get.snackbar("Error", "Connection error",
+          backgroundColor: Colors.red, colorText: Colors.white);
+   }
+  }
+
+  //! update the trip or delete it from the edit/add text
+  void updateTrip(){
+    //! update the trip by addding the typed info
+     
+    
   }
 }
