@@ -150,8 +150,37 @@ class UserApi extends GetConnect implements GetxService {
  Future<Response> TransputRequest(dynamic data, String uri, id )async{ 
       String?  token = await  shared.gettoken();
     try{
-      Response response = await put("$baseurl$uri/$id",
+      Response response = await put("$baseurl$uri$id",
          data ,
+         headers: {
+           'Authorization': "Bearer ${token!.substring(1,token.length-1)}",
+        },
+       contentType: "application/json", 
+        );
+        return response;
+
+
+    }catch(e){
+      return const Response(
+        body: {
+          "message": "error in serveur",
+          "success": false
+        },
+        statusCode: 1,
+         
+         
+         );
+
+    }
+
+   }
+
+   // delete request for the transporteur 
+   Future<Response> TransDeleteRequest(String uri, id )async{ 
+      String?  token = await  shared.gettoken();
+    try{
+      Response response = await delete("$baseurl$uri$id",
+         
          headers: {
            'Authorization': "Bearer ${token!.substring(1,token.length-1)}",
         },

@@ -15,63 +15,7 @@ class transHomeController extends GetxController {
    String? newCity;
    int? newCityIndex;
   bool isloading = false;
-  TripModel Trip = TripModel(
-      id: "zqddqlskdhqdaqzd",
-      createdAt: "10-17-22",
-      homeDelivery: true,
-      homePickUp: true,
-      isDone: false,
-      packages: [],
-      citys: [
-        City(
-            id: "qsdqsdqsd",
-            city: "Djerba",
-            dateofpassage: "10-10-22",
-            done: false),
-        City(
-            id: "qsdqsdqsd",
-            city: "Djerba",
-            dateofpassage: "10-10-22",
-            done: false),
-        City(
-            id: "qsdqsdqsd",
-            city: "Djerba",
-            dateofpassage: "10-10-22",
-            done: false),
-        City(
-            id: "qsdqsdqsd",
-            city: "Djerba",
-            dateofpassage: "10-10-22",
-            done: true)
-      ],
-      transporter: TransporterModel(
-          id: "fsdfsdffsdf",
-          fullName: 'dmqsldqsddqs',
-          email: ',hjdqsdkjhqsdqsd lqskzdkjocdjfdkjd',
-          phoneNumberA: "98746536",
-          phoneNumberB: "4555522",
-          DestinationAddress: "midpoun",
-          localAddress: "kdnqsdqs",
-          carBrand: 'kia',
-          carSerieNumber: "14521 ",
-          listCountry1: "tunisie",
-          listCountry2: "dfssdfsd",
-          homePickUps: true,
-          homeDelivery: true,
-          priceKg: "14",
-          parsols: false,
-          parsolsSite: [],
-          Adresse_Parsols: '',
-          numberofTrips: 14,
-          numberofClients: 10,
-          numberofPackages: 10,
-          role: 'transporter',
-          totalRevenue: 100,
-          verified: false,
-          profilePicture: "ldqsdqsdqsd",
-          pro: false,
-          createdAt: "101440",
-          comments: []));
+  TripModel? Trip ;
 
   Future<void> LoadData() async {
     // this is the responsable if we tap in refresh button this will display the shimmer effect
@@ -95,9 +39,12 @@ class transHomeController extends GetxController {
     if (currentTransporteur.body['success'] && currentTrip.body['success']) {
       //! getting current trip if it existe and transfer it to a trip model
 
-      if (currentTrip.body['len'] > 0) {
-        Trip = TripModel.fromJson(currentTrip.body['data']);
-      }
+     
+        
+        
+           Trip = TripModel.fromJson(currentTrip.body["data"]);
+       
+      
 
       // save in the shared pref the user with the new updated user if its updatedd
       shared.saveTransporter(
@@ -114,13 +61,13 @@ class transHomeController extends GetxController {
   }
   /// ! changing the status of specified city
   void DoneCity(index) async {
-    Trip.citys[index].done = true;
+    Trip!.citys[index].done = true;
     isloading = true;
     update();
-   try {
+  
     
       Response updatedTrip = await Get.find<UserApi>()
-        .TransputRequest(Trip.citys, AppConstant.TransupdateTrip, Trip.id);
+        .TransputRequest(Trip!.citys, AppConstant.TransupdateTrip, Trip!.id);
     if (updatedTrip.body["success"]) {
       Trip = TripModel.fromJson(updatedTrip.body['data']);
       isloading = false;
@@ -128,19 +75,13 @@ class transHomeController extends GetxController {
       Get.snackbar("Success", "Trip updated successfully",
           backgroundColor: Colors.green, colorText: Colors.white);
     } else {
-       Trip.citys[index].done = false;
+       Trip!.citys[index].done = false;
       isloading = false;
       update();
       Get.snackbar("Error", "Trip cannoot be updated ",
           backgroundColor: Colors.red, colorText: Colors.white);
     }
-   } catch (e) {
-        Trip.citys[index].done = false;
-      isloading = false;
-      update();
-      Get.snackbar("Error", "Connection error",
-          backgroundColor: Colors.red, colorText: Colors.white);
-   }
+  
   }
   //! delete a specific city from the list
    void DeleteCity(index) async {
@@ -148,9 +89,9 @@ class transHomeController extends GetxController {
     isloading = true;
     update();
    try {
-     Trip.citys.removeAt(index);
+      Trip!.citys.removeAt(index);
       Response updatedTrip = await Get.find<UserApi>()
-        .TransputRequest(Trip.citys, AppConstant.TransupdateTrip, Trip.id);
+        .TransputRequest(Trip!.citys, AppConstant.TransupdateTrip, Trip!.id);
     if (updatedTrip.body["success"]) {
       Trip = TripModel.fromJson(updatedTrip.body['data']);
       isloading = false;
@@ -164,17 +105,88 @@ class transHomeController extends GetxController {
           backgroundColor: Colors.red, colorText: Colors.white);
     }
    } catch (e) {
+    isloading = false;
+      update();
+      Get.snackbar("Error", "Trip cannoot be updated ",
+          backgroundColor: Colors.red, colorText: Colors.white);
+     
+   }
+    
+   
+  }
+
+  //! update the trip or delete it from the edit/add text
+  
+  void updateTrip()async{
+    //! update the trip by addding the city to the specified index
+    isloading = true;
+    update();
+   
+  try {
+         Trip!.citys.insert(newCityIndex!-1, City(id: "", city: newCity!, dateofpassage: DateTime.now().toString(), done: false) );
+
+      Response updatedTrip = await Get.find<UserApi>()
+        .TransputRequest(Trip!.citys, AppConstant.TransupdateTrip, Trip!.id);
+    if (updatedTrip.body["success"]) {
+      Trip = TripModel.fromJson(updatedTrip.body['data']);
+      isloading = false;
+      update();
+      Get.back();
+      Get.snackbar("Success", "Trip updated successfully",
+          backgroundColor: Colors.green, colorText: Colors.white);
+    } else {
+      
+      isloading = false;
+      update();
+      Get.snackbar("Error", "Trip cannoot be updated ",
+          backgroundColor: Colors.red, colorText: Colors.white);
+    }
+   } catch (e) {
+       print(e);
       isloading = false;
       update();
       Get.snackbar("Error", "Connection error",
           backgroundColor: Colors.red, colorText: Colors.white);
    }
+    
   }
 
-  //! update the trip or delete it from the edit/add text
-  void updateTrip(){
-    //! update the trip by addding the typed info
+
+  //! delete the current trip 
+  void DeleteTrip()async{
+   isloading = true; 
+   update();
+
+   try {
+     Response deletedTrip = await Get.find<UserApi>().TransDeleteRequest(AppConstant.TransDeleteTrip, Trip!.id);
      
-    
+
+     if(deletedTrip.body["success"] == true){
+       isloading = false;
+      update();
+      Get.back();
+      Get.snackbar("Success", "Trip Deleted successfully",
+          backgroundColor: Colors.green, colorText: Colors.white);
+      
+     }
+     else{
+      isloading = false;
+      update();
+      Get.snackbar("Error",deletedTrip.body["success"],
+          backgroundColor: Colors.red, colorText: Colors.white);
+     }
+
+  
+  
+  
+   } catch (e) {
+    isloading = false;
+    print(e);
+      update();
+      Get.snackbar("Error", "Connection error",
+          backgroundColor: Colors.red, colorText: Colors.white);
+     
+   }
+
   }
 }
