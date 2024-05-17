@@ -37,7 +37,7 @@ class _UpdateTripScreenState extends State<UpdateTripScreen> {
                 height: Dimenssions.height20,
               ),
               SizedBox(
-                height: Dimenssions.height20 * 30,
+                height: Dimenssions.height20 * 22,
                 child: ListView.builder(
                     itemCount: controller.Trip!.citys.length,
                     itemBuilder: (_, index) {
@@ -235,7 +235,7 @@ class _UpdateTripScreenState extends State<UpdateTripScreen> {
                           borderRadius:
                               BorderRadius.circular(Dimenssions.radius20))),
                   onChanged: (value) {
-                    controller.newCity = value;
+                    controller.newCityIndex = int.parse(value);
                   },
                 ),
               ),
@@ -261,6 +261,18 @@ class _UpdateTripScreenState extends State<UpdateTripScreen> {
                     width: Dimenssions.width30 * 9,
                     text: "Delete Trip"),
               ),
+               SizedBox(
+                height: Dimenssions.height20,
+              ),
+               //delete button
+              GestureDetector(
+                onTap: () => controller.DoneTrip(),
+                child: CostumeButton(
+                    height: Dimenssions.height10 * 5,
+                    width: Dimenssions.width30 * 9,
+                    text: "Done"),
+              ),
+
               SizedBox(
                 height: Dimenssions.height20*3,
               ),
