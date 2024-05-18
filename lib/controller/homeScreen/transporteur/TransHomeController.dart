@@ -14,18 +14,18 @@ class transHomeController extends GetxController {
   TransporterModel? transporter;
    String? newCity;
    int? newCityIndex;
-  bool isloading = false;
+  bool isloading = true;
   TripModel? Trip ;
 
   Future<void> LoadData() async {
-    await shared.getuser().then((value) {
+    
+    // this is the responsable if we tap in refresh button this will display the shimmer effect
+     isloading=true;
+     update();
+
+     shared.getuser().then((value) {
       transporter = TransporterModel.fromJson(jsonDecode(value!));
     });
-    // this is the responsable if we tap in refresh button this will display the shimmer effect
-    isloading = true;
-    update();
-
-   
    
     // getting current transporteur
     Response currentTransporteur = await Get.find<UserApi>()
@@ -37,7 +37,8 @@ class transHomeController extends GetxController {
     if (currentTransporteur.body['success'] && currentTrip.body['success']) {
       //! getting current trip if it existe and transfer it to a trip model
 
-     
+        isloading = false;
+    update();
         
         if(currentTrip.body["data"]!=null) {
            Trip = TripModel.fromJson(currentTrip.body["data"]);      
@@ -49,10 +50,10 @@ class transHomeController extends GetxController {
 
       transporter = TransporterModel.fromJson(currentTransporteur.body['data']);
 
-      isloading = false;
-      update();
+    
     } else {
-      Get.snackbar("Error", currentTrip.body["messsage"],
+       
+      Get.snackbar("Error",  "Error while getting data , Try reloading the page",
           colorText: Colors.white, backgroundColor: Colors.red);
     }
   }

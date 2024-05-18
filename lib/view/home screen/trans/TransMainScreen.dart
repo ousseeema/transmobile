@@ -2,6 +2,8 @@
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransHomeController.dart';

@@ -10,6 +10,6 @@ class AddTripScreen extends StatefulWidget {
 class _AddTripScreenState extends State<AddTripScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold();
   }
 }

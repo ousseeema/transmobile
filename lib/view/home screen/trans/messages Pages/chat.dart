@@ -45,10 +45,10 @@ class _chatPageState extends State<chatPage> {
            controller: _scrollController,
                 itemCount:controller.SelectedDiscussion.messages.length,
                  itemBuilder: ((context, index) {
-                   bool client =controller.SelectedDiscussion.userId.id ==  controller.SelectedDiscussion.messages[index]['user'];
+                   bool Transporter =controller.SelectedDiscussion.transporterId.id ==  controller.SelectedDiscussion.messages[index]['user'];
                  return Align(
                 
-                  alignment:client ? Alignment.centerLeft: Alignment.centerRight,
+                  alignment:Transporter ? Alignment.centerLeft: Alignment.centerRight,
                    child: Container(
                     decoration: BoxDecoration(
                       boxShadow:[ 
@@ -63,7 +63,7 @@ class _chatPageState extends State<chatPage> {
                //you can set more BoxShadow() here
               ],
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimenssions.radius10), bottomRight: Radius.circular(Dimenssions.radius10), topRight: Radius.circular(Dimenssions.radius10)),
-                        color: client? AppColors.bigTextColor: AppColors.buttonColor,
+                        color: Transporter? AppColors.bigTextColor: AppColors.buttonColor,
                     ),
                   
                     margin: EdgeInsets.only(top: Dimenssions.LRpadmarg10, left: Dimenssions.LRpadmarg10, right: Dimenssions.LRpadmarg10),
@@ -81,9 +81,10 @@ class _chatPageState extends State<chatPage> {
                         ClipRRect(
                                             borderRadius: BorderRadius.circular(
                                                 100), // Adjust the radius to match the container's borderRadius
+                                                
                                             child: Image.network(
-                                              client?
-                                              "${AppConstant.Clientimage}${controller.client.profilePicture}":"${AppConstant.Transimage}${controller.SelectedDiscussion.transporterId.profilePicture}",
+                                              Transporter?"${AppConstant.Transimage}${controller.SelectedDiscussion.transporterId.profilePicture}"
+                                              :"${AppConstant.Clientimage}${controller.client.profilePicture}",
                                               fit: BoxFit.cover,
                                               height: Dimenssions.height20,
                                               width: Dimenssions.width20 ,

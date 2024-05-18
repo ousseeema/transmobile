@@ -1,15 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:socket_io_common/src/util/event_emitter.dart';
 
 import 'package:transmobile/api/api.dart';
-import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
-import 'package:transmobile/model/client/ClientModel.dart';
 
 import 'package:transmobile/model/messages/messageModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
@@ -18,36 +14,36 @@ import 'package:transmobile/view/utils/shared.dart';
 import 'package:socket_io_client/socket_io_client.dart' as Io;
 
 
-class MessageController extends GetxController {
-  late ClientModel client;
+class TransporterMessageController extends GetxController {
+  late TransporterModel Transporter;
    late Io.Socket socket;
 
-
-  void getuser() async {
-    shared.getuser().then((value) {
-      client = ClientModel.fromJson(jsonDecode(value!));
+ bool messageLoader = true;
+void getuser() async {
+    
+     shared.getuser().then((value) {
+      Transporter = TransporterModel.fromJson(jsonDecode(value!));
     });
   }
 
   List<Discussion> ListOfMessage = [
   
   ];
-  bool messageLoader = true;
+ 
   void GetAllMessages() async {
-   
+ 
     Response allMessage =
-        await Get.find<UserApi>().GetRequest(AppConstant.getListOfMessage);
+        await Get.find<UserApi>().GetRequest(AppConstant.TransGetListOfMessage);
 
     if (allMessage.body['success'] == true) {
-      ListOfMessage=[];
+      ListOfMessage.clear();
       allMessage.body['data'].forEach((message) {
         ListOfMessage.add(Discussion.fromJson(message));
       });
       messageLoader = false;
       update();
     } else {
-      messageLoader = false;
-      update();
+   
       Get.snackbar('Error', 'Error loading data', backgroundColor: Colors.red);
     }
   }
@@ -77,35 +73,35 @@ class MessageController extends GetxController {
     SelectedDiscussion = discussion;
      update();
   }
-late ClientModel me;
+late TransporterModel me;
   void sendMessage() async{
-  await shared.getuser().then((value) {
-    me= ClientModel.fromJson(jsonDecode(value!));
+  await  shared.getuser().then((value) {
+      Transporter = TransporterModel.fromJson(jsonDecode(value!));
   });
     Map<String, dynamic> message ={
       "message": messagecontroller.text, 
       "user": me.id,
-      "client":me.id,
-      "transporteur": SelectedDiscussion.transporterId.id
+      "transporteur": me.id,
+      "client": SelectedDiscussion.userId.id
 
 
 
     };
-    socket.emit('sendMessage', message );
+    socket.emit('TransporterSendMessage', message );
     messagecontroller.text='';
   }
   void setUpsSocketListener() {
-  socket.on('message-received',(message){
+  socket.on('TransporterMessage-received',(message){
     SelectedDiscussion = Discussion.fromJson(message);
     
-    ListOfMessage.forEach((element) {
+    for (var element in ListOfMessage) {
       
      if (element.id == SelectedDiscussion.id ){
       ListOfMessage.remove(element);
       ListOfMessage.add(SelectedDiscussion);
       update();
      }
-    },);
+    }
     update();
 
 

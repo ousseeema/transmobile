@@ -57,6 +57,7 @@ class AppConstant  {
   static String TransaddTriptohistory = "/transporteurs/addtriptohistory/";
   static String getCurrentTransporteur = "/transporteurs/getCurrentTransporter";
 static String getCurrentTrip = "/transporteurs/getCurrentTrip";
+static String TransGetListOfMessage = "/transporteurs/getListofMessage";
  
  
  

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:get/instance_manager.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransHomeController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
@@ -29,12 +28,13 @@ class _TransHomePageState extends State<TransHomePage> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
     Future.delayed(Duration.zero).then(
-      (value) {
-        Get.find<transHomeController>().LoadData();
+      (value)  {
+       Get.find<transHomeController>().LoadData();
       },
     );
+    super.initState();
+    
   }
 
   @override
@@ -42,15 +42,19 @@ class _TransHomePageState extends State<TransHomePage> {
     bool isPast = false;
     return Scaffold(
       body: SafeArea(child: 
-      SingleChildScrollView(
-        child: GetBuilder<transHomeController>(
-          builder: (controller) {
-            return RefreshIndicator(
-              onRefresh: ()async {
-                await controller.LoadData();
-                
-              },
-              child: controller.isloading ? const shimmerEffect() : Column(
+      GetBuilder<transHomeController>(
+        builder: (controller) {
+          return RefreshIndicator(
+            onRefresh: ()async {
+             
+              await controller.LoadData();
+         
+              
+              
+            },
+            child: controller.isloading ? const  shimmerEffect() : 
+            SingleChildScrollView(
+              child: Column(
                 children: [
                   // container for the trans name and the welcome
                   Container(
@@ -564,9 +568,9 @@ class _TransHomePageState extends State<TransHomePage> {
                   ),
                 ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       )),
     );
   }
