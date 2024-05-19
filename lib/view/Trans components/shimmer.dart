@@ -15,10 +15,10 @@ class shimmerEffect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
  
-    return Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-                  highlightColor: Colors.grey.shade100,
-              child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child : Shimmer.fromColors(
+                baseColor: Colors.grey.shade300,
+                    highlightColor: Colors.grey.shade100,
                 child: Column(
                 children: [
                   // container for the trans name and the welcome
@@ -48,11 +48,8 @@ class shimmerEffect extends StatelessWidget {
                             SizedBox(
                               height: Dimenssions.height20 * 1.5,
                             ),
-                            CostumeAnimatedText(text: "Welcome Back! "),
-                            CostumeAnimatedText(
-                              text: "transporter",
-                              color: AppColors.insidetextcolor,
-                            ),
+                            Text("Welcome Back!"),
+                           Text("transporter")
                           ],
                         ),
                       ],
@@ -97,11 +94,7 @@ class shimmerEffect extends StatelessWidget {
                             SizedBox(
                               height: Dimenssions.height10,
                             ),
-                            CostumeAnimatedText(
-                              text: "Total income",
-                              fontSize: Dimenssions.font10 + 4,
-                              color: AppColors.hintTextColor,
-                            ),
+                          
                             SizedBox(
                               height: Dimenssions.height10,
                             ),
@@ -111,7 +104,7 @@ class shimmerEffect extends StatelessWidget {
                                   "0",
                               weight: FontWeight.bold,
                               color: AppColors.bigTextColor,
-                            ),
+                          ),
                           ],
                         ),
                       ),
@@ -154,20 +147,7 @@ class shimmerEffect extends StatelessWidget {
                             SizedBox(
                               height: Dimenssions.height10,
                             ),
-                            CostumeAnimatedText(
-                              text: "Total package",
-                              fontSize: Dimenssions.font10 + 4,
-                              color: AppColors.hintTextColor,
-                            ),
-                            SizedBox(
-                              height: Dimenssions.height10,
-                            ),
-                            // total package  text
-                            CostumeAnimatedText(
-                              text: "0",
-                              weight: FontWeight.bold,
-                              color: AppColors.bigTextColor,
-                            ),
+                           
                           ],
                         ),
                       ),
@@ -213,20 +193,12 @@ class shimmerEffect extends StatelessWidget {
                             SizedBox(
                               height: Dimenssions.height10,
                             ),
-                            CostumeAnimatedText(
-                              text: "Total Trips",
-                              fontSize: Dimenssions.font10 + 4,
-                              color: AppColors.hintTextColor,
-                            ),
+                            
                             SizedBox(
                               height: Dimenssions.height10,
                             ),
                             // total amount of the revenu container
-                            CostumeAnimatedText(
-                              text: "0",
-                              weight: FontWeight.bold,
-                              color: AppColors.bigTextColor,
-                            ),
+                            
                           ],
                         ),
                       ),
@@ -265,20 +237,11 @@ class shimmerEffect extends StatelessWidget {
                             SizedBox(
                               height: Dimenssions.height10,
                             ),
-                            CostumeAnimatedText(
-                              text: "Total Client",
-                              fontSize: Dimenssions.font10 + 4,
-                              color: AppColors.hintTextColor,
-                            ),
+                            
                             SizedBox(
                               height: Dimenssions.height10,
                             ),
-                            // total amount of the revenu container
-                            CostumeAnimatedText(
-                              text: "transporter",
-                              weight: FontWeight.bold,
-                              color: AppColors.bigTextColor,
-                            ),
+                            
                           ],
                         ),
                       ),
@@ -292,11 +255,7 @@ class shimmerEffect extends StatelessWidget {
                       SizedBox(
                         width: Dimenssions.width20,
                       ),
-                      CostumeAnimatedText(
-                        text: "Current Trip : ",
-                        weight: FontWeight.bold,
-                        fontSize: Dimenssions.font20 - 4,
-                      ),
+                    
                       const Spacer(),
                       GestureDetector(
                         onTap: () {
@@ -354,11 +313,7 @@ class shimmerEffect extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            CostumeAnimatedText(
-                                                text: "Costume"),
-                                            SizedBox(
-                                              height: Dimenssions.height20,
-                                            ),
+                                            
                                             //! if the transporteur has passed the city then display youhave passed
                                             //!this city in the place of remove and done containers
                                            
@@ -377,11 +332,7 @@ class shimmerEffect extends StatelessWidget {
                       SizedBox(
                         width: Dimenssions.width20,
                       ),
-                      CostumeAnimatedText(
-                        text: "Statistic",
-                        weight: FontWeight.bold,
-                        fontSize: Dimenssions.font20 - 4,
-                      ),
+                     
                     ],
                   ),
                   SizedBox(
@@ -391,7 +342,7 @@ class shimmerEffect extends StatelessWidget {
                   SizedBox(
                       height: Dimenssions.height20 * 11,
                       width: Dimenssions.width,
-                      child: const charts()),
+                      ),
                   SizedBox(
                     height: Dimenssions.height20 * 3,
                   ),
@@ -400,12 +351,12 @@ class shimmerEffect extends StatelessWidget {
                   SizedBox(
                       height: Dimenssions.height20 * 7,
                       width: Dimenssions.width,
-                      child: const PieChartSample2()),
+                     ),
                   SizedBox(
                     height: Dimenssions.height20 * 3,
                   ),
                 ],
-                            ),
-              ) ,);
+                            ) ,),
+    );
   }
 }

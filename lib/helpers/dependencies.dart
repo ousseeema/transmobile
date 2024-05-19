@@ -39,7 +39,7 @@ class dependency {
     // client controllers
     Get.lazyPut(() => ClientDetailsController(), fenix: true);
     Get.lazyPut(() => ClientMainScreensController(), fenix: true);
-    Get.lazyPut(() => transHomeController(), fenix: true);
+   
     Get.lazyPut(() => HomeController(), fenix: true);
     Get.lazyPut(() => searchController(), fenix: true);
     Get.lazyPut(() => ResultController(), fenix: true);
@@ -62,6 +62,6 @@ class dependency {
     Get.lazyPut(() => authTrasnRepo());
     Get.lazyPut(() =>TransmainScreenController(), fenix: true );
     Get.lazyPut(() =>transHomeController(), fenix: true );
-     Get.put(() =>TransporterMessageController(),  );
+     Get.lazyPut(() =>TransporterMessageController(), fenix: true );
   }
 }

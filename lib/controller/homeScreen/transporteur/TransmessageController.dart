@@ -21,7 +21,7 @@ class TransporterMessageController extends GetxController {
  bool messageLoader = true;
 void getuser() async {
     
-     shared.getuser().then((value) {
+   await   shared.getuser().then((value) {
       Transporter = TransporterModel.fromJson(jsonDecode(value!));
     });
   }
@@ -31,7 +31,7 @@ void getuser() async {
   ];
  
   void GetAllMessages() async {
- 
+   
     Response allMessage =
         await Get.find<UserApi>().GetRequest(AppConstant.TransGetListOfMessage);
 
@@ -40,10 +40,9 @@ void getuser() async {
       allMessage.body['data'].forEach((message) {
         ListOfMessage.add(Discussion.fromJson(message));
       });
-      messageLoader = false;
-      update();
+    
     } else {
-   
+  
       Get.snackbar('Error', 'Error loading data', backgroundColor: Colors.red);
     }
   }

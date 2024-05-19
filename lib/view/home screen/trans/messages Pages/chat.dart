@@ -1,9 +1,12 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/messageController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/TransmessageController.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -23,7 +26,7 @@ class _chatPageState extends State<chatPage> {
     // TODO: implement initState
     Get.find<MessageController>().socketInit();
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
     });
      
@@ -32,7 +35,7 @@ class _chatPageState extends State<chatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-            child: GetBuilder<MessageController>(builder: (controller){
+            child: GetBuilder<TransporterMessageController>(builder: (controller){
               return SingleChildScrollView(
       child: Column(
         children: [
@@ -84,7 +87,7 @@ class _chatPageState extends State<chatPage> {
                                                 
                                             child: Image.network(
                                               Transporter?"${AppConstant.Transimage}${controller.SelectedDiscussion.transporterId.profilePicture}"
-                                              :"${AppConstant.Clientimage}${controller.client.profilePicture}",
+                                              :"${AppConstant.Clientimage}${controller.SelectedDiscussion.userId.profilePicture}",
                                               fit: BoxFit.cover,
                                               height: Dimenssions.height20,
                                               width: Dimenssions.width20 ,
