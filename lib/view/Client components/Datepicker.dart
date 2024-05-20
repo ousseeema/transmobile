@@ -31,11 +31,11 @@ class _DatePickerState extends State<DatePicker> {
                   height: Dimenssions.height20*12,
                   child: CupertinoDatePicker(
                     mode: CupertinoDatePickerMode.date,
-                    //minimumDate: DateTime.now(),
+                  //  minimumDate: DateTime.now(),
                     initialDateTime: initDate,
                     onDateTimeChanged: (value) {
-                     
-                       controller.dateController.text=value.toString().substring(0,11);
+                       controller.pickdate(value.toString().substring(0,11));
+                       
  
                     
                     },

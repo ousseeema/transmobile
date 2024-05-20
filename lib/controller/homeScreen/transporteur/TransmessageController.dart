@@ -40,6 +40,8 @@ void getuser() async {
       allMessage.body['data'].forEach((message) {
         ListOfMessage.add(Discussion.fromJson(message));
       });
+      messageLoader = false;
+      update();
     
     } else {
   

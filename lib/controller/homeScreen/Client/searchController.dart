@@ -29,7 +29,11 @@ class searchController extends GetxController {
       update();
     }
   }
+   void pickdate(value){
+    dateController.text = value;
+    update();
 
+   }
   // searech function
   //! sending the details to the server and the server will send the list of transporteurs that have that specific details
 
