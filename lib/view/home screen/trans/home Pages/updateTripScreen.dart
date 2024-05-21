@@ -239,6 +239,60 @@ class _UpdateTripScreenState extends State<UpdateTripScreen> {
                   },
                 ),
               ),
+                // date picker for the City
+                                  GestureDetector(
+                                    onTap: () {
+                                      showCupertinoModalPopup(
+                                          context: context,
+                                          builder: ((BuildContext context) {
+                                            return SizedBox(
+                                              height: Dimenssions.height20 * 12,
+                                              child: CupertinoDatePicker(
+                                                
+                                                mode: CupertinoDatePickerMode.date,
+                                                minimumDate: DateTime.now(),
+                                                onDateTimeChanged: (value) {
+                                               controller.PickDate(value);
+                                                },
+                                              ),
+                                            );
+                                          }));
+                                    },
+                                    child: Container(
+                                      height: Dimenssions.height20 * 3,
+                                      width: Dimenssions.width -
+                                          Dimenssions.width20 * 3,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            Dimenssions.radius20),
+                                        border: Border.all(
+                                          color: Colors.black,
+                                          width: 1,
+                                        ),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          SizedBox(
+                                            width: Dimenssions.width10,
+                                          ),
+                                          const Icon(
+                                            Icons.date_range_outlined,
+                                            color: AppColors.iconColor,
+                                          ),
+                                          SizedBox(
+                                            width: Dimenssions.width20 - 3,
+                                          ),
+                                          Text(
+                                            " When to pass :       ${controller.dateofpassage}",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: Dimenssions.font20 - 4,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
               SizedBox(
                 height: Dimenssions.height20,
               ),

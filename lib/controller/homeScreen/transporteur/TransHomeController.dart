@@ -14,8 +14,19 @@ class transHomeController extends GetxController {
   TransporterModel? transporter;
    String? newCity;
    int? newCityIndex;
+   String dateofpassage="";
+
+
   bool isloading = true;
   TripModel? Trip ;
+
+  // update tyhe date in the edit/add city in the page of update trip
+  
+ void PickDate( value){
+  dateofpassage= value.toString().substring(0,11);
+  update();
+
+ }
 
   Future<void> LoadData() async {
     
@@ -120,7 +131,7 @@ class transHomeController extends GetxController {
     isloading = true;
     update();
    
-      if(newCity!.isEmpty|| (newCityIndex==null|| newCityIndex ==0)){
+      if(newCity!.isEmpty || dateofpassage.isEmpty|| (newCityIndex==null|| newCityIndex ==0)){
 
          Get.snackbar("Error ", "The new city and the position must be provided " ,backgroundColor: Colors.red, colorText: Colors.white)  ;
          isloading = false;
@@ -128,7 +139,7 @@ class transHomeController extends GetxController {
       }else{
         try {
           
-         Trip!.citys.insert(newCityIndex!-1, City(id: "", city: newCity!, dateofpassage: DateTime.now().toString(), done: false) );
+         Trip!.citys.insert(newCityIndex!-1, City(id: "", city: newCity!, dateofpassage:dateofpassage, done: false) );
       Map<String, dynamic> datatoSend={
         "Citys" : Trip!.citys
       };

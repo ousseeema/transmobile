@@ -381,151 +381,160 @@ class _TransHomePageState extends State<TransHomePage> {
                           height: Dimenssions.height20 * 20,
                           child: ListView.builder(
                               itemCount: controller.Trip!.citys.length,
-                              itemBuilder: (_, index) {
-                                if (controller.Trip!.citys[index].done) {
+                              itemBuilder: (_, index) { 
+                                if (controller.Trip!.citys[index].done== true) {
                                   isPast = true;
                                 } else {
                                   isPast = false;
                                 }
-                                return TimelineTile(
-                                  isFirst: index == 0 ? true : false,
-                                  isLast:
-                                      index == controller.Trip!.citys.length - 1
-                                          ? true
-                                          : false,
-                                  beforeLineStyle: LineStyle(
-                                      color: isPast
-                                          ? AppColors.buttonColor
-                                          : AppColors.buttonColor
-                                              .withOpacity(0.4)),
-                                  indicatorStyle: IndicatorStyle(
-                                    drawGap: true,
-                                    // size of the indicator
-                                    width: Dimenssions.width30,
-                                    color: isPast
-                                        ? AppColors.buttonColor
-                                        : AppColors.buttonColor.withOpacity(0.4),
-                                    iconStyle: IconStyle(
-                                        iconData: Icons.done,
-                                        color: Colors.white),
-                                  ),
-                                  endChild: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    //container that contains the city and the remove and done containers
-                                    child: Container(
-                                        height: Dimenssions.height20 * 5,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              Dimenssions.radius20),
-                                          color: Colors.white,
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            CostumeAnimatedText(
-                                                text: controller
-                                                    .Trip!.citys[index].city),
-                                            SizedBox(
-                                              height: Dimenssions.height20,
+                                return Padding(
+                                  padding:  EdgeInsets.only(left: Dimenssions.LRpadmarg20),
+                                  child: TimelineTile(
+                                    isFirst: index == 0 ? true : false,
+                                    isLast:
+                                        index == controller.Trip!.citys.length - 1
+                                            ? true
+                                            : false,
+                                    beforeLineStyle: LineStyle(
+                                        color: isPast
+                                            ?  AppColors.buttonColor
+                                                :Colors.grey[200]!
                                             ),
-                                            //! if the transporteur has passed the city then display youhave passed
-                                            //!this city in the place of remove and done containers
-                                            isPast
-                                                ? Container(
-                                                    decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius
-                                                            .circular(Dimenssions
-                                                                    .radius10 /
-                                                                2),
+                                    indicatorStyle: IndicatorStyle(
+                                      drawGap: true,
+                                      // size of the indicator
+                                      width: Dimenssions.width30,
+                                      color: isPast
+                                           
+                                            ?  AppColors.buttonColor
+                                                :Colors.grey[200]!,
+                                      iconStyle: IconStyle(
+                                          iconData: Icons.done,
+                                          color: Colors.white),
+                                    ),
+                                    endChild: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      //container that contains the city and the remove and done containers
+                                      child: Container(
+                                          height: Dimenssions.height20 * 5,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                                Dimenssions.radius20),
+                                            color: Colors.white,
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              CostumeAnimatedText(
+                                                  text: controller
+                                                      .Trip!.citys[index].city),
+                                                
+                                                       CostumeAnimatedText(
+                                                  text: controller
+                                                      .Trip!.citys[index].dateofpassage , color: AppColors.iconColor,),
+                                  
+                                              SizedBox(
+                                                height: Dimenssions.height10,
+                                              ),
+                                              //! if the transporteur has passed the city then display youhave passed
+                                              //!this city in the place of remove and done containers
+                                              isPast
+                                                  ? Container(
+                                                      decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius
+                                                              .circular(Dimenssions
+                                                                      .radius10 /
+                                                                  2),
+                                                          color: AppColors
+                                                              .buttonColor),
+                                                      height:
+                                                          Dimenssions.height20 * 2,
+                                                      width:
+                                                          Dimenssions.width30 * 6,
+                                                      child: Center(
+                                                          child:
+                                                              CostumeAnimatedText(
+                                                        text:
+                                                            "You've passed this city",
                                                         color: AppColors
-                                                            .buttonColor),
-                                                    height:
-                                                        Dimenssions.height20 * 2,
-                                                    width:
-                                                        Dimenssions.width30 * 6,
-                                                    child: Center(
-                                                        child:
-                                                            CostumeAnimatedText(
-                                                      text:
-                                                          "You've passed this city",
-                                                      color: AppColors
-                                                          .insidetextcolor,
-                                                    )),
-                                                  )
-                                                : Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.center,
-                                                    children: [
-                                                      //done container
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          // update the trip by do done to  specific city
-                                                          controller.DoneCity(index);
-                                                        },
-                                                        child: Container(
-                                                          height: Dimenssions
-                                                                  .height20 *
-                                                              2,
-                                                          width: Dimenssions
-                                                                  .width30 *
-                                                              3,
-                                                          decoration: BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(
-                                                                      Dimenssions
-                                                                              .radius10 /
-                                                                          2),
-                                                              color: Colors.blue),
-                                                          child: const Center(
-                                                            child: Text(
-                                                              "Done",
-                                                              style: TextStyle(
-                                                                  color: AppColors
-                                                                      .insidetextcolor),
+                                                            .insidetextcolor,
+                                                      )),
+                                                    )
+                                                  : Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.center,
+                                                      children: [
+                                                        //done container
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            // update the trip by do done to  specific city
+                                                            controller.DoneCity(index);
+                                                          },
+                                                          child: Container(
+                                                            height: Dimenssions
+                                                                    .height20 *
+                                                                2,
+                                                            width: Dimenssions
+                                                                    .width30 *
+                                                                3,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                        Dimenssions
+                                                                                .radius10 /
+                                                                            2),
+                                                                color: Colors.blue),
+                                                            child: const Center(
+                                                              child: Text(
+                                                                "Done",
+                                                                style: TextStyle(
+                                                                    color: AppColors
+                                                                        .insidetextcolor),
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      SizedBox(
-                                                        width:
-                                                            Dimenssions.width30,
-                                                      ),
-                                                      // remove container
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                      // update the trip by removing specific city
-                                                      controller.DeleteCity(index);
-                                                        },
-                                                        child: Container(
-                                                          height: Dimenssions
-                                                                  .height20 *
-                                                              2,
-                                                          width: Dimenssions
-                                                                  .width30 *
-                                                              3,
-                                                          decoration: BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(
-                                                                      Dimenssions
-                                                                              .radius10 /
-                                                                          2),
-                                                              color: Colors
-                                                                  .red[200]),
-                                                          child: const Center(
-                                                            child: Text(
-                                                              "Remove",
-                                                              style: TextStyle(
-                                                                  color: AppColors
-                                                                      .insidetextcolor),
+                                                        SizedBox(
+                                                          width:
+                                                              Dimenssions.width30,
+                                                        ),
+                                                        // remove container
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                        // update the trip by removing specific city
+                                                        controller.DeleteCity(index);
+                                                          },
+                                                          child: Container(
+                                                            height: Dimenssions
+                                                                    .height20 *
+                                                                2,
+                                                            width: Dimenssions
+                                                                    .width30 *
+                                                                3,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                        Dimenssions
+                                                                                .radius10 /
+                                                                            2),
+                                                                color: Colors
+                                                                    .red[200]),
+                                                            child: const Center(
+                                                              child: Text(
+                                                                "Remove",
+                                                                style: TextStyle(
+                                                                    color: AppColors
+                                                                        .insidetextcolor),
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                          ],
-                                        )),
+                                                        )
+                                                      ],
+                                                    ),
+                                            ],
+                                          )),
+                                    ),
                                   ),
                                 );
                               }),
