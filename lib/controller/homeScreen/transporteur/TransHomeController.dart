@@ -99,8 +99,11 @@ class transHomeController extends GetxController {
     update();
    try {
       Trip!.citys.removeAt(index);
+      Map<String, dynamic>datatosend= {
+         "Citys": Trip!.citys
+      };
       Response updatedTrip = await Get.find<UserApi>()
-        .TransputRequest(Trip!.citys, AppConstant.TransupdateTrip, Trip!.id);
+        .TransputRequest(datatosend, AppConstant.TransupdateTrip, Trip!.id);
     if (updatedTrip.body["success"]) {
       Trip = TripModel.fromJson(updatedTrip.body['data']);
       isloading = false;
