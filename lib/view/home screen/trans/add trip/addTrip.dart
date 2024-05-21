@@ -35,7 +35,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
                     height: Dimenssions.height20,
                   ),
                   SizedBox(
-                    height: Dimenssions.height - Dimenssions.height20 * 12,
+                    height: Dimenssions.height - Dimenssions.height20 * 14,
                     width: Dimenssions.width,
                     child: ListView.builder(
                         itemCount: Tripcontroller.TextControllers.length,
@@ -74,8 +74,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
                                     width:
                                         Dimenssions.width - Dimenssions.width20 * 2,
                                     child: TextField(
-                                      controller:
-                                          Tripcontroller.TextControllers[index][0],
+                                      
                                       decoration: InputDecoration(
                                           hintText: "Lyon,France",
                                           hintStyle:
@@ -99,6 +98,9 @@ class _AddTripScreenState extends State<AddTripScreen> {
                                                   color: AppColors.bigTextColor),
                                               borderRadius: BorderRadius.circular(
                                                   Dimenssions.radius20))),
+                                                  onChanged: (value) {
+                                                     Tripcontroller.TextControllers[index][0]=value;
+                                                  },
                                     ),
                                   ),
                                   SizedBox(
@@ -165,26 +167,88 @@ class _AddTripScreenState extends State<AddTripScreen> {
                           );
                         }),
                   ),
-                  SizedBox(
-                    height: Dimenssions.height10,
+                  
+                  // switcher for the home delivery and the home pick up 
+                  Row(
+                    children: [ 
+                      // home delivery switcher 
+                    SizedBox(width: Dimenssions.width10,),
+                          const Text(
+                            "Home delivery :",
+                            style: TextStyle(
+                              color: AppColors.mainTextColor,
+                            ),
+                          ),
+                        SizedBox(width: Dimenssions.width10,),
+                          Switch(
+                              activeColor: AppColors.buttonColor,
+                              value: Tripcontroller.home_delivery,
+                              onChanged: (value) {
+                               Tripcontroller.home_deliverychange(value);
+                              }),
+                      // home pick up switcher 
+                       SizedBox(
+                            width: Dimenssions.width20,
+                          ),
+                         
+                          const Text(
+                            "Home pick up :",
+                            style: TextStyle(
+                              color: AppColors.mainTextColor,
+                            ),
+                          ),
+                          SizedBox(width: Dimenssions.width10,),
+                          
+                          Switch(
+                              activeColor: AppColors.buttonColor,
+                              value: Tripcontroller.home_delivery,
+                              onChanged: (value) {
+                               Tripcontroller.home_pickupchange(value);
+                              }),
+                      
+
+
+
+
+                    ],
                   ),
+                  SizedBox(height: Dimenssions.height20,) ,
                   //! add button
-                  Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        // adding input field when they tap +
-                        Tripcontroller.addInputfield();
-                      },
-                      child: Container(
-                        height: Dimenssions.height20 * 3,
-                        width: Dimenssions.height20 * 3,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: AppColors.buttonColor),
-                        child: const Align(
-                            alignment: Alignment.center, child: Icon(Icons.add)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          // adding input field when they tap +
+                          Tripcontroller.addInputfield();
+                        },
+                        child: Container(
+                          height: Dimenssions.height20 * 3,
+                          width: Dimenssions.height20 * 3,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: AppColors.buttonColor),
+                          child: const Align(
+                              alignment: Alignment.center, child: Icon(Icons.add, color: Colors.white,)),
+                        ),
                       ),
-                    ),
+                      
+                         GestureDetector(
+                        onTap: () {
+                          // adding input field when they tap +
+                          Tripcontroller.addTrip();
+                        },
+                        child: Container(
+                          height: Dimenssions.height20 * 3,
+                          width: Dimenssions.height20 * 3,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: Colors.green),
+                          child: const Align(
+                              alignment: Alignment.center, child: Icon(Icons.done_rounded, color: Colors.white,)),
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),

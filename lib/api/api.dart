@@ -32,9 +32,9 @@ class UserApi extends GetConnect implements GetxService {
 
 
     }catch(e){
-      return const Response(
+      return  Response(
         body: {
-          "message": "error in serveur",
+          "message":e.toString(),
           "success": false
         },
         statusCode: 1,
