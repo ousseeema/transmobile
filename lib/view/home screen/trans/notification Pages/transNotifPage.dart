@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/notificationController.dart';
 
 class TransNotificationScreen extends StatefulWidget {
   const TransNotificationScreen({super.key});
@@ -10,6 +12,10 @@ class TransNotificationScreen extends StatefulWidget {
 class _TransNotificationScreenState extends State<TransNotificationScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return  Scaffold(
+    body: GetBuilder<notificationController>(builder: (controller){
+      return Container();
+    }),
+    );
   }
 }

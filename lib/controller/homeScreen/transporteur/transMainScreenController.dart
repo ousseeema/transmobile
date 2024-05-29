@@ -17,7 +17,8 @@ List<Widget> Pages =[
  const  TransMessageScreen(),
  const AddTripScreen(),
   const TransNotificationScreen(),
- const  TransSettingScreen(),
+  const TransSettingScreen()
+ 
 
 
 ];

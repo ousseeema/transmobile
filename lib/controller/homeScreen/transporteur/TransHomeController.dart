@@ -73,15 +73,17 @@ class transHomeController extends GetxController {
     Trip!.citys[index].done = true;
     isloading = true;
     update();
-  
+   Map<String, dynamic>datatosend= {
+         "Citys": Trip!.citys
+      };
     
       Response updatedTrip = await Get.find<UserApi>()
-        .TransputRequest(Trip!.citys, AppConstant.TransupdateTrip, Trip!.id);
+        .TransputRequest(datatosend, AppConstant.TransupdateTrip, Trip!.id);
     if (updatedTrip.body["success"]) {
-      Trip = TripModel.fromJson(updatedTrip.body['data']);
-      isloading = false;
-      update();
-      Get.snackbar("Success", "Trip updated successfully",
+       Trip = TripModel.fromJson(updatedTrip.body['data']);
+       isloading = false;
+       update();
+       Get.snackbar("Success", "Trip updated successfully",
           backgroundColor: Colors.green, colorText: Colors.white);
     } else {
        Trip!.citys[index].done = false;
