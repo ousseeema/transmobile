@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/api/api.dart';
+import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/historypage.dart';
 import 'package:transmobile/view/splashscreens/transOuclient.dart';
@@ -384,7 +385,7 @@ class TransSettingsController  extends GetxController{
       demandes_Loader = true;
       update();
       Response demandes = await Get.find<UserApi>()
-          .GetRequest(AppConstant.GetalldemandesVerifi);
+          .GetRequest(AppConstant.);
 
       if (demandes.body["success"] == true) {
         demandes.body["data"].forEach((demande) =>
@@ -419,22 +420,22 @@ class TransSettingsController  extends GetxController{
   //! history page function and variables
 
   bool historypage_loader = false;
-  List<DemandeLiv> demandesLiv = [];
+  List<TripModel> TripHistoryList = [];
 // get all demande de liv that a user have sent to all transporteurs
-  void getAlldemandesLiv() async {
+  void getAllTrips() async {
     historypage_loader = true;
     update();
-     demandesLiv = [];
+     TripHistoryList = [];
 //! sent request to the serveur
    
     
-        Response alldemandeLiv =
-          await Get.find<UserApi>().GetRequest(AppConstant.getAllDemande);
+        Response AllTripsHis =
+          await Get.find<UserApi>().GetRequest(AppConstant.TransgetAllTripInHistory);
          
-      if (alldemandeLiv.body["success"] == true) {
+      if (AllTripsHis.body["success"] == true) {
       
-        alldemandeLiv.body["data"].forEach((demandeLiv) {
-          demandesLiv.add(DemandeLiv.fromJson(demandeLiv));
+        AllTripsHis.body["data"].forEach((trip) {
+          TripHistoryList.add(TripModel.fromJson(trip));
         });
            Get.to(()=>const HistoryPage());
        
@@ -457,7 +458,7 @@ class TransSettingsController  extends GetxController{
   }
   
 //! selected history to display in the hsitory details page 
-   DemandeLiv? selectedDemande;
+   TripModel? SelectedTripHistory;
 
 
 

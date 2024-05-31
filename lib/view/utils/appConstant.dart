@@ -58,6 +58,13 @@ class AppConstant  {
   static String getCurrentTransporteur = "/transporteurs/getCurrentTransporter";
 static String getCurrentTrip = "/transporteurs/getCurrentTrip";
 static String TransGetListOfMessage = "/transporteurs/getListofMessage";
+static String TransGetverified = "/transporteurs/Getverified";
+static String TransContactAdmin = "/transporteurs/contactAdmin";
+static String TransGetAllverificationDemande = "/transporteurs/getallverifictionDemande";
+
+
+
+
  
  
  

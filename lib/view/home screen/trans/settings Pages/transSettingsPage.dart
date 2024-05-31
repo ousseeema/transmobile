@@ -5,6 +5,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/view/Client%20components/settingsContainer.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Editpage.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Go%20pro.dart';
@@ -25,12 +26,12 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
   @override
   initState() {
     super.initState();
-    Get.find<SettingController>().GetUserInfo();
+    Get.find<TransSettingsController>().GetUserInfo();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: GetBuilder<SettingController>(
+    return Scaffold(body: GetBuilder<TransSettingsController>(
       builder: (controller) {
         return controller.isloading
             ? const CircularProgressIndicator()
@@ -52,7 +53,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                               errorBuilder: (context, error, stackTrace) {
                               return const  CircularProgressIndicator();
                               },
-                              "${AppConstant.Clientimage}${controller.client!.profilePicture}",
+                              "${AppConstant.Transimage}${controller.transporteur!.profilePicture}",
                               fit: BoxFit.cover,
                               height: Dimenssions.height20 * 3,
                               width: Dimenssions.width30 * 2,
@@ -69,7 +70,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                                 repeatForever: true,
                                 animatedTexts: [
                                   ColorizeAnimatedText(
-                                      controller.client!.fullName!,
+                                      controller.transporteur!.fullName,
                                       textStyle: TextStyle(
                                           fontSize: Dimenssions.font20,
                                           fontWeight: FontWeight.bold),
@@ -86,7 +87,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                                 repeatForever: true,
                                 animatedTexts: [
                                   ColorizeAnimatedText(
-                                      controller.client!.email!,
+                                      controller.transporteur!.email,
                                       textStyle: TextStyle(
                                           fontSize: Dimenssions.font20 - 4,
                                           fontWeight: FontWeight.w300),
@@ -101,7 +102,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                         SizedBox(
                           width: Dimenssions.width20*2,
                         ),
-                        Icon( Icons.verified, color:  controller.client!.verified==true ? Colors.blue: Colors.grey,size: Dimenssions.icon24,)
+                        Icon( Icons.verified, color:  controller.transporteur!.verified==true ? Colors.blue: Colors.grey,size: Dimenssions.icon24,)
                       ],
                     ),
                     SizedBox(
@@ -160,7 +161,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                         // go pro page 
                         //! if the user is not verified then give it the access to go pro page
                         //! if the user is already verified then affiche the the snack bar
-                       controller.client!.verified== true?
+                       controller.transporteur!.verified== true?
                         Get.snackbar("Remainder", "Your account is already Pro", backgroundColor: Colors.green[100], colorText: Colors.white) :
                         Get.to(()=>const GoPro());
 
@@ -176,7 +177,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                       onTap: () {
                         // go to history page
                       
-                       controller.getAlldemandesLiv();
+                       controller.getAllTrips();
                       },
                        // costume container for settings
                       child: SettingsContainer(
