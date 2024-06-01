@@ -12,6 +12,9 @@ import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Go%20pro.
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/contact%20us.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/InfoCenter.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/params.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/Editpage.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/contact%20us.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/params.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -53,7 +56,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                               errorBuilder: (context, error, stackTrace) {
                               return const  CircularProgressIndicator();
                               },
-                              "${AppConstant.Transimage}${controller.transporteur!.profilePicture}",
+                              "${AppConstant.Transimage}/${controller.transporteur!.profilePicture}",
                               fit: BoxFit.cover,
                               height: Dimenssions.height20 * 3,
                               width: Dimenssions.width30 * 2,
@@ -111,7 +114,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                     GestureDetector(
                       onTap: (){
                        // going to the edit page
-                       Get.to(()=>const EditPage());
+                       Get.to(()=>const TransEditPage());
                       },
                        // costume container for settings
                       child: SettingsContainer(
@@ -123,7 +126,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                     GestureDetector(
                       onTap: (){
                        // going to the params page 
-                       Get.to(()=> const paramsPage());
+                       Get.to(()=> const TransParamsPage());
                       },
                        // costume container for settings
                       child: SettingsContainer(
@@ -175,13 +178,13 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // go to history page
+                        // go to TRIP history page
                       
                        controller.getAllTrips();
                       },
                        // costume container for settings
                       child: SettingsContainer(
-                      iconData: Icons.history_rounded, text: "History"),
+                      iconData: Icons.history_rounded, text: "Trip History"),
                     ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
@@ -189,7 +192,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                   GestureDetector(
                     onTap: () {
                       //  contact us page 
-                      Get.to(()=> const ContactUsPage());
+                      Get.to(()=> const TransContactUs());
                     },
                      // costume container for settings
                       child: SettingsContainer(

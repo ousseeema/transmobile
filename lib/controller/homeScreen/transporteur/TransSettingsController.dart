@@ -14,7 +14,6 @@ import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
 
 import '../../../model/client/ClientModel.dart';
-import '../../../model/demande livrasion/demandelivr.dart';
 import '../../../model/verification demande/verificationDemandes model.dart';
 
 class TransSettingsController  extends GetxController{
@@ -55,10 +54,12 @@ class TransSettingsController  extends GetxController{
 
   File? selectedImage;
   String newfullname = "";
-  String newaddress = "";
+  String newLocalAddress = "";
+  String newDestinationAddress = "";
   String newphonenumber1 = "";
   String newphonenumber2 = "";
-  String newcountry = "";
+  String NewLocalCountry = "";
+  String NewDestinationCountry="";
   bool edit_loading = false;
 
   Future PickimageFromGallery() async {
@@ -77,10 +78,12 @@ class TransSettingsController  extends GetxController{
  bool validateInput() {
     // if all the champ are empty and the user tap the button show error message
     if (newfullname.isEmpty &&
-        newaddress.isEmpty &&
+        newLocalAddress.isEmpty &&
+        newDestinationAddress.isEmpty &&
         newphonenumber1.isEmpty &&
         newphonenumber2.isEmpty &&
-        newcountry.isEmpty &&
+        NewLocalCountry.isEmpty &&
+        NewDestinationCountry.isEmpty &&
         selectedImage == null){
       Get.snackbar("Error", "Please update at least one ",
           backgroundColor: Colors.red, colorText: Colors.white);
@@ -88,7 +91,8 @@ class TransSettingsController  extends GetxController{
     }
     // if some of  the champ are not good and the user tap the button show error message
     else if ((newfullname.isNotEmpty && newfullname.length < 4) ||
-        (newaddress.isNotEmpty && newaddress.length < 10) ||
+        (newLocalAddress.isNotEmpty && newLocalAddress.length < 10) ||
+        (newDestinationAddress.isNotEmpty && newDestinationAddress.length < 10) ||
         (newphonenumber1.isNotEmpty && newphonenumber1.length < 6) ||
         (newphonenumber2.isNotEmpty && newphonenumber2.length < 6)) {
       Get.snackbar("Error", "Please update at least one mandatory field",
@@ -109,18 +113,26 @@ class TransSettingsController  extends GetxController{
       if (newfullname.length >= 4) {
         data['fullName'] = newfullname;
       }
-      if (newaddress.length >= 10) {
-        data['fulladdress'] = newaddress;
+      if (newLocalAddress.length >= 10) {
+        data['localAddress'] = newLocalAddress;
+      }
+       if (newDestinationAddress.isNotEmpty) {
+        data['DestinationAddress'] = NewDestinationCountry;
       }
       if (newphonenumber1.length >= 6) {
-        data['Phone_Number'] = newphonenumber1;
+        data['PhoneNumber_A'] = newphonenumber1;
       }
       if (newphonenumber2.length >= 6) {
-        data['Phone_Number2'] = newphonenumber2;
+        data['PhoneNumber_B'] = newphonenumber2;
       }
-      if (newcountry.isNotEmpty) {
-        data['country'] = newcountry;
+      if (NewLocalCountry.isNotEmpty) {
+        data['ListCountry_1'] = NewDestinationCountry;
       }
+       
+        if (NewDestinationCountry.isNotEmpty) {
+        data['ListCountry_2'] = NewDestinationCountry;
+      }
+     
       // testing if the image is not updated then send only json data else send the data + the new image
       FormData datatosend;
       if (selectedImage != null) {
@@ -142,17 +154,21 @@ class TransSettingsController  extends GetxController{
         edit_loading = true;
         update();
         Response updateUserDetails = await Get.find<UserApi>()
-            .putRequest(datatosend, AppConstant.updatesuser);
+            .putRequest(datatosend, AppConstant.updateTrans);
         if (updateUserDetails.body["success"] == true) {
           selectedImage = null;
           await SHARED.setString(
               "user", jsonEncode(updateUserDetails.body["data"]));
           // seeting everything to the beginning status
           newfullname = "";
-          newaddress = "";
+          newLocalAddress = "";
+           newDestinationAddress="";
           newphonenumber1 = "";
           newphonenumber2 = "";
-          newcountry = "";
+          NewLocalCountry = "";
+          NewDestinationCountry="";
+         
+
 
           Get.back();
           Get.snackbar("Success", "Your account has been updated successfuly",
@@ -162,6 +178,7 @@ class TransSettingsController  extends GetxController{
             update();
           });
         } else {
+          print(updateUserDetails.body["message"]);
           Get.snackbar("Error", "Error while updating your details",
               backgroundColor: Colors.red, colorText: Colors.white);
           Future.delayed(Duration.zero, () {
@@ -170,6 +187,7 @@ class TransSettingsController  extends GetxController{
           });
         }
       } catch (e) {
+        print(e.toString());
         Get.snackbar("Error", "Error while updating your details",
             backgroundColor: Colors.red, colorText: Colors.white);
         Future.delayed(Duration.zero, () {
@@ -270,7 +288,7 @@ class TransSettingsController  extends GetxController{
 
       try {
         Response updatedpassword = await Get.find<UserApi>()
-            .putRequest(data, AppConstant.changeuserpassword);
+            .putRequest(data, AppConstant.TranschangePassword);
 
         if (updatedpassword.body["success"] == true) {
           oldpassword = "";
@@ -342,7 +360,7 @@ class TransSettingsController  extends GetxController{
         getverified_Loading = true;
         update();
         Response verificationClient = await Get.find<UserApi>()
-            .postRequest(datatosend, AppConstant.usergetverified);
+            .postRequest(datatosend, AppConstant.TransGetverified);
 
         if (verificationClient.body["success"] == true) {
           passportimage = null;
@@ -385,7 +403,7 @@ class TransSettingsController  extends GetxController{
       demandes_Loader = true;
       update();
       Response demandes = await Get.find<UserApi>()
-          .GetRequest(AppConstant.);
+          .GetRequest(AppConstant.TransGetAllverificationDemande);
 
       if (demandes.body["success"] == true) {
         demandes.body["data"].forEach((demande) =>
@@ -485,7 +503,7 @@ Get.snackbar("Success", "Your reclamation must not be empty",
       try {
       String datatoSend= jsonEncode(data);
          // send request to the server
-      Response reclamation = await Get.find<UserApi>().postRequest(datatoSend, AppConstant.sendReclamationRequest);
+      Response reclamation = await Get.find<UserApi>().postRequest(datatoSend, AppConstant.TransContactAdmin);
 
       if(reclamation.body["success"] == true){
               // if the request sent successfully the back to the pre page and display
