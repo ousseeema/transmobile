@@ -272,6 +272,9 @@ class TransSettingsController  extends GetxController{
     }
   }
 
+
+
+
   void changepassword() async {
     SharedPreferences SHARED = await SharedPreferences.getInstance();
 
@@ -320,6 +323,12 @@ class TransSettingsController  extends GetxController{
       }
     }
   }
+
+
+
+
+
+
 
   // go pro functions and variables
   File? passportimage;

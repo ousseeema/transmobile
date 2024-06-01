@@ -4,9 +4,12 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/edit%20password%20page.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/reset%20email%20page.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/edit%20password%20page.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/reset%20email%20page.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -20,7 +23,7 @@ class TransParamsPage extends StatefulWidget {
 class _TransParamsPageState extends State<TransParamsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: GetBuilder<SettingController>(
+    return Scaffold(body: GetBuilder<TransSettingsController>(
       builder: (controller) {
         return SafeArea(
           child: Padding(
@@ -87,7 +90,7 @@ class _TransParamsPageState extends State<TransParamsPage> {
                               onTap: () {
                                 // go to email address reset
 
-                                Get.to(() => const ResetEmailPage());
+                                Get.to(() => const TransResetEmailPage());
                               },
                               child: const Icon(Icons.arrow_forward_ios)),
 
@@ -141,7 +144,7 @@ class _TransParamsPageState extends State<TransParamsPage> {
                           onTap: () {
                             // go to email address reset
 
-                            Get.to(() => const editPasswordPage());
+                            Get.to(() => const TransEditPasswordPage());
                           },
                           child: const Icon(Icons.arrow_forward_ios)),
                       SizedBox(
