@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -20,7 +21,7 @@ class _TransEditPasswordPageState extends State<TransEditPasswordPage> {
   Widget build(BuildContext context) {
   return  Scaffold(
 
-    body:  GetBuilder<SettingController>(builder: (controller) {
+    body:  GetBuilder<TransSettingsController>(builder: (controller) {
        return  SafeArea(
         child: 
     Padding(

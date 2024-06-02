@@ -4,8 +4,8 @@
 
 
 class AppConstant  {
-  static String baseurl = "http://192.168.1.16:3000/api/v0";
-   static String socekturl = "http://192.168.1.16:3000";
+  static String baseurl = "http://192.168.1.41:3000/api/v0";
+   static String socekturl = "http://192.168.1.41:3000";
   // client auth endpoints
   static String loginUser = "/authClient/signin";
   static String signup1Client = "/authClient/signup1";
@@ -62,6 +62,7 @@ static String TransGetverified = "/transporteurs/Getverified";
 static String TransContactAdmin = "/transporteurs/contactAdmin";
 static String TransGetAllverificationDemande = "/transporteurs/getallverifictionDemande";
 static String TranschangePassword = "/transporteurs/changepassword";
+static String TranschangeEmail = "/transporteurs/changeemail";
 
 
 
@@ -71,10 +72,10 @@ static String TranschangePassword = "/transporteurs/changepassword";
  
  
  /// images path
-  static String Clientimage ="http://192.168.1.16:3000/Images/private/users/";
-    static String Transimage ="http://192.168.1.16:3000/Images/private/transporteurs";
-      static String Packagesimage ="http://192.168.1.16:3000/Images/packages/";
-  static String Passportimage ="http://192.168.1.16:3000/Images/passport/";
+  static String Clientimage ="${socekturl}/Images/private/users/";
+    static String Transimage ="${socekturl}/Images/private/transporteurs";
+      static String Packagesimage ="${socekturl}/Images/packages/";
+  static String Passportimage ="${socekturl}/Images/passport/";
 
 
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -18,7 +19,7 @@ class _TransResetEmailPageState extends State<TransResetEmailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: GetBuilder<SettingController>(
+      body: SafeArea(child: GetBuilder<TransSettingsController>(
         builder: (controller) {
           return (controller.resetEmail_loading)
               ? const Center(

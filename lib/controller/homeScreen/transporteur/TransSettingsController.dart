@@ -217,7 +217,8 @@ class TransSettingsController  extends GetxController{
 
       try {
         Response changeEmailResponse = await Get.find<UserApi>()
-            .putRequest(data, AppConstant.changeuseremail);
+            .putRequest(data, AppConstant.TranschangeEmail);
+            
 
         if (changeEmailResponse.body["success"] == true) {
           await SHARED.setString(

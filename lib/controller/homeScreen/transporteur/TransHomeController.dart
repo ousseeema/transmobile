@@ -39,7 +39,8 @@ class transHomeController extends GetxController {
     });
    
     // getting current transporteur
-    Response currentTransporteur = await Get.find<UserApi>()
+     try {
+         Response currentTransporteur = await Get.find<UserApi>()
         .GetRequest(AppConstant.getCurrentTransporteur);
     // getting current trip if its exist
     Response currentTrip =
@@ -67,6 +68,10 @@ class transHomeController extends GetxController {
       Get.snackbar("Error",  "Error while getting data , Try reloading the page",
           colorText: Colors.white, backgroundColor: Colors.red);
     }
+     } catch (e) {
+       Get.snackbar("Error",  "Error while getting data , Try reloading the page",
+          colorText: Colors.white, backgroundColor: Colors.red);
+     }
   }
   /// ! changing the status of specified city
   void DoneCity(index) async {
