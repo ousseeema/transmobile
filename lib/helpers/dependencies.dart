@@ -20,6 +20,7 @@ import 'package:transmobile/controller/homeScreen/Client/ClientMainScreensContro
 import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransmessageController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/notificationController.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/transMainScreenController.dart';
 import 'package:transmobile/controller/infoController/informationcontroller.dart';
 import 'package:transmobile/repository/client/ClientRepo.dart';
@@ -69,7 +70,7 @@ class dependency {
      Get.lazyPut(() =>TransporterMessageController(), fenix: true );
      Get.lazyPut(() => AddTripController(), fenix: true );
       Get.lazyPut(() => TransSettingsController(), fenix: true );
-            Get.lazyPut(() => notificationsController(), fenix: true );
+            Get.lazyPut(() => TransnotificationController(), fenix: true );
 
 
   }

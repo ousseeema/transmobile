@@ -93,9 +93,9 @@ class TransSettingsController  extends GetxController{
     else if ((newfullname.isNotEmpty && newfullname.length < 4) ||
         (newLocalAddress.isNotEmpty && newLocalAddress.length < 10) ||
         (newDestinationAddress.isNotEmpty && newDestinationAddress.length < 10) ||
-        (newphonenumber1.isNotEmpty && newphonenumber1.length < 6) ||
-        (newphonenumber2.isNotEmpty && newphonenumber2.length < 6)) {
-      Get.snackbar("Error", "Please update at least one mandatory field",
+        (newphonenumber1.isNotEmpty && (newphonenumber1.length < 6||newphonenumber1.length > 15 )) ||
+        (newphonenumber2.isNotEmpty && (newphonenumber2.length < 6 || newphonenumber2.length > 15))) {
+      Get.snackbar("Error", "Please check your fields and try again",
           backgroundColor: Colors.red, colorText: Colors.white);
       return false;
     } else {

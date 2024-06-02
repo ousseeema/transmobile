@@ -673,6 +673,7 @@ class _TransEditPageState extends State<TransEditPage> {
                                                         Dimenssions.width20 * 2,
                                                     child:
                                                         InternationalPhoneNumberInput(
+                                                          maxLength: 15,
                                                       textFieldController:
                                                           Phone1Controller,
                                                       countries: const [
@@ -818,6 +819,7 @@ class _TransEditPageState extends State<TransEditPage> {
                                                         Dimenssions.width20 * 2,
                                                     child:
                                                         InternationalPhoneNumberInput(
+                                                          maxLength: 15,
                                                       textFieldController:
                                                           Phone2Controller,
                                                       countries: const [

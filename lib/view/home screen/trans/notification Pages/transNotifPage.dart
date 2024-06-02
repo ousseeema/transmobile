@@ -13,7 +13,7 @@ class _TransNotificationScreenState extends State<TransNotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-    body: GetBuilder<notificationController>(builder: (controller){
+    body: GetBuilder<TransnotificationController>(builder: (controller){
       return Container();
     }),
     );

@@ -42,7 +42,6 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                 padding: EdgeInsets.only(left: Dimenssions.LRpadmarg20),
                 child: Column(
                   children: [
-                   
                     SizedBox(
                       height: Dimenssions.height20 * 4,
                     ),
@@ -54,7 +53,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                                 100), // Adjust the radius to match the container's borderRadius
                             child: Image.network(
                               errorBuilder: (context, error, stackTrace) {
-                              return const  CircularProgressIndicator();
+                                return const CircularProgressIndicator();
                               },
                               "${AppConstant.Transimage}/${controller.transporteur!.profilePicture}",
                               fit: BoxFit.cover,
@@ -69,77 +68,97 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            AnimatedTextKit(
-                                repeatForever: true,
-                                animatedTexts: [
-                                  ColorizeAnimatedText(
-                                      controller.transporteur!.fullName,
-                                      textStyle: TextStyle(
-                                          fontSize: Dimenssions.font20,
-                                          fontWeight: FontWeight.bold),
-                                      colors: [
-                                        Colors.black,
-                                        Colors.white,
-                                        Colors.blue,
-                                      ]),
-                                ]),
+                            Row(
+                              children: [
+                                // name widget
+                                AnimatedTextKit(
+                                    repeatForever: true,
+                                    animatedTexts: [
+                                      ColorizeAnimatedText(
+                                          controller.transporteur!.fullName,
+                                          textStyle: TextStyle(
+                                              fontSize: Dimenssions.font20,
+                                              fontWeight: FontWeight.bold),
+                                          colors: [
+                                            Colors.black,
+                                            Colors.white,
+                                            Colors.blue[200]!,
+                                          ]),
+                                    ]),
+                                SizedBox(
+                                  width: Dimenssions.width30,
+                                ),
+                                // verified icon 
+
+                                Icon(
+                                  Icons.verified,
+                                  color:
+                                      controller.transporteur!.verified == true
+                                          ? Colors.blue
+                                          : Colors.grey,
+                                  size: Dimenssions.icon24,
+                                )
+                              ],
+                            ),
                             SizedBox(
                               height: Dimenssions.height10 - 3,
                             ),
-                            AnimatedTextKit(
-                                repeatForever: true,
-                                animatedTexts: [
-                                  ColorizeAnimatedText(
-                                      controller.transporteur!.email,
-                                      textStyle: TextStyle(
-                                          fontSize: Dimenssions.font20 - 4,
-                                          fontWeight: FontWeight.w300),
-                                      colors: [
-                                        Colors.black,
-                                        Colors.white,
-                                        Colors.blue,
-                                      ])
-                                ])
+                            SizedBox(
+                              width: Dimenssions.width30 * 8,
+                              child: AnimatedTextKit(
+                                  repeatForever: true,
+                                  animatedTexts: [
+                                    ColorizeAnimatedText(
+                                        controller.transporteur!.email,
+                                        textStyle: TextStyle(
+                                            overflow: TextOverflow.ellipsis,
+                                            fontSize: Dimenssions.font20 - 4,
+                                            fontWeight: FontWeight.w300),
+                                        colors: [
+                                          Colors.black,
+                                          Colors.white,
+                                          Colors.blue,
+                                        ])
+                                  ]),
+                            )
                           ],
                         ),
-                        SizedBox(
-                          width: Dimenssions.width20*2,
-                        ),
-                        Icon( Icons.verified, color:  controller.transporteur!.verified==true ? Colors.blue: Colors.grey,size: Dimenssions.icon24,)
                       ],
                     ),
                     SizedBox(
                       height: Dimenssions.height20 * 4,
                     ),
                     GestureDetector(
-                      onTap: (){
-                       // going to the edit page
-                       Get.to(()=>const TransEditPage());
+                      onTap: () {
+                        // going to the edit page
+                        Get.to(() => const TransEditPage());
                       },
-                       // costume container for settings
+                      // costume container for settings
                       child: SettingsContainer(
-                          iconData: Icons.person_pin, text: "Edit profile", ),
+                        iconData: Icons.person_pin,
+                        text: "Edit profile",
+                      ),
                     ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
                     GestureDetector(
-                      onTap: (){
-                       // going to the params page 
-                       Get.to(()=> const TransParamsPage());
+                      onTap: () {
+                        // going to the params page
+                        Get.to(() => const TransParamsPage());
                       },
-                       // costume container for settings
+                      // costume container for settings
                       child: SettingsContainer(
-                          iconData: Icons.settings_suggest_rounded, text: "Settings", ),
+                        iconData: Icons.settings_suggest_rounded,
+                        text: "Settings",
+                      ),
                     ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
-
-                    
                     Row(
                       children: [
-                         // costume container for settings
+                        // costume container for settings
                         SettingsContainer(
                             iconData: Icons.nights_stay_outlined,
                             text: "Night mode"),
@@ -161,13 +180,15 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // go pro page 
+                        // go pro page
                         //! if the user is not verified then give it the access to go pro page
                         //! if the user is already verified then affiche the the snack bar
-                       controller.transporteur!.verified== true?
-                        Get.snackbar("Remainder", "Your account is already Pro", backgroundColor: Colors.green[100], colorText: Colors.white) :
-                        Get.to(()=>const GoPro());
-
+                        controller.transporteur!.verified == true
+                            ? Get.snackbar(
+                                "Remainder", "Your account is already Pro",
+                                backgroundColor: Colors.green[100],
+                                colorText: Colors.white)
+                            : Get.to(() => const GoPro());
                       },
                       // costume container for settings
                       child: SettingsContainer(
@@ -179,22 +200,23 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                     GestureDetector(
                       onTap: () {
                         // go to TRIP history page
-                      
-                       controller.getAllTrips();
+
+                        controller.getAllTrips();
                       },
-                       // costume container for settings
+                      // costume container for settings
                       child: SettingsContainer(
-                      iconData: Icons.history_rounded, text: "Trip History"),
+                          iconData: Icons.history_rounded,
+                          text: "Trip History"),
                     ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
                     ),
-                  GestureDetector(
-                    onTap: () {
-                      //  contact us page 
-                      Get.to(()=> const TransContactUs());
-                    },
-                     // costume container for settings
+                    GestureDetector(
+                      onTap: () {
+                        //  contact us page
+                        Get.to(() => const TransContactUs());
+                      },
+                      // costume container for settings
                       child: SettingsContainer(
                           iconData: Icons.send_outlined, text: "Contact us"),
                     ),
@@ -203,10 +225,10 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // help center page 
-                        Get.to(()=>const  InfoCenter());
+                        // help center page
+                        Get.to(() => const InfoCenter());
                       },
-                       // costume container for settings
+                      // costume container for settings
                       child: SettingsContainer(
                           iconData: Icons.help_outline_rounded,
                           text: "Info Center"),
@@ -216,11 +238,10 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // sign out the user from the app 
+                        // sign out the user from the app
                         controller.signOut();
-                        
                       },
-                       // costume container for settings
+                      // costume container for settings
                       child: SettingsContainer(
                           iconData: BoxIcons.bx_log_out, text: "Sign out"),
                     ),
