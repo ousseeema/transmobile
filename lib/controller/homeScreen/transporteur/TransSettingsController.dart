@@ -9,6 +9,7 @@ import 'package:transmobile/api/api.dart';
 import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/historypage.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/TripHistory.dart';
 import 'package:transmobile/view/splashscreens/transOuclient.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
@@ -465,7 +466,7 @@ class TransSettingsController  extends GetxController{
         AllTripsHis.body["data"].forEach((trip) {
           TripHistoryList.add(TripModel.fromJson(trip));
         });
-           Get.to(()=>const HistoryPage());
+           Get.to(()=>const TransTripHistory());
        
         Future.delayed(Duration.zero, () {
           historypage_loader = false;

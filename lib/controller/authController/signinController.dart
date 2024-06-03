@@ -101,6 +101,8 @@ class signinController extends GetxController {
             colorText: Colors.white, backgroundColor: Colors.red);
       }
       } catch (e) {
+         is_Loading = false;
+        update();
          Get.snackbar("Error", "Server error",
             colorText: Colors.white, backgroundColor: Colors.red);
         

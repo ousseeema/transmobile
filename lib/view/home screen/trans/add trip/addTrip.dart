@@ -201,7 +201,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
                           
                           Switch(
                               activeColor: AppColors.buttonColor,
-                              value: Tripcontroller.home_delivery,
+                              value: Tripcontroller.home_pick_up,
                               onChanged: (value) {
                                Tripcontroller.home_pickupchange(value);
                               }),

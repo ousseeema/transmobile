@@ -36,7 +36,7 @@ class AddTripController extends GetxController {
     update();
   }
   void home_pickupchange(value){
-    home_delivery =value;
+    home_pick_up =value;
     update();
   }
 
