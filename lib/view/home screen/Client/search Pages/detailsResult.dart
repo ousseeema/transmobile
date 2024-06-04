@@ -1,13 +1,9 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:icons_plus/icons_plus.dart';
-import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
-import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
-import 'package:transmobile/view/Client%20components/Costumedetailsinfo.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/TripInfo.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/infowidget.dart';

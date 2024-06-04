@@ -15,7 +15,7 @@ class CostumeAnimatedText extends StatelessWidget {
   Color? decorationColor;
   TextDecorationStyle? decorationStyle;
   TextDecoration? textDecoration ;
-  CostumeAnimatedText({super.key, required this.text ,  this.fontSize,  this.color,  this.weight,this.textDecoration, this.decorationColor, this.decorationStyle}){
+  CostumeAnimatedText( {super.key, required this.text ,  this.fontSize,  this.color,  this.weight,this.textDecoration, this.decorationColor, this.decorationStyle}){
      fontSize;
      color ;
      weight ;

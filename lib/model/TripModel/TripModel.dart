@@ -8,6 +8,7 @@ class TripModel {
     bool homePickUp;
     bool homeDelivery;
     List<dynamic> packages;
+    List<dynamic>self_packages;
     bool isDone;
     String createdAt;
 
@@ -18,6 +19,8 @@ class TripModel {
         required this.homePickUp,
         required this.homeDelivery,
         required this.packages,
+         required this.self_packages,
+
         required this.isDone,
         required this.createdAt,
     });
@@ -29,6 +32,7 @@ class TripModel {
         homePickUp: json["Home_pick_up"],
         homeDelivery: json["Home_delivery"],
         packages: List<dynamic>.from(json["packages"].map((x) => x)),
+        self_packages: List<dynamic>.from(json["self_packages"].map((x) => x)),
         isDone: json["isDone"],
         createdAt: json["createdAt"],
     );
@@ -40,6 +44,7 @@ class TripModel {
         "Home_pick_up": homePickUp,
         "Home_delivery": homeDelivery,
         "packages": List<dynamic>.from(packages.map((x) => x)),
+        "self_packages":List<dynamic>.from(self_packages.map((x) => x)),
         "isDone": isDone,
         "createdAt": createdAt,
     };

@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
-import 'package:transmobile/view/Trans%20components/charts.dart';
-import 'package:transmobile/view/Trans%20components/piechart.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

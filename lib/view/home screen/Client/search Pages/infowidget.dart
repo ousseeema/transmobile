@@ -1,9 +1,6 @@
 // ignore_for_file: unnecessary_string_interpolations
 
-import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';

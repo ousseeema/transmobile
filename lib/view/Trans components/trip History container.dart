@@ -1,7 +1,10 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/model/TripModel/TripModel.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/TripHistoryDetails.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -18,7 +21,7 @@ class _HistoryTripContainerState extends State<HistoryTripContainer> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        
+        Get.to(()=> TripHistoryDetails(Trip:widget.Trip ));
       },
       child: Container(
         margin: EdgeInsets.all(Dimenssions.LRpadmarg10),

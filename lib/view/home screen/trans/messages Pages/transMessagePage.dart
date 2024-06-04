@@ -2,17 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
-import 'package:transmobile/controller/homeScreen/Client/messageController.dart';
-import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
+import 'package:intl/intl.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransmessageController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
-import 'package:transmobile/view/home%20screen/Client/messages%20Pages/chatPage.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
-import 'package:transmobile/view/utils/shared.dart';
-import 'package:intl/intl.dart';
 
 class TransMessageScreen extends StatefulWidget {
   const TransMessageScreen({super.key});

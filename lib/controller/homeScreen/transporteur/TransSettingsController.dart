@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/api/api.dart';
 import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
-import 'package:transmobile/view/home%20screen/Client/settings%20Pages/historypage.dart';
 import 'package:transmobile/view/home%20screen/trans/settings%20Pages/TripHistory.dart';
 import 'package:transmobile/view/splashscreens/transOuclient.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
@@ -352,7 +351,7 @@ class TransSettingsController  extends GetxController{
 
   // ! sending the passport image and the message to the admin to verifie
   void SendverfRequest() async {
-    if (passportimage == null || messageController.text.isEmpty) {
+     if (passportimage == null || messageController.text.isEmpty) {
       Get.snackbar("Error", "Please fill all the description",
           backgroundColor: Colors.red, colorText: Colors.white);
     } else {
@@ -372,6 +371,7 @@ class TransSettingsController  extends GetxController{
         update();
         Response verificationClient = await Get.find<UserApi>()
             .postRequest(datatosend, AppConstant.TransGetverified);
+            print(verificationClient.body["message"]);
 
         if (verificationClient.body["success"] == true) {
           passportimage = null;
@@ -532,9 +532,18 @@ Get.snackbar("Success", "Your reclamation must not be empty",
         });
         
       }
+      else{
+         Future.delayed(Duration.zero, () {
+           ContactUs_loading= false;
+          update();
+        });
+        Get.snackbar("error", "error in the server",
+            backgroundColor: Colors.red, colorText: Colors.white);
+
+      }
     } catch (e) {
       Get.back();
-       Get.snackbar("Success", "error in the server",
+       Get.snackbar("error", "error in the server",
             backgroundColor: Colors.red, colorText: Colors.white);
 
         Future.delayed(Duration.zero, () {
@@ -556,6 +565,56 @@ Get.snackbar("Success", "Your reclamation must not be empty",
     Get.offAll(()=> const TransOuClient());
   }
 
+
+
+
+List<dynamic> CurrentTripPackage = [];
+bool CurrentTripPackage_loader=false;
+void GetCurrentTripPackage()async{
+  CurrentTripPackage_loader = true;
+  update();
+
+
+ try {
+    Response Packages = await Get.find<UserApi>().GetRequest(AppConstant.TransgetAllPackage);
+     if(Packages.body["success"]){
+      CurrentTripPackage.clear();
+     CurrentTripPackage=Packages.body["data"];
+   
+     Future.delayed(Duration.zero, () {
+           CurrentTripPackage_loader = false;
+          update();
+        });
+    
+      Get.snackbar("Success", Packages.body["message"],
+            backgroundColor: Colors.green, colorText: Colors.white);
+     }
+     else{
+      Get.snackbar("error", "error in the server",
+            backgroundColor: Colors.red, colorText: Colors.white);
+      Future.delayed(Duration.zero, () {
+           CurrentTripPackage_loader = false;
+          update();
+        });
+    
+     }
+
+ } catch (e) {
+  Get.back();
+   Get.snackbar("error", "error in the server",
+            backgroundColor: Colors.red, colorText: Colors.white);
+  Future.delayed(Duration.zero, () {
+           CurrentTripPackage_loader = false;
+          update();
+        });
+        
+   
+ }
+
+
+
+
+}
 
 }
 

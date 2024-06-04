@@ -1,14 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:popup_card/popup_card.dart';
-import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Client%20components/button.dart';
@@ -150,7 +146,7 @@ class _TransEditPageState extends State<TransEditPage> {
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                   CostumeAnimatedText(
-                                      text: controller.transporteur!.fullName!),
+                                      text: controller.transporteur!.fullName),
                                 ],
                               ),
                               const Spacer(),
@@ -314,7 +310,7 @@ class _TransEditPageState extends State<TransEditPage> {
                                 width: Dimenssions.width20,
                               ),
                               CostumeAnimatedText(
-                                  text: controller.transporteur!.localAddress!),
+                                  text: controller.transporteur!.localAddress),
                               const Spacer(),
                               GestureDetector(
                                   onTap: () {
@@ -643,7 +639,7 @@ class _TransEditPageState extends State<TransEditPage> {
                                 width: Dimenssions.width20,
                               ),
                               CostumeAnimatedText(
-                                  text: controller.transporteur!.phoneNumberB!),
+                                  text: controller.transporteur!.phoneNumberB),
                               const Spacer(),
                               GestureDetector(
                                   onTap: () {
@@ -789,7 +785,7 @@ class _TransEditPageState extends State<TransEditPage> {
                                 width: Dimenssions.width20,
                               ),
                               CostumeAnimatedText(
-                                  text: controller.transporteur!.phoneNumberA!),
+                                  text: controller.transporteur!.phoneNumberA),
                               const Spacer(),
                               GestureDetector(
                                   onTap: () {

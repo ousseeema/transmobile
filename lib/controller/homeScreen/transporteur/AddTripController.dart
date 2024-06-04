@@ -1,10 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/api/api.dart';
-import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 
 class AddTripController extends GetxController {

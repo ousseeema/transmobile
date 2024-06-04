@@ -1,8 +1,6 @@
-// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_brace_in_string_interps, camel_case_types, must_be_immutable
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
@@ -83,7 +81,7 @@ class demandeverificationContainer extends StatelessWidget {
                    approved? const  Text("Approved", style: TextStyle(
                     color: Colors.green,
                     fontWeight: FontWeight.bold
-                   ),):  const  Text("Denied", style: TextStyle(
+                   ),):  const  Text("Waiting", style: TextStyle(
                     color: Colors.red,
                     fontWeight: FontWeight.bold
                    ),)

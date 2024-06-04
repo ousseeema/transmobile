@@ -1,11 +1,8 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:popup_card/popup_card.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Client%20components/button.dart';

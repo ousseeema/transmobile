@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/helpers/dependencies.dart';
-
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
-import 'package:transmobile/view/utils/shared.dart';
 
 
 void main() async{

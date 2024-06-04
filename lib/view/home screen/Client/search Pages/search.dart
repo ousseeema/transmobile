@@ -9,7 +9,6 @@ import 'package:transmobile/view/Client%20components/Datepicker.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Client%20components/autoplaces.dart';
 import 'package:transmobile/view/Client%20components/switcher.dart';
-import 'package:transmobile/view/home%20screen/Client/search%20Pages/result.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 

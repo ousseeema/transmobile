@@ -1,14 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InfoCenter extends StatelessWidget {
   const InfoCenter({super.key});
+ launchURL(String url) async {
+    
+    Uri uri = Uri.parse(url);
 
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      Get.snackbar("Error ", "Error Launching Site");
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,41 +80,57 @@ class InfoCenter extends StatelessWidget {
         Row( 
           mainAxisAlignment: MainAxisAlignment.center,
           children: [ 
-            Container(
-               height: Dimenssions.height20*2.5,
-              width: Dimenssions.width30*1.8,
-              decoration:  BoxDecoration( 
-                borderRadius: BorderRadius.circular(100),
-                 color: Colors.black
-              ),
-              child:const  Center(
-                child: Icon(BoxIcons.bxl_facebook, color: AppColors.iconColor,),
-              ),
-            ),
-            SizedBox(width: Dimenssions.width20,),
-             Container(
-              height: Dimenssions.height20*2.5,
-              width: Dimenssions.width30*1.8,
-              decoration:  BoxDecoration( 
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.black
-              ),
-              child:const  Center(
-                child: Icon(  BoxIcons.bxl_instagram, color: AppColors.iconColor,),
+            GestureDetector(
+              onTap: () {
+                launchURL("https://www.facebook.com/WeStudySG");
+              },
+              child: Container(
+                 height: Dimenssions.height20*2.5,
+                width: Dimenssions.width30*1.8,
+                decoration:  BoxDecoration( 
+                  borderRadius: BorderRadius.circular(100),
+                   color: Colors.black
+                ),
+                child:const  Center(
+                  child: Icon(BoxIcons.bxl_facebook, color: AppColors.iconColor,),
+                ),
               ),
             ),
             SizedBox(width: Dimenssions.width20,),
-             Container(
-              height: Dimenssions.height20*2.5,
-              width: Dimenssions.width30*1.8,
-              decoration:  BoxDecoration( 
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.black
-              ),
-              child:const  Center(
-                child: Icon(  BoxIcons.bxl_tiktok, color: AppColors.iconColor,),
-              ),
-            )
+             GestureDetector(
+              onTap: () {
+                launchURL("https://www.instagram.com/westudy_sg_costudyingspace/?utm_source=ig_web_button_share_sheet");
+              },
+               child: Container(
+                height: Dimenssions.height20*2.5,
+                width: Dimenssions.width30*1.8,
+                decoration:  BoxDecoration( 
+                  borderRadius: BorderRadius.circular(100),
+                  color: Colors.black
+                ),
+                child:const  Center(
+                  child: Icon(  BoxIcons.bxl_instagram, color: AppColors.iconColor,),
+                ),
+                           ),
+             ),
+            SizedBox(width: Dimenssions.width20,),
+             GestureDetector(
+              onTap: () {
+                launchURL("https://www.tiktok.com/@westudy_costudyingspace?is_from_webapp=1&sender_device=pc");
+                
+              },
+               child: Container(
+                height: Dimenssions.height20*2.5,
+                width: Dimenssions.width30*1.8,
+                decoration:  BoxDecoration( 
+                  borderRadius: BorderRadius.circular(100),
+                  color: Colors.black
+                ),
+                child:const  Center(
+                  child: Icon(  BoxIcons.bxl_tiktok, color: AppColors.iconColor,),
+                ),
+                           ),
+             )
           ],
         ),
         Spacer(),

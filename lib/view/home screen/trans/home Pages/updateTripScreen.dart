@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransHomeController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Client%20components/button.dart';

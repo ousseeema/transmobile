@@ -1,21 +1,15 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:socket_io_common/src/util/event_emitter.dart';
-
+import 'package:socket_io_client/socket_io_client.dart' as Io;
 import 'package:transmobile/api/api.dart';
-import 'package:transmobile/controller/homeScreen/Client/homeController.dart';
 import 'package:transmobile/model/client/ClientModel.dart';
-
 import 'package:transmobile/model/messages/messageModel.dart';
-import 'package:transmobile/model/trans/transporteruModel.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
-import 'package:socket_io_client/socket_io_client.dart' as Io;
 
 
 class MessageController extends GetxController {

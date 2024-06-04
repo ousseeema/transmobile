@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Client%20components/demandeLivContainer.dart';
@@ -49,19 +50,13 @@ class _HistoryPageState extends State<HistoryPage> {
                 SizedBox(height: Dimenssions.height20,),
               controller.demandesLiv.isEmpty?
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                 
-                  children: [ 
-                    SizedBox(height: Dimenssions.height20*10,),
-                    Icon(Icons.sentiment_dissatisfied_outlined, size: Dimenssions.icon24*2,color: AppColors.iconColor,),
-                    SizedBox(height: Dimenssions.height20),
-                    Text("you don't have any history", style: TextStyle(
-                      color: AppColors.hintTextColor,
-                      fontSize: Dimenssions.font20
-                    ),),
-                  ],
-                 )
+                  Center(
+                child: SizedBox(
+                height: Dimenssions.height20*13,
+                width: Dimenssions.width30*8,
+                child: LottieBuilder.asset("assets/animations/nodatafound.json")),
+              )
+              
                  : SizedBox(
                     height: Dimenssions.height-40,
                     child: ListView.builder(

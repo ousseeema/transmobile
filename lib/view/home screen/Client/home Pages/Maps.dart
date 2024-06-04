@@ -35,7 +35,7 @@ class Maps extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 // going to the trip details
-                Get.to(()=> TripDetails() );
+                Get.to(()=> const TripDetails() );
                 
               },
               child: Container(

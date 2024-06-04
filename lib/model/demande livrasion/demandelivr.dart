@@ -6,7 +6,6 @@
 
 
 
-import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 
 class DemandeLiv {

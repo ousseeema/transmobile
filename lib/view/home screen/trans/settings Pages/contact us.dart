@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:text_area/text_area.dart';
 import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
+import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Client%20components/button.dart';
 import 'package:transmobile/view/utils/colors.dart';
@@ -23,7 +24,7 @@ class _TransContactUsState extends State<TransContactUs> {
     return Scaffold(
       body:
           SafeArea(
-            child: GetBuilder<SettingController>(builder: (controller) {
+            child: GetBuilder<TransSettingsController>(builder: (controller) {
         return controller.ContactUs_loading
             ? const Center(
                 child: CircularProgressIndicator(),

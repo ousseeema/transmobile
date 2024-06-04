@@ -1,12 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:text_area/text_area.dart';
-import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Client%20components/button.dart';
@@ -129,7 +126,7 @@ class _TransGoProState extends State<TransGoPro> with SingleTickerProviderStateM
 
   Widget historyContainer() {
     return SizedBox(
-      child: GetBuilder<SettingController>(builder: (controller) {
+      child: GetBuilder<TransSettingsController>(builder: (controller) {
         return ListView.builder(
           itemCount:  controller.verifiDemandes.length,
           itemBuilder: (context, index) {
@@ -152,7 +149,7 @@ class _TransGoProState extends State<TransGoPro> with SingleTickerProviderStateM
   void initState() {
     super.initState();
    Future.delayed(Duration.zero,(){
-     Get.find<SettingController>().GetverifiedDemandes();
+     Get.find<TransSettingsController>().GetverifiedDemandes();
    });
     _tabController = TabController(vsync: this, length: 2);
   }
@@ -167,7 +164,7 @@ class _TransGoProState extends State<TransGoPro> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: GetBuilder<SettingController>(
+        child: GetBuilder<TransSettingsController>(
           builder: (controller) {
             return SingleChildScrollView(
               child: SizedBox(

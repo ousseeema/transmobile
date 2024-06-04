@@ -1,30 +1,30 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
+import 'package:transmobile/model/TripModel/TripModel.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
-class TripInfo extends StatefulWidget {
-  const TripInfo({super.key});
+class CostumeTripList extends StatefulWidget {
+  List<City> Citys ;
+   CostumeTripList({super.key, required this.Citys});
 
   @override
-  State<TripInfo> createState() => _TripInfoState();
+  State<CostumeTripList> createState() => _CostumeTripListState();
 }
 
-class _TripInfoState extends State<TripInfo> {
+class _CostumeTripListState extends State<CostumeTripList> {
   bool isPast = false;
-
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DetailsResult>(builder: (controller) {
-      return SizedBox(
+    return SizedBox(
         child: ListView.builder(
-            itemCount: controller.SelectedTrip!.citys.length,
+            itemCount: widget.Citys.length,
             itemBuilder: (_, index) {
-              if (controller.SelectedTrip!.citys[index].done) {
+              if (widget.Citys[index].done) {
                 isPast = true;
               } else {
                 isPast = false;
@@ -35,7 +35,7 @@ class _TripInfoState extends State<TripInfo> {
                     right: Dimenssions.LRpadmarg20),
                 child: TimelineTile(
                   isFirst: index == 0 ? true : false,
-                  isLast: index == controller.SelectedTrip!.citys.length - 1
+                  isLast: index == widget.Citys.length - 1
                       ? true
                       : false,
                   beforeLineStyle: LineStyle(
@@ -75,7 +75,7 @@ class _TripInfoState extends State<TripInfo> {
                                 repeatForever: true,
                                 animatedTexts: [
                                 ColorizeAnimatedText(
-                                    "Destination : ${controller.SelectedTrip!.citys[index].city}",
+                                    "Destination : ${widget.Citys[index].city}",
                                     textStyle: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: Dimenssions.font20 - 5,
@@ -96,7 +96,7 @@ class _TripInfoState extends State<TripInfo> {
                               
                               AnimatedTextKit(animatedTexts: [
                                 ColorizeAnimatedText(
-                                    "Visit Date : ${controller.SelectedTrip!.citys[index].dateofpassage.toString().substring(0, 11)}",
+                                    "Visit Date : ${widget.Citys[index].dateofpassage.toString().substring(0, 11)}",
                                     textStyle: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: Dimenssions.font20 - 5,
@@ -133,7 +133,6 @@ class _TripInfoState extends State<TripInfo> {
                 ),
               );
             }),
-      );
-    });
+      ) ;
   }
 }

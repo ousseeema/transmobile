@@ -1,18 +1,14 @@
-import 'package:flutter/material.dart';
-
 import 'package:animated_text_kit/animated_text_kit.dart';
-
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:transmobile/controller/homeScreen/Client/settingsController.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransSettingsController.dart';
 import 'package:transmobile/view/Client%20components/settingsContainer.dart';
-import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Editpage.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/Go%20pro.dart';
-import 'package:transmobile/view/home%20screen/Client/settings%20Pages/contact%20us.dart';
 import 'package:transmobile/view/home%20screen/Client/settings%20Pages/InfoCenter.dart';
-import 'package:transmobile/view/home%20screen/Client/settings%20Pages/params.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/CurrentTripPackage.dart';
 import 'package:transmobile/view/home%20screen/trans/settings%20Pages/Editpage.dart';
+import 'package:transmobile/view/home%20screen/trans/settings%20Pages/Go%20pro.dart';
 import 'package:transmobile/view/home%20screen/trans/settings%20Pages/contact%20us.dart';
 import 'package:transmobile/view/home%20screen/trans/settings%20Pages/params.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
@@ -188,7 +184,7 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                                 "Remainder", "Your account is already Pro",
                                 backgroundColor: Colors.green[100],
                                 colorText: Colors.white)
-                            : Get.to(() => const GoPro());
+                            : Get.to(() => const TransGoPro());
                       },
                       // costume container for settings
                       child: SettingsContainer(
@@ -207,6 +203,20 @@ class _TransSettingScreenState extends State<TransSettingScreen> {
                       child: SettingsContainer(
                           iconData: Icons.history_rounded,
                           text: "Trip History"),
+                    ),
+                    SizedBox(
+                      height: Dimenssions.height20 * 1.5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        // going to the edit page
+                        Get.to(() => const CurrentTripPackage());
+                      },
+                      // costume container for settings
+                      child: SettingsContainer(
+                        iconData: BoxIcons.bx_trip,
+                        text: "Current Trip Package",
+                      ),
                     ),
                     SizedBox(
                       height: Dimenssions.height20 * 1.5,
