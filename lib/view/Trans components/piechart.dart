@@ -1,4 +1,4 @@
-
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class PieChartSample2 extends StatefulWidget {
   State<StatefulWidget> createState() => PieChart2State();
 }
 
-class PieChart2State extends State {
+class PieChart2State extends State<PieChartSample2> {
   int touchedIndex = -1;
 
   @override
@@ -23,7 +23,7 @@ class PieChart2State extends State {
       aspectRatio: 1.3,
       child: Row(
         children: <Widget>[
-           SizedBox(
+          SizedBox(
             height: Dimenssions.height20,
           ),
           Expanded(
@@ -55,7 +55,6 @@ class PieChart2State extends State {
               ),
             ),
           ),
-          
           const SizedBox(
             width: 28,
           ),
@@ -65,17 +64,25 @@ class PieChart2State extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(2, (i) {
+    final controller = Get.find<transHomeController>();
+    final numberofPackages = controller.transporter?.numberofPackages ?? 0;
+    final totalRevenue = controller.transporter?.totalRevenue ?? 0.0;
+    final TripPackagesLength = controller.Trip?.packages.length ?? 0;
+    final externlPackages = controller.Trip?.self_packages.length??0;
+
+
+    return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? Dimenssions.font20+4 : Dimenssions.font20-5;
-      final radius = isTouched ? Dimenssions.radius30*2:Dimenssions.radius30*2-10 ;
+      final fontSize = isTouched ? Dimenssions.font20 + 4 : Dimenssions.font20 - 5;
+      final radius = isTouched ? Dimenssions.radius30 * 2 : Dimenssions.radius30 * 2 - 10;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
+
       switch (i) {
         case 0:
           return PieChartSectionData(
             color: Colors.blue,
-            value: double.parse(Get.find<transHomeController>().transporter!.numberofPackages.toString()),
-            title: ' ${Get.find<transHomeController>().transporter!.numberofPackages} package',
+            value: numberofPackages.toDouble(),
+            title: ' $numberofPackages packages',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -87,8 +94,8 @@ class PieChart2State extends State {
         case 1:
           return PieChartSectionData(
             color: Colors.yellow,
-            value: double.parse( Get.find<transHomeController>().transporter!.numberofPackages!.toString()),
-            title: '\$ ${Get.find<transHomeController>().transporter!.totalRevenue!} ',
+            value: totalRevenue.toDouble(),
+            title: 'Total Revenu: $totalRevenue \$',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -97,7 +104,33 @@ class PieChart2State extends State {
               shadows: shadows,
             ),
           );
-       
+        case 2:
+          return PieChartSectionData(
+            color: Colors.green,
+            value: TripPackagesLength.toDouble(),
+            title: ' $TripPackagesLength Interanl package',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: AppColors.mainTextColor,
+              shadows: shadows,
+            ),
+          );
+          case 3:
+          return PieChartSectionData(
+            color: Colors.red,
+            value: externlPackages.toDouble(),
+            title: ' $TripPackagesLength external package',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: AppColors.mainTextColor,
+              shadows: shadows,
+            ),
+          );
+          
         default:
           throw Error();
       }

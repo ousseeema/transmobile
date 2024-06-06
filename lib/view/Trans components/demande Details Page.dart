@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/notificationController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Client%20components/button.dart';
@@ -25,7 +22,7 @@ class _DemandeDetails_ContainerState extends State<DemandeDetails_Container> {
       body: SafeArea(
         child: GetBuilder<TransnotificationController>(
           builder: (controller) {
-            return SingleChildScrollView(
+            return  controller.accept_loader? const Center(child: CircularProgressIndicator(),): SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -281,12 +278,15 @@ class _DemandeDetails_ContainerState extends State<DemandeDetails_Container> {
                       )),
                       SizedBox(height: Dimenssions.height20,),
 
-                  Row(
+                 controller.Selected_Demande.accepted == false &&  controller.Selected_Demande.refused == false ?  
+                 // if the demande is yet neither accepted or rejected then  display the two button of accepted and rejected
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       GestureDetector(
                         onTap: () {
-                          
+                          // accept the demande function
+                          controller.acceptedRequest();
                         },
                         child: CostumeButton(
                             height: Dimenssions.height20*2,
@@ -295,6 +295,8 @@ class _DemandeDetails_ContainerState extends State<DemandeDetails_Container> {
                       ),
                       GestureDetector(
                         onTap: () {
+                          // reject the demande function 
+                          controller.rejectRequest();
                           
                         },
                         child: CostumeButton(
@@ -304,7 +306,37 @@ class _DemandeDetails_ContainerState extends State<DemandeDetails_Container> {
                             text: "Reject"),
                       ),
                     ],
-                  ), 
+                  ): // if demande is accepted then display a container accpted 
+                   controller.Selected_Demande.accepted?
+                  Container(
+                    margin: EdgeInsets.all(Dimenssions.LRpadmarg10),
+                    height: Dimenssions.height20*2.5,
+                    width: Dimenssions.width,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                    ),
+                    child: Center( 
+                      child: CostumeAnimatedText(text: "Accepted", color: AppColors.insidetextcolor,),
+                    ),
+                    
+                  )
+                   :
+                            controller.Selected_Demande.refused?
+                            // if demande is rejected then display a container rejected 
+                             Container(
+                    margin: EdgeInsets.all(Dimenssions.LRpadmarg10),
+                    height: Dimenssions.height20*2.5,
+                    width: Dimenssions.width,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(Dimenssions.radius10)
+                    ),
+                    child: Center( 
+                      child: CostumeAnimatedText(text: "Rejected", color: AppColors.insidetextcolor,),
+                    ),
+                    
+                  )  : const  SizedBox(),    
                   SizedBox(height: Dimenssions.height20*3,)
                 ],
               ),

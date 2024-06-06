@@ -43,7 +43,7 @@ class _AddSinglePackageState extends State<AddSinglePackage> {
                               width: Dimenssions.width,
                               child: TextFormField(
                                
-                               keyboardType: TextInputType.number,
+                              
                                 decoration: InputDecoration(
                                   labelText: "FullName",
                                     hintText: "Ex: Oussema ",

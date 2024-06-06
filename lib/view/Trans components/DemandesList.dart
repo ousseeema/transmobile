@@ -4,7 +4,6 @@ import 'package:transmobile/controller/homeScreen/transporteur/notificationContr
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/Trans%20components/demande%20Details%20Page.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
-import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class DemandesList extends StatefulWidget {
@@ -46,8 +45,9 @@ class _DemandesListState extends State<DemandesList> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                          controller.Selected_Demande =  controller.DemandesLivrasion[index];
-                          Get.to(()=> const DemandeDetails_Container() );
+                            controller.Selected_Demande =
+                                controller.DemandesLivrasion[index];
+                            Get.to(() => const DemandeDetails_Container());
                           },
                           child: Container(
                             margin: EdgeInsets.only(
@@ -69,7 +69,8 @@ class _DemandesListState extends State<DemandesList> {
                                     borderRadius: BorderRadius.circular(
                                         100), // Adjust the radius to match the container's borderRadius
                                     child: Image.network(
-                                      errorBuilder: (context, error, stackTrace) {
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
                                         return const CircularProgressIndicator();
                                       },
                                       "${AppConstant.Clientimage}/${controller.DemandesLivrasion[index].client.profilePicture}",
@@ -85,12 +86,29 @@ class _DemandesListState extends State<DemandesList> {
                                 SizedBox(
                                   width: Dimenssions.width10,
                                 ),
-                               
-                                Text(
-                                    controller.DemandesLivrasion[index].client.createdAt!.substring(0,10)),
-                                    SizedBox(width: Dimenssions.width10,),
-                                    !controller.DemandesLivrasion[index].accepted && !controller.DemandesLivrasion[index].refused? CostumeAnimatedText(text: "Waiting ", color: Colors.white,) : controller.DemandesLivrasion[index].accepted? CostumeAnimatedText(text: "Accepted", color: Colors.green,):
-                                    CostumeAnimatedText(text: 'Denied', color: Colors.red,)
+                                Text(controller
+                                    .DemandesLivrasion[index].client.createdAt!
+                                    .substring(0, 10)),
+                                SizedBox(
+                                  width: Dimenssions.width10,
+                                ),
+                                !controller.DemandesLivrasion[index].accepted &&
+                                        !controller
+                                            .DemandesLivrasion[index].refused
+                                    ? CostumeAnimatedText(
+                                        text: "Waiting ",
+                                        color: Colors.white,
+                                      )
+                                    : controller
+                                            .DemandesLivrasion[index].accepted
+                                        ? CostumeAnimatedText(
+                                            text: "Accepted",
+                                            color: Colors.green,
+                                          )
+                                        : CostumeAnimatedText(
+                                            text: 'Rejected',
+                                            color: Colors.red,
+                                          )
                               ],
                             ),
                           ),

@@ -23,7 +23,7 @@ class _TransNotificationScreenState extends State<TransNotificationScreen> with 
     super.initState();
 
    
-    _tabController = TabController(vsync: this, length: 2);
+    _tabController = TabController(vsync: this, length: 1);
   }
 
   @override
@@ -48,6 +48,7 @@ class _TransNotificationScreenState extends State<TransNotificationScreen> with 
               tabs: [
                 Tab(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Icon(
                         Icons.file_open_rounded,
@@ -58,18 +59,7 @@ class _TransNotificationScreenState extends State<TransNotificationScreen> with 
                     ],
                   ),
                 ),
-                Tab(
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.notifications,
-                        color: AppColors.iconColor,
-                      ),
-                  
-                      CostumeAnimatedText(text: "Notifications Section")
-                    ],
-                  ),
-                ),
+               
                 
               ]),
               SizedBox(
@@ -80,7 +70,7 @@ class _TransNotificationScreenState extends State<TransNotificationScreen> with 
             children: const [
                  DemandesList(),
                
-               CostumeNotificationTab(),
+           
                
             
             ]),
