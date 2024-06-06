@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 class AppConstant  {
-  static String baseurl = "http://192.168.1.108:3000/api/v0";
-   static String socekturl = "http://192.168.1.108:3000";
+  static String baseurl = "http://192.168.1.22:3000/api/v0";
+   static String socekturl = "http://192.168.1.22:3000";
   // client auth endpoints
   static String loginUser = "/authClient/signin";
   static String signup1Client = "/authClient/signup1";
@@ -28,7 +28,7 @@ class AppConstant  {
   static String usergetverified = "/clients/getverified";
   static String getAllDemande = "/clients/getalldemande";
   static String userAddReview = "/clients/addreview/:id";
-  static String getCurrentTrips = "/clients/currentTrips";
+  static String usergetCurrentTrips = "/clients/currentTrips";
    static String changeuseremail = "/clients/changeuseremail";
      static String changeuserpassword = "/clients/changepassword";
      static String GetalldemandesVerifi = "/clients/GetverificationDemandesList";

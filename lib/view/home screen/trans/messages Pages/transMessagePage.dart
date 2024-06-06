@@ -38,23 +38,9 @@ class _TransMessageScreenState extends State<TransMessageScreen> {
         builder: (controller) {
           return controller.messageLoader? const Center(
               child: CircularProgressIndicator()):
-              controller.ListOfMessage.isEmpty? Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: Dimenssions.height20,),
-                 
-                  CostumeAnimatedText(text: "Messages"), 
-                  SizedBox(height: Dimenssions.height20*10,),
-                      
-                  SizedBox(
-                    height:Dimenssions.height20*11 ,
-                    width: Dimenssions.width,
-                    child: Image.asset(
-                    
-                      "assets/images/no message.png"),
-                  ),
-                ],
-              ) :
+              controller.ListOfMessage.isEmpty? Image.asset(
+              
+                "assets/images/no message.png") :
               SingleChildScrollView(
                     child: Column(
                 children: [

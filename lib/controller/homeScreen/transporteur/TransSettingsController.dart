@@ -421,6 +421,7 @@ class TransSettingsController  extends GetxController{
             verifiDemandes.add(VerificationDemmnades.fromJson(demande)));
         Get.snackbar("Success", demandes.body["message"],
             backgroundColor: Colors.green, colorText: Colors.white);
+            verifiDemandes=verifiDemandes.reversed.toList();
 
         Future.delayed(Duration.zero, () {
           demandes_Loader = false;
@@ -466,6 +467,7 @@ class TransSettingsController  extends GetxController{
         AllTripsHis.body["data"].forEach((trip) {
           TripHistoryList.add(TripModel.fromJson(trip));
         });
+      TripHistoryList=  TripHistoryList.reversed.toList();
            Get.to(()=>const TransTripHistory());
        
         Future.delayed(Duration.zero, () {

@@ -52,9 +52,15 @@ class _HistoryTripContainerState extends State<HistoryTripContainer> {
               BoxIcons.bx_trip,
               color: AppColors.iconColor,
             ),
-            Text(
-                "  ${widget.Trip.citys[0].city} To ${widget.Trip.citys[widget.Trip.citys.length - 1].city} ",
-                style: const TextStyle(color: AppColors.insidetextcolor)),
+            SizedBox(
+              width: Dimenssions.width30*7,
+              child: Text(
+                  "  ${widget.Trip.citys[0].city} To ${widget.Trip.citys[widget.Trip.citys.length - 1].city} ",
+                  style: const TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    color: AppColors.insidetextcolor), 
+                  ),
+            ),
           ],
         ),
       ),

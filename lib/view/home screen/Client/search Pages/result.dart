@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/view/Client%20components/CoostumTransContainer.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
@@ -37,13 +38,14 @@ class _SearchResultState extends State<SearchResult> {
                   onTap: () {
                     Get.back();
                   },
-                  child: const Icon(Icons.arrow_back_rounded, color: AppColors.iconColor,)),
-                  SizedBox(width: Dimenssions.width30,),
+                  child: const Icon(Icons.arrow_back_rounded, )),
+                  SizedBox(width: Dimenssions.width30*3.5,),
                 CostumeAnimatedText(text: "Search Result",weight: FontWeight.bold,fontSize: Dimenssions.font20,),
               ],
             ),
             GetBuilder<ResultController>(builder: (controller) {
-            return SizedBox(
+            return  controller.tripsafterFilter.isEmpty?  LottieBuilder.asset("assets/animations/nodatafound.json"):
+             SizedBox(
               height: Dimenssions.height- Dimenssions.height20*4,
               width: Dimenssions.width,
               child: ListWheelScrollView.useDelegate(

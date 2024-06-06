@@ -22,7 +22,7 @@ class TransnotificationController extends GetxController {
         Demandes.body["data"].forEach((demande) {
           DemandesLivrasion.add(DemandeLiv.fromJson(demande));
         });
-        DemandesLivrasion.reversed;
+     DemandesLivrasion=    DemandesLivrasion.reversed.toList();
 
         Future.delayed(Duration.zero, () {
           Demande_Loader = false;

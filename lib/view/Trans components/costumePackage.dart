@@ -56,30 +56,45 @@ class _CostumePackageListState extends State<CostumePackageList> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CostumeAnimatedText(
-                          text:
-                              "Sender number:${message["phoneNumberof_the_sender"]}"),
+                      SizedBox(
+                        width: Dimenssions.width-Dimenssions.width30*5,
+                        child: CostumeAnimatedText(
+                            text:
+                                "Sender number:${message["phoneNumberof_the_sender"]}"),
+                      ),
                       SizedBox(
                         height: Dimenssions.height10 / 2,
                       ),
-                      CostumeAnimatedText(
-                          text:
-                              "Reciver number:${message["phoneNumberof_the_receiver"]}"),
+                      SizedBox(
+                         width: Dimenssions.width-Dimenssions.width30*5,
+                        child: CostumeAnimatedText(
+                            text:
+                                "Reciver number:${message["phoneNumberof_the_receiver"]}"),
+                      ),
                       SizedBox(
                         height: Dimenssions.height10 / 2,
                       ),
-                      CostumeAnimatedText(
-                          text: "From:${message["Pickupaddress"]}"),
+                      SizedBox(
+                         width: Dimenssions.width-Dimenssions.width30*5,
+                        child: CostumeAnimatedText(
+                            text: "From:${message["Pickupaddress"]}"),
+                      ),
                       SizedBox(
                         height: Dimenssions.height10 / 2,
                       ),
-                      CostumeAnimatedText(
-                          text: "To:${message["receivedAdress"]}"),
+                      SizedBox(
+                         width: Dimenssions.width-Dimenssions.width30*5,
+                        child: CostumeAnimatedText(
+                            text: "To:${message["receivedAdress"]}"),
+                      ),
                       SizedBox(
                         height: Dimenssions.height10 / 2,
                       ),
-                      CostumeAnimatedText(
-                          text: "Weight:${message["numberofkg"]} Kg"),
+                      SizedBox(
+                         width: Dimenssions.width-Dimenssions.width30*5,
+                        child: CostumeAnimatedText(
+                            text: "Weight:${message["numberofkg"]} Kg"),
+                      ),
                     ],
                   )
                 ],

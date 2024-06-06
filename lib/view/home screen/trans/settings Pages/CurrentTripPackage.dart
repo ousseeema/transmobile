@@ -44,9 +44,10 @@ class _CurrentTripPackageState extends State<CurrentTripPackage> {
                         
                       ),
                       SizedBox(
-                        height: Dimenssions.height20 * 2,
+                        height: Dimenssions.height20 ,
                       ),
                      CostumePackageList(packageList:controller.CurrentTripPackage, heightscreen: Dimenssions.height-Dimenssions.height20*4.5,),
+                 
                     ],
                   ),
               );

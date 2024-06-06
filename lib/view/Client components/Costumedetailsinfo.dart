@@ -34,7 +34,7 @@ class CostumeInfoDetails extends StatelessWidget {
             width: Dimenssions.width10,
            ), 
            SizedBox(
-            width: Dimenssions.width30*5.5,
+            width: text1 =="Email :"?  Dimenssions.width30*8 : Dimenssions.width30*5.5,
             child: text),
           ],
       ),

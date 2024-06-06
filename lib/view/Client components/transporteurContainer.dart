@@ -109,20 +109,11 @@ class TransporterContainer extends StatelessWidget {
                   fontSize: Dimenssions.font20 - 4,
                   color: AppColors.insidetextcolor,
                 ),
-                SizedBox(
-                  width: Dimenssions.width10/2,
-                ),
                
                
-                const Icon(
-                  Icons.phone,
-                  color: AppColors.iconColor,
-                ),
-                CostumeAnimatedText(
-                  text: phoneNumber1,
-                  fontSize: Dimenssions.font20 - 4,
-                  color: AppColors.insidetextcolor,
-                ),
+               
+                
+               
               ],
             ),
             SizedBox(
@@ -142,10 +133,27 @@ class TransporterContainer extends StatelessWidget {
                   fontSize: Dimenssions.font20 - 4,
                   color: AppColors.insidetextcolor,
                 ),
-                SizedBox(
-                  width: Dimenssions.width20,
+               
+               
+              ],
+            ),
+            SizedBox(height: Dimenssions.height10,),
+            Row( 
+              children: [ 
+                 SizedBox(
+                  width: Dimenssions.width30 ,
                 ),
-                const Icon(
+                 const Icon(
+                  Icons.phone,
+                  color: AppColors.iconColor,
+                ),
+                CostumeAnimatedText(
+                  text: phoneNumber1,
+                  fontSize: Dimenssions.font20 - 4,
+                  color: AppColors.insidetextcolor,
+                ),
+                SizedBox(width: Dimenssions.width20,),
+                 const Icon(
                   Icons.phone,
                   color: AppColors.iconColor,
                 ),

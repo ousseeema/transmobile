@@ -10,8 +10,8 @@ class BarChartSample extends StatefulWidget {
 }
 
 class _BarChartSampleState extends State<BarChartSample> {
-  List<int> data = [Get.find<HomeController>().client!.numberofPackagesSended!,
-  Get.find<HomeController>().client!.numberofPackagesDelivred! ]; //les donnees a entre 
+  List<int> data = [Get.find<HomeController>().client!.numberofPackagesSended??0,
+  Get.find<HomeController>().client!.numberofPackagesDelivred??0 ]; //les donnees a entre 
 
   @override
   Widget build(BuildContext context) {

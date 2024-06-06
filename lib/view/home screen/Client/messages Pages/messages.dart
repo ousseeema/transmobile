@@ -35,6 +35,8 @@ class _messagesScreenState extends State<messagesScreen> {
             child:
             controller.messageLoader? const Center(
                 child: CircularProgressIndicator()):
+                controller.ListOfMessage.isEmpty? 
+                Center( child: Image.asset("assets/images/no message.png"),)  :
              SingleChildScrollView(
           child: Column(
                   children: [

@@ -39,6 +39,7 @@ class HomeController extends GetxController {
   Future<void> LoadData() async {
     List<TransporterModel> transporteurs = [];
     alltrips = [];
+    trips=[];
     // this is the responsable if we tap in refresh button this will display the shimmer effect
     isloading = true;
     update();
@@ -50,17 +51,17 @@ class HomeController extends GetxController {
     });
     // getting the transporter's from the data base
 
-    try {
+    
       Response TripsResponse = await ClientRepo().GetAllTrips();
-      Response TripResponse = await ClientRepo().GetCurrentTrip();
+      Response CurrentTripResponse = await Get.find<UserApi>().GetRequest(AppConstant.usergetCurrentTrips);
       Response transporters = await Get.find<UserApi>()
           .GetRequest(AppConstant.usergetAllTransporter);
 
           Response currentClient = await Get.find<UserApi>().GetRequest(AppConstant.getCurrentUser);
       // adding the stats endpoint in the future
 
-      if (TripResponse.body["success"] &&
-          TripResponse.body["success"] &&
+      if (TripsResponse.body["success"] &&
+          CurrentTripResponse.body["success"] &&
           transporters.body['success']&&
           currentClient.body['success']
           ) {
@@ -76,21 +77,20 @@ class HomeController extends GetxController {
         TripsResponse.body['data']
             .forEach((trip) => alltrips.add(TripModel.fromJson(trip)));
 
-        //current trip
-        TripResponse.body["data"]
-            .forEach((trip) => trips.add(TripModel.fromJson(trip)));
+        //current trips
+        CurrentTripResponse.body["data"]
+            .forEach((currenttrip) => trips.add(TripModel.fromJson(currenttrip)));
 
         isloading = false;
         update();
       } else {
+      
         Get.snackbar(
             "Error", "Error while getting data , Try reloading the page",
             colorText: Colors.white, backgroundColor: Colors.red);
+            
       }
-    } catch (e) {
-      Get.snackbar("Error", "Error while getting data",
-          colorText: Colors.white, backgroundColor: Colors.red);
-    }
+    
   }
 
   // launcing url of the sites
