@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/notificationController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
+import 'package:transmobile/view/Trans%20components/CostumeNotifcation.dart';
+import 'package:transmobile/view/Trans%20components/DemandesList.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
@@ -16,7 +18,11 @@ class _TransNotificationScreenState extends State<TransNotificationScreen> with 
   late TabController _tabController;
   @override
   void initState() {
+   
+       
     super.initState();
+
+   
     _tabController = TabController(vsync: this, length: 2);
   }
 
@@ -71,7 +77,10 @@ class _TransNotificationScreenState extends State<TransNotificationScreen> with 
           ),
           Expanded(
             child: TabBarView(controller: _tabController, 
-            children: [
+            children: const [
+                 DemandesList(),
+               
+               CostumeNotificationTab(),
                
             
             ]),

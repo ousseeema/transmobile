@@ -7,63 +7,70 @@ import 'package:transmobile/view/utils/appConstant.dart';
 
 import '../../../model/demande livrasion/demandelivr.dart';
 
-class TransnotificationController extends GetxController{
- 
+class TransnotificationController extends GetxController {
+  List<DemandeLiv> DemandesLivrasion = [];
+  bool Demande_Loader = false;
+ Future<void>  GetAlldemandeForCurrentTrip() async {
+    Demande_Loader = true;
+    update();
+    try {
+      Response Demandes =
+          await Get.find<UserApi>().GetRequest(AppConstant.Transgetalldemande);
 
- List<DemandeLiv> DemandesLivrasion = [];
- bool Demande_Loader = false; 
- GetAlldemandeForCurrentTrip()async{
-  Demande_Loader = true ; 
-  update();
-  try {
-    Response Demandes = await Get.find<UserApi>().GetRequest(AppConstant.Transgetalldemande);
-
-   if(Demandes.body["success"]){
-     DemandesLivrasion = [];
-     Demandes.body["data"].forEach((demande){
-      DemandesLivrasion.add(DemandeLiv.fromJson(demande));
-     });
-Future.delayed(Duration.zero, () {
-        Demande_Loader = false; 
+      if (Demandes.body["success"]) {
+              DemandesLivrasion = [];
+        Demandes.body["data"].forEach((demande) {
+          DemandesLivrasion.add(DemandeLiv.fromJson(demande));
+        });
+       
+        Future.delayed(Duration.zero, () {
+          Demande_Loader = false;
           update();
         });
-        
-      Get.snackbar("Success", Demandes.body["message"],
+
+        Get.snackbar("Success", Demandes.body["message"],
             backgroundColor: Colors.green, colorText: Colors.white);
-            
-
-
-   }else{
-    Future.delayed(Duration.zero, () {
-        Demande_Loader = false; 
+      } 
+      
+      else {
+        Future.delayed(Duration.zero, () {
+          Demande_Loader = false;
           update();
         });
-        
-      Get.snackbar("Error", Demandes.body["message"],
+
+        Get.snackbar("Error", Demandes.body["message"],
             backgroundColor: Colors.red, colorText: Colors.white);
-            Get.back();
+      
+      }
+    } catch (e) {
+      Future.delayed(Duration.zero, () {
+        Demande_Loader = false;
+        update();
+      });
 
-   }
-
-  } catch (e) {
-    Future.delayed(Duration.zero, () {
-        Demande_Loader = false; 
-          update();
-        });
-        
-      Get.snackbar("Error","Error in the Server",
-            backgroundColor: Colors.red, colorText: Colors.white);
-            Get.back();
-
-    
+      Get.snackbar("Error", "Error in the Server",
+          backgroundColor: Colors.red, colorText: Colors.white);
+   
+    }
   }
 
 
+  late DemandeLiv Selected_Demande ;
+  
+  // accept the request 
+  bool accept_loader = false;
+  acceptedRequest()async{
+   accept_loader = true;
+   update();
+
+
+  // Response  accept_response = await Get.find<UserApi>().putRequest(data, uri);
+  
+    
 
 
 
 
- }
 
-
+  }
 }

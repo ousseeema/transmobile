@@ -6,11 +6,12 @@
 
 
 
+import 'package:transmobile/model/client/ClientModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
 
 class DemandeLiv {
     String id;
-   String client ;
+   ClientModel client ;
     TransporterModel transporter;
     Message message;
     bool  accepted;
@@ -31,7 +32,7 @@ class DemandeLiv {
 
     factory DemandeLiv.fromJson(Map<String, dynamic> json) => DemandeLiv(
         id: json["_id"].toString(),
-        client: json["Client"],
+        client: ClientModel.fromJson(json["Client"]),
         transporter: TransporterModel.fromJson(json["transporter"]),
         message: Message.fromJson(json["message"]),
         accepted: json["accepted"],
