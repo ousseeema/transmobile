@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
+import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class notificationsContainer extends StatelessWidget {
@@ -40,18 +41,27 @@ class notificationsContainer extends StatelessWidget {
             width: Dimenssions.width20,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               
               SizedBox(
                 height: Dimenssions.height20*2,
               ),
               Text(Data),
+              Row(
+                
+                children: [ 
+              SizedBox(width: Dimenssions.width30*6.5,),
+              Text(date, style: TextStyle(
+                color: AppColors.insidetextcolor,
+                fontSize: Dimenssions.font20-4
+              ),),
+                ],
+              )
             ],
           ),
-          SizedBox(
-            width: Dimenssions.width20,
-          ),
-          Text(date)
+          
+          
         ],
       ),
     );

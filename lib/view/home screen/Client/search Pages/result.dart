@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 import 'package:transmobile/controller/homeScreen/Client/resultController.dart';
 import 'package:transmobile/view/Client%20components/CoostumTransContainer.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
-import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
 class SearchResult extends StatefulWidget {

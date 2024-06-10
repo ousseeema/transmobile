@@ -4,6 +4,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/Client/detailsResult.dart';
+import 'package:transmobile/controller/homeScreen/Client/messageController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/TripInfo.dart';
 import 'package:transmobile/view/home%20screen/Client/search%20Pages/infowidget.dart';
@@ -38,7 +39,10 @@ class _detailsResultState extends State<detailsResult>
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Stack(
+          child: GetBuilder<MessageController>(builder: (messagecontroller){
+            return messagecontroller.Loader? const Center(
+              child: CircularProgressIndicator(),
+            ): Stack(
                   children: [
           Positioned(
               top: Dimenssions.height20 * 5,
@@ -108,22 +112,35 @@ class _detailsResultState extends State<detailsResult>
                           ),
           
                           // message button to lance the coonversation
-                          Container(
-                            decoration: BoxDecoration(
-                                color: AppColors.buttonColor,
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(Dimenssions.radius30))),
-                            height: Dimenssions.height20 * 3,
-                            width: Dimenssions.width30 * 7,
-                            child: Center(
-                              child: CostumeAnimatedText(
-                                text: "Message Now !",
-                                color: AppColors.insidetextcolor,
-                                weight: FontWeight.bold,
-                                fontSize: Dimenssions.font20 - 2,
+                         GetBuilder<MessageController>(builder: (messageController){
+                          return  GestureDetector(
+                            onTap: () {
+                              messageController.getuser();   
+
+                              messageController.GetSpecifiqueMessage();
+
+                              
+                              
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: AppColors.buttonColor,
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(Dimenssions.radius30))),
+                              height: Dimenssions.height20 * 3,
+                              width: Dimenssions.width30 * 7,
+                              child: Center(
+                                child: Text("Message Now", style: TextStyle(
+                                  color: AppColors.insidetextcolor, 
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: Dimenssions.font20 - 2,
+                                  
+                                ),)
                               ),
                             ),
-                          ),
+                          );
+
+                         }),
                           SizedBox(
                             height: Dimenssions.height20,
                           ),
@@ -227,7 +244,8 @@ class _detailsResultState extends State<detailsResult>
                 },
               child: const  Icon(Icons.arrow_back_rounded, )))
                   ],
-                )),
+                );
+          })),
     );
   }
 }

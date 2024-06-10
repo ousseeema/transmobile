@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/notificationController.dart';
 import 'package:transmobile/view/Client%20components/animatedtext.dart';
-import 'package:transmobile/view/Trans%20components/CostumeNotifcation.dart';
 import 'package:transmobile/view/Trans%20components/DemandesList.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';

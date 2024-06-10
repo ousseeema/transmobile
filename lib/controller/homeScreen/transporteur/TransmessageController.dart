@@ -4,14 +4,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:socket_io_client/socket_io_client.dart' as Io;
 import 'package:transmobile/api/api.dart';
-
 import 'package:transmobile/model/messages/messageModel.dart';
 import 'package:transmobile/model/trans/transporteruModel.dart';
+import 'package:transmobile/view/home%20screen/trans/messages%20Pages/chat.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/shared.dart';
-import 'package:socket_io_client/socket_io_client.dart' as Io;
 
 
 class TransporterMessageController extends GetxController {
@@ -25,6 +24,7 @@ void getuser() async {
       Transporter = TransporterModel.fromJson(jsonDecode(value!));
     });
   }
+  
 
   List<Discussion> ListOfMessage = [
   
@@ -73,17 +73,18 @@ void getuser() async {
   void selectDiscussion(Discussion discussion) {
     SelectedDiscussion = discussion;
      update();
+     Get.to(()=>const TranschatPage());
   }
 late TransporterModel me;
   void sendMessage() async{
   await  shared.getuser().then((value) {
-      Transporter = TransporterModel.fromJson(jsonDecode(value!));
+      me = TransporterModel.fromJson(jsonDecode(value!));
   });
     Map<String, dynamic> message ={
       "message": messagecontroller.text, 
       "user": me.id,
       "transporteur": me.id,
-      "client": SelectedDiscussion.userId.id
+      "client": SelectedDiscussion.userId!.id
 
 
 

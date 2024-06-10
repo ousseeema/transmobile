@@ -13,4 +13,6 @@ TripModel?  SelectedTrip ;
     
     Get.to(()=> const detailsResult() );
   }
+
+  
 }

@@ -24,7 +24,7 @@ class _TransMessageScreenState extends State<TransMessageScreen> {
     super.initState();
       
         Get.find<TransporterMessageController>().GetAllMessages();
-    
+    Get.find<TransporterMessageController>().getuser();
    
     
   }
@@ -67,7 +67,7 @@ class _TransMessageScreenState extends State<TransMessageScreen> {
                         DateTime now = DateTime.now();
           
                         final lastMessage =
-                            controller.ListOfMessage[index].messages.last;
+                            controller.ListOfMessage[index].messages!.last;
                         final createdAt = lastMessage["CreatedAt"];
                         DateTime parsedDate = DateFormat("yyyy-MM-dd")
                             .parse(createdAt.substring(0, 10));
@@ -101,7 +101,7 @@ class _TransMessageScreenState extends State<TransMessageScreen> {
                                     borderRadius: BorderRadius.circular(
                                         100), // Adjust the radius to match the container's borderRadius
                                     child: Image.network(
-                                      "${AppConstant.Transimage}/${controller.ListOfMessage[index].transporterId.profilePicture}",
+                                      "${AppConstant.Clientimage}/${controller.ListOfMessage[index].userId!.profilePicture}",
                                       height: Dimenssions.height20 * 2.5,
                                       width: Dimenssions.height20 * 2.5,
                                     )),
@@ -113,7 +113,7 @@ class _TransMessageScreenState extends State<TransMessageScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "${controller.ListOfMessage[index].transporterId.fullName}",
+                                      "${controller.ListOfMessage[index].userId!.fullName}",
                                       style: const TextStyle(
                                           color: AppColors.buttonColor,
                                           fontSize: 12),

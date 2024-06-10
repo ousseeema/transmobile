@@ -1,30 +1,27 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:transmobile/controller/homeScreen/Client/messageController.dart';
 import 'package:transmobile/controller/homeScreen/transporteur/TransmessageController.dart';
 import 'package:transmobile/view/utils/appConstant.dart';
 import 'package:transmobile/view/utils/colors.dart';
 import 'package:transmobile/view/utils/dimenssion.dart';
 
-class chatPage extends StatefulWidget {
-  const chatPage({super.key});
+class TranschatPage extends StatefulWidget {
+  const TranschatPage({super.key});
 
   @override
-  State<chatPage> createState() => _chatPageState();
+  State<TranschatPage> createState() => _TranschatPageState();
 }
 
-class _chatPageState extends State<chatPage> {
+class _TranschatPageState extends State<TranschatPage> {
     final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     // TODO: implement initState
-    Get.find<MessageController>().socketInit();
+    Get.find<TransporterMessageController>().socketInit();
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
@@ -46,9 +43,9 @@ class _chatPageState extends State<chatPage> {
             width: Dimenssions.width,
             child: ListView.builder(
            controller: _scrollController,
-                itemCount:controller.SelectedDiscussion.messages.length,
+                itemCount:controller.SelectedDiscussion.messages!.length,
                  itemBuilder: ((context, index) {
-                   bool Transporter =controller.SelectedDiscussion.transporterId.id ==  controller.SelectedDiscussion.messages[index]['user'];
+                   bool Transporter =controller.SelectedDiscussion.transporterId!.id ==  controller.SelectedDiscussion.messages![index]['user'];
                  return Align(
                 
                   alignment:Transporter ? Alignment.centerLeft: Alignment.centerRight,
@@ -77,7 +74,7 @@ class _chatPageState extends State<chatPage> {
                      children: [ 
                       
 
-                      Text(controller.SelectedDiscussion.messages[index]['message'], style:const  TextStyle(
+                      Text(controller.SelectedDiscussion.messages![index]['message'], style:const  TextStyle(
                         color: AppColors.insidetextcolor
                       ),),
                       SizedBox(width: Dimenssions.width30,),
@@ -86,15 +83,15 @@ class _chatPageState extends State<chatPage> {
                                                 100), // Adjust the radius to match the container's borderRadius
                                                 
                                             child: Image.network(
-                                              Transporter?"${AppConstant.Transimage}${controller.SelectedDiscussion.transporterId.profilePicture}"
-                                              :"${AppConstant.Clientimage}${controller.SelectedDiscussion.userId.profilePicture}",
+                                              Transporter?"${AppConstant.Transimage}/${controller.SelectedDiscussion.transporterId!.profilePicture}"
+                                              :"${AppConstant.Clientimage}${controller.SelectedDiscussion.userId!.profilePicture}",
                                               fit: BoxFit.cover,
                                               height: Dimenssions.height20,
                                               width: Dimenssions.width20 ,
                                             ),
                                           ),
                                           SizedBox(width: Dimenssions.width10,),
-                      Text(controller.SelectedDiscussion.createdAt.substring(12,16), style: TextStyle(
+                      Text(controller.SelectedDiscussion.createdAt!.substring(12,16), style: TextStyle(
                         fontSize: Dimenssions.font10,
                         fontWeight: FontWeight.w200,
                            color: AppColors.insidetextcolor
@@ -116,7 +113,7 @@ class _chatPageState extends State<chatPage> {
             height: Dimenssions.height20 * 4,
             width: Dimenssions.width,
             decoration: BoxDecoration(
-                color: AppColors.buttonColor,
+                color: Colors.black,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(Dimenssions.radius20),
                     topRight: Radius.circular(Dimenssions.radius20))),
@@ -131,7 +128,7 @@ class _chatPageState extends State<chatPage> {
                     },
                     controller: controller.messagecontroller,
                
-                    style:const  TextStyle(color: Colors.black),
+                    style:const  TextStyle(color: Colors.white),
                     cursorColor: Colors.white,
                     focusNode: FocusNode(),
                     decoration: const InputDecoration(

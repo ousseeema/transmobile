@@ -92,7 +92,8 @@ class _DemandesListState extends State<DemandesList> {
                                 SizedBox(
                                   width: Dimenssions.width10,
                                 ),
-                                !controller.DemandesLivrasion[index].accepted &&
+                                SizedBox(width: Dimenssions.width30*2,
+                                child: !controller.DemandesLivrasion[index].accepted &&
                                         !controller
                                             .DemandesLivrasion[index].refused
                                     ? CostumeAnimatedText(
@@ -108,7 +109,7 @@ class _DemandesListState extends State<DemandesList> {
                                         : CostumeAnimatedText(
                                             text: 'Rejected',
                                             color: Colors.red,
-                                          )
+                                          ),)
                               ],
                             ),
                           ),
