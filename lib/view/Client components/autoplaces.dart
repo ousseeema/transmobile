@@ -29,7 +29,7 @@ class autoPlaces extends StatelessWidget {
                     borderRadius: BorderRadius.circular(Dimenssions.radius20)
                   ),
                 inputDecoration:  InputDecoration(
-                   
+                  
                   hintText: hintText,
                   labelText: labelText,
                   border: OutlineInputBorder(

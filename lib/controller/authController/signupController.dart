@@ -22,7 +22,7 @@ class signupController extends GetxController {
     // ! gaaed naamlhom fi enregistremment fi on change mta kol input
     //! fi page signup 
       name =Get.find<signinController>().isClient?Get.find<ClientDetailsController>().fullname :Get.find<transDetaislController>().fullname ;
-      email = Get.find<signinController>().isClient?Get.find<ClientDetailsController>().email :Get.find<transDetaislController>().email ;
+      email = Get.find<signinController>().isClient?Get.find<ClientDetailsController>().email :Get.find<transDetaislController>().email.trim() ;
       password = Get.find<signinController>().isClient?Get.find<ClientDetailsController>().password :Get.find<transDetaislController>().password ;
       repassword =Get.find<signinController>().isClient?Get.find<ClientDetailsController>().repassword :Get.find<transDetaislController>().repassword ;
     if (name.isEmpty || name.length < 3 || name.contains(RegExp(r'[0-9]'))) {
@@ -45,7 +45,7 @@ class signupController extends GetxController {
       verificationstatus = false;
     } else {
     
-       Get.find<verificationCodeController>().email= email ;
+       Get.find<verificationCodeController>().email= email.trim() ;
       verificationstatus = true;
       Get.snackbar("Success", "One more step and we're done",
           colorText: Colors.white, backgroundColor: Colors.green);

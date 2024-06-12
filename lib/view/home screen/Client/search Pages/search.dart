@@ -67,13 +67,13 @@ class _searchScreenState extends State<searchScreen> {
                   height: Dimenssions.height20 * 2,
                 ),
                 // search input for destination country
-                autoPlaces(
+            /*    autoPlaces(
                     icon: const Icon(
                       BoxIcons.bx_world,
                       color: AppColors.iconColor,
                     ),
                     hintText: "Destination Country",
-                    labelText: "Country B"),
+                    labelText: "Country B"),*/
                 SizedBox(
                   height: Dimenssions.height20 * 2,
                 ),

@@ -4,7 +4,7 @@ class AppConstant  {
    static String socekturl = "http://192.168.1.18:3000";
   // client auth endpoints
   static String loginUser = "/authClient/signin";
-  static String signup1Client = "/authClient/signup1";
+  static String signup1Client = "/authClient/signup1";  
   static String signup2Client = "/authClient/signup2";
   static String forgotpasswordClient = "/authClient/forgotpassword";
   static String resetpasswordClient = "/authClient/resetpassword";
