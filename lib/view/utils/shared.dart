@@ -60,4 +60,13 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
   sharedpreferences.setString("user", jsonEncode(transporteur) );
     }
 
+    static getUid()async{
+      Map<String,dynamic> user={}; 
+       await getuser().then(((value) {
+         user= jsonDecode(value!);
+       }));
+      
+         return   user.isEmpty? "": user["id"];
+    }
+
 }

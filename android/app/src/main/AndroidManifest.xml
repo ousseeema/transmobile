@@ -1,4 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<application
+        android:name="com.onesignal.OneSignalApplication"
+        >
+        <meta-data
+            android:name="onesignal_app_id"
+            android:value="Your OneSignal App ID" />
+        <meta-data
+            android:name="onesignal_google_project_number"
+            android:value="REMOTE" />
+        
+    </application>
     <application
         android:label="transmobile"
         android:name="${applicationName}"
