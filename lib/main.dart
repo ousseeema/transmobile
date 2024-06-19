@@ -64,9 +64,7 @@ class _TransMobileState extends State<TransMobile> {
     OneSignal.User.pushSubscription.addObserver((state) {
       print(OneSignal.User.pushSubscription.optedIn);
     OneSignal.User.addAlias("${shared.getUid()}", OneSignal.User.pushSubscription.id);
-      print(OneSignal.User.pushSubscription.id);
-      print(OneSignal.User.pushSubscription.token);
-      print(state.current.jsonRepresentation());
+      
     });
 
     OneSignal.User.addObserver((state) {
