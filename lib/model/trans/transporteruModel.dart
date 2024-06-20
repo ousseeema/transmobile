@@ -37,7 +37,8 @@ class TransporterModel {
     bool pro;
     String createdAt;
     List<Comment> comments;
-
+    String ? pushNotificationId;
+    
     TransporterModel({
          required this.id,
         required this.fullName,
@@ -66,12 +67,14 @@ class TransporterModel {
         required this.pro,
         required this.createdAt,
         required this.comments,
+        this.pushNotificationId
     });
 
     factory TransporterModel.fromJson(Map<String, dynamic> json) => TransporterModel(
         id: json["_id"].toString(),
         fullName: json["fullName"],
         email: json["email"],
+        pushNotificationId:json["pushNotificationId"],
         phoneNumberA: json["PhoneNumber_A"],
         phoneNumberB: json["PhoneNumber_B"],
         localAddress: json["localAddress"]??'',
@@ -101,6 +104,7 @@ class TransporterModel {
         "_id": id,
         "fullName": fullName,
         "email": email,
+        "pushNotificationId":pushNotificationId,
         "PhoneNumber_A": phoneNumberA,
         "PhoneNumber_B": phoneNumberB,
         "localAddress": localAddress,

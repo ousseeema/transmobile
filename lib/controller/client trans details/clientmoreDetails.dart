@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,7 @@ import 'package:transmobile/repository/client/authRepo.dart';
 import 'package:transmobile/view/login%20screens/verificationCode.dart';
 class ClientDetailsController extends GetxController{
 
-
+   
  File? selectedImage ;
   String  fullname="" ;
   String email = "";
@@ -24,6 +25,7 @@ class ClientDetailsController extends GetxController{
   bool success_signup1 =false;
 
  void signupClient()async {
+     String? pushnotificationsid ;
      
       
       Map<String,dynamic> userdetails ={
@@ -34,6 +36,7 @@ class ClientDetailsController extends GetxController{
       "Phone_Number2":phone_Numeber2,
       "country":currentCountry,
       "fulladdress":address,
+      "pushNotificationId":"$pushnotificationsid"
       };
 
       String userdetailsdecoded = json.encode(userdetails);

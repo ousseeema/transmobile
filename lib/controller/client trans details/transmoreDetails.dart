@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:transmobile/repository/transporter/authTransRepo.dart';
 import 'package:transmobile/view/login%20screens/verificationCode.dart';
 
@@ -55,7 +56,7 @@ class transDetaislController extends GetxController{
 
 
   void signupTrans()async{
-   
+   String? pushnotificationsid =  OneSignal.User.pushSubscription.id;
     // sending request to the serveur to sign up the current user 
      //! if the response is SUCCESS then move to the  verification code page 
    Map<String, dynamic> userdata={
@@ -75,7 +76,8 @@ class transDetaislController extends GetxController{
       "price_kg":coastkg,
       "Parsols":parcels,
       "Parsols_Site":parcelsSite,
-      "Adresse_Parsols":parcelsAddress
+      "Adresse_Parsols":parcelsAddress,
+      "pushNotificationId": pushnotificationsid
    };
    String dataencoded = json.encode(userdata);
      FormData datatosend = FormData(

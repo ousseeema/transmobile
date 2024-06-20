@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/helpers/dependencies.dart';
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 import 'package:transmobile/view/utils/shared.dart';
@@ -27,107 +28,36 @@ class TransMobile extends StatefulWidget {
 }
 
 class _TransMobileState extends State<TransMobile> {
-  String _debugLabelString = "";
-  String? _emailAddress;
-  String? _smsNumber;
-  String? _externalUserId;
-  String? _language;
-  String? _liveActivityId;
-  bool _requireConsent = false;
-  // This widget is the root of your application.
+
   @override
   void initState() {
  
     super.initState();
-     
+     initOneSignal();
     
   }
-
-    Future<void> initPlatformState() async {
-    if (!mounted) return;
-
-    OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
-
-    OneSignal.Debug.setAlertLevel(OSLogLevel.none);
-    OneSignal.consentRequired(_requireConsent);
-
-    // NOTE: Replace with your own app ID from https://www.onesignal.com
-    OneSignal.initialize("5176e766-14cd-4237-a7ee-23274f8d56ed");
-
-    OneSignal.LiveActivities.setupDefault();
-    OneSignal.LiveActivities.setupDefault(options: new LiveActivitySetupOptions(enablePushToStart: false, enablePushToUpdate: true));
-
-    
-
-    OneSignal.Notifications.clearAll();
-
-    OneSignal.User.pushSubscription.addObserver((state) {
-      print(OneSignal.User.pushSubscription.optedIn);
-    OneSignal.User.addAlias("${shared.getUid()}", OneSignal.User.pushSubscription.id);
-      
-    });
-
-    OneSignal.User.addObserver((state) {
-      var userState = state.jsonRepresentation();
-      print('OneSignal user changed: $userState');
-    });
-
-    OneSignal.Notifications.addPermissionObserver((state) {
-      print("Has permission " + state.toString());
-    });
-
-    OneSignal.Notifications.addClickListener((event) {
-      print('NOTIFICATION CLICK LISTENER CALLED WITH EVENT: $event');
-      this.setState(() {
-        _debugLabelString =
-            "Clicked notification: \n${event.notification.jsonRepresentation().replaceAll("\\n", "\n")}";
-      });
-    });
-
-    OneSignal.Notifications.addForegroundWillDisplayListener((event) {
-      print(
-          'NOTIFICATION WILL DISPLAY LISTENER CALLED WITH: ${event.notification.jsonRepresentation()}');
-
-      /// Display Notification, preventDefault to not display
-      event.preventDefault();
-
-      /// Do async work
-
-      /// notification.display() to display after preventing default
-      event.notification.display();
-
-      this.setState(() {
-        _debugLabelString =
-            "Notification received in foreground notification: \n${event.notification.jsonRepresentation().replaceAll("\\n", "\n")}";
-      });
-    });
-
-    OneSignal.InAppMessages.addClickListener((event) {
-      this.setState(() {
-        _debugLabelString =
-            "In App Message Clicked: \n${event.result.jsonRepresentation().replaceAll("\\n", "\n")}";
-      });
-    });
-    OneSignal.InAppMessages.addWillDisplayListener((event) {
-      print("ON WILL DISPLAY IN APP MESSAGE ${event.message.messageId}");
-    });
-    OneSignal.InAppMessages.addDidDisplayListener((event) {
-      print("ON DID DISPLAY IN APP MESSAGE ${event.message.messageId}");
-    });
-    OneSignal.InAppMessages.addWillDismissListener((event) {
-      print("ON WILL DISMISS IN APP MESSAGE ${event.message.messageId}");
-    });
-    OneSignal.InAppMessages.addDidDismissListener((event) {
-      print("ON DID DISMISS IN APP MESSAGE ${event.message.messageId}");
-    });
-
+void initOneSignal() {
  
 
 
-    // Some examples of how to use Outcome Events public methods with OneSignal SDK
-    
-  }
+  OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+   OneSignal.shared.setAppId("your-onesignal-app-id");
+  OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
+    print("Accepted permission: $accepted");
+  });
 
+  // Get the player ID
+  OneSignal.shared.getDeviceState().then((deviceState) async{
+    if (deviceState != null) {
+      String? playerId = deviceState.userId;
+    
+      SharedPreferences shared = await  SharedPreferences.getInstance();
+      shared.setString("pushNotifId", playerId!);
+    }
+    
+  });
+}
+  
   @override
   Widget build(BuildContext context) {
 

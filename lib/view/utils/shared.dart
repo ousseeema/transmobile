@@ -61,12 +61,11 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
     }
 
     static getUid()async{
-      Map<String,dynamic> user={}; 
-       await getuser().then(((value) {
-         user= jsonDecode(value!);
-       }));
+              SharedPreferences sharedpreferences = await SharedPreferences.getInstance();  
+         String? userid =  sharedpreferences.getString("pushNotifId");
       
-         return   user.isEmpty? "": user["id"];
+         return  userid?? "" ;
     }
+    
 
 }

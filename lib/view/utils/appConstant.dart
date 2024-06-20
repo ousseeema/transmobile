@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 class AppConstant  {
-  static String baseurl = "http://192.168.100.20:3000/api/v0";
-   static String socekturl = "http://192.168.100.20:3000";
+  static String baseurl = "http://192.168.1.93:3000/api/v0";
+   static String socekturl = "http://192.168.1.93:3000";
   // client auth endpoints
   static String loginUser = "/authClient/signin";
   static String signup1Client = "/authClient/signup1";  

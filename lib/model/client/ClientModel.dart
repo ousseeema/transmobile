@@ -19,6 +19,7 @@ class ClientModel {
     String? createdAt;
     bool? verified;
     List<dynamic>? historique;
+    String? pushNotificationId ;
 
     ClientModel({
         this.id,
@@ -35,11 +36,13 @@ class ClientModel {
          this.profilePicture,
         this.createdAt,
          this.historique,
+         this.pushNotificationId
     });
 
     factory ClientModel.fromJson(Map<String, dynamic> json) => ClientModel(
         id: json["_id"].toString(),
         fullName: json["fullName"],
+        pushNotificationId: json["pushNotificationId"],
         email: json["email"],
         phoneNumber: json["Phone_Number"],
         phoneNumber2: json["Phone_Number2"],
@@ -69,5 +72,6 @@ class ClientModel {
         "createdAt": createdAt,
         "verified": verified,
         "Historique": List<dynamic>.from(historique!.map((x) => x)),
+        "pushNotificationId" : pushNotificationId
     };
 }
