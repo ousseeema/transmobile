@@ -1,24 +1,44 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-<application
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.yourapp"> <!-- Replace with your actual package name -->
+
+    <application
         android:name="com.onesignal.OneSignalApplication"
-        >
+        android:label="transmobile"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
+        
+        <!-- OneSignal Meta-Data -->
         <meta-data
             android:name="onesignal_app_id"
-            android:value="Your OneSignal App ID" />
+            android:value="5176e766-14cd-4237-a7ee-23274f8d56ed" />
         <meta-data
             android:name="onesignal_google_project_number"
             android:value="REMOTE" />
-        
-    </application>
-    <application
-        android:label="transmobile"
-        android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true">
         <meta-data
-              android:name="com.google.android.geo.API_KEY"
-              android:value="AIzaSyCIfbsxH7UomLuyFdSdF4TZ2r57cVkP0fo"
-              />
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+
+        <!-- OneSignal Services -->
+        <service android:name="com.onesignal.GcmIntentService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </service>
+
+       <receiver
+    android:name="com.onesignal.GcmBroadcastReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="${applicationId}" />
+    </intent-filter>
+</receiver>
+
+        <service android:name="com.onesignal.RestoreJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true"/>
+        <service android:name="com.onesignal.RestoreKickoffJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true"/>
+
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -27,31 +47,18 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
-            <!-- Specifies an Android theme to apply to this Activity as soon as
-                 the Android process has started. This theme is visible to the user
-                 while the Flutter UI initializes. After that, this theme continues
-                 to determine the Window background behind the Flutter UI. -->
-            <meta-data
-              android:name="io.flutter.embedding.android.NormalTheme"
-              android:resource="@style/NormalTheme"
-              />
-              
+            <meta-data android:name="io.flutter.embedding.android.NormalTheme" android:resource="@style/NormalTheme"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!-- Don't delete the meta-data below.
-             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2" />
-    </application>
-    <!-- Required to query activities that can process text, see:
-         https://developer.android.com/training/package-visibility?hl=en and
-         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
 
-         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
+        <!-- Flutter Meta-Data -->
+        <meta-data android:name="flutterEmbedding" android:value="2"/>
+    </application>
+
+    <!-- Required for text processing activities -->
     <queries>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>

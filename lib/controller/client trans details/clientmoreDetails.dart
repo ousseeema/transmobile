@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:transmobile/repository/client/authRepo.dart';
 import 'package:transmobile/view/login%20screens/verificationCode.dart';
+import 'package:transmobile/view/utils/shared.dart';
 class ClientDetailsController extends GetxController{
 
    
@@ -25,9 +26,12 @@ class ClientDetailsController extends GetxController{
   bool success_signup1 =false;
 
  void signupClient()async {
-     String? pushnotificationsid ;
+     String? pushnotificationsid;
      
-      
+     await  shared.getplayerId().then((value){
+      pushnotificationsid = value ;
+
+      });
       Map<String,dynamic> userdetails ={
       "fullName": fullname,
       "email": email,

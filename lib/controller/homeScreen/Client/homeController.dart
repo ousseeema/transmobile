@@ -51,7 +51,7 @@ class HomeController extends GetxController {
     });
     // getting the transporter's from the data base
 
-    try {
+ 
       
       Response TripsResponse = await ClientRepo().GetAllTrips();
       Response CurrentTripResponse = await Get.find<UserApi>().GetRequest(AppConstant.usergetCurrentTrips);
@@ -91,11 +91,7 @@ class HomeController extends GetxController {
             colorText: Colors.white, backgroundColor: Colors.red);
             
       }
-    } catch (e) {
-        Get.snackbar(
-            "Error", "Error in the server , Try reloading the page",
-            colorText: Colors.white, backgroundColor: Colors.red);
-    }
+    
     
   }
 

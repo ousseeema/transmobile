@@ -11,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:transmobile/repository/transporter/authTransRepo.dart';
 import 'package:transmobile/view/login%20screens/verificationCode.dart';
+import 'package:transmobile/view/utils/shared.dart';
 
 class transDetaislController extends GetxController{
  
@@ -56,7 +57,11 @@ class transDetaislController extends GetxController{
 
 
   void signupTrans()async{
-   String? pushnotificationsid =  OneSignal.User.pushSubscription.id;
+   String? pushnotificationsid ;
+     await  shared.getplayerId().then((value){
+      pushnotificationsid = value ;
+
+      });
     // sending request to the serveur to sign up the current user 
      //! if the response is SUCCESS then move to the  verification code page 
    Map<String, dynamic> userdata={

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transmobile/helpers/dependencies.dart';
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 import 'package:transmobile/view/utils/shared.dart';
@@ -12,7 +11,6 @@ void main() async{
   
   runApp(const TransMobile());
    dependency.init();
-  
  
    
 
@@ -37,25 +35,16 @@ class _TransMobileState extends State<TransMobile> {
     
   }
 void initOneSignal() {
- 
-
-
-  OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-   OneSignal.shared.setAppId("your-onesignal-app-id");
-  OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
-    print("Accepted permission: $accepted");
-  });
-
-  // Get the player ID
-  OneSignal.shared.getDeviceState().then((deviceState) async{
-    if (deviceState != null) {
-      String? playerId = deviceState.userId;
-    
-      SharedPreferences shared = await  SharedPreferences.getInstance();
-      shared.setString("pushNotifId", playerId!);
-    }
-    
-  });
+ OneSignal.initialize("5176e766-14cd-4237-a7ee-23274f8d56ed");
+ OneSignal.LiveActivities.setupDefault();
+ OneSignal.User.pushSubscription.addObserver((state) {
+      print(OneSignal.User.pushSubscription.optedIn);
+      print("dklauzjdgazkdagzdazdgazdgazdazdazd${OneSignal.User.pushSubscription.id}");
+    shared.setplayerId(OneSignal.User.pushSubscription.id??"");
+      print(OneSignal.User.pushSubscription.token);
+      print(state.current.jsonRepresentation());
+    });
+     OneSignal.LiveActivities.setupDefault();
 }
   
   @override

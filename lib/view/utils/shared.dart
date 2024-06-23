@@ -60,12 +60,16 @@ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();
   sharedpreferences.setString("user", jsonEncode(transporteur) );
     }
 
-    static getUid()async{
+    static getplayerId()async{
               SharedPreferences sharedpreferences = await SharedPreferences.getInstance();  
          String? userid =  sharedpreferences.getString("pushNotifId");
       
          return  userid?? "" ;
     }
-    
+    static setplayerId(String ID )async{
+
+ SharedPreferences sharedpreferences = await SharedPreferences.getInstance();  
+ sharedpreferences.setString("pushNotifId", ID);
+    }
 
 }
