@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "596279565346",
+    "project_id": "transmobiile",
+    "storage_bucket": "transmobiile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596279565346:android:b2a0354ce5ee50cc107e7b",
+        "android_client_info": {
+          "package_name": "com.example.transmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiKJY9LcYZeSH0LSUHFsCkDdS9t2-oDfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

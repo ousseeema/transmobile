@@ -62,6 +62,7 @@ dependencies:
   fl_chart: ^0.68.0
   flutter_slidable: ^3.1.0
   onesignal_flutter: ^5.2.1
+  firebase_core: ^3.1.0
   
  
 

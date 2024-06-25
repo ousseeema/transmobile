@@ -5,10 +5,22 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:transmobile/helpers/dependencies.dart';
 import 'package:transmobile/view/splashscreens/SplachScreen.dart';
 import 'package:transmobile/view/utils/shared.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+
+  OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   
+ OneSignal.initialize("5176e766-14cd-4237-a7ee-23274f8d56ed");
+ OneSignal.Notifications.requestPermission(true);
+
+
   runApp(const TransMobile());
    dependency.init();
  
@@ -35,8 +47,7 @@ class _TransMobileState extends State<TransMobile> {
     
   }
 void initOneSignal() {
- OneSignal.initialize("5176e766-14cd-4237-a7ee-23274f8d56ed");
- OneSignal.LiveActivities.setupDefault();
+
  OneSignal.User.pushSubscription.addObserver((state) {
       print(OneSignal.User.pushSubscription.optedIn);
       print("dklauzjdgazkdagzdazdgazdgazdazdazd${OneSignal.User.pushSubscription.id}");
