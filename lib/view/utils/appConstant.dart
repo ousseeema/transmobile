@@ -63,8 +63,11 @@ static String TranschangeEmail = "/transporteurs/changeemail";
 static String TransgetAllPackage = "/transporteurs/getAllPackage";
 
 
+// notification endpoints
+// post request 
+static String TranssendNotification = "/notifications/pushNotificationTrans";
+ static String ClientsendNotification = "/notifications/pushNotificationClient";
 
- 
  
   
  /// images path

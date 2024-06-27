@@ -83,6 +83,11 @@ class MessageController extends GetxController {
     };
     socket.emit('sendMessage', message);
     messagecontroller.text = '';
+     String messagenotfi = "New message from ${me.fullName}";
+        String title = "Message : " ; 
+        List <String>userIds = [SelectedDiscussion!.transporterId!.pushNotificationId??""];
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.ClientsendNotification, messagenotfi, title);
+
   }
 
   void setUpsSocketListener() {

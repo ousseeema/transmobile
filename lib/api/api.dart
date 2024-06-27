@@ -203,6 +203,38 @@ class UserApi extends GetConnect implements GetxService {
     }
 
    }
+   // sendnotification api request
+   Future<Response> sendNotification( List pushids ,String endpoint, String message , String title )async {
+
+        String?  token = await  shared.gettoken();
+    try {
+      Map<String, dynamic> notificationBody ={
+        "title": title,
+        "message": message,
+        "userIds" : pushids
+      };
+      Response responseNotfi = await post("$baseurl$endpoint", 
+        notificationBody, 
+        headers: {
+           'Authorization': "Bearer ${token!.substring(1,token.length-1)}",
+        },
+       contentType: "application/json", 
+      );
+      return responseNotfi;
+    } catch (e) {
+      return const Response(
+        body: {
+          "message": "error in serveur",
+          "success": false
+        },
+        statusCode: 1,
+         
+         
+         );
+    }
+   }
+
+
 
 
 }

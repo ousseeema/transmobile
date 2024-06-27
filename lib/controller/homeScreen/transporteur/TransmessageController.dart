@@ -91,6 +91,11 @@ late TransporterModel me;
     };
     socket.emit('TransporterSendMessage', message );
     messagecontroller.text='';
+     String messagenotfi = "New message from ${Transporter.fullName}";
+        String title = "Message : " ; 
+        List <String>userIds = [SelectedDiscussion.userId!.pushNotificationId??""];
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, messagenotfi, title);
+
   }
   void setUpsSocketListener() {
   socket.on('TransporterMessage-received',(message){

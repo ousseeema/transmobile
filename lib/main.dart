@@ -47,13 +47,12 @@ class _TransMobileState extends State<TransMobile> {
     
   }
 void initOneSignal() {
-
+shared.setplayerId(OneSignal.User.pushSubscription.id??"");
  OneSignal.User.pushSubscription.addObserver((state) {
-      print(OneSignal.User.pushSubscription.optedIn);
-      print("dklauzjdgazkdagzdazdgazdgazdazdazd${OneSignal.User.pushSubscription.id}");
-    shared.setplayerId(OneSignal.User.pushSubscription.id??"");
-      print(OneSignal.User.pushSubscription.token);
-      print(state.current.jsonRepresentation());
+     
+     
+      shared.setplayerId(OneSignal.User.pushSubscription.id??"");
+    
     });
      OneSignal.LiveActivities.setupDefault();
 }
