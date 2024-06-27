@@ -64,7 +64,7 @@ class SendRequestController extends GetxController {
       String messagenotfi = "new request from Client ";
         String title = "ship Request : " ; 
         List <String>userIds = [trans.pushNotificationId??""];
-        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, messagenotfi, title);
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.ClientsendNotification, messagenotfi, title);
 
       Future.delayed(const Duration(seconds: 1), () {
         is_Loading = false;

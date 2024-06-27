@@ -86,7 +86,7 @@ class MessageController extends GetxController {
      String messagenotfi = "New message from ${me.fullName}";
         String title = "Message : " ; 
         List <String>userIds = [SelectedDiscussion!.transporterId!.pushNotificationId??""];
-        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, messagenotfi, title);
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.ClientsendNotification, messagenotfi, title);
 
   }
 
