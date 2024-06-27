@@ -53,7 +53,7 @@ class TransnotificationController extends GetxController {
 
   late DemandeLiv Selected_Demande;
 
-  // accept the request
+  // accept the request and send notification to the user 
   bool accept_loader = false;
   acceptedRequest() async {
     accept_loader = true;
@@ -66,6 +66,12 @@ class TransnotificationController extends GetxController {
         Selected_Demande.accepted = true;
         accept_loader = false;
         update();
+        String message = "Your request has been accepted by ${Selected_Demande.transporter.fullName}";
+        String title = "Request Status : " ; 
+        List <String>userIds = [Selected_Demande.client.pushNotificationId??""];
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, message, title);
+
+       
         Get.snackbar("Success", AcceptedRequest.body["message"],
             backgroundColor: Colors.green, colorText: Colors.white);
       } else {
@@ -91,6 +97,12 @@ class TransnotificationController extends GetxController {
       if (rejectRequest.body["success"]) {
         Selected_Demande.refused = true;
         accept_loader = false;
+          String message = "Your request has been refused by ${Selected_Demande.transporter.fullName}";
+        String title = "Request Status : " ; 
+        List <String>userIds = [Selected_Demande.client.pushNotificationId??""];
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, message, title);
+        
+       
         update();
         Get.snackbar("Success", rejectRequest.body["message"],
             backgroundColor: Colors.green, colorText: Colors.white);

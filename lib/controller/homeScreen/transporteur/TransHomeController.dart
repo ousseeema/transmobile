@@ -85,6 +85,15 @@ class transHomeController extends GetxController {
       Response updatedTrip = await Get.find<UserApi>()
         .TransputRequest(datatosend, AppConstant.TransupdateTrip, Trip!.id);
     if (updatedTrip.body["success"]) {
+        String message = "Your transporter ${transporter!.fullName} has passed ${   Trip!.citys[index].city}";
+        String title = "Trip Status : " ; 
+        List <String>userIds = [];
+            Trip!.packages.forEach((package){
+               userIds.add(package['pushNotificationId']);
+            });
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, message, title);
+        
+       
        Trip = TripModel.fromJson(updatedTrip.body['data']);
        isloading = false;
        update();
@@ -112,6 +121,15 @@ class transHomeController extends GetxController {
       Response updatedTrip = await Get.find<UserApi>()
         .TransputRequest(datatosend, AppConstant.TransupdateTrip, Trip!.id);
     if (updatedTrip.body["success"]) {
+        String message = "Your transporter ${transporter!.fullName} has deleted ${   Trip!.citys[index].city} city";
+        String title = "Trip Status : " ; 
+        List <String>userIds = [];
+            Trip!.packages.forEach((package){
+               userIds.add(package['pushNotificationId']);
+            });
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, message, title);
+        
+       
       Trip = TripModel.fromJson(updatedTrip.body['data']);
       isloading = false;
       update();
@@ -156,6 +174,15 @@ class transHomeController extends GetxController {
       Response updatedTrip = await Get.find<UserApi>()
         .TransputRequest(datatoSend, AppConstant.TransupdateTrip, Trip!.id);
     if (updatedTrip.body["success"]) {
+        String message = "Your transporter ${transporter!.fullName} has updated the trip ,check the updated one";
+        String title = "Trip Status : " ; 
+        List <String>userIds = [];
+            Trip!.packages.forEach((package){
+               userIds.add(package['pushNotificationId']);
+            });
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, message, title);
+        
+       
       Trip = TripModel.fromJson(updatedTrip.body['data']);
       isloading = false;
       update();
@@ -191,6 +218,15 @@ class transHomeController extends GetxController {
      
 
      if(deletedTrip.body["success"] == true){
+        String message = "Your transporter ${transporter!.fullName} has deleted the current trip , contact the transporteur ro see the details";
+        String title = "Trip Status : " ; 
+        List <String>userIds = [];
+            Trip!.packages.forEach((package){
+               userIds.add(package['pushNotificationId']);
+            });
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, message, title);
+        
+       
        isloading = false;
       update();
       Get.back();
@@ -231,6 +267,15 @@ class transHomeController extends GetxController {
      
 
      if(doneTrip.body["success"] == true){
+        String message = "Your transporter ${transporter!.fullName} finished the trip";
+        String title = "Trip Status : " ; 
+        List <String>userIds = [];
+            Trip!.packages.forEach((package){
+               userIds.add(package['pushNotificationId']);
+            });
+        Response send_Notification = await Get.find<UserApi>().sendNotification(userIds, AppConstant.TranssendNotification, message, title);
+        
+       
        isloading = false;
       update();
       Get.back();
@@ -302,9 +347,7 @@ class transHomeController extends GetxController {
         "homeDelivery" : homeDelivery,
         "exacteAddress" : exacteAddress,
         "amount" : totalamount
-
       };
-
       Response addpackageResponse = await Get.find<UserApi>().TransputRequest(data, AppConstant.TransAddsinglePackage, Trip!.id);
         if(addpackageResponse.body["sucess"]){
             isloading = false;
